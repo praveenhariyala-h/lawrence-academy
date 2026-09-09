@@ -1,22 +1,26 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { memo, useCallback, useState, type FormEvent } from "react";
 
-export default function ContactForm() {
+function ContactForm({
+  submitLabel = "Send message"
+}: {
+  submitLabel?: string;
+}) {
   const [sent, setSent] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  const onSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     setSent(true);
     form.reset();
-  }
+  }, []);
 
   return (
     <form className={sent ? "form is-sent" : "form"} onSubmit={onSubmit} noValidate>
       <div className="form-success" role="status">
-        Thank you. We’ll be in touch shortly.
+        Thank you. The Community Relations team will be in touch shortly.
       </div>
       <label>
         Full name
@@ -27,26 +31,30 @@ export default function ContactForm() {
         <input name="email" type="email" required autoComplete="email" />
       </label>
       <label>
+        Phone
+        <input name="phone" type="tel" autoComplete="tel" />
+      </label>
+      <label>
         I’m interested in
         <select name="interest" required defaultValue="">
-          <option value="">Select a division</option>
-          <option>Lower School (JK–5)</option>
-          <option>Middle School (6–8)</option>
-          <option>Upper School (9–12)</option>
+          <option value="">Select</option>
+          <option>Kindergarten</option>
+          <option>Primary</option>
+          <option>Middle School</option>
+          <option>High School</option>
           <option>A campus tour</option>
+          <option>Transport</option>
         </select>
       </label>
       <label>
         Message
-        <textarea
-          name="message"
-          required
-          placeholder="Tell us about your child or the visit you’d like."
-        />
+        <textarea name="message" required placeholder="Tell us about your child or your question." />
       </label>
-      <button className="btn btn--gold" type="submit">
-        Send message
+      <button className="btn btn--blue" type="submit">
+        {submitLabel}
       </button>
     </form>
   );
 }
+
+export default memo(ContactForm);

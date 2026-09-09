@@ -1,86 +1,73 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ContactForm from "@/components/ContactForm";
 
-export const metadata: Metadata = {
-  title: "Admissions"
-};
+export const metadata: Metadata = { title: "Admissions" };
+
+const steps = [
+  {
+    title: "Make an enquiry",
+    text: "Fill the enquiry form or get in touch. Community Relations will set a visit, online or phone interaction."
+  },
+  {
+    title: "Visit us",
+    text: "Tour our campuses and meet us, in person or online."
+  },
+  {
+    title: "Apply",
+    text: "Submit the application with a photograph, birth certificate, academic records, co-curricular records, transfer certificate, and visa/permit if applicable."
+  },
+  {
+    title: "Admission interaction",
+    text: "Pre-K to Grade 5: meeting with a teacher and Head of Kindergarten & Primary. Grades 6–9: placement tests in English, Mathematics, Science and Second Language, then an interaction with the Head / Principal."
+  },
+  {
+    title: "Offer",
+    text: "An email offer follows approval. Confirm acceptance and pay fees within the stipulated time."
+  }
+];
 
 export default function AdmissionsPage() {
   return (
     <>
       <PageHero
         kicker="Admissions"
-        title="Begin with a conversation, not a form."
-        lede="We look for families who want a thoughtful school — and students who are ready to join a community."
+        title="Begin with a conversation."
+        lede="Enquire, visit, apply, interact, and receive an offer. Community Relations walks with you at every step."
       />
-      <section className="section">
-        <div className="wrap split">
+      <section className="band band--white">
+        <div className="wrap">
+          <h2 className="section-title">Admission process</h2>
+          <div className="timeline">
+            {steps.map((step, i) => (
+              <div className="step" key={step.title}>
+                <span className="step-num">{i + 1}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="band band--pearl">
+        <div className="wrap two">
           <div>
-            <span className="kicker">How to apply</span>
-            <h2 className="section-title">Four clear steps</h2>
-            <div className="timeline">
-              <div className="step">
-                <span className="step-num">1</span>
-                <div>
-                  <h3>Inquire</h3>
-                  <p>
-                    Tell us about your child. We’ll send dates, tuition
-                    overview, and a suggested visit.
-                  </p>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-num">2</span>
-                <div>
-                  <h3>Visit campus</h3>
-                  <p>
-                    Tour, sit in on a class if timing allows, and meet an
-                    admissions officer.
-                  </p>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-num">3</span>
-                <div>
-                  <h3>Apply</h3>
-                  <p>
-                    Online application, teacher recommendation, and records.
-                    Financial aid is available.
-                  </p>
-                </div>
-              </div>
-              <div className="step">
-                <span className="step-num">4</span>
-                <div>
-                  <h3>Decision</h3>
-                  <p>
-                    Most families hear by March 10. Enrollment contracts follow
-                    shortly after.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h2>Download the admission form</h2>
+            <p className="lede">
+              Print and complete the form, or start a digital enquiry and we will share the
+              application pack by email.
+            </p>
+            <Link className="btn btn--blue" href="/contact">
+              Request the form
+            </Link>
           </div>
           <div>
-            <div className="panel">
-              <h2>Key dates</h2>
-              <div className="event">
-                <time>Oct 15</time> Application opens
-              </div>
-              <div className="event">
-                <time>Jan 15</time> Application due
-              </div>
-              <div className="event">
-                <time>Feb</time> Student visits
-              </div>
-              <div className="event">
-                <time>Mar 10</time> Decisions released
-              </div>
-              <Link className="btn btn--gold" href="/contact" style={{ marginTop: "1.2rem" }}>
-                Talk with admissions
-              </Link>
-            </div>
+            <h2>Digital application</h2>
+            <p>Submit an enquiry. After review, you will receive application and payment instructions.</p>
+            <ContactForm submitLabel="Submit enquiry" />
           </div>
         </div>
       </section>

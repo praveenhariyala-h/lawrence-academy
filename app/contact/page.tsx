@@ -1,47 +1,35 @@
 import type { Metadata } from "next";
-import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
+import ContactForm from "@/components/ContactForm";
+import { school } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact"
-};
+export const metadata: Metadata = { title: "Contact" };
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
         kicker="Contact"
-        title="We’d like to meet you."
-        lede="Ask about a tour, an application, or a specific grade. Admissions replies within two school days."
+        title="Office, transport, and a map to campus."
+        lede="Community Relations replies quickly. Visit us beside the children’s park in Sector 6, HSR Layout."
       />
-      <section className="section">
+      <section className="band band--white">
         <div className="wrap contact-grid">
-          <div className="info-list">
-            <div>
-              <h2>Campus</h2>
-              <p>
-                18 River Road
-                <br />
-                Hartwell, MA 02478
-                <br />
-                (555) 012-4800
-              </p>
-            </div>
-            <div>
-              <h3>Admissions</h3>
-              <p>
-                hello@lawrence.academy
-                <br />
-                Weekdays 8:00 AM – 4:30 PM
-              </p>
-            </div>
-            <div>
-              <h3>Getting here</h3>
-              <p>
-                Visitor parking is beside the chapel. Check in at the Welcome
-                Desk in Founders Hall.
-              </p>
-            </div>
+          <div>
+            <h2>Campus</h2>
+            <p>{school.address}</p>
+            <h3>Office</h3>
+            <p>{school.phones.join(" · ")}</p>
+            <h3>Transport</h3>
+            <p>{school.transportPhone}</p>
+            <h3>Email</h3>
+            <p>{school.emails[0]}</p>
+            <iframe
+              className="map"
+              title="Lawrence High School map"
+              src={school.mapUrl}
+              loading="lazy"
+            />
           </div>
           <ContactForm />
         </div>

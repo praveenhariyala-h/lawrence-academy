@@ -16,11 +16,11 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lawrence Academy | Curiosity. Character. Community.",
-    template: "%s | Lawrence Academy"
+    default: "Lawrence High School | ICSE HSR Layout, Bengaluru",
+    template: "%s | Lawrence High School"
   },
   description:
-    "Lawrence Academy is a JK–12 independent school in Hartwell with a responsive Next.js site."
+    "Lawrence High School ICSE, HSR Layout, Bengaluru — 35 years of academic excellence, 100% student engagement, and the A.C.T. framework."
 };
 
 export default function RootLayout({

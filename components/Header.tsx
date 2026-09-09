@@ -1,21 +1,46 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
+import { nav } from "@/lib/site";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/academics", label: "Academics" },
-  { href: "/admissions", label: "Admissions" },
-  { href: "/campus", label: "Campus Life" },
-  { href: "/contact", label: "Contact" }
-];
+const NavLinks = memo(function NavLinks({
+  pathname,
+  onNavigate
+}: {
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-export default function Header() {
+  return (
+    <>
+      {nav.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          aria-current={isActive(link.href) ? "page" : undefined}
+          onClick={onNavigate}
+        >
+          {link.label}
+        </Link>
+      ))}
+      <Link className="btn btn--blue" href="/admissions" onClick={onNavigate}>
+        Apply
+      </Link>
+    </>
+  );
+});
+
+function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const closeMenu = useCallback(() => setOpen(false), []);
+  const toggleMenu = useCallback(() => setOpen((value) => !value), []);
 
   useEffect(() => {
     setOpen(false);
@@ -29,8 +54,10 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  useEffect(() => {
+    document.body.classList.toggle("nav-locked", open);
+    return () => document.body.classList.remove("nav-locked");
+  }, [open]);
 
   return (
     <>
@@ -39,50 +66,58 @@ export default function Header() {
       </a>
       <div className="topbar">
         <div className="wrap">
-          <span>Hartwell Campus · Grades JK–12</span>
+          <span>ICSE · HSR Layout, Bengaluru</span>
           <span>
-            <a href="tel:+15550124800">(555) 012-4800</a> ·{" "}
-            <Link href="/admissions">Parent Portal</Link>
+            <a href="tel:+918025722777">080 2572 2777</a> ·{" "}
+            <Link href="/admissions">Admissions</Link>
           </span>
         </div>
       </div>
       <header className="header">
         <div className="wrap">
-          <Link className="logo" href="/" onClick={() => setOpen(false)}>
-            <span className="logo-mark">LA</span>
+          <Link className="logo" href="/" onClick={closeMenu}>
+            <Image
+              className="logo-shield"
+              src="/images/logo-shield-blue.png"
+              alt="Lawrence High School crest"
+              width={210}
+              height={293}
+              priority
+            />
             <span className="logo-text">
-              <strong>Lawrence Academy</strong>
-              <span>Established 1894</span>
+              <strong>Lawrence High School</strong>
+              <span>Creating masterpieces in societies</span>
             </span>
           </Link>
           <button
-            className="nav-toggle"
+            className={open ? "nav-toggle is-open" : "nav-toggle"}
+            type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
+            aria-controls="mobile-nav"
+            onClick={toggleMenu}
           >
             <span />
           </button>
-          <nav className={open ? "nav is-open" : "nav"} aria-label="Primary">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link className="btn btn--gold" href="/admissions">
-              Apply
-            </Link>
+          <nav className="nav-desktop" aria-label="Primary">
+            <NavLinks pathname={pathname} onNavigate={closeMenu} />
           </nav>
         </div>
       </header>
       <div
         className={open ? "nav-overlay is-open" : "nav-overlay"}
-        onClick={() => setOpen(false)}
+        onClick={closeMenu}
       />
+      <nav
+        id="mobile-nav"
+        className={open ? "nav-drawer is-open" : "nav-drawer"}
+        aria-label="Mobile"
+        aria-hidden={!open}
+      >
+        <NavLinks pathname={pathname} onNavigate={closeMenu} />
+      </nav>
     </>
   );
 }
+
+export default memo(Header);

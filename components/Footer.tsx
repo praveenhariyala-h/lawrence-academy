@@ -1,49 +1,52 @@
 import Link from "next/link";
+import { school } from "@/lib/site";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="wrap footer-grid">
         <div>
-          <h3>Lawrence Academy</h3>
+          <h3>{school.name}</h3>
           <p>
-            18 River Road, Hartwell
+            {school.address}
             <br />
-            JK–12 independent school
+            {school.trust}
           </p>
         </div>
         <div>
-          <h3>Visit</h3>
+          <h3>Explore</h3>
           <p>
+            <Link href="/learning">Learning</Link>
+            <br />
+            <Link href="/beyond-books">Beyond Books</Link>
+            <br />
             <Link href="/admissions">Admissions</Link>
-            <br />
-            <Link href="/contact">Request a tour</Link>
-            <br />
-            <Link href="/academics">Academics</Link>
           </p>
         </div>
         <div>
-          <h3>Life</h3>
+          <h3>Community</h3>
           <p>
-            <Link href="/campus">Athletics & arts</Link>
+            <Link href="/news">News & Events</Link>
             <br />
-            <Link href="/about">Our mission</Link>
+            <Link href="/alumni">Alumni</Link>
             <br />
-            <Link href="/contact">Employment</Link>
+            <Link href="/about">About us</Link>
           </p>
         </div>
         <div>
-          <h3>Contact</h3>
+          <h3>Office</h3>
           <p>
-            (555) 012-4800
+            {school.phones[0]}
             <br />
-            hello@lawrence.academy
+            Transport: {school.transportPhone}
+            <br />
+            {school.emails[0]}
           </p>
         </div>
       </div>
       <div className="wrap legal">
-        <span>© {new Date().getFullYear()} Lawrence Academy. All rights reserved.</span>
-        <span>Responsive Next.js SPA</span>
+        <span>© {new Date().getFullYear()} {school.name}. All rights reserved.</span>
+        <span>ICSE · Bengaluru</span>
       </div>
     </footer>
   );
