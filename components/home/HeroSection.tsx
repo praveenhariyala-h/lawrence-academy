@@ -25,36 +25,26 @@ const heroSlides = [
 
 export default function HeroSection() {
   return (
-    <Carousel
-      className="hero-wrap"
-      slides={heroSlides.map((slide, index) => (
-        <section key={slide.title} className="hero hero-slide">
-          <div className="hero-bg">
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              sizes="100vw"
-              priority={index === 0}
-            />
-          </div>
-          <div className="wrap hero-content">
-            <span className="kicker" style={{ color: "var(--bloom)" }}>
-              Lawrence High School · ICSE
-            </span>
-            <h1>{slide.title}</h1>
-            <p>{slide.text}</p>
-            <div className="btn-row">
-              <Link className="btn btn--gold" href="/about">
-                Learn more
-              </Link>
-              <Link className="btn btn--ghost" href="/contact">
-                Contact us
-              </Link>
+    <div className="hero-banner">
+      <Carousel
+        className="hero-wrap"
+        slides={heroSlides.map((slide, index) => (
+          <section key={slide.title} className="hero hero-slide">
+            <div className="hero-bg">
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                sizes="100vw"
+                priority={index === 0}
+              />
             </div>
-          </div>
-        </section>
-      ))}
-    />
+          </section>
+        ))}
+      />
+      <Link className="hero-learn-more" href="/about">
+        Learn more
+      </Link>
+    </div>
   );
 }

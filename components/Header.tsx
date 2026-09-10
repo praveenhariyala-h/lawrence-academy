@@ -61,33 +61,28 @@ function Header() {
 
   return (
     <>
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
       <div className="topbar">
         <div className="wrap">
-          <span>ICSE · HSR Layout, Bengaluru</span>
-          <span>
-            <a href="tel:+918025722777">080 2572 2777</a> ·{" "}
-            <Link href="/admissions">Admissions</Link>
+          <span className="topbar-helpline">
+            Admission Helpline:{" "}
+            <a href="tel:+918025722777">080 2572 2777</a>
           </span>
+          <Link className="btn topbar-btn" href="/admissions" prefetch>
+            Admission Enquiry
+          </Link>
         </div>
       </div>
       <header className="header">
         <div className="wrap">
           <Link className="logo" href="/" onClick={closeMenu}>
             <Image
-              className="logo-shield"
-              src="/images/logo-shield-blue.png"
-              alt="Lawrence High School crest"
-              width={210}
-              height={293}
+              className="logo-lockup"
+              src="/images/logo-lockup.png"
+              alt="Lawrence High School, HSR Layout, Bengaluru"
+              width={522}
+              height={150}
               priority
             />
-            <span className="logo-text">
-              <strong>Lawrence High School</strong>
-              <span>Creating masterpieces in societies</span>
-            </span>
           </Link>
           <button
             className={open ? "nav-toggle is-open" : "nav-toggle"}

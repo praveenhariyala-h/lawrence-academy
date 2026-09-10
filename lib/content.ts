@@ -65,14 +65,14 @@ export const wins = [
 ];
 
 export const partners = [
-  "CISCE",
-  "HarperCollins",
-  "Karadi Path",
-  "Vedic Math",
-  "Theatre",
-  "Taekwondo",
-  "Public Speaking",
-  "Pottery"
+  { name: "CISCE", category: "Curriculum" },
+  { name: "HarperCollins", category: "Curriculum" },
+  { name: "Karadi Path", category: "Curriculum" },
+  { name: "Vedic Math", category: "Curriculum" },
+  { name: "Theatre", category: "Enrichment" },
+  { name: "Taekwondo", category: "Enrichment" },
+  { name: "Public Speaking", category: "Enrichment" },
+  { name: "Pottery", category: "Enrichment" }
 ];
 
 export const leadership = [
