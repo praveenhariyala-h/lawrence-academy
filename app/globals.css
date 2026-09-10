@@ -270,11 +270,18 @@ p {
   font-size: 0.92rem;
 }
 
-.nav-desktop a:hover,
-.nav-desktop a[aria-current="page"],
-.nav-drawer a:hover,
-.nav-drawer a[aria-current="page"] {
+.nav-desktop a:not(.btn):hover,
+.nav-desktop a:not(.btn)[aria-current="page"],
+.nav-drawer a:not(.btn):hover,
+.nav-drawer a:not(.btn)[aria-current="page"] {
   color: var(--legacy-blue);
+}
+
+.nav-desktop a.btn,
+.nav-desktop a.btn:hover,
+.nav-drawer a.btn,
+.nav-drawer a.btn:hover {
+  color: var(--white);
 }
 
 .nav-toggle {
