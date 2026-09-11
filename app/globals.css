@@ -1569,3 +1569,19 @@ body.nav-locked {
     transform: none;
   }
 }
+
+.news-list .card h2 {
+  font-size: 1.35rem;
+}
+
+.news-list .card p:last-child {
+  margin-bottom: 0;
+}
+
+.news-article {
+  max-width: 46rem;
+}
+
+.news-article :where(h2, h3) {
+  margin-top: 1.5em;
+}
