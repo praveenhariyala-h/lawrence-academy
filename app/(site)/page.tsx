@@ -3,77 +3,64 @@ import HeroSection from "@/components/home/HeroSection";
 import HomeBelowFold from "@/components/home/HomeBelowFold";
 import PathwayStrip from "@/components/home/PathwayStrip";
 import CurriculumMosaic from "@/components/home/CurriculumMosaic";
+import RichText from "@/components/RichText";
+import { getHomeContent } from "@/lib/home";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const home = await getHomeContent();
+
   return (
     <>
-      <HeroSection />
+      <HeroSection
+        slides={home.heroSlides}
+        learnMoreHref={home.heroLearnMoreHref}
+        learnMoreLabel={home.heroLearnMoreLabel}
+      />
 
-      <PathwayStrip />
+      <PathwayStrip items={home.pathwayItems} />
 
       <section className="band band--white">
         <div className="wrap legacy">
           <div className="legacy-photo">
             <Image
-              src="/images/hero-campus.png"
-              alt="Lawrence High School campus, HSR Layout"
+              src={home.legacyPhoto}
+              alt={home.legacyPhotoAlt}
               fill
               sizes="(max-width: 900px) 100vw, 50vw"
             />
           </div>
           <div>
-            <h2 className="section-title">Lawrence Legacy</h2>
-            <p>
-              <strong>Lawrence High School</strong> carries a legacy of educational excellence that
-              began in <strong>1991 with our Koramangala branch</strong> and grew with the
-              establishment of our <strong>HSR ICSE branch in 2002</strong>.
-            </p>
-            <p>
-              Today, Lawrence is a vibrant learning community of{" "}
-              <strong>over 2,500 students and 103+ dedicated teachers</strong>, committed to
-              providing an education that nurtures{" "}
-              <strong>knowledge, character and confidence</strong>.
-            </p>
-            <p>
-              With a strong foundation built on <strong>values and holistic development</strong>,
-              we continue to prepare young minds to learn, grow and contribute meaningfully to
-              the world.
-            </p>
-            <p className="legacy-tagline">Our Legacy. Our Values. Their Future.</p>
+            <h2 className="section-title">{home.legacyTitle}</h2>
+            <RichText text={home.legacyBody} />
+            <p className="legacy-tagline">{home.legacyTagline}</p>
           </div>
         </div>
       </section>
 
       <section className="band band--white">
         <div className="wrap why-choose-wrap">
-          <h2 className="why-choose-title">What Makes the School Special?</h2>
+          <h2 className="why-choose-title">{home.whyTitle}</h2>
           <div className="why-choose">
             <div className="why-choose-visual">
               <Image
-                src="/images/why-lawrence-v2.png"
-                alt="Why choose Lawrence High School: academic excellence, future ready learning, beyond academics, character and values, confidence and leadership, holistic growth, and a safe caring campus"
+                src={home.whyImage}
+                alt={home.whyImageAlt}
                 width={1024}
                 height={642}
                 sizes="(max-width: 900px) 100vw, 58vw"
               />
             </div>
             <div className="why-choose-copy">
-              <h3 className="why-choose-quote">
-                “FROM CURIOUS MINDS TO CONFIDENT FUTURES.”
-              </h3>
-              <p>
-                At Lawrence High, every experience is an opportunity to discover, create, lead and
-                grow. We help students transform their potential into purpose and their dreams into
-                achievement.
-              </p>
+              <h3 className="why-choose-quote">{home.whyQuote}</h3>
+              <p>{home.whyBody}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <CurriculumMosaic />
+      <CurriculumMosaic title={home.curriculumTitle} stages={home.curriculum} />
 
-      <HomeBelowFold />
+      <HomeBelowFold home={home} />
     </>
   );
 }

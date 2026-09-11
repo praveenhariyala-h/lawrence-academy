@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, type ReactNode } from "react";
-import { partners } from "@/lib/content";
+import type { HomePartner } from "@/lib/home";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
 const icons: Record<string, ReactNode> = {
@@ -58,19 +59,25 @@ const icons: Record<string, ReactNode> = {
   )
 };
 
-export default function PartnersGrid() {
+export default function PartnersGrid({ items }: { items: HomePartner[] }) {
   const gridRef = useRef<HTMLDivElement>(null);
   useScrollReveal(gridRef, { threshold: 0.18 });
 
   return (
     <div className="partners" ref={gridRef}>
-      {partners.map((item, index) => (
+      {items.map((item, index) => (
         <article
-          key={item.name}
+          key={`${item.name}-${index}`}
           className="partner"
           style={{ animationDelay: `${index * 75}ms` }}
         >
-          <span className="partner-mark">{icons[item.name]}</span>
+          <span className="partner-mark">
+            {item.logo ? (
+              <Image src={item.logo} alt="" width={32} height={32} />
+            ) : (
+              icons[item.name]
+            )}
+          </span>
           <strong>{item.name}</strong>
           <span className="partner-cat">{item.category}</span>
         </article>

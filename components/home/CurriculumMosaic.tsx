@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import type { HomeCurriculum } from "@/lib/home";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
 const Shield = () => (
@@ -11,78 +12,72 @@ const Shield = () => (
   </span>
 );
 
-export default function CurriculumMosaic() {
+function StageCard({ item, className }: { item: HomeCurriculum; className?: string }) {
+  return (
+    <article className={`curriculum-tile curriculum-card ${className ?? ""}`.trim()}>
+      <Shield />
+      <h3>{item.title}</h3>
+      <span>{item.grades}</span>
+      <Link href={item.href || "/learning"}>Read more</Link>
+    </article>
+  );
+}
+
+function StagePhoto({
+  item,
+  className,
+  sizes
+}: {
+  item: HomeCurriculum;
+  className?: string;
+  sizes: string;
+}) {
+  return (
+    <div className={`curriculum-tile curriculum-photo ${className ?? ""}`.trim()}>
+      <Image src={item.photo} alt={item.photoAlt} fill sizes={sizes} />
+    </div>
+  );
+}
+
+export default function CurriculumMosaic({
+  title,
+  stages
+}: {
+  title: string;
+  stages: HomeCurriculum[];
+}) {
   const mosaicRef = useRef<HTMLDivElement>(null);
   useScrollReveal(mosaicRef, { childSelector: ".curriculum-tile", threshold: 0.16 });
+
+  if (stages.length === 4) {
+    const [first, second, third, fourth] = stages;
+    return (
+      <section className="band band--white">
+        <div className="wrap">
+          <h2 className="why-choose-title">{title}</h2>
+          <div className="curriculum-mosaic" ref={mosaicRef}>
+            <StageCard item={first} className="c-y1" />
+            <StagePhoto item={first} className="c-p1" sizes="(max-width: 900px) 100vw, 28vw" />
+            <StageCard item={second} className="c-y2" />
+            <StagePhoto item={second} className="c-p2" sizes="(max-width: 900px) 100vw, 28vw" />
+            <StageCard item={third} className="c-y3" />
+            <StagePhoto item={third} className="c-p3" sizes="(max-width: 900px) 100vw, 45vw" />
+            <StagePhoto item={fourth} className="c-p4" sizes="(max-width: 900px) 100vw, 22vw" />
+            <StageCard item={fourth} className="c-y4" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="band band--white">
       <div className="wrap">
-        <h2 className="why-choose-title">Our Curriculum</h2>
-        <div className="curriculum-mosaic" ref={mosaicRef}>
-          <article className="curriculum-tile curriculum-card c-y1">
-            <Shield />
-            <h3>Little Learners</h3>
-            <span>Nursery – UKG</span>
-            <Link href="/learning">Read more</Link>
-          </article>
-
-          <div className="curriculum-tile curriculum-photo c-p1">
-            <Image
-              src="/images/curriculum-little-learners.png"
-              alt="Little learners discovering with a teacher at Lawrence High School"
-              fill
-              sizes="(max-width: 900px) 100vw, 28vw"
-            />
-          </div>
-
-          <article className="curriculum-tile curriculum-card c-y2">
-            <Shield />
-            <h3>Young Explorers</h3>
-            <span>Grades I – IV</span>
-            <Link href="/learning">Read more</Link>
-          </article>
-
-          <div className="curriculum-tile curriculum-photo c-p2">
-            <Image
-              src="/images/curriculum-young-explorers.png"
-              alt="Young explorers in martial arts at Lawrence High School"
-              fill
-              sizes="(max-width: 900px) 100vw, 28vw"
-            />
-          </div>
-
-          <article className="curriculum-tile curriculum-card c-y3">
-            <Shield />
-            <h3>Creators</h3>
-            <span>Grades V – VII</span>
-            <Link href="/learning">Read more</Link>
-          </article>
-
-          <div className="curriculum-tile curriculum-photo c-p3">
-            <Image
-              src="/images/curriculum-creators.png"
-              alt="Creators performing music at Lawrence High School"
-              fill
-              sizes="(max-width: 900px) 100vw, 45vw"
-            />
-          </div>
-
-          <div className="curriculum-tile curriculum-photo c-p4">
-            <Image
-              src="/images/curriculum-future-leaders.png"
-              alt="Future leaders working on robotics at Lawrence High School"
-              fill
-              sizes="(max-width: 900px) 100vw, 22vw"
-            />
-          </div>
-
-          <article className="curriculum-tile curriculum-card c-y4">
-            <Shield />
-            <h3>Future Leaders</h3>
-            <span>Grades VIII – X</span>
-            <Link href="/learning">Read more</Link>
-          </article>
+        <h2 className="why-choose-title">{title}</h2>
+        <div className="cards" ref={mosaicRef}>
+          {stages.map((item) => (
+            <StageCard key={item.title} item={item} />
+          ))}
         </div>
       </div>
     </section>

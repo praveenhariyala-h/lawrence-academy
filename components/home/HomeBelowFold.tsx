@@ -1,14 +1,20 @@
 import Image from "next/image";
 import PartnersGrid from "@/components/home/PartnersGrid";
+import RichText from "@/components/RichText";
+import type { HomeContent } from "@/lib/home";
 
-export default function HomeBelowFold() {
+export default function HomeBelowFold({
+  home
+}: {
+  home: HomeContent;
+}) {
   return (
     <>
       <section className="band band--pearl">
         <div className="wrap">
-          <span className="kicker">In association with</span>
-          <h2 className="section-title">Partners in learning</h2>
-          <PartnersGrid />
+          <span className="kicker">{home.partnersKicker}</span>
+          <h2 className="section-title">{home.partnersTitle}</h2>
+          <PartnersGrid items={home.partners} />
         </div>
       </section>
 
@@ -16,8 +22,8 @@ export default function HomeBelowFold() {
         <div className="wrap chair">
           <div className="portrait">
             <Image
-              src="/images/chairman.png"
-              alt="P.M. Subbaiah, Chairman, Lawrence High School"
+              src={home.chairmanPhoto}
+              alt={home.chairmanPhotoAlt}
               width={640}
               height={800}
               loading="lazy"
@@ -25,24 +31,13 @@ export default function HomeBelowFold() {
             />
           </div>
           <div>
-            <span className="kicker">Chairman’s message</span>
+            <span className="kicker">{home.chairmanKicker}</span>
             <span className="quote-mark">“</span>
+            <RichText text={home.chairmanMessage} />
             <p>
-              Dear Parents, over the past 35 years, Lawrence School HSR and Koramangala have
-              grown into schools that nurture champions. Education for us isn’t just about books
-              but about life itself — building character, shaping mindsets, and preparing children
-              for a meaningful future.
-            </p>
-            <p>
-              Long-serving, dedicated teachers work with every child, enabling them to discover
-              strengths, face challenges, and grow into confident individuals who will be the
-              future leaders and changemakers of our society. We look forward to walking this
-              journey with you — hand in hand.
-            </p>
-            <p>
-              <strong>P.M. Subbaiah</strong>
+              <strong>{home.chairmanName}</strong>
               <br />
-              Chairman, Lawrence High School
+              {home.chairmanRole}
             </p>
           </div>
         </div>

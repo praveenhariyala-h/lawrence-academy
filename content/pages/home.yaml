@@ -1,0 +1,122 @@
+heroLearnMoreLabel: Learn more
+heroLearnMoreHref: /about
+heroSlides:
+  - title: Welcome to Lawrence
+    text: Where learning is exciting, purposeful, and relevant.
+    image: hero-campus.png
+    alt: Lawrence High ICSE campus building in HSR Layout
+  - title: Every child a champion
+    text: At Lawrence, we blend tradition, innovation and encouragement to make every child a champion.
+    image: hero-classroom.png
+    alt: Technology-enabled classroom at Lawrence High School
+  - title: A vibrant campus
+    text: Visit our campus to discover a wide variety of extracurricular programs.
+    image: hero-robotics.png
+    alt: Students in the robotics lab at Lawrence High School
+pathwayItems:
+  - title: Learn
+    detail: Academics
+    extra: ""
+    image: learn.png
+    position: center 30%
+  - title: Innovate
+    detail: Robotics
+    extra: ""
+    image: innovate.png
+    position: 72% 40%
+  - title: Explore
+    detail: Competition
+    extra: ""
+    image: explore.png
+    position: center 35%
+  - title: Create
+    detail: Art
+    extra: ""
+    image: create.png
+    position: 58% 38%
+  - title: Lead
+    detail: Leadership
+    extra: ""
+    image: lead.png
+    position: center 22%
+  - title: Perform
+    detail: Sports
+    extra: ""
+    image: perform.png
+    position: center 30%
+  - title: Grow
+    detail: Lifeskills
+    extra: Interact Club
+    image: grow.png
+    position: center 25%
+legacyTitle: Lawrence Legacy
+legacyBody: |-
+  **Lawrence High School** carries a legacy of educational excellence that began in **1991 with our Koramangala branch** and grew with the establishment of our **HSR ICSE branch in 2002**.
+
+  Today, Lawrence is a vibrant learning community of **over 2,500 students and 103+ dedicated teachers**, committed to providing an education that nurtures **knowledge, character and confidence**.
+
+  With a strong foundation built on **values and holistic development**, we continue to prepare young minds to learn, grow and contribute meaningfully to the world.
+legacyTagline: Our Legacy. Our Values. Their Future.
+legacyPhoto: legacy-photo.png
+legacyPhotoAlt: Lawrence High School campus, HSR Layout
+whyTitle: What Makes the School Special?
+whyQuote: “FROM CURIOUS MINDS TO CONFIDENT FUTURES.”
+whyBody: >-
+  At Lawrence High, every experience is an opportunity to discover, create, lead
+  and grow. We help students transform their potential into purpose and their
+  dreams into achievement.
+whyImage: why-lawrence.png
+whyImageAlt: >-
+  Why choose Lawrence High School: academic excellence, future ready learning,
+  beyond academics, character and values, confidence and leadership, holistic
+  growth, and a safe caring campus
+curriculumTitle: Our Curriculum
+curriculum:
+  - title: Little Learners
+    grades: Nursery – UKG
+    href: /learning
+    photo: little-learners.png
+    photoAlt: Little learners discovering with a teacher at Lawrence High School
+  - title: Young Explorers
+    grades: Grades I – IV
+    href: /learning
+    photo: young-explorers.png
+    photoAlt: Young explorers in martial arts at Lawrence High School
+  - title: Creators
+    grades: Grades V – VII
+    href: /learning
+    photo: creators.png
+    photoAlt: Creators performing music at Lawrence High School
+  - title: Future Leaders
+    grades: Grades VIII – X
+    href: /learning
+    photo: future-leaders.png
+    photoAlt: Future leaders working on robotics at Lawrence High School
+partnersKicker: In association with
+partnersTitle: Partners in learning
+partners:
+  - name: CISCE
+    category: Curriculum
+  - name: HarperCollins
+    category: Curriculum
+  - name: Karadi Path
+    category: Curriculum
+  - name: Vedic Math
+    category: Curriculum
+  - name: Theatre
+    category: Enrichment
+  - name: Taekwondo
+    category: Enrichment
+  - name: Public Speaking
+    category: Enrichment
+  - name: Pottery
+    category: Enrichment
+chairmanKicker: Chairman’s message
+chairmanName: P.M. Subbaiah
+chairmanRole: Chairman, Lawrence High School
+chairmanMessage: |-
+  Dear Parents, over the past 35 years, Lawrence School HSR and Koramangala have grown into schools that nurture champions. Education for us isn’t just about books but about life itself — building character, shaping mindsets, and preparing children for a meaningful future.
+
+  Long-serving, dedicated teachers work with every child, enabling them to discover strengths, face challenges, and grow into confident individuals who will be the future leaders and changemakers of our society. We look forward to walking this journey with you — hand in hand.
+chairmanPhoto: chairman.png
+chairmanPhotoAlt: P.M. Subbaiah, Chairman, Lawrence High School
