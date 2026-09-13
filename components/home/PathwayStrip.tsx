@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import type { HomePathway } from "@/lib/home";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
@@ -67,35 +67,77 @@ const fallbackIcon = (
   </svg>
 );
 
+const blurbs: Record<string, string> = {
+  Learn: "A strong academic core for every child.",
+  Innovate: "Robotics and STEM in action.",
+  Explore: "Competitions that stretch potential.",
+  Create: "Art that gives ideas a voice.",
+  Lead: "Leadership rooted in character.",
+  Perform: "Sports that build grit and joy.",
+  Grow: "Life skills for a bigger world."
+};
+
 export default function PathwayStrip({ items }: { items: HomePathway[] }) {
   const stripRef = useRef<HTMLDivElement>(null);
+  const [flipped, setFlipped] = useState<number | null>(null);
   useScrollReveal(stripRef, { threshold: 0.2 });
+
+  const toggleFlip = (index: number) => {
+    setFlipped((current) => (current === index ? null : index));
+  };
+
+  const onKeyDown = (event: KeyboardEvent<HTMLElement>, index: number) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleFlip(index);
+    }
+  };
 
   return (
     <section className="band band--white pathway-band" aria-label="Student pathway">
       <div className="wrap">
-        <div className="pathway-strip" ref={stripRef}>
-          {items.map((item, index) => (
-            <article
-              key={`${item.title}-${index}`}
-              className="pathway-card"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="pathway-card-media" aria-hidden="true">
-                <Image
-                  src={item.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 900px) 138px, 14vw"
-                  style={{ objectPosition: item.position || "center" }}
-                />
-              </div>
-              <span className="pathway-icon">{icons[item.title] ?? fallbackIcon}</span>
-              <strong>{item.title}</strong>
-              <span>{item.detail}</span>
-              {item.extra ? <span className="pathway-extra">{item.extra}</span> : null}
-            </article>
-          ))}
+        <div className="pathway-strip is-in" ref={stripRef}>
+          {items.map((item, index) => {
+            const blurb = blurbs[item.title];
+            const isFlipped = flipped === index;
+
+            return (
+              <article
+                key={`${item.title}-${index}`}
+                className={isFlipped ? "pathway-card is-flipped" : "pathway-card"}
+                tabIndex={0}
+                aria-label={`${item.title}. ${item.detail}${item.extra ? `. ${item.extra}` : ""}`}
+                onClick={() => toggleFlip(index)}
+                onKeyDown={(event) => onKeyDown(event, index)}
+                onMouseLeave={() => {
+                  if (flipped === index) setFlipped(null);
+                }}
+              >
+                <div className="pathway-card-inner">
+                  <div className="pathway-card-face pathway-card-front">
+                    <span className="pathway-icon">{icons[item.title] ?? fallbackIcon}</span>
+                    <strong>{item.title}</strong>
+                  </div>
+                  <div className="pathway-card-face pathway-card-back">
+                    <div className="pathway-card-media">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        sizes="(max-width: 1100px) 148px, 14vw"
+                        style={{ objectPosition: item.position || "center" }}
+                      />
+                    </div>
+                    <div className="pathway-card-back-copy">
+                      <span className="pathway-card-kicker">{item.detail}</span>
+                      {blurb ? <p>{blurb}</p> : null}
+                      {item.extra ? <span className="pathway-extra">{item.extra}</span> : null}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -28,9 +28,6 @@ const NavLinks = memo(function NavLinks({
           {link.label}
         </Link>
       ))}
-      <Link className="btn btn--blue" href="/admissions" onClick={onNavigate}>
-        Apply
-      </Link>
     </>
   );
 });
@@ -97,6 +94,9 @@ function Header() {
           <nav className="nav-desktop" aria-label="Primary">
             <NavLinks pathname={pathname} onNavigate={closeMenu} />
           </nav>
+          <Link className="btn btn--blue header-apply" href="/admissions" onClick={closeMenu}>
+            Apply
+          </Link>
         </div>
       </header>
       <div
@@ -110,6 +110,9 @@ function Header() {
         aria-hidden={!open}
       >
         <NavLinks pathname={pathname} onNavigate={closeMenu} />
+        <Link className="btn btn--blue" href="/admissions" onClick={closeMenu}>
+          Apply
+        </Link>
       </nav>
     </>
   );

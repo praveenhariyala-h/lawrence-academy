@@ -34,17 +34,13 @@ export type HomeContent = {
   heroLearnMoreHref: string;
   heroSlides: HomeHeroSlide[];
   pathwayItems: HomePathway[];
-  legacyTitle: string;
-  legacyBody: string;
-  legacyTagline: string;
-  legacyPhoto: string;
-  legacyPhotoAlt: string;
   whyTitle: string;
   whyQuote: string;
   whyBody: string;
   whyImage: string;
   whyImageAlt: string;
   curriculumTitle: string;
+  curriculumKicker: string;
   curriculum: HomeCurriculum[];
   partnersKicker: string;
   partnersTitle: string;
@@ -64,20 +60,38 @@ export const defaultHome: HomeContent = {
     {
       title: "Welcome to Lawrence",
       text: "Where learning is exciting, purposeful, and relevant.",
-      image: "/images/home/hero/hero-campus.png",
+      image: "/images/home/hero/hero-building.png",
       alt: "Lawrence High ICSE campus building in HSR Layout"
+    },
+    {
+      title: "Joyful learners",
+      text: "A campus filled with energy, curiosity, and belonging.",
+      image: "/images/home/hero/hero-courtyard.png",
+      alt: "Primary students walking together in the school courtyard"
+    },
+    {
+      title: "Curiosity begins here",
+      text: "Warm classrooms where young children discover, play, and learn.",
+      image: "/images/home/hero/hero-kindergarten.png",
+      alt: "Kindergarten teacher and students exploring together"
     },
     {
       title: "Every child a champion",
       text: "At Lawrence, we blend tradition, innovation and encouragement to make every child a champion.",
-      image: "/images/home/hero/hero-classroom.png",
-      alt: "Technology-enabled classroom at Lawrence High School"
+      image: "/images/home/hero/hero-class.png",
+      alt: "Students in a Lawrence High School classroom"
     },
     {
-      title: "A vibrant campus",
-      text: "Visit our campus to discover a wide variety of extracurricular programs.",
-      image: "/images/home/hero/hero-robotics.png",
-      alt: "Students in the robotics lab at Lawrence High School"
+      title: "Learning by doing",
+      text: "Laboratories and studios where ideas become experiments and skills.",
+      image: "/images/home/hero/hero-lab.png",
+      alt: "Students working in the chemistry laboratory"
+    },
+    {
+      title: "One school, one spirit",
+      text: "A community that gathers, celebrates, and grows together.",
+      image: "/images/home/hero/hero-assembly.png",
+      alt: "School assembly in the Lawrence High School auditorium"
     }
   ],
   pathwayItems: [
@@ -89,15 +103,6 @@ export const defaultHome: HomeContent = {
     { title: "Perform", detail: "Sports", extra: "", image: "/images/home/pathway/perform.png", position: "center 30%" },
     { title: "Grow", detail: "Lifeskills", extra: "Interact Club", image: "/images/home/pathway/grow.png", position: "center 25%" }
   ],
-  legacyTitle: "Lawrence Legacy",
-  legacyBody: `**Lawrence High School** carries a legacy of educational excellence that began in **1991 with our Koramangala branch** and grew with the establishment of our **HSR ICSE branch in 2002**.
-
-Today, Lawrence is a vibrant learning community of **over 2,500 students and 103+ dedicated teachers**, committed to providing an education that nurtures **knowledge, character and confidence**.
-
-With a strong foundation built on **values and holistic development**, we continue to prepare young minds to learn, grow and contribute meaningfully to the world.`,
-  legacyTagline: "Our Legacy. Our Values. Their Future.",
-  legacyPhoto: "/images/home/legacy/legacy-photo.png",
-  legacyPhotoAlt: "Lawrence High School campus, HSR Layout",
   whyTitle: "What Makes the School Special?",
   whyQuote: "“FROM CURIOUS MINDS TO CONFIDENT FUTURES.”",
   whyBody:
@@ -105,48 +110,48 @@ With a strong foundation built on **values and holistic development**, we contin
   whyImage: "/images/home/why/why-lawrence.png",
   whyImageAlt:
     "Why choose Lawrence High School: academic excellence, future ready learning, beyond academics, character and values, confidence and leadership, holistic growth, and a safe caring campus",
-  curriculumTitle: "Our Curriculum",
+  curriculumTitle: "Every Stage. Every Possibility.",
+  curriculumKicker: "A learning journey for life",
   curriculum: [
     {
-      title: "Little Learners",
-      grades: "Nursery – UKG",
+      title: "Kindergarten",
+      grades: "Curiosity begins here.",
       href: "/learning",
       photo: "/images/home/curriculum/little-learners.png",
-      photoAlt: "Little learners discovering with a teacher at Lawrence High School"
+      photoAlt: "Kindergarten student at Lawrence High School"
     },
     {
-      title: "Young Explorers",
-      grades: "Grades I – IV",
+      title: "Primary School",
+      grades: "Building strong foundations.",
       href: "/learning",
       photo: "/images/home/curriculum/young-explorers.png",
-      photoAlt: "Young explorers in martial arts at Lawrence High School"
+      photoAlt: "Primary school student at Lawrence High School"
     },
     {
-      title: "Creators",
-      grades: "Grades V – VII",
+      title: "Middle School",
+      grades: "Exploring. Questioning. Creating.",
       href: "/learning",
       photo: "/images/home/curriculum/creators.png",
-      photoAlt: "Creators performing music at Lawrence High School"
+      photoAlt: "Middle school student at Lawrence High School"
     },
     {
-      title: "Future Leaders",
-      grades: "Grades VIII – X",
+      title: "High School",
+      grades: "Preparing for tomorrow.",
       href: "/learning",
       photo: "/images/home/curriculum/future-leaders.png",
-      photoAlt: "Future leaders working on robotics at Lawrence High School"
+      photoAlt: "High school student at Lawrence High School"
     }
   ],
-  partnersKicker: "In association with",
-  partnersTitle: "Partners in learning",
+  partnersKicker: "Working together to create richer learning experiences for our students.",
+  partnersTitle: "Our Partners & Collaborators",
   partners: [
-    { name: "CISCE", category: "Curriculum", logo: null },
-    { name: "HarperCollins", category: "Curriculum", logo: null },
-    { name: "Karadi Path", category: "Curriculum", logo: null },
-    { name: "Vedic Math", category: "Curriculum", logo: null },
-    { name: "Theatre", category: "Enrichment", logo: null },
-    { name: "Taekwondo", category: "Enrichment", logo: null },
-    { name: "Public Speaking", category: "Enrichment", logo: null },
-    { name: "Pottery", category: "Enrichment", logo: null }
+    { name: "LEGO Education", category: "STEM", logo: "/images/home/partners/lego-education.png" },
+    { name: "Find Your Voice", category: "Enrichment", logo: "/images/home/partners/find-your-voice.png" },
+    { name: "Nayi Taleem", category: "Enrichment", logo: "/images/home/partners/nayi-taleem.png" },
+    { name: "Collins", category: "Curriculum", logo: "/images/home/partners/collins.png" },
+    { name: "Karadi Path", category: "Curriculum", logo: "/images/home/partners/karadi-path.png" },
+    { name: "IQ Academy", category: "Enrichment", logo: "/images/home/partners/iq-academy.png" },
+    { name: "Taekwon-Do Association of Karnataka", category: "Sports", logo: "/images/home/partners/taekwondo-tak.png" }
   ],
   chairmanKicker: "Chairman’s message",
   chairmanName: "P.M. Subbaiah",
@@ -239,7 +244,9 @@ export async function getHomeContent(): Promise<HomeContent> {
         return {
           name: textSrc(item.name, fallback?.name ?? "Partner"),
           category: textSrc(item.category, fallback?.category ?? ""),
-          logo: item.logo ? imageSrc(item.logo, item.logo, "/images/home/partners/") : null
+          logo: item.logo
+            ? imageSrc(item.logo, fallback?.logo ?? item.logo, "/images/home/partners/")
+            : fallback?.logo ?? null
         };
       })
     : defaultHome.partners;
@@ -249,17 +256,13 @@ export async function getHomeContent(): Promise<HomeContent> {
     heroLearnMoreHref: textSrc(entry.heroLearnMoreHref, defaultHome.heroLearnMoreHref),
     heroSlides,
     pathwayItems,
-    legacyTitle: textSrc(entry.legacyTitle, defaultHome.legacyTitle),
-    legacyBody: await readText(entry.legacyBody, defaultHome.legacyBody),
-    legacyTagline: textSrc(entry.legacyTagline, defaultHome.legacyTagline),
-    legacyPhoto: imageSrc(entry.legacyPhoto, defaultHome.legacyPhoto, "/images/home/legacy/"),
-    legacyPhotoAlt: textSrc(entry.legacyPhotoAlt, defaultHome.legacyPhotoAlt),
     whyTitle: textSrc(entry.whyTitle, defaultHome.whyTitle),
     whyQuote: textSrc(entry.whyQuote, defaultHome.whyQuote),
     whyBody: textSrc(entry.whyBody, defaultHome.whyBody),
     whyImage: imageSrc(entry.whyImage, defaultHome.whyImage, "/images/home/why/"),
     whyImageAlt: textSrc(entry.whyImageAlt, defaultHome.whyImageAlt),
     curriculumTitle: textSrc(entry.curriculumTitle, defaultHome.curriculumTitle),
+    curriculumKicker: textSrc(entry.curriculumKicker, defaultHome.curriculumKicker),
     curriculum,
     partnersKicker: textSrc(entry.partnersKicker, defaultHome.partnersKicker),
     partnersTitle: textSrc(entry.partnersTitle, defaultHome.partnersTitle),

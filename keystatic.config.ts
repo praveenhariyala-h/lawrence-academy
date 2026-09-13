@@ -71,25 +71,17 @@ export default config({
             itemLabel: (props) => props.fields.title.value || "Pathway"
           }
         ),
-        legacyTitle: fields.text({ label: "Legacy title" }),
-        legacyBody: fields.text({
-          label: "Legacy copy",
-          multiline: true,
-          description: "Use **bold** for emphasis. Separate paragraphs with a blank line."
-        }),
-        legacyTagline: fields.text({ label: "Legacy tagline" }),
-        legacyPhoto: homeImage("Legacy photo", "legacy"),
-        legacyPhotoAlt: fields.text({ label: "Legacy photo alt" }),
         whyTitle: fields.text({ label: "Why Lawrence title" }),
         whyQuote: fields.text({ label: "Why Lawrence quote" }),
         whyBody: fields.text({ label: "Why Lawrence body", multiline: true }),
         whyImage: homeImage("Why Lawrence graphic", "why"),
         whyImageAlt: fields.text({ label: "Why Lawrence alt" }),
         curriculumTitle: fields.text({ label: "Curriculum title" }),
+        curriculumKicker: fields.text({ label: "Curriculum kicker" }),
         curriculum: fields.array(
           fields.object({
             title: fields.text({ label: "Name" }),
-            grades: fields.text({ label: "Grades" }),
+            grades: fields.text({ label: "Tagline" }),
             href: fields.text({ label: "Link" }),
             photo: homeImage("Photo", "curriculum"),
             photoAlt: fields.text({ label: "Photo alt" })

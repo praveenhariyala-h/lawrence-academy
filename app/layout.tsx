@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   },
   description:
     "Lawrence High School ICSE, HSR Layout, Bengaluru — 35 years of academic excellence, 100% student engagement, and the A.C.T. framework."
+};
+
+export const viewport: Viewport = {
+  themeColor: "#09253A"
 };
 
 export default function RootLayout({

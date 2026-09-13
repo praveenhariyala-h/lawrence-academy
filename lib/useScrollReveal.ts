@@ -6,10 +6,12 @@ export function useScrollReveal(
   ref: RefObject<HTMLElement | null>,
   {
     childSelector,
-    threshold = 0.18
+    threshold = 0.18,
+    repeat = false
   }: {
     childSelector?: string;
     threshold?: number;
+    repeat?: boolean;
   } = {}
 ) {
   useEffect(() => {
@@ -26,7 +28,7 @@ export function useScrollReveal(
       return;
     }
 
-    const show = (el: HTMLElement) => {
+    const play = (el: HTMLElement) => {
       el.classList.remove("is-in");
       void el.offsetWidth;
       el.classList.add("is-in");
@@ -36,8 +38,12 @@ export function useScrollReveal(
       (entries) => {
         for (const entry of entries) {
           const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) show(el);
-          else el.classList.remove("is-in");
+          if (entry.isIntersecting) {
+            play(el);
+            if (!repeat) observer.unobserve(el);
+          } else if (repeat) {
+            el.classList.remove("is-in");
+          }
         }
       },
       { threshold, rootMargin: "0px 0px -8% 0px" }
@@ -45,5 +51,5 @@ export function useScrollReveal(
 
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [childSelector, threshold]);
+  }, [childSelector, threshold, repeat]);
 }

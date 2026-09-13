@@ -1,87 +1,143 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import type { HomePartner } from "@/lib/home";
-import { useScrollReveal } from "@/lib/useScrollReveal";
 
-const icons: Record<string, ReactNode> = {
-  CISCE: (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 5 8 8.2v7.3c0 5.2 3.4 9.3 8 11.5 4.6-2.2 8-6.3 8-11.5V8.2Z" />
-      <path d="M12.5 16.2 15 18.7l4.8-5.2" />
-    </svg>
-  ),
-  HarperCollins: (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M8 8h7.2c2.4 0 4.3 1.4 4.3 3.8V24H12c-2.2 0-4-1.3-4-3.4Z" />
-      <path d="M24 8h-7.2c-2.4 0-4.3 1.4-4.3 3.8V24H20c2.2 0 4-1.3 4-3.4Z" />
-    </svg>
-  ),
-  "Karadi Path": (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M9 12v8M13 10v12" />
-      <path d="M18 13.5c2.2 1.1 2.2 3.9 0 5" />
-      <path d="M21.2 11c3.4 2 3.4 8 0 10" />
-    </svg>
-  ),
-  "Vedic Math": (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <rect x="7" y="7" width="18" height="18" rx="3" />
-      <path d="M12 16h8M16 12v8" />
-    </svg>
-  ),
-  Theatre: (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M6.5 11c2-4 5.2-5.5 9.5-5.5S23.5 7 25.5 11c-2.2 1-4.6 1.5-9.5 1.5S8.7 12 6.5 11Z" />
-      <path d="M8 14.5c.8 6 3.4 10 8 10s7.2-4 8-10" />
-      <path d="M12.5 18.5c.4 1.4 1.5 2.3 3.5 2.3s3.1-.9 3.5-2.3" />
-    </svg>
-  ),
-  Taekwondo: (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="8" r="2.2" />
-      <path d="M16 11.5 12 21M16 11.5l3.2 6.2 7.3-1.6" />
-      <path d="M14.2 16.5 8 14.8" />
-    </svg>
-  ),
-  "Public Speaking": (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M11 13.5v5a4 4 0 0 0 4 4h1" />
-      <path d="M18 8.5v15a3.2 3.2 0 0 0 3.2-3.2V11.7A3.2 3.2 0 0 0 18 8.5Z" />
-    </svg>
-  ),
-  Pottery: (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M12 8h8c.6 2 .6 3.5 0 4H12c-.6-.5-.6-2 0-4Z" />
-      <path d="M11 12h10s2 3.2 2 7.5c0 3.2-2.4 4.5-7 4.5s-7-1.3-7-4.5c0-4.3 2-7.5 2-7.5Z" />
-    </svg>
-  )
-};
+const INTERVAL = 3500;
+
+function visibleCount() {
+  if (typeof window === "undefined") return 4;
+  if (window.innerWidth < 640) return 2;
+  if (window.innerWidth < 900) return 3;
+  return 4;
+}
 
 export default function PartnersGrid({ items }: { items: HomePartner[] }) {
-  const gridRef = useRef<HTMLDivElement>(null);
-  useScrollReveal(gridRef, { threshold: 0.18 });
+  const logos = items.filter((item): item is HomePartner & { logo: string } => Boolean(item.logo));
+  const count = logos.length;
+  const looped = count > 0 ? [...logos, ...logos] : [];
+  const [index, setIndex] = useState(0);
+  const [perPage, setPerPage] = useState(4);
+  const [paused, setPaused] = useState(false);
+  const [instant, setInstant] = useState(false);
+
+  useEffect(() => {
+    const update = () => setPerPage(visibleCount());
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const goNext = useCallback(() => {
+    setIndex((current) => current + 1);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setIndex((current) => {
+      if (current > 0) return current - 1;
+      setInstant(true);
+      return count;
+    });
+  }, [count]);
+
+  useLayoutEffect(() => {
+    if (!instant) return;
+    if (index === count) {
+      const frame = window.requestAnimationFrame(() => {
+        setInstant(false);
+        setIndex(count - 1);
+      });
+      return () => window.cancelAnimationFrame(frame);
+    }
+    const frame = window.requestAnimationFrame(() => setInstant(false));
+    return () => window.cancelAnimationFrame(frame);
+  }, [instant, index, count]);
+
+  useEffect(() => {
+    if (paused || instant || count < 2) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const timer = window.setInterval(goNext, INTERVAL);
+    return () => window.clearInterval(timer);
+  }, [paused, instant, count, goNext]);
+
+  if (count === 0) return null;
+
+  const slidePct = 100 / perPage;
+  const activeDot = index % count;
 
   return (
-    <div className="partners" ref={gridRef}>
-      {items.map((item, index) => (
-        <article
-          key={`${item.name}-${index}`}
-          className="partner"
-          style={{ animationDelay: `${index * 75}ms` }}
+    <div
+      className="partner-carousel"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {count > perPage ? (
+        <button
+          className="partner-carousel-arrow partner-carousel-arrow--prev"
+          type="button"
+          aria-label="Previous partners"
+          onClick={goPrev}
         >
-          <span className="partner-mark">
-            {item.logo ? (
-              <Image src={item.logo} alt="" width={32} height={32} />
-            ) : (
-              icons[item.name]
-            )}
-          </span>
-          <strong>{item.name}</strong>
-          <span className="partner-cat">{item.category}</span>
-        </article>
-      ))}
+          ‹
+        </button>
+      ) : null}
+
+      <div className="partner-carousel-viewport">
+        <div
+          className={instant ? "partner-carousel-track is-instant" : "partner-carousel-track"}
+          style={{ transform: `translate3d(-${index * slidePct}%, 0, 0)` }}
+          onTransitionEnd={() => {
+            if (index >= count) {
+              setInstant(true);
+              setIndex(0);
+            }
+          }}
+        >
+          {looped.map((item, slideIndex) => (
+            <article
+              key={`${item.name}-${slideIndex}`}
+              className="partner-slide"
+              style={{ flex: `0 0 ${slidePct}%` }}
+            >
+              <div className="partner-card">
+                <Image
+                  src={item.logo}
+                  alt={item.name}
+                  width={240}
+                  height={140}
+                  sizes="(max-width: 640px) 46vw, (max-width: 900px) 30vw, 22vw"
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {count > perPage ? (
+        <button
+          className="partner-carousel-arrow partner-carousel-arrow--next"
+          type="button"
+          aria-label="Next partners"
+          onClick={goNext}
+        >
+          ›
+        </button>
+      ) : null}
+
+      {count > 1 ? (
+        <div className="partner-carousel-dots">
+          {logos.map((item, dotIndex) => (
+            <button
+              key={item.name}
+              className={dotIndex === activeDot ? "dot is-on" : "dot"}
+              type="button"
+              aria-label={`Show ${item.name}`}
+              onClick={() => setIndex(dotIndex)}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

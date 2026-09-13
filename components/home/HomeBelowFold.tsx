@@ -1,44 +1,144 @@
 import Image from "next/image";
+import Link from "next/link";
+import AchievementsCarousel from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
-import RichText from "@/components/RichText";
+import {
+  achievementImageForSlug,
+  beyondClassroom,
+  campusSpotlight,
+  featuredAchievementFallback,
+  homeQuote,
+  journeyCta,
+  upcomingEvents
+} from "@/lib/homeSections";
 import type { HomeContent } from "@/lib/home";
+import { formatNewsDate, reader } from "@/lib/keystatic";
 
-export default function HomeBelowFold({
+export default async function HomeBelowFold({
   home
 }: {
   home: HomeContent;
 }) {
+  let achievements = [featuredAchievementFallback];
+  try {
+    const posts = await reader.collections.posts.all();
+    const sorted = [...posts].sort((a, b) =>
+      (b.entry.date ?? "").localeCompare(a.entry.date ?? "")
+    );
+    if (sorted.length) {
+      achievements = sorted.map((post) => ({
+        title: post.entry.title,
+        text: post.entry.summary || "",
+        date: formatNewsDate(post.entry.date),
+        image: achievementImageForSlug(post.slug),
+        alt: post.entry.title,
+        href: `/news/${post.slug}`
+      }));
+    }
+  } catch {
+    achievements = [featuredAchievementFallback];
+  }
+
   return (
     <>
-      <section className="band band--pearl">
+      <section className="beyond">
+        <div className="wrap beyond-inner">
+          <div className="beyond-copy">
+            <h2>{beyondClassroom.title}</h2>
+            <p>{beyondClassroom.body}</p>
+            <Link className="btn btn--gold" href={beyondClassroom.ctaHref}>
+              {beyondClassroom.ctaLabel}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="beyond-tiles">
+            {beyondClassroom.items.map((item) => (
+              <Link key={item.title} className="beyond-tile" href={beyondClassroom.ctaHref}>
+                <Image src={item.image} alt={item.alt} fill sizes="180px" />
+                <span>{item.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="band band--white home-highlights-band">
+        <div className="wrap home-highlights">
+          <article className="home-panel">
+            <header className="home-panel-head">
+              <h2>Recent Achievements</h2>
+              <Link href="/news">View all</Link>
+            </header>
+            <AchievementsCarousel items={achievements} />
+          </article>
+
+          <article className="home-panel">
+            <header className="home-panel-head">
+              <h2>{campusSpotlight.title}</h2>
+              <Link href={campusSpotlight.ctaHref}>{campusSpotlight.ctaLabel}</Link>
+            </header>
+            <Link className="home-campus" href={campusSpotlight.ctaHref}>
+              <div className="home-campus-photo">
+                <Image
+                  src={campusSpotlight.image}
+                  alt={campusSpotlight.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 28vw"
+                />
+              </div>
+              <p>{campusSpotlight.body}</p>
+            </Link>
+          </article>
+
+          <article className="home-panel">
+            <header className="home-panel-head">
+              <h2>Upcoming Events</h2>
+              <Link href="/news">View all</Link>
+            </header>
+            <ul className="home-events">
+              {upcomingEvents.map((event) => (
+                <li key={`${event.day}-${event.title}`}>
+                  <span className="home-event-date">
+                    <b>{event.day}</b>
+                    {event.month}
+                  </span>
+                  <div>
+                    <strong>{event.title}</strong>
+                    <p>{event.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <blockquote className="home-quote">
+            <p>“{homeQuote.text}”</p>
+            <cite>— {homeQuote.attribution}</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="band band--white partners-band">
         <div className="wrap">
-          <span className="kicker">{home.partnersKicker}</span>
-          <h2 className="section-title">{home.partnersTitle}</h2>
+          <div className="partners-head">
+            <h2 className="section-title">{home.partnersTitle}</h2>
+            <p>{home.partnersKicker}</p>
+          </div>
           <PartnersGrid items={home.partners} />
         </div>
       </section>
 
-      <section className="band band--white">
-        <div className="wrap chair">
-          <div className="portrait">
-            <Image
-              src={home.chairmanPhoto}
-              alt={home.chairmanPhotoAlt}
-              width={640}
-              height={800}
-              loading="lazy"
-              sizes="(max-width: 900px) 100vw, 220px"
-            />
-          </div>
+      <section className="journey">
+        <Image src={journeyCta.image} alt={journeyCta.alt} fill sizes="100vw" />
+        <div className="wrap journey-inner">
           <div>
-            <span className="kicker">{home.chairmanKicker}</span>
-            <span className="quote-mark">“</span>
-            <RichText text={home.chairmanMessage} />
-            <p>
-              <strong>{home.chairmanName}</strong>
-              <br />
-              {home.chairmanRole}
-            </p>
+            <h2>{journeyCta.title}</h2>
+            <p>{journeyCta.body}</p>
+          </div>
+          <div className="journey-actions">
+            <Link className="btn btn--gold" href={journeyCta.enquireHref}>
+              Enquire now
+            </Link>
           </div>
         </div>
       </section>

@@ -3,7 +3,6 @@ import HeroSection from "@/components/home/HeroSection";
 import HomeBelowFold from "@/components/home/HomeBelowFold";
 import PathwayStrip from "@/components/home/PathwayStrip";
 import CurriculumMosaic from "@/components/home/CurriculumMosaic";
-import RichText from "@/components/RichText";
 import { getHomeContent } from "@/lib/home";
 
 export default async function HomePage() {
@@ -18,24 +17,6 @@ export default async function HomePage() {
       />
 
       <PathwayStrip items={home.pathwayItems} />
-
-      <section className="band band--white">
-        <div className="wrap legacy">
-          <div className="legacy-photo">
-            <Image
-              src={home.legacyPhoto}
-              alt={home.legacyPhotoAlt}
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
-          </div>
-          <div>
-            <h2 className="section-title">{home.legacyTitle}</h2>
-            <RichText text={home.legacyBody} />
-            <p className="legacy-tagline">{home.legacyTagline}</p>
-          </div>
-        </div>
-      </section>
 
       <section className="band band--white">
         <div className="wrap why-choose-wrap">
@@ -58,7 +39,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <CurriculumMosaic title={home.curriculumTitle} stages={home.curriculum} />
+      <CurriculumMosaic
+        title={home.curriculumTitle}
+        kicker={home.curriculumKicker}
+        stages={home.curriculum}
+      />
 
       <HomeBelowFold home={home} />
     </>
