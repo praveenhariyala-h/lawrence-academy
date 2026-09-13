@@ -8,6 +8,12 @@ export const school = {
   phones: ["080 2572 2777", "080 4090 3777"],
   emails: ["lawrence.school.icse@gmail.com"],
   transportPhone: "98457 60764",
+  socials: [
+    { label: "Facebook", href: "https://www.facebook.com" },
+    { label: "Instagram", href: "https://www.instagram.com" },
+    { label: "YouTube", href: "https://www.youtube.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com" }
+  ],
   mapUrl:
     "https://www.google.com/maps?q=CA3,+9th+Main,+Sector+6,+HSR+Layout,+Bengaluru+560102&output=embed"
 };

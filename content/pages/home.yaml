@@ -4,6 +4,14 @@ heroSlides:
   - title: Welcome to Lawrence
     text: Where learning is exciting, purposeful, and relevant.
     alt: Lawrence High ICSE campus building in HSR Layout
+  - title: Joyful learners
+    text: A campus filled with energy, curiosity, and belonging.
+    image: hero-courtyard.png
+    alt: Primary students walking together in the school courtyard
+  - title: Curiosity begins here
+    text: Warm classrooms where young children discover, play, and learn.
+    image: hero-kindergarten.png
+    alt: Kindergarten teacher and students exploring together
   - title: Every child a champion
     text: >-
       At Lawrence, we blend tradition, innovation and encouragement to make
@@ -62,10 +70,11 @@ whyImageAlt: >-
   Why choose Lawrence High School: academic excellence, future ready learning,
   beyond academics, character and values, confidence and leadership, holistic
   growth, and a safe caring campus
-curriculumTitle: Our Curriculum
+curriculumTitle: Every Stage. Every Possibility.
+curriculumKicker: A learning journey for life
 curriculum:
-  - title: Little Learners
-    grades: Nursery – UKG
+  - title: Kindergarten
+    grades: Curiosity begins here.
     href: /learning
     photoAlt: Little learners discovering with a teacher at Lawrence High School
   - title: Young Explorers
@@ -83,22 +92,27 @@ curriculum:
 partnersKicker: In association with
 partnersTitle: Partners in learning
 partners:
-  - name: CISCE
+  - name: LEGO Education
+    category: STEM
+    logo: lego-education.png
+  - name: Find Your Voice
+    category: Enrichment
+    logo: find-your-voice.png
+  - name: Nayi Taleem
+    category: Enrichment
+    logo: nayi-taleem.png
+  - name: Collins
     category: Curriculum
-  - name: HarperCollins
-    category: Curriculum
+    logo: collins.png
   - name: Karadi Path
     category: Curriculum
-  - name: Vedic Math
-    category: Curriculum
-  - name: Theatre
+    logo: karadi-path.png
+  - name: IQ Academy
     category: Enrichment
-  - name: Taekwondo
-    category: Enrichment
-  - name: Public Speaking
-    category: Enrichment
-  - name: Pottery
-    category: Enrichment
+    logo: iq-academy.png
+  - name: Taekwon-Do Association of Karnataka
+    category: Sports
+    logo: taekwondo-tak.png
 chairmanKicker: Chairman’s message
 chairmanName: P.M. Subbaiah
 chairmanRole: Chairman, Lawrence High School

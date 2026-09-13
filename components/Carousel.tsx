@@ -1,58 +1,48 @@
 "use client";
 
-import {
-  memo,
-  useCallback,
-  useEffect,
-  useState,
-  type MouseEvent,
-  type ReactNode
-} from "react";
+import { useCallback, useEffect, useState, type MouseEvent, type ReactNode } from "react";
 
-function Carousel({
+export default function Carousel({
   slides,
   className = "",
-  interval = 6500
+  interval = 5000,
+  autoPlay = true
 }: {
   slides: ReactNode[];
   className?: string;
   interval?: number;
+  autoPlay?: boolean;
 }) {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const last = slides.length - 1;
-  const isHero = className.includes("hero-wrap");
+  const count = slides.length;
+  const last = count - 1;
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (paused || reduce || slides.length < 2) return;
+    if (!autoPlay || count < 2) return undefined;
     const timer = window.setInterval(() => {
-      setIndex((value) => (value === last ? 0 : value + 1));
+      setIndex((value) => (value + 1) % count);
     }, interval);
     return () => window.clearInterval(timer);
-  }, [paused, last, interval, slides.length]);
+  }, [autoPlay, count, interval]);
 
-  const pause = useCallback(() => setPaused(true), []);
-  const resume = useCallback(() => setPaused(false), []);
-  const goPrev = useCallback(
-    () => setIndex((value) => (value === 0 ? last : value - 1)),
-    [last]
-  );
-  const goNext = useCallback(
-    () => setIndex((value) => (value === last ? 0 : value + 1)),
-    [last]
-  );
+  const goPrev = useCallback(() => {
+    setIndex((value) => (value === 0 ? last : value - 1));
+  }, [last]);
+  const goNext = useCallback(() => {
+    setIndex((value) => (value === last ? 0 : value + 1));
+  }, [last]);
   const goTo = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     setIndex(Number(event.currentTarget.dataset.index));
   }, []);
 
+  if (count === 0) return null;
+
   return (
-    <div
-      className={`carousel ${className}`}
-      onMouseEnter={pause}
-      onMouseLeave={resume}
-    >
-      <div className="carousel-track">
+    <div className={`carousel ${className}`.trim()}>
+      <div
+        className="carousel-track"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
         {slides.map((slide, i) => (
           <div
             key={i}
@@ -63,28 +53,25 @@ function Carousel({
           </div>
         ))}
       </div>
-      {isHero ? (
-        <div className={paused ? "carousel-progress is-paused" : "carousel-progress"} key={index} />
+      {count > 1 ? (
+        <div className="carousel-nav">
+          <button className="arrow" type="button" aria-label="Previous slide" onClick={goPrev}>
+            ‹
+          </button>
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              className={i === index ? "dot is-on" : "dot"}
+              aria-label={`Go to slide ${i + 1}`}
+              data-index={i}
+              onClick={goTo}
+            />
+          ))}
+          <button className="arrow" type="button" aria-label="Next slide" onClick={goNext}>
+            ›
+          </button>
+        </div>
       ) : null}
-      <div className="carousel-nav">
-        <button className="arrow" type="button" aria-label="Previous slide" onClick={goPrev}>
-          ‹
-        </button>
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            className={i === index ? "dot is-on" : "dot"}
-            aria-label={`Go to slide ${i + 1}`}
-            data-index={i}
-            onClick={goTo}
-          />
-        ))}
-        <button className="arrow" type="button" aria-label="Next slide" onClick={goNext}>
-          ›
-        </button>
-      </div>
     </div>
   );
 }
-
-export default memo(Carousel);
