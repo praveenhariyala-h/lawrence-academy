@@ -68,6 +68,8 @@ export default function HeroSection({
                   fill
                   sizes="100vw"
                   priority={slideIndex === 0}
+                  className={slideIndex === 2 ? "is-contain" : undefined}
+                  style={slideIndex === 2 ? { objectFit: "contain" } : undefined}
                 />
               </section>
             ))}

@@ -6,18 +6,18 @@ export const beyondClassroom = {
   items: [
     {
       title: "Sports",
-      image: "/images/home/pathway/perform.png",
-      alt: "Students playing sports at Lawrence High School"
+      image: "/images/home/beyond/sports.png",
+      alt: "Student batting in the cricket nets at Lawrence High School"
     },
     {
       title: "Arts & Culture",
-      image: "/images/home/pathway/create.png",
-      alt: "Arts and culture at Lawrence High School"
+      image: "/images/home/beyond/art.png",
+      alt: "Students painting decorative vases in art class at Lawrence High School"
     },
     {
       title: "Clubs & Activities",
-      image: "/images/home/pathway/lead.png",
-      alt: "Student clubs and activities at Lawrence High School"
+      image: "/images/home/beyond/mun.png",
+      alt: "Students representing countries at a Model United Nations session"
     },
     {
       title: "Competitions",
@@ -56,11 +56,6 @@ export const upcomingEvents = [
     text: "Fun, creativity, community."
   }
 ];
-
-export const homeQuote = {
-  text: "Education is not preparation for life; education is life itself.",
-  attribution: "John Dewey"
-};
 
 export const journeyCta = {
   title: "Begin Your Lawrence Journey",

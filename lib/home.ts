@@ -118,28 +118,28 @@ export const defaultHome: HomeContent = {
       grades: "Curiosity begins here.",
       href: "/learning",
       photo: "/images/home/curriculum/little-learners.png",
-      photoAlt: "Kindergarten student at Lawrence High School"
+      photoAlt: "Kindergarten children playing with blocks and toys"
     },
     {
       title: "Primary School",
       grades: "Building strong foundations.",
       href: "/learning",
       photo: "/images/home/curriculum/young-explorers.png",
-      photoAlt: "Primary school student at Lawrence High School"
+      photoAlt: "Primary students exploring shapes, letters, and numbers"
     },
     {
       title: "Middle School",
       grades: "Exploring. Questioning. Creating.",
       href: "/learning",
       photo: "/images/home/curriculum/creators.png",
-      photoAlt: "Middle school student at Lawrence High School"
+      photoAlt: "Middle school students collaborating on a classroom project"
     },
     {
       title: "High School",
       grades: "Preparing for tomorrow.",
       href: "/learning",
       photo: "/images/home/curriculum/future-leaders.png",
-      photoAlt: "High school student at Lawrence High School"
+      photoAlt: "High school students working together in class"
     }
   ],
   partnersKicker: "Working together to create richer learning experiences for our students.",

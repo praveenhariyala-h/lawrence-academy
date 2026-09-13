@@ -3,6 +3,7 @@ heroLearnMoreHref: /about
 heroSlides:
   - title: Welcome to Lawrence
     text: Where learning is exciting, purposeful, and relevant.
+    image: hero-building.png
     alt: Lawrence High ICSE campus building in HSR Layout
   - title: Joyful learners
     text: A campus filled with energy, curiosity, and belonging.
@@ -13,59 +14,60 @@ heroSlides:
     image: hero-kindergarten.png
     alt: Kindergarten teacher and students exploring together
   - title: Every child a champion
-    text: >-
-      At Lawrence, we blend tradition, innovation and encouragement to make
-      every child a champion.
-    alt: Technology-enabled classroom at Lawrence High School
-  - title: A vibrant campus
-    text: Visit our campus to discover a wide variety of extracurricular programs.
-    alt: Students in the robotics lab at Lawrence High School
+    text: At Lawrence, we blend tradition, innovation and encouragement to make every child a champion.
+    image: hero-class.png
+    alt: Students in a Lawrence High School classroom
+  - title: Learning by doing
+    text: Laboratories and studios where ideas become experiments and skills.
+    image: hero-lab.png
+    alt: Students working in the chemistry laboratory
+  - title: One school, one spirit
+    text: A community that gathers, celebrates, and grows together.
+    image: hero-assembly.png
+    alt: School assembly in the Lawrence High School auditorium
 pathwayItems:
   - title: Learn
     detail: Academics
+    extra: ""
+    image: learn.png
     position: center 30%
   - title: Innovate
     detail: Robotics
+    extra: ""
+    image: innovate.png
     position: 72% 40%
   - title: Explore
     detail: Competition
+    extra: ""
+    image: explore.png
     position: center 35%
   - title: Create
     detail: Art
+    extra: ""
+    image: create.png
     position: 58% 38%
   - title: Lead
     detail: Leadership
+    extra: ""
+    image: lead.png
     position: center 22%
   - title: Perform
     detail: Sports
+    extra: ""
+    image: perform.png
     position: center 30%
   - title: Grow
     detail: Lifeskills
     extra: Interact Club
+    image: grow.png
     position: center 25%
-legacyTitle: Lawrence Legacy
-legacyBody: >-
-  **Lawrence High School** carries a legacy of educational excellence that began
-  in **1991 with our Koramangala branch** and grew with the establishment of our
-  **HSR ICSE branch in 2002**.
-
-
-  Today, Lawrence is a vibrant learning community of **over 2,500 students and
-  103+ dedicated teachers**, committed to providing an education that nurtures
-  **knowledge, character and confidence**.
-
-
-  With a strong foundation built on **values and holistic development**, we
-  continue to prepare young minds to learn, grow and contribute meaningfully to
-  the world.
-legacyTagline: Our Legacy. Our Values. Their Future.
-legacyPhotoAlt: Lawrence High School campus, HSR Layout
 whyTitle: What Makes the School Special?
 whyQuote: “FROM CURIOUS MINDS TO CONFIDENT FUTURES.”
 whyBody: >-
   At Lawrence High, every experience is an opportunity to discover, create, lead
   and grow. We help students transform their potential into purpose and their
   dreams into achievement.
+whyImage: why-lawrence.png
 whyImageAlt: >-
   Why choose Lawrence High School: academic excellence, future ready learning,
   beyond academics, character and values, confidence and leadership, holistic
@@ -76,21 +78,25 @@ curriculum:
   - title: Kindergarten
     grades: Curiosity begins here.
     href: /learning
-    photoAlt: Little learners discovering with a teacher at Lawrence High School
-  - title: Young Explorers
-    grades: Grades I – IV
+    photo: little-learners.png
+    photoAlt: Kindergarten children playing with blocks and toys
+  - title: Primary School
+    grades: Building strong foundations.
     href: /learning
-    photoAlt: Young explorers in martial arts at Lawrence High School
-  - title: Creators
-    grades: Grades V – VII
+    photo: young-explorers.png
+    photoAlt: Primary students exploring shapes, letters, and numbers
+  - title: Middle School
+    grades: Exploring. Questioning. Creating.
     href: /learning
-    photoAlt: Creators performing music at Lawrence High School
-  - title: Future Leaders
-    grades: Grades VIII – X
+    photo: creators.png
+    photoAlt: Middle school students collaborating on a classroom project
+  - title: High School
+    grades: Preparing for tomorrow.
     href: /learning
-    photoAlt: Future leaders working on robotics at Lawrence High School
-partnersKicker: In association with
-partnersTitle: Partners in learning
+    photo: future-leaders.png
+    photoAlt: High school students working together in class
+partnersKicker: Working together to create richer learning experiences for our students.
+partnersTitle: Our Partners & Collaborators
 partners:
   - name: LEGO Education
     category: STEM
@@ -127,5 +133,5 @@ chairmanMessage: >-
   discover strengths, face challenges, and grow into confident individuals who
   will be the future leaders and changemakers of our society. We look forward to
   walking this journey with you — hand in hand.
-chairmanPhoto: /images/home/chairman/chairmanPhoto.JPG
+chairmanPhoto: chairmanPhoto.JPG
 chairmanPhotoAlt: P.M. Subbaiah, Chairman, Lawrence High School

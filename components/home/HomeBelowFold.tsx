@@ -7,7 +7,6 @@ import {
   beyondClassroom,
   campusSpotlight,
   featuredAchievementFallback,
-  homeQuote,
   journeyCta,
   upcomingEvents
 } from "@/lib/homeSections";
@@ -53,9 +52,13 @@ export default async function HomeBelowFold({
           </div>
           <div className="beyond-tiles">
             {beyondClassroom.items.map((item) => (
-              <Link key={item.title} className="beyond-tile" href={beyondClassroom.ctaHref}>
+              <Link
+                key={item.title}
+                className="beyond-tile"
+                href={beyondClassroom.ctaHref}
+                aria-label={item.title}
+              >
                 <Image src={item.image} alt={item.alt} fill sizes="180px" />
-                <span>{item.title}</span>
               </Link>
             ))}
           </div>
@@ -110,11 +113,6 @@ export default async function HomeBelowFold({
               ))}
             </ul>
           </article>
-
-          <blockquote className="home-quote">
-            <p>“{homeQuote.text}”</p>
-            <cite>— {homeQuote.attribution}</cite>
-          </blockquote>
         </div>
       </section>
 
