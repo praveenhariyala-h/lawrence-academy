@@ -95,10 +95,10 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" className="footer-logo">
             <Image
-              src="/images/logo-lockup.png"
+              src="/images/logo-footer.png"
               alt={school.name}
-              width={522}
-              height={150}
+              width={1024}
+              height={292}
               sizes="240px"
               unoptimized
             />
