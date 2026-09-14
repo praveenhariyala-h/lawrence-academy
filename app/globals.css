@@ -2407,10 +2407,12 @@ body.nav-locked {
   line-height: 1.35;
 }
 
-.about-teams {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+.about-teams-carousel.partner-carousel {
+  padding-top: 0.2rem;
+}
+
+.about-teams-carousel .partner-carousel-arrow {
+  top: 34%;
 }
 
 .about-team {
@@ -2419,14 +2421,15 @@ body.nav-locked {
 
 .about-team-photo {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
+  background: color-mix(in srgb, var(--pearl) 40%, var(--white));
   box-shadow: 0 10px 24px color-mix(in srgb, var(--legacy-blue) 12%, transparent);
 }
 
 .about-team-photo img {
-  object-fit: cover;
-  object-position: center 42%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .about-team figcaption {
@@ -2499,10 +2502,6 @@ body.nav-locked {
     grid-column: span 1;
   }
 
-  .about-teams {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .about-teachers {
     grid-template-columns: 1fr 1fr;
   }
@@ -2551,10 +2550,6 @@ body.nav-locked {
 }
 
 @media (max-width: 640px) {
-  .about-teams {
-    grid-template-columns: 1fr;
-  }
-
   .about-motto {
     flex-direction: column;
   }

@@ -131,6 +131,12 @@ export const aboutLegacy = {
   ]
 };
 
+export type AboutTeamGroup = {
+  name: string;
+  photo: string;
+  photoAlt: string;
+};
+
 export const aboutTeams = {
   title: "Our Teams",
   kicker: "A collaborative community working for every learner",
