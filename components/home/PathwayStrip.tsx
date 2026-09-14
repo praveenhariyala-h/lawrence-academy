@@ -94,7 +94,7 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
   };
 
   return (
-    <section className="band band--white pathway-band" aria-label="Student pathway">
+    <section className="pathway-band" aria-label="Student pathway">
       <div className="wrap">
         <div className="pathway-strip is-in" ref={stripRef}>
           {items.map((item, index) => {
@@ -115,6 +115,15 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
               >
                 <div className="pathway-card-inner">
                   <div className="pathway-card-face pathway-card-front">
+                    <div className="pathway-card-media">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        sizes="(max-width: 1100px) 148px, 14vw"
+                        style={{ objectPosition: item.position || "center" }}
+                      />
+                    </div>
                     <span className="pathway-icon">{icons[item.title] ?? fallbackIcon}</span>
                     <strong>{item.title}</strong>
                   </div>

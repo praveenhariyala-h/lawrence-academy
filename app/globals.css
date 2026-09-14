@@ -704,7 +704,10 @@ body.nav-locked {
 }
 
 .pathway-band {
-  padding: 1.6rem 0 0.4rem;
+  position: relative;
+  z-index: 3;
+  padding: 1.6rem 0 0.8rem;
+  background: transparent;
 }
 
 .pathway-strip {
@@ -762,8 +765,29 @@ body.nav-locked {
 }
 
 .pathway-card-front {
-  background: #09253a;
+  background: var(--legacy-blue);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--legacy-blue) 24%, transparent);
   transform: rotateY(0deg);
+}
+
+.pathway-card-front .pathway-card-media {
+  opacity: 0.48;
+}
+
+.pathway-card-front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--legacy-blue) 42%, transparent);
+  pointer-events: none;
+}
+
+.pathway-card-front .pathway-icon,
+.pathway-card-front strong {
+  position: relative;
+  z-index: 2;
 }
 
 .pathway-card-back {
@@ -1219,8 +1243,8 @@ body.nav-locked {
 
 .home-highlights {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1.1fr;
-  gap: 1.6rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
 }
 
@@ -1259,7 +1283,7 @@ body.nav-locked {
 
 .home-achievement {
   display: grid;
-  grid-template-columns: 168px 1fr;
+  grid-template-columns: 176px 1fr;
   gap: 1rem;
   align-items: start;
 }
@@ -1302,8 +1326,8 @@ body.nav-locked {
 
 .home-achievement-photo {
   position: relative;
-  width: 168px;
-  height: 188px;
+  width: 176px;
+  height: 198px;
   overflow: hidden;
   border-radius: 12px;
   background: var(--pearl);
@@ -1314,25 +1338,36 @@ body.nav-locked {
   object-fit: cover;
 }
 
-.home-achievement h3,
-.home-events strong {
+.home-achievement h3 {
   margin: 0 0 0.3rem;
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   line-height: 1.3;
   color: var(--legacy-blue);
 }
 
-.home-achievement p,
+.home-events strong {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--legacy-blue);
+}
+
+.home-achievement p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
 .home-campus p,
 .home-events p {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--muted);
 }
 
 .home-campus-photo {
   position: relative;
-  min-height: 128px;
+  min-height: 118px;
   margin-bottom: 0.7rem;
   overflow: hidden;
   border-radius: 12px;
@@ -1344,13 +1379,13 @@ body.nav-locked {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .home-events li {
   display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 0.7rem;
+  grid-template-columns: 46px 1fr;
+  gap: 0.65rem;
   align-items: start;
 }
 
@@ -1366,7 +1401,7 @@ body.nav-locked {
 
 .home-event-date b {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.32rem;
   line-height: 1;
 }
 
@@ -1900,9 +1935,13 @@ body.nav-locked {
   }
 
   .beyond-inner,
-  .home-highlights,
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .home-highlights {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.2rem;
   }
 
   .beyond-inner {
@@ -1935,6 +1974,19 @@ body.nav-locked {
 
   .home-highlights {
     grid-template-columns: 1fr;
+  }
+
+  .home-achievement {
+    grid-template-columns: 160px 1fr;
+  }
+
+  .home-achievement-photo {
+    width: 160px;
+    height: 180px;
+  }
+
+  .home-campus-photo {
+    min-height: 120px;
   }
 
   .journey-inner {
@@ -2136,98 +2188,36 @@ body.nav-locked {
   color: color-mix(in srgb, var(--legacy-blue) 72%, var(--silver));
 }
 
-.about-crumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-bottom: 0.85rem;
-  color: var(--silver);
-  font-size: 0.84rem;
-}
-
-.about-crumbs a:hover {
-  color: var(--legacy-blue);
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .about-hero {
-  padding: 2.4rem 0 3.2rem;
+  padding: 0;
 }
 
-.about-hero-inner {
+.about-hero-banner {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
-  gap: 2.4rem;
-  align-items: center;
-}
-
-.about-hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  margin-bottom: 0.2rem;
-}
-
-.about-hero-subtitle {
-  margin: 0 0 1rem;
-  color: color-mix(in srgb, var(--orange) 45%, var(--bloom-deep));
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.about-hero-intro {
-  max-width: 36rem;
-  margin: 0;
-  color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
-  font-size: 1.08rem;
-}
-
-.about-hero-photo {
-  position: relative;
-  min-height: min(52vw, 420px);
-  border-radius: 28px;
+  width: 100%;
+  height: min(56vh, 520px);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  background: var(--legacy-blue-deep);
 }
 
-.about-hero-photo img {
+.about-hero-banner img {
   object-fit: cover;
   object-position: center 42%;
 }
 
-.about-sidequote {
-  position: absolute;
-  margin: 0;
-  color: color-mix(in srgb, var(--bloom) 55%, var(--orange));
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-  white-space: pre-line;
-  pointer-events: none;
-}
-
-.about-sidequote--hero {
-  right: -0.2rem;
-  top: 8%;
-  font-size: 1.05rem;
-  text-align: right;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
-
-.about-sidequote--journey {
-  right: -0.4rem;
-  bottom: 8%;
-  max-width: 8rem;
-  font-size: 1rem;
-  text-align: right;
-}
-
 .about-journey {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(240px, 0.95fr) minmax(0, 0.95fr);
   gap: 2rem;
@@ -2241,8 +2231,7 @@ body.nav-locked {
 .about-campus {
   position: relative;
   margin: 0;
-  min-height: 320px;
-  border-radius: 24px;
+  aspect-ratio: 1;
   overflow: hidden;
   box-shadow: var(--shadow);
 }
@@ -2250,17 +2239,6 @@ body.nav-locked {
 .about-campus img {
   object-fit: cover;
   object-position: center 40%;
-}
-
-.about-campus figcaption {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  color: var(--white);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.2rem;
-  text-shadow: 0 8px 18px color-mix(in srgb, var(--legacy-blue) 55%, transparent);
 }
 
 .about-promises {
@@ -2317,8 +2295,7 @@ body.nav-locked {
 
 .about-philosophy-photo {
   position: relative;
-  min-height: 360px;
-  border-radius: 28px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   box-shadow: var(--shadow);
 }
@@ -2330,49 +2307,6 @@ body.nav-locked {
 
 .about-philosophy-copy p {
   color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
-}
-
-.about-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin: 1.2rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.about-pills li {
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  background: var(--bloom);
-  color: var(--legacy-blue);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.about-notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.4rem;
-  margin: 1.3rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.about-notes li {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--green);
-  font-weight: 700;
-  font-size: 0.92rem;
-}
-
-.about-notes svg {
-  width: 22px;
-  height: 22px;
 }
 
 .about-messages,
@@ -2426,13 +2360,11 @@ body.nav-locked {
 .about-portrait--md {
   width: 148px;
   height: 148px;
-  border-radius: 50%;
-  border: 4px solid var(--white);
 }
 
 .about-portrait--lg {
-  width: 168px;
-  height: 168px;
+  width: 260px;
+  height: 260px;
 }
 
 .about-portrait-initials {
@@ -2487,8 +2419,7 @@ body.nav-locked {
 
 .about-team-photo {
   position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: 18px;
+  aspect-ratio: 1;
   overflow: hidden;
   box-shadow: 0 10px 24px color-mix(in srgb, var(--legacy-blue) 12%, transparent);
 }
@@ -2554,10 +2485,6 @@ body.nav-locked {
 }
 
 @media (max-width: 1100px) {
-  .about-sidequote {
-    display: none;
-  }
-
   .about-journey,
   .about-values {
     grid-template-columns: 1fr 1fr;
@@ -2582,7 +2509,6 @@ body.nav-locked {
 }
 
 @media (max-width: 900px) {
-  .about-hero-inner,
   .about-journey,
   .about-philosophy,
   .about-messages,
@@ -2596,14 +2522,25 @@ body.nav-locked {
     grid-template-columns: 1fr 1fr;
   }
 
-  .about-hero-photo,
-  .about-campus,
+  .about-hero-banner {
+    height: min(42vh, 360px);
+  }
+
+  .about-campus {
+    aspect-ratio: 1;
+  }
+
   .about-philosophy-photo {
-    min-height: 260px;
+    aspect-ratio: 4 / 3;
   }
 
   .about-message p:last-child {
     text-align: center;
+  }
+
+  .about-portrait--lg {
+    width: min(72vw, 260px);
+    height: min(72vw, 260px);
   }
 
   .about-pullquote {
@@ -2622,8 +2559,8 @@ body.nav-locked {
     flex-direction: column;
   }
 
-  .about-hero {
-    padding-top: 1.4rem;
+  .about-hero-banner {
+    height: min(36vh, 280px);
   }
 }
 

@@ -73,7 +73,7 @@ export const defaultHome: HomeContent = {
       title: "Curiosity begins here",
       text: "Warm classrooms where young children discover, play, and learn.",
       image: "/images/home/hero/hero-kindergarten.png",
-      alt: "Kindergarten teacher and students exploring together"
+      alt: "Kindergarten teacher and students exploring together in class"
     },
     {
       title: "Every child a champion",

@@ -67,7 +67,7 @@ export default async function HomeBelowFold({
 
       <section className="band band--white home-highlights-band">
         <div className="wrap home-highlights">
-          <article className="home-panel">
+          <article className="home-panel home-panel--main">
             <header className="home-panel-head">
               <h2>Recent Achievements</h2>
               <Link href="/news">View all</Link>
@@ -75,7 +75,7 @@ export default async function HomeBelowFold({
             <AchievementsCarousel items={achievements} />
           </article>
 
-          <article className="home-panel">
+          <article className="home-panel home-panel--compact">
             <header className="home-panel-head">
               <h2>{campusSpotlight.title}</h2>
               <Link href={campusSpotlight.ctaHref}>{campusSpotlight.ctaLabel}</Link>
@@ -86,14 +86,14 @@ export default async function HomeBelowFold({
                   src={campusSpotlight.image}
                   alt={campusSpotlight.alt}
                   fill
-                  sizes="(max-width: 900px) 100vw, 28vw"
+                  sizes="(max-width: 900px) 100vw, 18vw"
                 />
               </div>
               <p>{campusSpotlight.body}</p>
             </Link>
           </article>
 
-          <article className="home-panel">
+          <article className="home-panel home-panel--compact">
             <header className="home-panel-head">
               <h2>Upcoming Events</h2>
               <Link href="/news">View all</Link>
