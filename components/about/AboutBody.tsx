@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import {
   aboutHero,
@@ -60,29 +59,15 @@ export default function AboutBody() {
   return (
     <AboutReveal>
       <section className="about-hero">
-        <div className="wrap about-hero-inner">
-          <div className="about-hero-copy about-reveal">
-            <nav className="about-crumbs" aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span aria-hidden="true">›</span>
-              <span>About Us</span>
-            </nav>
-            <h1>{aboutHero.title}</h1>
-            <p className="about-hero-subtitle">{aboutHero.subtitle}</p>
-            <p className="about-hero-intro">{aboutHero.intro}</p>
-          </div>
-          <div className="about-hero-photo about-reveal" style={delay(1)}>
-            <Image
-              src={aboutHero.image}
-              alt={aboutHero.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 48vw"
-            />
-          </div>
-          <p className="about-sidequote about-sidequote--hero" aria-hidden="true">
-            {aboutHero.sideQuote}
-          </p>
+        <h1 className="visually-hidden">{aboutHero.title}</h1>
+        <div className="about-hero-banner about-reveal">
+          <Image
+            src={aboutHero.image}
+            alt={aboutHero.imageAlt}
+            fill
+            priority
+            sizes="100vw"
+          />
         </div>
       </section>
 
@@ -94,15 +79,14 @@ export default function AboutBody() {
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
             ))}
           </div>
-          <figure className="about-campus about-reveal" style={delay(1)}>
+          <div className="about-campus about-reveal" style={delay(1)}>
             <Image
               src={aboutJourney.campusImage}
               alt={aboutJourney.campusAlt}
               fill
               sizes="(max-width: 900px) 100vw, 34vw"
             />
-            <figcaption>{aboutJourney.campusCaption}</figcaption>
-          </figure>
+          </div>
           <div className="about-promises about-reveal" style={delay(2)}>
             <article className="about-promise">
               <span className="about-icon-wrap" aria-hidden="true">
@@ -123,9 +107,6 @@ export default function AboutBody() {
               </div>
             </article>
           </div>
-          <p className="about-sidequote about-sidequote--journey" aria-hidden="true">
-            {aboutJourney.sideQuote}
-          </p>
         </div>
       </section>
 
@@ -142,19 +123,6 @@ export default function AboutBody() {
           <div className="about-philosophy-copy about-reveal" style={delay(1)}>
             <SectionTitle>{aboutPhilosophy.title}</SectionTitle>
             <p>{aboutPhilosophy.body}</p>
-            <ul className="about-pills">
-              {aboutPhilosophy.pillars.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <ul className="about-notes">
-              {aboutPhilosophy.notes.map((item) => (
-                <li key={item}>
-                  <BooksIcon />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
@@ -173,7 +141,7 @@ export default function AboutBody() {
                   alt={person.photoAlt}
                   position={person.position}
                   initials={person.initials}
-                  sizes="160px"
+                  sizes="(max-width: 900px) 70vw, 260px"
                   className="about-portrait--lg"
                 />
                 <h3>{person.name}</h3>
@@ -300,16 +268,6 @@ function MissionIcon() {
       <circle cx="16" cy="16" r="10" />
       <circle cx="16" cy="16" r="5.5" />
       <circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function BooksIcon() {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <path d="M7 8h7v16H8.5A1.5 1.5 0 0 1 7 22.5V8Z" />
-      <path d="M18 8h7v14.5a1.5 1.5 0 0 1-1.5 1.5H18V8Z" />
-      <path d="M14 8v16" />
     </svg>
   );
 }

@@ -1,12 +1,7 @@
 export const aboutHero = {
-  kicker: "Home  /  About Us",
   title: "About Us",
-  subtitle: "A strong foundation for a brighter tomorrow",
-  intro:
-    "At Lawrence High School, we nurture confident, compassionate and capable citizens through a balanced and enriching education.",
   image: "/images/about/hero.png",
-  imageAlt: "Students learning together in a Lawrence High School classroom",
-  sideQuote: "Dream\nBelieve\nLearn\nAchieve"
+  imageAlt: "Students learning together in a Lawrence High School classroom"
 };
 
 export const aboutJourney = {
@@ -17,7 +12,6 @@ export const aboutJourney = {
   ],
   campusImage: "/images/about/campus.png",
   campusAlt: "Lawrence High School ICSE campus in HSR Layout, Bengaluru",
-  campusCaption: "A Brighter Tomorrow",
   vision: {
     title: "Our Vision",
     text: "To create an environment that inspires and guides a child through exploration to discovery, learning and action, so they grow into a confident, capable citizen of the future."
@@ -25,17 +19,14 @@ export const aboutJourney = {
   mission: {
     title: "Our Mission",
     text: "To provide education with a value that develops knowledge, skills, character and a lifelong love for learning."
-  },
-  sideQuote: "Education for a Brighter Tomorrow"
+  }
 };
 
 export const aboutPhilosophy = {
   title: "Our Educational Philosophy",
   body: "We believe that every child is unique and has the potential to achieve great things. Our approach is student-centric, focusing on academic rigour, character building and experiential learning. We strive to create a supportive environment where curiosity is encouraged, creativity is celebrated and values are lived every day.",
   image: "/images/about/philosophy.png",
-  imageAlt: "Lawrence High School leaders collaborating on teaching and learning",
-  pillars: ["Learn", "Explore", "Discover", "Create", "Collaborate", "Grow"],
-  notes: ["Curiosity", "Creativity", "Collaboration"]
+  imageAlt: "Lawrence High School leaders collaborating on teaching and learning"
 };
 
 export const aboutMessages = {
@@ -88,10 +79,10 @@ export const aboutLeadershipTeam = {
       position: "22% 28%"
     },
     {
-      name: "Mrs. Malati Bajaj",
+      name: "Mrs. Malini Raghu",
       role: "Headmistress",
       photo: "/images/about/headmistress.png",
-      photoAlt: "Mrs. Malati Bajaj, Headmistress",
+      photoAlt: "Mrs. Malini Raghu, Headmistress",
       position: "72% 18%"
     },
     {
