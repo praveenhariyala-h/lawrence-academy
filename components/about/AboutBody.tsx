@@ -12,6 +12,7 @@ import {
   aboutValues
 } from "@/lib/about";
 import AboutReveal from "./AboutReveal";
+import TeamsCarousel from "./TeamsCarousel";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
@@ -213,15 +214,8 @@ export default function AboutBody() {
             <SectionTitle>{aboutTeams.title}</SectionTitle>
             <p className="about-kicker">{aboutTeams.kicker}</p>
           </header>
-          <div className="about-teams">
-            {aboutTeams.groups.map((team, index) => (
-              <figure className="about-team about-reveal" style={delay(index)} key={team.name}>
-                <div className="about-team-photo">
-                  <Image src={team.photo} alt={team.photoAlt} fill sizes="(max-width: 900px) 100vw, 24vw" />
-                </div>
-                <figcaption>{team.name}</figcaption>
-              </figure>
-            ))}
+          <div className="about-reveal">
+            <TeamsCarousel items={aboutTeams.groups} />
           </div>
         </div>
       </section>
