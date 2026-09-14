@@ -2073,3 +2073,565 @@ body.nav-locked {
 .news-article :where(h2, h3) {
   margin-top: 1.5em;
 }
+
+.about-page {
+  overflow-x: clip;
+  background: var(--white);
+  color: var(--legacy-blue);
+}
+
+.about-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--d, 0s);
+}
+
+.about-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.about-band {
+  position: relative;
+  padding: 4.2rem 0;
+}
+
+.about-band--soft {
+  background: color-mix(in srgb, var(--pearl) 28%, var(--white));
+}
+
+.about-title {
+  font-size: clamp(1.7rem, 3.4vw, 2.45rem);
+  color: var(--legacy-blue);
+  max-width: none;
+  margin: 0 0 0.85rem;
+}
+
+.about-title::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin-top: 0.7rem;
+  background: var(--bloom);
+  border-radius: 999px;
+}
+
+.about-kicker {
+  margin: 0;
+  color: var(--silver);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-head {
+  max-width: 52rem;
+  margin-bottom: 2rem;
+}
+
+.about-head p:not(.about-kicker) {
+  color: color-mix(in srgb, var(--legacy-blue) 72%, var(--silver));
+}
+
+.about-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  color: var(--silver);
+  font-size: 0.84rem;
+}
+
+.about-crumbs a:hover {
+  color: var(--legacy-blue);
+}
+
+.about-hero {
+  padding: 2.4rem 0 3.2rem;
+}
+
+.about-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.about-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  margin-bottom: 0.2rem;
+}
+
+.about-hero-subtitle {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, var(--orange) 45%, var(--bloom-deep));
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.about-hero-intro {
+  max-width: 36rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
+  font-size: 1.08rem;
+}
+
+.about-hero-photo {
+  position: relative;
+  min-height: min(52vw, 420px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-hero-photo img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.about-sidequote {
+  position: absolute;
+  margin: 0;
+  color: color-mix(in srgb, var(--bloom) 55%, var(--orange));
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  white-space: pre-line;
+  pointer-events: none;
+}
+
+.about-sidequote--hero {
+  right: -0.2rem;
+  top: 8%;
+  font-size: 1.05rem;
+  text-align: right;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.about-sidequote--journey {
+  right: -0.4rem;
+  bottom: 8%;
+  max-width: 8rem;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.about-journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.95fr) minmax(0, 0.95fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-journey-copy p {
+  color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
+}
+
+.about-campus {
+  position: relative;
+  margin: 0;
+  min-height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-campus img {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.about-campus figcaption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  text-shadow: 0 8px 18px color-mix(in srgb, var(--legacy-blue) 55%, transparent);
+}
+
+.about-promises {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.about-promise {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.about-promise h3,
+.about-value h3,
+.about-message h3,
+.about-leader h3,
+.about-teacher h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+}
+
+.about-promise p,
+.about-value p,
+.about-teacher p {
+  margin: 0;
+  color: color-mix(in srgb, var(--legacy-blue) 72%, var(--silver));
+  font-size: 0.98rem;
+}
+
+.about-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid color-mix(in srgb, var(--legacy-blue) 18%, transparent);
+  border-radius: 50%;
+  color: var(--legacy-blue);
+  background: var(--white);
+}
+
+.about-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.about-philosophy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.about-philosophy-photo {
+  position: relative;
+  min-height: 360px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-philosophy-photo img {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.about-philosophy-copy p {
+  color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
+}
+
+.about-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-pills li {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--bloom);
+  color: var(--legacy-blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.4rem;
+  margin: 1.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-notes li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.about-notes svg {
+  width: 22px;
+  height: 22px;
+}
+
+.about-messages,
+.about-teachers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.about-teachers {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.about-message,
+.about-leader,
+.about-teacher {
+  text-align: center;
+}
+
+.about-message {
+  padding: 0.4rem 0.4rem 0;
+}
+
+.about-message p:last-child {
+  text-align: left;
+  color: color-mix(in srgb, var(--legacy-blue) 74%, var(--silver));
+  font-size: 0.96rem;
+}
+
+.about-role {
+  margin: 0 0 0.8rem;
+  color: color-mix(in srgb, var(--orange) 70%, var(--legacy-blue));
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.about-portrait {
+  position: relative;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--pearl) 55%, var(--white));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--legacy-blue) 12%, transparent);
+}
+
+.about-portrait img {
+  object-fit: cover;
+}
+
+.about-portrait--lg,
+.about-portrait--md {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+}
+
+.about-portrait--lg {
+  width: 168px;
+  height: 168px;
+}
+
+.about-portrait-initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--legacy-blue);
+  color: var(--bloom);
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.about-leaders {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.7fr);
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.about-leader-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.about-pullquote {
+  margin: 0;
+  padding: 1.4rem 1.2rem 1.4rem 1.4rem;
+  border-left: 4px solid var(--bloom);
+  color: var(--legacy-blue);
+}
+
+.about-pullquote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.35;
+}
+
+.about-teams {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.about-team {
+  margin: 0;
+}
+
+.about-team-photo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--legacy-blue) 12%, transparent);
+}
+
+.about-team-photo img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.about-team figcaption {
+  margin-top: 0.7rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--legacy-blue);
+}
+
+.about-values-band {
+  padding-bottom: 3.2rem;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.about-value {
+  text-align: center;
+}
+
+.about-value .about-icon-wrap {
+  margin: 0 auto 0.8rem;
+}
+
+.about-motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  color: var(--green);
+}
+
+.about-motto p {
+  margin: 0;
+  color: var(--legacy-blue);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.25;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.about-olive {
+  width: 88px;
+  height: 48px;
+  color: color-mix(in srgb, var(--green) 70%, var(--bloom));
+}
+
+.about-olive.is-flip {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 1100px) {
+  .about-sidequote {
+    display: none;
+  }
+
+  .about-journey,
+  .about-values {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-promises {
+    grid-column: 1 / -1;
+  }
+
+  .about-values .about-value:nth-child(5),
+  .about-values .about-value:nth-child(6) {
+    grid-column: span 1;
+  }
+
+  .about-teams {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-teachers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-hero-inner,
+  .about-journey,
+  .about-philosophy,
+  .about-messages,
+  .about-leaders,
+  .about-leader-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-values,
+  .about-teachers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-hero-photo,
+  .about-campus,
+  .about-philosophy-photo {
+    min-height: 260px;
+  }
+
+  .about-message p:last-child {
+    text-align: center;
+  }
+
+  .about-pullquote {
+    text-align: center;
+    border-left: 0;
+    border-top: 4px solid var(--bloom);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-teams {
+    grid-template-columns: 1fr;
+  }
+
+  .about-motto {
+    flex-direction: column;
+  }
+
+  .about-hero {
+    padding-top: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal,
+  .about-reveal.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
