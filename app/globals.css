@@ -743,10 +743,20 @@ body.nav-locked {
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.pathway-strip.is-introducing {
+  pointer-events: none;
+}
+
 .pathway-card:hover .pathway-card-inner,
 .pathway-card:focus-within .pathway-card-inner,
 .pathway-card.is-flipped .pathway-card-inner {
   transform: rotateY(180deg);
+}
+
+.pathway-card:nth-child(even):hover .pathway-card-inner,
+.pathway-card:nth-child(even):focus-within .pathway-card-inner,
+.pathway-card:nth-child(even).is-flipped .pathway-card-inner {
+  transform: rotateY(-180deg);
 }
 
 .pathway-card-face {
@@ -1147,6 +1157,10 @@ body.nav-locked {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.1rem;
+}
+
+.cards--4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .card,
@@ -1672,6 +1686,25 @@ body.nav-locked {
   gap: 1.4rem;
 }
 
+.contact-details {
+  display: grid;
+  gap: 1.6rem;
+  align-content: start;
+}
+
+.contact-details h2 {
+  font-size: 1.35rem;
+  margin: 0 0 0.4rem;
+}
+
+.contact-details p {
+  margin: 0 0 0.45rem;
+}
+
+.contact-details a {
+  font-weight: 600;
+}
+
 .page-hero {
   background: var(--legacy-blue);
   color: var(--white);
@@ -1708,12 +1741,26 @@ body.nav-locked {
   font-weight: 700;
 }
 
+.section-anchor {
+  scroll-margin-top: 110px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.2rem 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
   background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
+}
+
+.table thead {
+  background: var(--legacy-blue);
+  color: var(--white);
 }
 
 .table th,
@@ -1721,6 +1768,10 @@ body.nav-locked {
   text-align: left;
   padding: 0.7rem 0.9rem;
   border-bottom: 1px solid var(--line);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 .map {
@@ -1947,6 +1998,10 @@ body.nav-locked {
   .beyond-inner {
     grid-template-columns: 1fr;
   }
+
+  .cards--4 {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1961,6 +2016,10 @@ body.nav-locked {
   .photos,
   .photos-3 {
     grid-template-columns: 1fr;
+  }
+
+  .cards--4 {
+    grid-template-columns: 1fr 1fr;
   }
 
   .logo-lockup {
@@ -2084,7 +2143,10 @@ body.nav-locked {
   .pathway-card-inner,
   .pathway-card:hover .pathway-card-inner,
   .pathway-card:focus-within .pathway-card-inner,
-  .pathway-card.is-flipped .pathway-card-inner {
+  .pathway-card.is-flipped .pathway-card-inner,
+  .pathway-card:nth-child(even):hover .pathway-card-inner,
+  .pathway-card:nth-child(even):focus-within .pathway-card-inner,
+  .pathway-card:nth-child(even).is-flipped .pathway-card-inner {
     transform: none;
   }
 
