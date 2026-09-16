@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import type { HomePathway } from "@/lib/home";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
@@ -80,9 +80,58 @@ const blurbs: Record<string, string> = {
 export default function PathwayStrip({ items }: { items: HomePathway[] }) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [flipped, setFlipped] = useState<number | null>(null);
+  const [introFlipped, setIntroFlipped] = useState<boolean[]>(() => items.map(() => false));
+  const [introducing, setIntroducing] = useState(false);
   useScrollReveal(stripRef, { threshold: 0.2 });
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    let cancelled = false;
+    const timers: number[] = [];
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => {
+        timers.push(window.setTimeout(resolve, ms));
+      });
+
+    const count = items.length;
+
+    const run = async () => {
+      setIntroFlipped(Array.from({ length: count }, () => false));
+      setIntroducing(true);
+      await wait(420);
+      if (cancelled) return;
+
+      for (let i = 0; i < count; i++) {
+        if (cancelled) return;
+        setIntroFlipped((current) => current.map((value, index) => (index === i ? true : value)));
+        await wait(130);
+      }
+
+      await wait(780);
+      if (cancelled) return;
+
+      for (let i = count - 1; i >= 0; i--) {
+        if (cancelled) return;
+        setIntroFlipped((current) => current.map((value, index) => (index === i ? false : value)));
+        await wait(130);
+      }
+
+      if (!cancelled) setIntroducing(false);
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+      timers.forEach((id) => window.clearTimeout(id));
+    };
+  }, [items.length]);
+
   const toggleFlip = (index: number) => {
+    if (introducing) return;
     setFlipped((current) => (current === index ? null : index));
   };
 
@@ -96,10 +145,13 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
   return (
     <section className="pathway-band" aria-label="Student pathway">
       <div className="wrap">
-        <div className="pathway-strip is-in" ref={stripRef}>
+        <div
+          className={introducing ? "pathway-strip is-in is-introducing" : "pathway-strip is-in"}
+          ref={stripRef}
+        >
           {items.map((item, index) => {
             const blurb = blurbs[item.title];
-            const isFlipped = flipped === index;
+            const isFlipped = introducing ? Boolean(introFlipped[index]) : flipped === index;
 
             return (
               <article

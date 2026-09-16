@@ -12,9 +12,9 @@ const quickLinks = [
 ];
 
 const admissionLinks = [
-  { href: "/admissions", label: "Admission Process" },
-  { href: "/admissions", label: "Fee Structure" },
-  { href: "/admissions", label: "Apply Now" },
+  { href: "/admissions#process", label: "Admission Process" },
+  { href: "/admissions#fees", label: "Fee Structure" },
+  { href: "/admissions#apply", label: "Apply Now" },
   { href: "/contact", label: "FAQs" }
 ];
 

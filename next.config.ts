@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" }
     ]
+  },
+  async redirects() {
+    return [{ source: "/admin", destination: "/keystatic", permanent: false }];
   }
 };
 
