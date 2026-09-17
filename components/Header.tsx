@@ -13,21 +13,67 @@ const NavLinks = memo(function NavLinks({
   pathname: string;
   onNavigate: () => void;
 }) {
+  const [closedHref, setClosedHref] = useState<string | null>(null);
+
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+
+  const closeDropdown = useCallback(
+    (href: string, event?: { currentTarget: HTMLElement }) => {
+      setClosedHref(href);
+      onNavigate();
+      event?.currentTarget.blur();
+    },
+    [onNavigate]
+  );
 
   return (
     <>
-      {nav.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          aria-current={isActive(link.href) ? "page" : undefined}
-          onClick={onNavigate}
-        >
-          {link.label}
-        </Link>
-      ))}
+      {nav.map((link) => {
+        if (!link.children?.length) {
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              onClick={onNavigate}
+            >
+              {link.label}
+            </Link>
+          );
+        }
+
+        return (
+          <div
+            key={link.href}
+            className={closedHref === link.href ? "nav-item is-closed" : "nav-item"}
+            onMouseLeave={() => setClosedHref(null)}
+          >
+            <Link
+              href={link.href}
+              className="nav-parent"
+              aria-current={isActive(link.href) ? "page" : undefined}
+              aria-haspopup="true"
+              onClick={(event) => closeDropdown(link.href, event)}
+            >
+              {link.label}
+              <span className="nav-caret" aria-hidden="true" />
+            </Link>
+            <div className="nav-sub">
+              {link.children.map((child) => (
+                <Link
+                  key={child.href}
+                  href={child.href}
+                  aria-current={pathname === child.href ? "page" : undefined}
+                  onClick={(event) => closeDropdown(link.href, event)}
+                >
+                  {child.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 });

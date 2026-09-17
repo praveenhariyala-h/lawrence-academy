@@ -116,28 +116,28 @@ export const defaultHome: HomeContent = {
     {
       title: "Kindergarten",
       grades: "Curiosity begins here.",
-      href: "/learning",
+      href: "/academics/kindergarten",
       photo: "/images/home/curriculum/little-learners.png",
       photoAlt: "Kindergarten children playing with blocks and toys"
     },
     {
       title: "Primary School",
       grades: "Building strong foundations.",
-      href: "/learning",
+      href: "/academics/primary",
       photo: "/images/home/curriculum/young-explorers.png",
       photoAlt: "Primary students exploring shapes, letters, and numbers"
     },
     {
       title: "Middle School",
       grades: "Exploring. Questioning. Creating.",
-      href: "/learning",
+      href: "/academics/middle-school",
       photo: "/images/home/curriculum/creators.png",
       photoAlt: "Middle school students collaborating on a classroom project"
     },
     {
       title: "High School",
       grades: "Preparing for tomorrow.",
-      href: "/learning",
+      href: "/academics/high-school",
       photo: "/images/home/curriculum/future-leaders.png",
       photoAlt: "High school students working together in class"
     }

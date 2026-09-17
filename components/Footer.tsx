@@ -5,10 +5,11 @@ import { school } from "@/lib/site";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/learning", label: "Academics" },
+  { href: "/academics", label: "Academics" },
   { href: "/admissions", label: "Admissions" },
   { href: "/alumni", label: "Alumni" },
-  { href: "/about", label: "Campus" }
+  { href: "/about/campus", label: "Campus" },
+  { href: "/about/facilities", label: "Facilities" }
 ];
 
 const admissionLinks = [

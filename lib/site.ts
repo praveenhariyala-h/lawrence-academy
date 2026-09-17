@@ -1,3 +1,5 @@
+import { academicsNav } from "@/lib/academics";
+
 export const school = {
   name: "Lawrence High School",
   shortName: "Lawrence",
@@ -18,10 +20,33 @@ export const school = {
     "https://www.google.com/maps?q=CA3,+9th+Main,+Sector+6,+HSR+Layout,+Bengaluru+560102&output=embed"
 };
 
-export const nav = [
+export type NavChild = {
+  href: string;
+  label: string;
+};
+
+export type NavItem = {
+  href: string;
+  label: string;
+  children?: NavChild[];
+};
+
+export const nav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/learning", label: "Learning" },
+  {
+    href: "/about",
+    label: "About",
+    children: [
+      { href: "/about", label: "About Us" },
+      { href: "/about/campus", label: "Campus" },
+      { href: "/about/facilities", label: "Facilities" }
+    ]
+  },
+  {
+    href: "/academics",
+    label: "Academics",
+    children: academicsNav
+  },
   { href: "/beyond-books", label: "Beyond Books" },
   { href: "/admissions", label: "Admissions" },
   { href: "/news", label: "News" },

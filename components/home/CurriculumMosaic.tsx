@@ -33,7 +33,7 @@ export default function CurriculumMosaic({
           {stages.map((item, index) => (
             <Link
               key={`${item.title}-${index}`}
-              href={item.href || "/learning"}
+              href={item.href || "/academics"}
               className="curriculum-tile curriculum-stage"
               style={{ animationDelay: `${index * 80}ms` }}
             >
