@@ -30,7 +30,7 @@ export const beyondClassroom = {
 export const campusSpotlight = {
   title: "Our Campus",
   ctaLabel: "Explore Campus",
-  ctaHref: "/about",
+  ctaHref: "/about/campus",
   body: "Modern facilities, inspiring spaces, and a safe, well-planned environment for learning and growth.",
   image: "/images/home/hero/hero-building.png",
   alt: "Lawrence High School campus, HSR Layout"

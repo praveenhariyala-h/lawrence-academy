@@ -77,22 +77,22 @@ curriculumKicker: A learning journey for life
 curriculum:
   - title: Kindergarten
     grades: Curiosity begins here.
-    href: /learning
+    href: /academics/kindergarten
     photo: little-learners.png
     photoAlt: Kindergarten children playing with blocks and toys
   - title: Primary School
     grades: Building strong foundations.
-    href: /learning
+    href: /academics/primary
     photo: young-explorers.png
     photoAlt: Primary students exploring shapes, letters, and numbers
   - title: Middle School
     grades: Exploring. Questioning. Creating.
-    href: /learning
+    href: /academics/middle-school
     photo: creators.png
     photoAlt: Middle school students collaborating on a classroom project
   - title: High School
     grades: Preparing for tomorrow.
-    href: /learning
+    href: /academics/high-school
     photo: future-leaders.png
     photoAlt: High school students working together in class
 partnersKicker: Working together to create richer learning experiences for our students.

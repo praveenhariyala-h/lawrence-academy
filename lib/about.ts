@@ -4,6 +4,24 @@ export const aboutHero = {
   imageAlt: "Students learning together in a Lawrence High School classroom"
 };
 
+export type AboutStat = {
+  value: string;
+  unit?: string;
+  label: string;
+  icon: "years" | "results" | "campus" | "faculty";
+};
+
+export const aboutStats: AboutStat[] = [
+  { value: "36", label: "Years of excellence", icon: "years" },
+  {
+    value: "100%",
+    label: "Average pass rate/average highest score in board achieved by students",
+    icon: "results"
+  },
+  { value: "8400", unit: "sqft", label: "Campus size", icon: "campus" },
+  { value: "103", label: "Faculty strength", icon: "faculty" }
+];
+
 export const aboutJourney = {
   title: "Our Journey",
   body: [

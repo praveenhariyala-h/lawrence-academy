@@ -8,6 +8,7 @@ import {
   aboutMessages,
   aboutMotto,
   aboutPhilosophy,
+  aboutStats,
   aboutTeams,
   aboutValues
 } from "@/lib/about";
@@ -69,6 +70,20 @@ export default function AboutBody() {
             priority
             sizes="100vw"
           />
+        </div>
+        <div className="about-stats" aria-label="School at a glance">
+          {aboutStats.map((stat, index) => (
+            <article className="about-stat about-reveal" style={delay(index)} key={stat.label}>
+              <span className="about-stat-icon" aria-hidden="true">
+                <StatIcon name={stat.icon} />
+              </span>
+              <p className="about-stat-value">
+                {stat.value}
+                {stat.unit ? <span className="about-stat-unit">{stat.unit}</span> : null}
+              </p>
+              <p className="about-stat-label">{stat.label}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -244,6 +259,46 @@ export default function AboutBody() {
         </div>
       </section>
     </AboutReveal>
+  );
+}
+
+function StatIcon({ name }: { name: "years" | "results" | "campus" | "faculty" }) {
+  if (name === "years") {
+    return (
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7">
+        <rect x="5" y="7" width="22" height="20" rx="3" />
+        <path d="M5 13h22M11 5v4M21 5v4" />
+        <path d="M12 19.2 14.4 21.5 20 16" />
+      </svg>
+    );
+  }
+
+  if (name === "results") {
+    return (
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7">
+        <path d="M6 13 16 8l10 5v8c0 3.2-4.2 6-10 6s-10-2.8-10-6v-8Z" />
+        <path d="M16 8v19M11.5 12.2c1.4.8 3 .8 4.5 0s3.1-.8 4.5 0" />
+      </svg>
+    );
+  }
+
+  if (name === "campus") {
+    return (
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7">
+        <path d="M4 27h24M7 27V15l9-7 9 7v12" />
+        <path d="M13 27v-7h6v7" />
+        <path d="M12 17h2M18 17h2M12 21h2M18 21h2" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <circle cx="11" cy="11" r="3.2" />
+      <circle cx="21" cy="12" r="2.6" />
+      <path d="M5 24c.8-3.4 3.1-5.2 7.4-5.2S18.6 20.6 19.4 24" />
+      <path d="M19.2 18.2c2.4.3 4.2 1.6 5.1 4.3" />
+    </svg>
   );
 }
 
