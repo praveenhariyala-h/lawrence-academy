@@ -5,7 +5,7 @@ export const middleSchool = {
     title: "Bridging the Gap: Preparing Students for High School Success",
     path: ["Navigate", "Explore", "Work Hard", "Succeed"],
     badge: "Curiosity\nCreates\nOpportunities",
-    image: "/images/home/curriculum/creators.png",
+    image: "/images/home/hero/hero-class.png",
     imageAlt: "Middle school students collaborating on a classroom project at Lawrence High School"
   },
   intro: {

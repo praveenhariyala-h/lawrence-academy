@@ -4,7 +4,7 @@ export const primary = {
     grades: "Grades 1 – 4",
     title: "Nurturing Foundations, Inspiring Futures",
     path: ["Curious Minds", "Confident Learners", "Kinder Humans"],
-    image: "/images/home/curriculum/young-explorers.png",
+    image: "/images/home/hero/hero-classroom.png",
     imageAlt: "Primary students exploring letters, numbers and classroom materials at Lawrence High School"
   },
   foundation: {

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AboutReveal from "@/components/about/AboutReveal";
 import KindergartenIcon from "@/components/academics/KindergartenIcon";
+import PageBanner from "@/components/PageBanner";
 import { kindergarten } from "@/lib/kindergarten";
 
 function delay(index: number): CSSProperties {
@@ -35,24 +36,13 @@ export default function KindergartenBody() {
 
   return (
     <AboutReveal>
-      <section className="kg-hero">
-        <div className="kg-hero-photo">
-          <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="100vw" />
-        </div>
-        <div className="wrap kg-hero-grid">
-          <div className="kg-hero-copy about-reveal">
-            <span className="kicker">{hero.kicker}</span>
-            <h1>{hero.title}</h1>
-            <p className="kg-hero-levels">{hero.levels}</p>
-            <ul className="kg-hero-path">
-              {hero.path.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <p className="kg-hero-badge">{hero.badge}</p>
-      </section>
+      <PageBanner
+        src={hero.image}
+        alt={hero.imageAlt}
+        kicker={hero.kicker}
+        title={hero.title}
+        grades={hero.levels}
+      />
 
       <section className="about-band">
         <div className="wrap kg-split">

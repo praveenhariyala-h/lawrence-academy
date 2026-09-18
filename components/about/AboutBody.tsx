@@ -1,5 +1,6 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
+import Image from "next/image";
+import PageBanner from "@/components/PageBanner";
 import {
   aboutHero,
   aboutJourney,
@@ -60,18 +61,10 @@ function Portrait({
 export default function AboutBody() {
   return (
     <AboutReveal>
-      <section className="about-hero">
-        <h1 className="visually-hidden">{aboutHero.title}</h1>
-        <div className="about-hero-banner about-reveal">
-          <Image
-            src={aboutHero.image}
-            alt={aboutHero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-          />
-        </div>
-        <div className="about-stats" aria-label="School at a glance">
+      <PageBanner src={aboutHero.image} alt={aboutHero.imageAlt} title={aboutHero.title} />
+
+      <section className="about-stats-band" aria-label="School at a glance">
+        <div className="about-stats">
           {aboutStats.map((stat, index) => (
             <article className="about-stat about-reveal" style={delay(index)} key={stat.label}>
               <span className="about-stat-icon" aria-hidden="true">

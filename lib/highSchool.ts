@@ -4,7 +4,7 @@ export const highSchool = {
     title: "Building Future-Ready Individuals",
     grades: "Grades 8 – 10",
     path: ["Learn", "Think", "Grow", "Lead"],
-    image: "/images/home/hero/hero-class.png",
+    image: "/images/home/curriculum/future-leaders.png",
     imageAlt: "High school students in class at Lawrence High School"
   },
   foundation: {

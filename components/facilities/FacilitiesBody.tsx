@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
-import Image from "next/image";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilityRow from "@/components/about/FacilityRow";
+import PageBanner from "@/components/PageBanner";
 import { careSpaces, facilitiesHero } from "@/lib/facilities";
 
 function delay(index: number): CSSProperties {
@@ -11,23 +11,7 @@ function delay(index: number): CSSProperties {
 export default function FacilitiesBody() {
   return (
     <AboutReveal>
-      <section className="care-hero">
-        <div className="care-hero-copy about-reveal">
-          <span className="kicker">{facilitiesHero.kicker}</span>
-          <h1>{facilitiesHero.title}</h1>
-          <p>{facilitiesHero.lede}</p>
-        </div>
-        <div className="care-hero-photo about-reveal" style={delay(1)}>
-          <Image
-            src={facilitiesHero.image}
-            alt={facilitiesHero.imageAlt}
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 58vw"
-          />
-          <p className="care-hero-script">{facilitiesHero.script}</p>
-        </div>
-      </section>
+      <PageBanner src={facilitiesHero.image} alt={facilitiesHero.imageAlt} kicker={facilitiesHero.kicker} title={facilitiesHero.title} lede={facilitiesHero.lede} />
 
       {careSpaces.map((space, index) => (
         <section

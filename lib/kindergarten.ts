@@ -5,7 +5,7 @@ export const kindergarten = {
     levels: "Nursery • LKG • UKG",
     path: ["Play", "Explore", "Learn", "Grow"],
     badge: "Small Steps\nBig Futures",
-    image: "/images/home/curriculum/little-learners.png",
+    image: "/images/home/hero/hero-kindergarten.png",
     imageAlt: "Kindergarten children playing with blocks and toys at Lawrence High School"
   },
   programme: {
