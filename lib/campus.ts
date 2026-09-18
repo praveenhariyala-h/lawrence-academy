@@ -25,8 +25,8 @@ export const campusHero = {
   kicker: "Campus",
   title: "Our Facilities",
   lede: "Spaces that inspire learning, creativity and confident futures. Our campus offers a safe, vibrant and thoughtfully designed environment with world-class facilities to support academic excellence and holistic development.",
-  image: "/images/home/hero/hero-building.png",
-  imageAlt: "Lawrence High School campus building in HSR Layout, Bengaluru"
+  image: "/images/home/hero/hero-campus.png",
+  imageAlt: "Lawrence High School campus in HSR Layout, Bengaluru"
 };
 
 export const campusSpaces: CampusSpace[] = [
@@ -40,7 +40,6 @@ export const campusSpaces: CampusSpace[] = [
       alt: "A bright classroom at Lawrence High School"
     },
     features: [
-      { icon: "ac", label: "AC Classrooms" },
       { icon: "board", label: "Smart Boards" },
       { icon: "furniture", label: "Child-Friendly Furniture" },
       { icon: "bright", label: "Well-Ventilated & Bright" }

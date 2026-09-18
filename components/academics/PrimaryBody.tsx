@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AboutReveal from "@/components/about/AboutReveal";
 import PrimaryIcon from "@/components/academics/PrimaryIcon";
+import PageBanner from "@/components/PageBanner";
 import { primary } from "@/lib/primary";
 
 function delay(index: number): CSSProperties {
@@ -32,23 +33,13 @@ export default function PrimaryBody() {
 
   return (
     <AboutReveal>
-      <section className="pr-hero">
-        <div className="wrap pr-hero-grid">
-          <div className="pr-hero-copy about-reveal">
-            <span className="kicker">{hero.kicker}</span>
-            <p className="pr-hero-grades">{hero.grades}</p>
-            <h1>{hero.title}</h1>
-            <ul className="pr-hero-path">
-              {hero.path.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="pr-hero-photo about-reveal" style={delay(1)}>
-            <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 54vw" />
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        src={hero.image}
+        alt={hero.imageAlt}
+        kicker={hero.kicker}
+        title={hero.title}
+        grades={hero.grades}
+      />
 
       <section className="about-band">
         <div className="wrap pr-foundation">

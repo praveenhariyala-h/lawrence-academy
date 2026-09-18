@@ -17,8 +17,8 @@ export const facilitiesHero = {
   title: "Care Beyond\nClassrooms",
   lede: "Thoughtfully designed to ensure the safety, well-being and happiness of every student.",
   script: "A Safer\nHappier\nBrighter\nTomorrow",
-  image: "/images/home/hero/hero-building.png",
-  imageAlt: "Lawrence High School campus building in HSR Layout, Bengaluru"
+  image: "/images/home/hero/hero-courtyard.png",
+  imageAlt: "Students and families in the Lawrence High School courtyard"
 };
 
 export const careSpaces: CareSpace[] = [

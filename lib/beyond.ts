@@ -4,8 +4,8 @@ export const beyond = {
     title: "Explore. Experience. Evolve.",
     lede: "Opportunities beyond the classroom to discover interests, build skills and create memories for life.",
     badge: "More Than\na Classroom",
-    image: "/images/home/curriculum/creators.png",
-    imageAlt: "Students collaborating beyond the classroom at Lawrence High School"
+    image: "/images/home/beyond/sports.png",
+    imageAlt: "Students playing sport beyond the classroom at Lawrence High School"
   },
   sports: {
     title: "Sports at Lawrence",
