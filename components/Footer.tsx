@@ -92,6 +92,18 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      <section className="campus-cta footer-cta">
+        <div className="wrap campus-cta-row">
+          <div className="footer-cta-copy">
+            <h2>Begin your Journey with Us</h2>
+            <p>Give your child the opportunity to learn, grow and shine at Lawrence.</p>
+            <p className="footer-cta-admissions">Admissions Open for 2027 - 2028</p>
+          </div>
+          <Link className="btn btn--gold" href="/contact">
+            Enquire Now
+          </Link>
+        </div>
+      </section>
       <div className="wrap footer-grid">
         <div className="footer-brand">
           <Link href="/" className="footer-logo">
@@ -99,7 +111,7 @@ export default function Footer() {
               src="/images/logo-footer.png"
               alt={school.name}
               width={1024}
-              height={292}
+              height={341}
               sizes="240px"
               unoptimized
             />

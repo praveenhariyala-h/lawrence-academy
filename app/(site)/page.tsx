@@ -27,7 +27,7 @@ export default async function HomePage() {
                 src={home.whyImage}
                 alt={home.whyImageAlt}
                 width={1024}
-                height={642}
+                height={641}
                 sizes="(max-width: 900px) 100vw, 58vw"
               />
             </div>

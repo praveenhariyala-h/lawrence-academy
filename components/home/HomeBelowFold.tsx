@@ -7,7 +7,6 @@ import {
   beyondClassroom,
   campusSpotlight,
   featuredAchievementFallback,
-  journeyCta,
   upcomingEvents
 } from "@/lib/homeSections";
 import type { HomeContent } from "@/lib/home";
@@ -86,7 +85,7 @@ export default async function HomeBelowFold({
                   src={campusSpotlight.image}
                   alt={campusSpotlight.alt}
                   fill
-                  sizes="(max-width: 900px) 100vw, 18vw"
+                  sizes="(max-width: 900px) 100vw, 14vw"
                 />
               </div>
               <p>{campusSpotlight.body}</p>
@@ -123,21 +122,6 @@ export default async function HomeBelowFold({
             <p>{home.partnersKicker}</p>
           </div>
           <PartnersGrid items={home.partners} />
-        </div>
-      </section>
-
-      <section className="journey">
-        <Image src={journeyCta.image} alt={journeyCta.alt} fill sizes="100vw" />
-        <div className="wrap journey-inner">
-          <div>
-            <h2>{journeyCta.title}</h2>
-            <p>{journeyCta.body}</p>
-          </div>
-          <div className="journey-actions">
-            <Link className="btn btn--gold" href={journeyCta.enquireHref}>
-              Enquire now
-            </Link>
-          </div>
         </div>
       </section>
     </>

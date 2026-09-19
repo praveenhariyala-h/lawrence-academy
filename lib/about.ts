@@ -25,11 +25,11 @@ export const aboutStats: AboutStat[] = [
 export const aboutJourney = {
   title: "Our Journey",
   body: [
-    "Our journey began in 1991 with the establishment of the Koramangala branch under the guidance of Late A. R. Subbaiah. Spread across 35 years, Lawrence High School ICSE, HSR has grown into a trusted name in ICSE education, known for its commitment to academic excellence, holistic development and strong values.",
-    "We remain focused on our core purpose: nurturing confident, compassionate and capable children for a changing world."
+    "Our journey began in 1991 with the establishment of our first school in Koramangala. Over the past 35 years, Lawrence High School ICSE, HSR has grown into a trusted name in ICSE education, rooted in academic excellence, holistic development, and strong values.",
+    "As the world evolves, our purpose remains constant—to nurture confident, compassionate, and capable young minds who are prepared not just for the future, but to shape it."
   ],
-  campusImage: "/images/about/campus.png",
-  campusAlt: "Lawrence High School ICSE campus in HSR Layout, Bengaluru",
+  campusImage: "/images/about/journey.png",
+  campusAlt: "Lawrence High School leadership lighting a ceremonial lamp at a school event",
   vision: {
     title: "Our Vision",
     text: "To create an environment that inspires and guides a child through exploration to discovery, learning and action, so they grow into a confident, capable citizen of the future."
@@ -57,7 +57,7 @@ export const aboutMessages = {
       photo: "/images/about/chairman.png",
       photoAlt: "Mr. P.M. Subbaiah, Chairman of Lawrence High School",
       initials: "PMS",
-      position: "center 18%",
+      position: "78% 12%",
       message:
         "Education for us isn’t just about books, but about life itself — building character, shaping mindsets, and preparing children for a meaningful future. Long-serving, dedicated teachers work with every child, enabling them to discover strengths, face challenges, and grow into confident individuals who will be the changemakers of our society."
     },

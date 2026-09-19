@@ -1,4 +1,4 @@
-heroLearnMoreLabel: Learn more
+heroLearnMoreLabel: Know more
 heroLearnMoreHref: /about
 heroSlides:
   - title: Welcome to Lawrence
@@ -13,10 +13,6 @@ heroSlides:
     text: Warm classrooms where young children discover, play, and learn.
     image: hero-kindergarten.png
     alt: Kindergarten teacher and students exploring together in class
-  - title: Every child a champion
-    text: At Lawrence, we blend tradition, innovation and encouragement to make every child a champion.
-    image: hero-class.png
-    alt: Students in a Lawrence High School classroom
   - title: Learning by doing
     text: Laboratories and studios where ideas become experiments and skills.
     image: hero-lab.png

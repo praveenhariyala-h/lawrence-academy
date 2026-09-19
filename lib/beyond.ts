@@ -15,26 +15,72 @@ export const beyond = {
       "The games played are football, cricket, volleyball, basketball, skating, throwball, kabaddi, taekwondo and kho-kho."
     ],
     photos: [
-      { src: "/images/home/hero/hero-courtyard.png", alt: "Students on the campus grounds", caption: "Football" },
-      { src: "/images/home/beyond/sports.png", alt: "A student batting in the cricket nets", caption: "Cricket" },
-      { src: "/images/home/hero/hero-courtyard.png", alt: "Students on the campus grounds", caption: "Volleyball" },
-      { src: "/images/home/pathway/perform.png", alt: "Students training together", caption: "Handball" },
-      { src: "/images/home/pathway/explore.png", alt: "Students in a competitive sporting session", caption: "Kabaddi" },
-      { src: "/images/home/hero/hero-courtyard.png", alt: "Children moving and playing on campus", caption: "Skating" },
-      { src: "/images/home/pathway/explore.png", alt: "Taekwondo training at Lawrence High School", caption: "Taekwondo" },
-      { src: "/images/home/pathway/perform.png", alt: "Students in a martial arts session", caption: "Kho-Kho" }
+      {
+        src: "/images/about/bb-sports-1.png",
+        alt: "Students marching with house flags on sports day at Lawrence High School",
+        caption: "Sports Day"
+      },
+      {
+        src: "/images/about/bb-sports-2.png",
+        alt: "Students practising yoga on the sports field at Lawrence High School",
+        caption: "Yoga"
+      },
+      {
+        src: "/images/about/bb-sports-3.png",
+        alt: "Students performing a mass display on sports day at Lawrence High School",
+        caption: "Mass Display"
+      },
+      {
+        src: "/images/about/bb-sports-4.png",
+        alt: "Students celebrating together on the playground at Lawrence High School",
+        caption: "Team Spirit"
+      }
     ]
   },
   creative: {
     title: "Creative Expression",
     lede: "“Art Speaks Where Words Are Silent.”",
     photos: [
-      { src: "/images/home/pathway/create.png", alt: "Students making music together", caption: "Music" },
-      { src: "/images/home/pathway/perform.png", alt: "Students in a performance session", caption: "Dance" },
-      { src: "/images/home/beyond/art.png", alt: "Students painting in art class", caption: "Art" },
-      { src: "/images/home/beyond/mun.png", alt: "Students presenting and performing", caption: "Drama" },
-      { src: "/images/home/beyond/art.png", alt: "Hands-on creative work at Lawrence High School", caption: "Pottery" },
-      { src: "/images/home/pathway/grow.png", alt: "A teacher sharing stories with young learners", caption: "Storytelling & Karadi Path" }
+      {
+        src: "/images/about/bb-art.png",
+        alt: "Students drawing and painting in art class at Lawrence High School",
+        caption: "Art"
+      },
+      {
+        src: "/images/about/bb-dance-5.png",
+        alt: "Students performing a group dance in purple on stage at Lawrence High School",
+        caption: "Dance"
+      },
+      {
+        src: "/images/about/bb-dance-6.png",
+        alt: "Students performing a classical dance at Lawrence High School",
+        caption: "Dance"
+      },
+      {
+        src: "/images/about/bb-dance-1.png",
+        alt: "Students performing a group dance on stage at Lawrence High School",
+        caption: "Dance"
+      },
+      {
+        src: "/images/about/bb-drama-2.png",
+        alt: "Students performing a historical drama on stage at Lawrence High School",
+        caption: "Drama"
+      },
+      {
+        src: "/images/about/bb-pottery.png",
+        alt: "Students learning pottery with a teacher at Lawrence High School",
+        caption: "Pottery"
+      },
+      {
+        src: "/images/about/bb-library-2.png",
+        alt: "Students reading in the library at Lawrence High School",
+        caption: "Storytelling"
+      },
+      {
+        src: "/images/about/bb-library-1.png",
+        alt: "Students choosing books in the Lawrence High School library",
+        caption: "Storytelling"
+      }
     ],
     items: [
       {
@@ -59,9 +105,21 @@ export const beyond = {
     title: "Communication Skills",
     lede: "Speak. Lead. Make a Difference.",
     photos: [
-      { src: "/images/home/beyond/mun.png", alt: "Students at a Model United Nations session", caption: "Model United Nations" },
-      { src: "/images/home/hero/hero-assembly.png", alt: "School assembly at Lawrence High School", caption: "Assembly" },
-      { src: "/images/home/pathway/lead.png", alt: "A student speaking up in class", caption: "Show & Tell" }
+      {
+        src: "/images/about/bb-mun.png",
+        alt: "Students presenting on stage at Lawrence High School",
+        caption: "Model United Nations"
+      },
+      {
+        src: "/images/about/bb-assembly-1.png",
+        alt: "School assembly in the auditorium at Lawrence High School",
+        caption: "Assembly"
+      },
+      {
+        src: "/images/about/bb-assembly-2.png",
+        alt: "Students gathered for assembly at Lawrence High School",
+        caption: "Assembly"
+      }
     ],
     items: [
       {
@@ -115,32 +173,28 @@ export const beyond = {
   programmes: [
     {
       title: "Vedic Maths",
-      body: "Vedic Maths, the ancient computational system, helps students perform calculations swiftly, build number sense and make mathematical concepts simple, visual and effective for everyday solving.",
+      body: "Our Vedic Maths programme helps students develop strong numerical ability, improve mental calculation skills and build confidence in problem solving. Using ancient Indian techniques, we make mathematics simple, fun and effective for everyday use.",
       image: "/images/home/curriculum/young-explorers.png",
-      imageAlt: "Students exploring numbers and mathematical thinking"
+      imageAlt: "A student practising Vedic Maths at Lawrence High School",
+      tone: "plain"
     },
     {
       title: "Financial Literacy at Lawrence High School",
       lede: "“Empowering students with lifelong financial wisdom.”",
-      body: "Financial literacy is introduced as a structured programme from Grades 3 to 10, aligned with NEP 2020 and ICSE standards. Our curriculum covers budgeting, saving, banking and digital wallets, with real-life applications that help students make responsible money decisions well beyond the classroom.",
+      body: "We empower students with essential Financial Literacy skills from Grades 6 to 8. Aligned with NEP 2020 and ICSE standards, our curriculum covers budgeting, saving, banking and digital payments and many more. Interactive lessons and industrial visits help students connect classroom learning with real-life financial decision-making.",
       image: "/images/home/curriculum/creators.png",
-      imageAlt: "Students collaborating on a classroom project"
+      imageAlt: "Students learning financial literacy together at Lawrence High School",
+      tone: "gold"
     }
   ],
   trips: {
     title: "Field Trips & Fun Trips",
     lede: "Learn Beyond Boundaries",
-    body: "Our field trips and fun trips provide real-world learning experiences. Guided outdoor activities, visits to museums, science centres, cultural sites and nature destinations help students connect classroom learning with the world around them.",
+    body: "Our field trips and fun trips provide real-world learning experiences, spark curiosity and create lifelong memories. Visits to museums, industries, historical places and nature destinations help students connect classroom learning with the world around them.",
     photos: [
       { src: "/images/about/campus.png", alt: "Lawrence High School campus and outdoor spaces", caption: "Educational Visits" },
       { src: "/images/home/hero/hero-courtyard.png", alt: "Students together on campus", caption: "Learning Experiences" },
       { src: "/images/home/pathway/grow.png", alt: "Students sharing a joyful learning moment", caption: "Fun and Friendship" }
     ]
-  },
-  cta: {
-    title: "Experiences Today\nLeaders Tomorrow",
-    lede: "Discover the learning that goes beyond the classroom.",
-    href: "/admissions",
-    label: "Enquire Now"
   }
 };

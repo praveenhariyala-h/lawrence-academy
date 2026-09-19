@@ -2,47 +2,53 @@ export const kindergarten = {
   hero: {
     kicker: "Kindergarten",
     title: "A Joyful Beginning for a Brighter Tomorrow",
-    levels: "Nursery • LKG • UKG",
-    path: ["Play", "Explore", "Learn", "Grow"],
-    badge: "Small Steps\nBig Futures",
-    image: "/images/home/hero/hero-kindergarten.png",
-    imageAlt: "Kindergarten children playing with blocks and toys at Lawrence High School"
+    pills: ["Nursery", "LKG", "UKG"],
+    image: "/images/about/kg-hero.png",
+    imageAlt: "Kindergarten children learning together in a Lawrence High School classroom"
   },
   programme: {
-    title: "A Thoughtfully Designed Kindergarten Programme",
-    body: "At Lawrence High School, our Kindergarten programme is aligned with NEP 2020 and the Collins Kindergarten Series. We follow an experiential, play-based and activity-driven approach to build essential skills in literacy, numeracy, general awareness and communication, while nurturing creativity, confidence and a lifelong love for learning.",
-    image: "/images/home/hero/hero-kindergarten.png",
-    imageAlt: "A kindergarten teacher and children exploring together in class"
-  },
-  curriculum: {
-    title: "Our Curriculum",
-    lede: "Age-appropriate learning. A strong foundation for life.",
-    stages: [
+    kicker: "Our Approach",
+    title: "Learning Through Joy and Discovery",
+    body: "We believe that the early years are a time of endless possibilities. Our play-based and activity-driven approach helps children build essential skills in literacy, numeracy, communication and creativity, while nurturing curiosity and confidence.",
+    photos: [
       {
-        icon: "plant",
-        title: "Nursery",
-        age: "Age 3 – 4 years",
-        body: "A joyful introduction to learning through rhymes, stories, art, pre-math concepts, phonics and play-based activities."
+        src: "/images/about/kg-approach-1.png",
+        alt: "A kindergarten child and parent decorating a pot together at Lawrence High School"
       },
       {
-        icon: "book",
+        src: "/images/about/kg-approach-2.png",
+        alt: "Families learning classroom rules together in a kindergarten classroom"
+      },
+      {
+        src: "/images/about/kg-approach-3.png",
+        alt: "A teacher making music with kindergarten children at Lawrence High School"
+      }
+    ]
+  },
+  curriculum: {
+    kicker: "Our Curriculum",
+    title: "Age-appropriate Learning, A Strong Foundation for Life.",
+    stages: [
+      {
+        title: "Nursery",
+        age: "Age 3 – 4 years",
+        body: "A joyful introduction through rhymes, stories, art, pre-math concepts, phonics and play."
+      },
+      {
         title: "LKG",
         age: "Age 4 – 5 years",
         body: "Building early reading, numeracy and communication through engaging activities, three-letter words, theme-based learning and exploration."
       },
       {
-        icon: "cap",
         title: "UKG",
         age: "Age 5 – 6 years",
-        body: "A well-rounded programme that strengthens academics, creativity, communication skills and independent thinking, preparing children for the next stage."
+        body: "A well-rounded programme that strengthens academics, creativity, communication skills and independent thinking."
       }
     ]
   },
   development: {
-    title: "Learning & Development",
-    lede: "Nurturing every aspect of a child’s growth.",
-    image: "/images/home/curriculum/young-explorers.png",
-    imageAlt: "Young learners exploring letters, numbers and classroom materials",
+    kicker: "Learning & Development",
+    title: "Nurturing Every Aspect of a Child’s Growth",
     items: [
       {
         icon: "literacy",
@@ -50,19 +56,14 @@ export const kindergarten = {
         text: "Phonics, reading and language skills"
       },
       {
-        icon: "creativity",
-        title: "Creativity",
-        text: "Art, music and imaginative play"
-      },
-      {
         icon: "numeracy",
         title: "Numeracy",
         text: "Pre-math concepts and logical thinking"
       },
       {
-        icon: "physical",
-        title: "Physical Development",
-        text: "Indoor and outdoor activities and motor skills"
+        icon: "creativity",
+        title: "Creativity",
+        text: "Art, music and imaginative play"
       },
       {
         icon: "communication",
@@ -70,42 +71,52 @@ export const kindergarten = {
         text: "Expression and confidence"
       },
       {
+        icon: "physical",
+        title: "Physical Development",
+        text: "Indoor and outdoor activities and motor skills"
+      },
+      {
         icon: "social",
-        title: "Social and Emotional Growth",
+        title: "Social & Emotional Growth",
         text: "Teamwork, empathy and self-confidence"
       }
     ]
   },
   visible: {
-    title: "Making Learning Visible",
-    body: [
-      "Learning is a journey best understood when it is seen, felt, and celebrated. Our Making Learning Visible event invites parents into the classrooms to witness the learning experiences their children have engaged in throughout the term.",
-      "The showcase includes hands-on activities, projects, art, literacy and numeracy displays, skill-based work, and storytelling sessions. It’s a wonderful opportunity to observe how concepts are introduced and absorbed through play, exploration, and guided learning."
-    ],
-    image: "/images/home/beyond/art.png",
-    imageAlt: "Students showing creative work at Lawrence High School"
+    kicker: "Making Learning Visible",
+    title: "Every Experience Tells a Story",
+    body: "Our Making Learning Visible approach invites parents into the classroom to witness the learning journey as it happens. Through displays, portfolios and child-led presentations, we celebrate progress, creativity and confidence.",
+    photos: [
+      {
+        src: "/images/about/kg-visible-1.png",
+        alt: "Kindergarten children working on colour and number worksheets at Lawrence High School"
+      },
+      {
+        src: "/images/about/kg-visible-2.png",
+        alt: "A kindergarten child during Sugar Free Day at Lawrence High School"
+      },
+      {
+        src: "/images/about/kg-visible-3.png",
+        alt: "Kindergarten children planting and exploring growth at Lawrence High School"
+      }
+    ]
   },
   families: {
-    title: "Engaging Families: Parent & Grandparent Involvement",
-    lede: "Children thrive when families are actively involved in their learning journey. We regularly organize interactive activities with parents and grandparents, making school a shared space of joy and connection.",
-    events: [
+    kicker: "Engaging Families",
+    title: "A Stronger Journey Together",
+    body: "We value the involvement of parents and grandparents in every kindergarten journey. Through regular interactions, workshops and celebrations, we create a meaningful home-school partnership that nurtures every child’s growth.",
+    photos: [
       {
-        title: "Fireless Cooking with Dad",
-        text: "Bonding through simple, delicious recipes.",
-        image: "/images/home/pathway/grow.png",
-        imageAlt: "Kindergarten children sharing a classroom activity at Lawrence High School"
+        src: "/images/about/kg-families-1.png",
+        alt: "A parent drawing with a kindergarten child at Lawrence High School"
       },
       {
-        title: "Diya Decoration",
-        text: "Celebrating traditions together.",
-        image: "/images/home/beyond/art.png",
-        imageAlt: "Students decorating and painting at Lawrence High School"
+        src: "/images/about/kg-families-2.png",
+        alt: "A father and child celebrating Best Dad day at Lawrence High School"
       },
       {
-        title: "Storytelling with Grandparents",
-        text: "Passing on wisdom, stories and warmth.",
-        image: "/images/home/hero/hero-kindergarten.png",
-        imageAlt: "A teacher sharing stories and play with kindergarten children"
+        src: "/images/about/kg-families-3.png",
+        alt: "A parent and child cooking together at Lawrence High School"
       }
     ]
   },
@@ -113,27 +124,37 @@ export const kindergarten = {
     title: "Kindergarten Moments",
     photos: [
       {
-        src: "/images/home/curriculum/little-learners.png",
-        alt: "Kindergarten children playing with blocks"
+        src: "/images/about/kg-moments-1.png",
+        alt: "Kindergarten children in festive dress around a rangoli at Lawrence High School"
       },
       {
-        src: "/images/home/pathway/grow.png",
-        alt: "Kindergarten classroom at Lawrence High School"
+        src: "/images/about/kg-moments-2.png",
+        alt: "Kindergarten children in hats celebrating summer at Lawrence High School"
       },
       {
-        src: "/images/home/curriculum/young-explorers.png",
-        alt: "Young learners exploring letters and numbers"
+        src: "/images/about/kg-moments-3.png",
+        alt: "Kindergarten children working on colour and number worksheets"
       },
       {
-        src: "/images/home/hero/hero-courtyard.png",
-        alt: "Children on campus at Lawrence High School"
+        src: "/images/about/kg-moments-4.png",
+        alt: "Kindergarten children colouring with crayons at Lawrence High School"
+      },
+      {
+        src: "/images/about/kg-moments-5.png",
+        alt: "Kindergarten children finger painting at Lawrence High School"
+      },
+      {
+        src: "/images/about/kg-moments-6.png",
+        alt: "Kindergarten children playing with building blocks"
+      },
+      {
+        src: "/images/about/kg-moments-7.png",
+        alt: "Kindergarten children balancing on a play track at Lawrence High School"
+      },
+      {
+        src: "/images/about/kg-moments-8.png",
+        alt: "Kindergarten children skating at Lawrence High School"
       }
     ]
-  },
-  cta: {
-    title: "Begin Their Journey with Us",
-    lede: "Give your child the opportunity to learn, grow and shine at Lawrence.",
-    href: "/admissions",
-    label: "Enquire Now"
   }
 };
