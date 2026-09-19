@@ -8,6 +8,45 @@ function Svg({ children }: { children: React.ReactNode }) {
 
 export default function HighSchoolIcon({ name }: { name: string }) {
   switch (name) {
+    case "cap":
+      return (
+        <Svg>
+          <path d="M3 10 12 5l9 5-9 5Z" />
+          <path d="M7 12.2v4.2c0 1.4 2.2 2.6 5 2.6s5-1.2 5-2.6v-4.2" />
+          <path d="M21 10v6" />
+        </Svg>
+      );
+    case "mentorship":
+      return (
+        <Svg>
+          <circle cx="9" cy="8" r="2.2" />
+          <circle cx="16" cy="9" r="1.8" />
+          <path d="M4.5 18c.7-3.2 2.6-5 4.5-5s3.8 1.8 4.5 5" />
+          <path d="M13.2 18c.4-2.2 1.6-3.5 3-3.5 1.5 0 2.6 1.2 3.1 3.5" />
+        </Svg>
+      );
+    case "brain":
+      return (
+        <Svg>
+          <path d="M8.2 9.2A3.2 3.2 0 0 1 12 6.2a3.2 3.2 0 0 1 3.6 3.1c1.6.4 2.7 1.8 2.7 3.5 0 1.4-.8 2.6-2 3.2v2.2c0 .9-.7 1.6-1.6 1.6h-5.4A1.6 1.6 0 0 1 7.7 18v-2.2a3.4 3.4 0 0 1-1.4-2.8c0-1.6 1-3 2-3.8Z" />
+          <path d="M12 8.5v9.2M9.2 12.2h2.6M13.4 14.4H15" />
+        </Svg>
+      );
+    case "heart":
+      return (
+        <Svg>
+          <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" />
+        </Svg>
+      );
+    case "guided":
+      return (
+        <Svg>
+          <circle cx="9" cy="8" r="2.2" />
+          <circle cx="16" cy="9" r="1.8" />
+          <path d="M4.5 18c.7-3.2 2.6-5 4.5-5s3.8 1.8 4.5 5" />
+          <path d="M13.2 18c.4-2.2 1.6-3.5 3-3.5 1.5 0 2.6 1.2 3.1 3.5" />
+        </Svg>
+      );
     case "language":
       return (
         <Svg>
@@ -40,17 +79,44 @@ export default function HighSchoolIcon({ name }: { name: string }) {
     case "geography":
       return (
         <Svg>
-          <circle cx="12" cy="12" r="8" />
-          <path d="M4 12h16M12 4c2.4 2.8 3.6 5.4 3.6 8S14.4 17.2 12 20M12 4C9.6 6.8 8.4 9.4 8.4 12S9.6 17.2 12 20" />
+          <path d="M12 21s7-6.2 7-11.2A7 7 0 1 0 5 9.8C5 14.8 12 21 12 21Z" />
+          <circle cx="12" cy="9.8" r="2.2" />
+        </Svg>
+      );
+    case "biology":
+      return (
+        <Svg>
+          <path d="M12 21v-8" />
+          <path d="M12 13c0-6 4-9 8-10-1 6-4 9-8 10" />
+          <path d="M12 13c0-5-4-8-8-9 1 6 4 8 8 9" />
+        </Svg>
+      );
+    case "physics":
+      return (
+        <Svg>
+          <circle cx="12" cy="12" r="2" />
+          <ellipse cx="12" cy="12" rx="9" ry="4" />
+          <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)" />
+          <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(120 12 12)" />
+        </Svg>
+      );
+    case "chemistry":
+      return (
+        <Svg>
+          <path d="M9 3h6M10 3v5l-4.5 9A3 3 0 0 0 8.2 21h7.6a3 3 0 0 0 2.7-4L14 8V3" />
         </Svg>
       );
     case "maths":
-    case "commerce":
       return (
         <Svg>
-          <rect x="5" y="3" width="14" height="18" rx="2" />
-          <rect x="7.5" y="6" width="9" height="3" rx="0.6" />
-          <path d="M8 13h.1M12 13h.1M16 13h.1M8 16.5h.1M12 16.5h.1M16 16.5h.1" />
+          <path d="M8 5v14M16 5v14M5 9h14M5 15h14" />
+        </Svg>
+      );
+    case "commerce":
+    case "economics":
+      return (
+        <Svg>
+          <path d="M4 19h16M7 16V11M12 16V7M17 16v-4" />
         </Svg>
       );
     case "science":
@@ -65,12 +131,6 @@ export default function HighSchoolIcon({ name }: { name: string }) {
         <Svg>
           <rect x="4" y="5" width="16" height="11" rx="1.6" />
           <path d="M2.5 18h19l-1.1 1.7A1.6 1.6 0 0 1 19 20.5H5a1.6 1.6 0 0 1-1.4-.8Z" />
-        </Svg>
-      );
-    case "economics":
-      return (
-        <Svg>
-          <path d="M4 19h16M7 16V11M12 16V7M17 16v-4" />
         </Svg>
       );
     case "pe":

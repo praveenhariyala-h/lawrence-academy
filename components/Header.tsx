@@ -122,8 +122,8 @@ function Header() {
               className="logo-lockup"
               src="/images/logo-lockup.png"
               alt="Lawrence High School, HSR Layout, Bengaluru"
-              width={522}
-              height={150}
+              width={1024}
+              height={341}
               priority
             />
           </Link>

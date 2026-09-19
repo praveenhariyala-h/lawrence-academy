@@ -15,16 +15,13 @@ export type CampusSpace = {
   tagline: string;
   body: string;
   reverse?: boolean;
-  overlay?: string;
   image?: SpacePhoto;
   gallery?: SpacePhoto[];
   features: SpaceFeature[];
 };
 
 export const campusHero = {
-  kicker: "Campus",
-  title: "Our Facilities",
-  lede: "Spaces that inspire learning, creativity and confident futures. Our campus offers a safe, vibrant and thoughtfully designed environment with world-class facilities to support academic excellence and holistic development.",
+  title: "Our Campus",
   image: "/images/home/hero/hero-campus.png",
   imageAlt: "Lawrence High School campus in HSR Layout, Bengaluru"
 };
@@ -51,10 +48,9 @@ export const campusSpaces: CampusSpace[] = [
     tagline: "Explore. Create. Innovate.",
     body: "We have 2 fully equipped computer laboratories with 40 computers each. High-speed internet, updated software and trained instructors help students develop digital skills, coding knowledge and practical expertise.",
     reverse: true,
-    overlay: "Think\nCode\nCreate",
     image: {
-      src: "/images/home/hero/hero-class.png",
-      alt: "Students working in a Lawrence High School learning space"
+      src: "/images/about/computer-lab.png",
+      alt: "Students working at computers in the Lawrence High School computer lab"
     },
     features: [
       { icon: "computers", label: "40 computers each" },
@@ -70,18 +66,18 @@ export const campusSpaces: CampusSpace[] = [
     body: "Our well-equipped Physics, Chemistry and Biology laboratories provide students with practical exposure and inquiry-based learning experiences. The labs are designed to meet ICSE standards and encourage scientific temper, curiosity and innovation.",
     gallery: [
       {
-        src: "/images/home/hero/hero-lab.png",
-        alt: "Science laboratory at Lawrence High School",
+        src: "/images/about/science-physics.png",
+        alt: "Students working with physics apparatus in the Lawrence High School laboratory",
         caption: "Physics Lab"
       },
       {
-        src: "/images/home/pathway/innovate.png",
-        alt: "Students exploring scientific ideas at Lawrence High School",
+        src: "/images/about/science-chemistry.png",
+        alt: "Students conducting chemistry experiments in the Lawrence High School laboratory",
         caption: "Chemistry Lab"
       },
       {
-        src: "/images/home/pathway/explore.png",
-        alt: "Hands-on discovery at Lawrence High School",
+        src: "/images/about/science-biology.png",
+        alt: "Students using a microscope in the Lawrence High School biology laboratory",
         caption: "Biology Lab"
       }
     ],
@@ -98,7 +94,6 @@ export const campusSpaces: CampusSpace[] = [
     tagline: "Build. Program. Innovate.",
     body: "Our Robotics Lab nurtures innovation and problem-solving through LEGO, Arduino kits, sensors and modern tools. It provides a space for students to design, build and test real-world solutions, fostering creativity and 21st century skills.",
     reverse: true,
-    overlay: "Build\nProgram\nInnovate",
     image: {
       src: "/images/home/hero/hero-robotics.png",
       alt: "Robotics work and student projects at Lawrence High School"
@@ -132,7 +127,6 @@ export const campusSpaces: CampusSpace[] = [
     tagline: "A Stage for Every Talent.",
     body: "Our spacious and well-equipped auditoriums host assemblies, cultural programs, seminars, workshops and inter-school events. With modern audio-visual facilities and comfortable seating, they provide the perfect stage for students to showcase their talent and build confidence.",
     reverse: true,
-    overlay: "ideas\nexpress\ninspire",
     image: {
       src: "/images/home/hero/hero-assembly.png",
       alt: "School assembly and performance space at Lawrence High School"
@@ -145,11 +139,10 @@ export const campusSpaces: CampusSpace[] = [
     ]
   },
   {
-    id: "sanipit",
-    title: "Sanipit Area",
+    id: "sandpit",
+    title: "Sandpit Area",
     tagline: "Healthy Meals. Happy Minds.",
     body: "Our spacious and hygienic canteen provides freshly prepared nutritious meals in a clean and comfortable environment. It is a place where students can unwind in a safe, supervised and friendly atmosphere.",
-    overlay: "Good Food\nBetter Mood",
     image: {
       src: "/images/home/hero/hero-kindergarten.png",
       alt: "A bright shared space for students at Lawrence High School"
@@ -164,7 +157,8 @@ export const campusSpaces: CampusSpace[] = [
 ];
 
 export const campusCta = {
-  title: "More Than A Campus\nA Community For Life",
+  title: "Begin your Journey with Us",
+  lede: "Give your child the opportunity to learn, grow and shine at Lawrence.",
   href: "/contact",
   label: "Enquire Now"
 };

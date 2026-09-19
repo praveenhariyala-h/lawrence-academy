@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import AboutReveal from "@/components/about/AboutReveal";
+import FacilitySlider from "@/components/about/FacilitySlider";
 import BeyondIcon from "@/components/beyond/BeyondIcon";
 import PageBanner from "@/components/PageBanner";
 import { beyond } from "@/lib/beyond";
@@ -34,14 +34,14 @@ function CaptionPhoto({
 }
 
 export default function BeyondBody() {
-  const { hero, sports, creative, communication, stem, programmes, trips, cta } = beyond;
+  const { hero, sports, creative, communication, stem, programmes, trips } = beyond;
 
   return (
     <AboutReveal>
       <PageBanner src={hero.image} alt={hero.imageAlt} kicker={hero.kicker} title={hero.title} lede={hero.lede} />
 
       <section className="about-band">
-        <div className="wrap bb-split">
+        <div className="wrap bb-split bb-split--sports">
           <div className="kg-copy about-reveal">
             <h2 className="kg-title">{sports.title}</h2>
             <p className="kg-lede">{sports.lede}</p>
@@ -49,10 +49,12 @@ export default function BeyondBody() {
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
             ))}
           </div>
-          <div className="bb-shots bb-shots--4 about-reveal" style={delay(1)}>
-            {sports.photos.map((photo) => (
-              <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 18vw" />
-            ))}
+          <div className="bb-sports-media about-reveal" style={delay(1)}>
+            <FacilitySlider
+              photos={sports.photos}
+              className="kg-slider"
+              sizes="(max-width: 900px) 100vw, 52vw"
+            />
           </div>
         </div>
       </section>
@@ -63,19 +65,40 @@ export default function BeyondBody() {
             <h2 className="kg-title">{creative.title}</h2>
             <p>{creative.lede}</p>
           </header>
-          <div className="bb-split">
-            <div className="bb-shots bb-shots--3 about-reveal">
-              {creative.photos.map((photo) => (
-                <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 22vw" />
-              ))}
+          <div className="bb-creative-rows">
+            <div className="bb-split bb-split--creative">
+              <div className="bb-creative-media about-reveal">
+                <FacilitySlider
+                  photos={creative.photos.slice(0, 4)}
+                  className="kg-slider"
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                />
+              </div>
+              <div className="bb-articles about-reveal" style={delay(1)}>
+                {creative.items.slice(0, 2).map((item) => (
+                  <article key={item.title}>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="bb-articles about-reveal" style={delay(1)}>
-              {creative.items.map((item) => (
-                <article key={item.title}>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </article>
-              ))}
+            <div className="bb-split bb-split--creative">
+              <div className="bb-creative-media about-reveal">
+                <FacilitySlider
+                  photos={creative.photos.slice(4)}
+                  className="kg-slider"
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                />
+              </div>
+              <div className="bb-articles about-reveal" style={delay(1)}>
+                {creative.items.slice(2).map((item) => (
+                  <article key={item.title}>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -88,15 +111,12 @@ export default function BeyondBody() {
             <p>{communication.lede}</p>
           </header>
           <div className="bb-comms">
-            <div className="bb-shots bb-shots--3 about-reveal">
-              {communication.photos.map((photo) => (
-                <CaptionPhoto
-                  key={photo.caption}
-                  {...photo}
-                  sizes="(max-width: 900px) 50vw, 22vw"
-                  className="bb-shot--portrait"
-                />
-              ))}
+            <div className="bb-comms-media about-reveal">
+              <FacilitySlider
+                photos={communication.photos}
+                className="kg-slider"
+                sizes="(max-width: 900px) 100vw, 52vw"
+              />
             </div>
             <div className="bb-comms-items about-reveal" style={delay(1)}>
               {communication.items.map((item) => (
@@ -145,45 +165,36 @@ export default function BeyondBody() {
         </div>
       </section>
 
-      <section className="about-band">
-        <div className="wrap bb-programmes">
-          {programmes.map((item, index) => (
-            <article className="bb-programme about-reveal" style={delay(index)} key={item.title}>
-              <h2 className="kg-title">{item.title}</h2>
-              {"lede" in item && item.lede ? <p className="kg-lede">{item.lede}</p> : null}
-              <p>{item.body}</p>
-              <div className="kg-photo bb-programme-photo">
-                <Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 900px) 100vw, 46vw" />
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="about-band about-band--soft">
-        <div className="wrap bb-split">
-          <div className="kg-copy about-reveal">
-            <h2 className="kg-title">{trips.title}</h2>
-            <p className="kg-lede">{trips.lede}</p>
-            <p>{trips.body}</p>
-          </div>
-          <div className="bb-shots bb-shots--3 about-reveal" style={delay(1)}>
-            {trips.photos.map((photo) => (
-              <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 22vw" />
+        <div className="wrap">
+          <div className="bb-programmes">
+            {programmes.map((item, index) => (
+              <article
+                className={`bb-programme bb-programme--${item.tone} about-reveal`}
+                style={delay(index)}
+                key={item.title}
+              >
+                <h2 className="kg-title">{item.title}</h2>
+                {"lede" in item && item.lede ? <p className="kg-lede">{item.lede}</p> : null}
+                <p>{item.body}</p>
+                <div className="kg-photo bb-programme-photo">
+                  <Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 900px) 100vw, 46vw" />
+                </div>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="campus-cta kg-cta pr-cta bb-cta">
-        <div className="wrap campus-cta-row about-reveal">
-          <div className="kg-cta-copy">
-            <h2>{cta.title}</h2>
-            <p>{cta.lede}</p>
+          <div className="bb-split bb-split--trips">
+            <div className="kg-copy about-reveal">
+              <h2 className="kg-title">{trips.title}</h2>
+              <p className="kg-lede">{trips.lede}</p>
+              <p>{trips.body}</p>
+            </div>
+            <div className="bb-shots bb-shots--3 about-reveal" style={delay(1)}>
+              {trips.photos.map((photo) => (
+                <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 22vw" />
+              ))}
+            </div>
           </div>
-          <Link className="btn btn--gold" href={cta.href}>
-            {cta.label}
-          </Link>
         </div>
       </section>
     </AboutReveal>

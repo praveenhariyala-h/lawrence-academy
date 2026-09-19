@@ -3,128 +3,133 @@ export const middleSchool = {
     kicker: "Middle School",
     grades: "Grades 5 – 7",
     title: "Bridging the Gap: Preparing Students for High School Success",
-    path: ["Navigate", "Explore", "Work Hard", "Succeed"],
-    badge: "Curiosity\nCreates\nOpportunities",
     image: "/images/home/hero/hero-class.png",
-    imageAlt: "Middle school students collaborating on a classroom project at Lawrence High School"
+    imageAlt: "Middle school students collaborating in a classroom at Lawrence High School"
   },
-  intro: {
-    body: "The middle school years are a time of exploration, deeper learning and self-discovery. At Lawrence High School ICSE, we follow the motivational philosophy of NEWS – Navigate, Explore, Work Hard, Succeed, and provide a supportive environment where students build academic strength, develop new interests and grow into confident, responsible individuals.",
-    image: "/images/home/pathway/learn.png",
-    imageAlt: "Students reading and studying in the Lawrence High School library"
+  approach: {
+    kicker: "Our Approach",
+    title: "The NEWS Philosophy",
+    body: "At the Middle School level, we follow the motivational philosophy of NEWS: Navigate, Explore, Work hard, Succeed. We create a learning environment that encourages curiosity, builds resilience and develops independent thinkers who are ready for the opportunities of high school and beyond.",
+    photos: [
+      {
+        src: "/images/home/hero/hero-robotics.png",
+        alt: "Middle school students collaborating on robotics and design at Lawrence High School"
+      },
+      {
+        src: "/images/home/curriculum/creators.png",
+        alt: "Middle school students working together on a classroom project"
+      },
+      {
+        src: "/images/home/pathway/learn.png",
+        alt: "Middle school students reading in the Lawrence High School library"
+      }
+    ],
+    values: [
+      {
+        icon: "navigate",
+        title: "Navigate",
+        text: "Discover possibilities and find your direction."
+      },
+      {
+        icon: "explore",
+        title: "Explore",
+        text: "Be curious, ask questions and think beyond."
+      },
+      {
+        icon: "work",
+        title: "Work Hard",
+        text: "Build skills, practise with purpose and stay committed."
+      },
+      {
+        icon: "succeed",
+        title: "Succeed",
+        text: "Achieve your goals and create a brighter future."
+      }
+    ]
   },
   curriculum: {
-    title: "Our Curriculum",
-    lede: "Concepts Today. Opportunities Tomorrow.",
-    body: "Our NEP-aligned curriculum focuses on conceptual understanding, critical thinking and application of knowledge. With innovative teaching strategies and an interdisciplinary approach, students connect ideas across subjects and explore real-world relevance. From Grade 6, we incorporate board-based question papers to prepare students for higher classes with confidence.",
-    groups: [
-      {
-        title: "Grade 5",
-        subjects: [
-          { icon: "english", title: "English" },
-          { icon: "maths", title: "Mathematics" },
-          { icon: "science", title: "Science" },
-          { icon: "social", title: "Social Studies" },
-          { icon: "computer", title: "Computers" },
-          { icon: "coding", title: "Coding" }
-        ]
-      },
-      {
-        title: "Grades 6 & 7",
-        subjects: [
-          { icon: "english", title: "English" },
-          { icon: "maths", title: "Mathematics" },
-          { icon: "biology", title: "Biology" },
-          { icon: "physics", title: "Physics" },
-          { icon: "chemistry", title: "Chemistry" },
-          { icon: "geography", title: "Geography" },
-          { icon: "civics", title: "History & Civics" },
-          { icon: "computer", title: "Computers" },
-          { icon: "coding", title: "Coding" }
-        ]
-      }
-    ]
+    kicker: "Our Curriculum",
+    title: "A Strong Foundation for a Changing World",
+    body: "Our curriculum prepares students for the real world, with board-based question papers from Grade 6 to build academic strength. Each subject incorporates aspects of the United Nations Sustainable Development Goals (SDGs) to instill strong values and a sense of global responsibility.",
+    grade5: {
+      title: "Grade 5",
+      subjects: [
+        { icon: "english", title: "English" },
+        { icon: "social", title: "Social Studies" },
+        { icon: "maths", title: "Mathematics" },
+        { icon: "computer", title: "Computers" },
+        { icon: "science", title: "Science" },
+        { icon: "coding", title: "Coding" }
+      ]
+    },
+    grade67: {
+      title: "Grades 6 & 7",
+      subjects: [
+        { icon: "english", title: "English" },
+        { icon: "geography", title: "Geography" },
+        { icon: "maths", title: "Mathematics" },
+        { icon: "civics", title: "History & Civics" },
+        { icon: "biology", title: "Biology" },
+        { icon: "computer", title: "Computers" },
+        { icon: "physics", title: "Physics" },
+        { icon: "coding", title: "Coding" },
+        { icon: "chemistry", title: "Chemistry" }
+      ]
+    }
   },
-  enrichment: {
-    title: "Enrichment and Skill Development",
-    lede: "Beyond academics, students participate in a wide range of expert-led programmes that enhance creativity, confidence, physical fitness and life skills.",
-    image: "/images/home/beyond/sports.png",
-    imageAlt: "A student practising sport at Lawrence High School",
+  beyond: {
+    kicker: "Beyond Academics",
+    title: "Enriching Experiences, Lifelong Skills",
+    body: "Beyond academics, students engage in enrichment programs like Vedic Math, Financial Literacy, Robotics, Taekwondo, Dance, Music, Pottery, Theatre, Public Speaking, Yoga and Life Skills. We offer specialised coaching in various sports that fosters physical fitness and teamwork. To strengthen English skills, we offer Public Speaking and Reading Classes that build confidence and communication. Current affairs discussions enhance awareness and analytical thinking.",
     items: [
       { icon: "vedic", title: "Vedic Math" },
-      { icon: "pottery", title: "Pottery" },
       { icon: "finance", title: "Financial Literacy" },
-      { icon: "theatre", title: "Theatre" },
-      { icon: "taekwondo", title: "Taekwondo" },
-      { icon: "hobby", title: "Hobby Classes" },
-      { icon: "dance", title: "Dance" },
-      { icon: "sports", title: "Specialised Sports Coaching" },
-      { icon: "music", title: "Music" },
-      { icon: "speaking", title: "Public Speaking & Reading" },
-      { icon: "current", title: "Current Affairs Discussions" }
-    ]
-  },
-  world: {
-    title: "Real-World Learning",
-    body: "Our interdisciplinary approach brings learning to life through projects, research, discussions and real-world applications. Educational excursions, community initiatives and current affairs discussions help students understand the world around them and play a role in shaping a better tomorrow.",
-    image: "/images/about/campus.png",
-    imageAlt: "Outdoor campus spaces at Lawrence High School",
-    items: [
-      {
-        icon: "experiential",
-        title: "Experiential Learning"
-      },
-      {
-        icon: "community",
-        title: "Community Initiatives"
-      },
-      {
-        icon: "global",
-        title: "Global Perspective"
-      }
-    ]
-  },
-  skills: {
-    title: "Skills for Tomorrow",
-    lede: "Preparing confident, capable and compassionate individuals.",
-    values: [
-      { icon: "thinking", title: "Critical Thinking" },
-      { icon: "creativity", title: "Creativity" },
-      { icon: "communication", title: "Communication" },
-      { icon: "collaboration", title: "Collaboration" },
-      { icon: "leadership", title: "Leadership" },
-      { icon: "empathy", title: "Empathy" }
+      { icon: "robotics", title: "Robotics" },
+      { icon: "run", title: "Sports" },
+      { icon: "performing", title: "Performing Arts", text: "Dance | Music | Theatre" },
+      { icon: "pottery", title: "Pottery & Crafts" },
+      { icon: "speaking", title: "Public Speaking" },
+      { icon: "yoga", title: "Yoga" },
+      { icon: "life", title: "Life Skills" }
     ]
   },
   moments: {
-    title: "Middle School Moments",
+    kicker: "Middle School Moments",
+    title: "A Glimpse into Our Learning Journey",
+    lede: "Exploring. Experiencing. Growing.",
     photos: [
       {
-        src: "/images/home/curriculum/creators.png",
-        alt: "Students discovering ideas together in class",
-        caption: "Discover"
+        src: "/images/about/ms-moments-1.png",
+        alt: "Middle school students performing an army-themed stage play at Lawrence High School"
       },
       {
-        src: "/images/home/pathway/create.png",
-        alt: "Students creating music together",
-        caption: "Create"
+        src: "/images/about/ms-moments-2.png",
+        alt: "Middle school students performing a patriotic dance on stage"
       },
       {
-        src: "/images/home/beyond/mun.png",
-        alt: "Students collaborating at a Model United Nations session",
-        caption: "Collaborate"
+        src: "/images/about/ms-moments-3.png",
+        alt: "Middle school students performing a folk dance with masks on stage"
       },
       {
-        src: "/images/home/beyond/sports.png",
-        alt: "A student growing through sport",
-        caption: "Grow"
+        src: "/images/about/ms-moments-4.png",
+        alt: "Middle school students in costume during a stage play at Lawrence High School"
+      },
+      {
+        src: "/images/about/ms-moments-5.png",
+        alt: "A middle school student performing in a butterfly costume on stage"
+      },
+      {
+        src: "/images/about/ms-moments-6.png",
+        alt: "Middle school students performing a historical play at Lawrence High School"
+      },
+      {
+        src: "/images/about/ms-moments-7.png",
+        alt: "Middle school students performing a family scene on stage"
+      },
+      {
+        src: "/images/about/ms-moments-8.png",
+        alt: "Middle school students performing a bakery scene on stage"
       }
     ]
-  },
-  cta: {
-    title: "Inspiring Learners for a Brighter Tomorrow",
-    lede: "Give your child the opportunity to explore, learn and grow at Lawrence.",
-    href: "/admissions",
-    label: "Enquire Now"
   }
 };

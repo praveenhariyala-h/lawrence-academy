@@ -8,10 +8,102 @@ function Svg({ children }: { children: React.ReactNode }) {
 
 export default function MiddleSchoolIcon({ name }: { name: string }) {
   switch (name) {
+    case "brain":
+      return (
+        <Svg>
+          <path d="M8.2 9.2A3.2 3.2 0 0 1 12 6.2a3.2 3.2 0 0 1 3.6 3.1c1.6.4 2.7 1.8 2.7 3.5 0 1.4-.8 2.6-2 3.2v2.2c0 .9-.7 1.6-1.6 1.6h-5.4A1.6 1.6 0 0 1 7.7 18v-2.2a3.4 3.4 0 0 1-1.4-2.8c0-1.6 1-3 2-3.8Z" />
+          <path d="M12 8.5v9.2M9.2 12.2h2.6M13.4 14.4H15" />
+        </Svg>
+      );
+    case "heart":
+      return (
+        <Svg>
+          <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" />
+        </Svg>
+      );
+    case "guided":
+      return (
+        <Svg>
+          <circle cx="9" cy="8" r="2.2" />
+          <circle cx="16" cy="9" r="1.8" />
+          <path d="M4.5 18c.7-3.2 2.6-5 4.5-5s3.8 1.8 4.5 5" />
+          <path d="M13.2 18c.4-2.2 1.6-3.5 3-3.5 1.5 0 2.6 1.2 3.1 3.5" />
+        </Svg>
+      );
+    case "navigate":
+      return (
+        <Svg>
+          <circle cx="12" cy="12" r="8" />
+          <path d="M12 4v3M12 17v3M4 12h3M17 12h3" />
+          <path d="m12 8 2.2 4H9.8Z" />
+        </Svg>
+      );
+    case "explore":
+      return (
+        <Svg>
+          <path d="M9 21h6M10 18h4M12 3a5 5 0 0 1 5 5c0 2.2-1.3 3.8-3 4.6V14h-4v-1.4C8.3 11.8 7 10.2 7 8a5 5 0 0 1 5-5Z" />
+        </Svg>
+      );
+    case "work":
+      return (
+        <Svg>
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 3.5v2.2M12 18.3v2.2M4.8 6.8l1.6 1.6M17.6 15.6l1.6 1.6M3.5 12h2.2M18.3 12h2.2M4.8 17.2l1.6-1.6M17.6 8.4l1.6-1.6" />
+        </Svg>
+      );
+    case "succeed":
+      return (
+        <Svg>
+          <path d="M4 16.5 9 11l3.5 3.5L20 7" />
+          <path d="M14.5 7H20v5.5" />
+        </Svg>
+      );
+    case "robotics":
+      return (
+        <Svg>
+          <rect x="6" y="8" width="12" height="10" rx="2" />
+          <path d="M12 8V5M9 13h.01M15 13h.01M10 16h4M4 12h2M18 12h2" />
+        </Svg>
+      );
+    case "run":
+      return (
+        <Svg>
+          <circle cx="14.5" cy="5" r="1.8" />
+          <path d="M8.5 21 11 13l3.2-1.2 2 4.2 3.3 1.2M5 14.5 11 13l-1.8-3.2L13 8.2" />
+        </Svg>
+      );
+    case "performing":
+      return (
+        <Svg>
+          <path d="M4 8.5c0-2 1.6-3.5 4-3.5 1.8 0 3 .7 4 2 1-1.3 2.2-2 4-2 2.4 0 4 1.5 4 3.5 0 4-2.6 7.5-8 9.5-5.4-2-8-5.5-8-9.5Z" />
+          <path d="M8 10.5h.01M11 10.5h.01M8.5 13c.6.7 1.5 1 2.5 1" />
+        </Svg>
+      );
+    case "yoga":
+      return (
+        <Svg>
+          <path d="M12 20c-2.2-2-6-5.2-6-8.4A3.6 3.6 0 0 1 12 9a3.6 3.6 0 0 1 6 2.6C18 14.8 14.2 18 12 20Z" />
+          <path d="M12 9V4M9 6.5 12 9l3-2.5" />
+        </Svg>
+      );
+    case "life":
+      return (
+        <Svg>
+          <path d="M12 21v-8" />
+          <path d="M12 13c0-6 4-9 8-10-1 6-4 9-8 10" />
+          <path d="M12 13c0-5-4-8-8-9 1 6 4 8 8 9" />
+        </Svg>
+      );
     case "vedic":
       return (
         <Svg>
-          <path d="M8 5v14M16 5v14M5 9h14M5 15h14" />
+          <path d="M5 5h14v14H5Z" />
+          <path d="M5 10h14M5 14h14M9 5v14M15 5v14" />
+          <circle cx="7" cy="7.5" r="0.9" fill="currentColor" />
+          <circle cx="12" cy="7.5" r="0.9" fill="currentColor" />
+          <circle cx="17" cy="12" r="0.9" fill="currentColor" />
+          <circle cx="7" cy="16.5" r="0.9" fill="currentColor" />
+          <circle cx="12" cy="16.5" r="0.9" fill="currentColor" />
         </Svg>
       );
     case "finance":

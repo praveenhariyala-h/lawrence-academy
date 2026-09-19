@@ -57,15 +57,6 @@ export const upcomingEvents = [
   }
 ];
 
-export const journeyCta = {
-  title: "Begin Your Lawrence Journey",
-  body: "Discover an environment where children learn, grow and achieve.",
-  image: "/images/home/pathway/grow.png",
-  alt: "Students at Lawrence High School",
-  enquireHref: "/contact",
-  applyHref: "/admissions"
-};
-
 export const featuredAchievementFallback = {
   title: "Champions at International Robotics Competition",
   text: "Our students brought home top honours, showcasing innovation and teamwork on a global stage.",

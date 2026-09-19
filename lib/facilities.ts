@@ -13,10 +13,7 @@ export type CareSpace = {
 };
 
 export const facilitiesHero = {
-  kicker: "Facilities",
-  title: "Care Beyond\nClassrooms",
-  lede: "Thoughtfully designed to ensure the safety, well-being and happiness of every student.",
-  script: "A Safer\nHappier\nBrighter\nTomorrow",
+  title: "Our Facilities",
   image: "/images/home/hero/hero-courtyard.png",
   imageAlt: "Students and families in the Lawrence High School courtyard"
 };
@@ -29,8 +26,8 @@ export const careSpaces: CareSpace[] = [
     body: "We provide a well-organized transport system with a fleet of buses ensuring safe and reliable travel for students. The service is designed to prioritize safety, punctuality and convenience for parents and students.",
     leadIcon: "transport",
     image: {
-      src: "/images/about/campus.png",
-      alt: "Lawrence High School campus approach and outdoor spaces"
+      src: "/images/about/transport.png",
+      alt: "Students boarding a Lawrence High School bus"
     },
     features: [
       { icon: "bus", label: "Fleet of Buses" },
@@ -65,11 +62,10 @@ export const careSpaces: CareSpace[] = [
     body: "Our infirmary is managed by a qualified nurse and equipped to provide first aid and basic medical care. The well-being and safety of our students are always a priority.",
     leadIcon: "infirmary",
     image: {
-      src: "/images/home/pathway/grow.png",
-      alt: "A calm care space supporting student well-being at Lawrence High School"
+      src: "/images/about/infirmary.png",
+      alt: "A restful care space supporting student well-being at Lawrence High School"
     },
     features: [
-      { icon: "nurse", label: "Qualified Nurse" },
       { icon: "firstaid", label: "First Aid Care" },
       { icon: "emergency", label: "Emergency Support" },
       { icon: "wellbeing", label: "Student Well-being" }

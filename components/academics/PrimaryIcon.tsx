@@ -8,6 +8,21 @@ function Svg({ children }: { children: React.ReactNode }) {
 
 export default function PrimaryIcon({ name }: { name: string }) {
   switch (name) {
+    case "child":
+      return (
+        <Svg>
+          <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" />
+        </Svg>
+      );
+    case "holistic":
+      return (
+        <Svg>
+          <circle cx="9" cy="8" r="2.2" />
+          <circle cx="16" cy="9" r="1.8" />
+          <path d="M4.5 18c.7-3.2 2.6-5 4.5-5s3.8 1.8 4.5 5" />
+          <path d="M13.2 18c.4-2.2 1.6-3.5 3-3.5 1.5 0 2.6 1.2 3.1 3.5" />
+        </Svg>
+      );
     case "arts":
       return (
         <Svg>

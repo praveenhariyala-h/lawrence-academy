@@ -3,110 +3,84 @@ export const primary = {
     kicker: "Primary School",
     grades: "Grades 1 – 4",
     title: "Nurturing Foundations, Inspiring Futures",
-    path: ["Curious Minds", "Confident Learners", "Kinder Humans"],
     image: "/images/home/hero/hero-classroom.png",
     imageAlt: "Primary students exploring letters, numbers and classroom materials at Lawrence High School"
   },
-  foundation: {
-    title: "A Strong Foundation for Every Child",
-    body: "The primary years are a time of discovery, growth and building strong foundations. At Lawrence High School ICSE, learning combines academic knowledge with opportunities to explore, create, communicate and develop confidence.",
-    image: "/images/home/curriculum/little-learners.png",
-    imageAlt: "A young learner building with colourful blocks at Lawrence High School"
+  approach: {
+    kicker: "Our Approach",
+    title: "Joyful Learning for Lifelong Skills",
+    body: "We provide a safe, nurturing and stimulating environment where children learn through meaningful experiences, question, explore, collaborate and grow at their own pace.",
+    image: "/images/about/pr-approach.png",
+    imageAlt: "Primary students exploring soluble substances in a science activity at Lawrence High School",
+    values: [
+      { icon: "child", title: "Child-Centred", text: "Every child is unique and valued" },
+      { icon: "experiential", title: "Experiential", text: "Learning by doing" },
+      { icon: "holistic", title: "Holistic Development", text: "Academic, social and emotional growth" },
+      { icon: "values", title: "Values for Life", text: "Character and responsibility" }
+    ]
   },
   curriculum: {
-    title: "Our Curriculum",
-    lede: "Building knowledge. Inspiring Curiosity.",
-    body: "Our curriculum builds conceptual understanding, language skills, logical thinking and curiosity through age-appropriate, experiential learning.",
+    kicker: "Our Curriculum",
+    title: "A Balanced Curriculum for a Brighter Tomorrow",
+    body: "Our Primary School curriculum lays strong foundations in English, Mathematics, Science, Social Studies, Kannada, Hindi, Computers and Coding, while promoting 21st-century skills through experiential and inquiry-based learning.",
     subjects: [
-      { icon: "english", title: "English" },
-      { icon: "maths", title: "Mathematics" },
-      { icon: "science", title: "Science" },
-      { icon: "social", title: "Social Studies" },
-      { icon: "kannada", title: "Kannada" },
-      { icon: "hindi", title: "Hindi" },
-      { icon: "computer", title: "Computers" },
-      { icon: "coding", title: "Coding" }
+      { icon: "english", title: "English", text: "Language skills & joyful reading" },
+      { icon: "maths", title: "Mathematics", text: "Logical thinking & problem solving" },
+      { icon: "science", title: "Science", text: "Curiosity & experimentation" },
+      { icon: "social", title: "Social Studies", text: "Understanding the world" },
+      { icon: "kannada", title: "Kannada", text: "Language & cultural roots" },
+      { icon: "hindi", title: "Hindi", text: "Communication & expression" },
+      { icon: "computer", title: "Computers", text: "Digital skills for the future" },
+      { icon: "coding", title: "Coding", text: "Creativity through technology" }
     ],
-    note: "English learning is enriched through immersive storytelling and context-based vocabulary, nurturing strong language skills and a love for reading."
+    karadi: {
+      title: "Karadi Path Programme",
+      body: "Our English language learning is enriched through Karadi Path — a proven, research-based programme that develops listening, speaking, reading and writing skills through stories, songs and meaningful experiences.",
+      logo: "/images/home/partners/karadi-path.png",
+      logoAlt: "Karadi Path"
+    }
   },
-  explore: {
+  beyond: {
+    kicker: "Learning Beyond the Classroom",
     title: "Explore. Create. Participate.",
-    lede: "Children discover their interests through a diverse range of experiences that encourage creativity, teamwork, discipline and self-expression.",
-    image: "/images/home/pathway/explore.png",
-    imageAlt: "Students participating in taekwondo at Lawrence High School",
-    activities: [
-      { icon: "arts", title: "Creative Arts" },
-      { icon: "pe", title: "Physical Education" },
-      { icon: "yoga", title: "Yoga" },
-      { icon: "music", title: "Music" },
-      { icon: "dance", title: "Dance" },
-      { icon: "theatre", title: "Theatre" },
-      { icon: "taekwondo", title: "Taekwondo" },
-      { icon: "robotics", title: "Robotics" },
-      { icon: "chess", title: "Chess" }
-    ]
-  },
-  world: {
-    title: "Connecting Learning with the Real World",
-    body: "We take learning beyond the classroom, helping children make real-world connections and grow into responsible individuals.",
-    image: "/images/about/campus.png",
-    imageAlt: "Outdoor campus spaces at Lawrence High School",
+    body: "At Lawrence, learning goes beyond textbooks. We offer a wide range of experiences that encourage creativity, teamwork, discipline and self-expression.",
     items: [
-      {
-        icon: "experiential",
-        title: "Experiential Learning",
-        text: "Hands-on activities that encourage children to learn by doing."
-      },
-      {
-        icon: "values",
-        title: "Value Education",
-        text: "Developing respect, responsibility, empathy and good citizenship."
-      },
-      {
-        icon: "excursions",
-        title: "Educational Excursions",
-        text: "Taking learning beyond the classroom and connecting to real-world experiences."
-      }
-    ]
-  },
-  growth: {
-    title: "Growing Beyond Knowledge",
-    lede: "Alongside knowledge, students develop the skills and attitudes needed to learn, participate and grow with confidence.",
-    values: [
-      { icon: "curiosity", title: "Curiosity" },
-      { icon: "confidence", title: "Confidence" },
-      { icon: "creativity", title: "Creativity" },
-      { icon: "communication", title: "Communication" },
-      { icon: "collaboration", title: "Collaboration" },
-      { icon: "independence", title: "Independence" }
+      { icon: "arts", title: "Creative Arts", text: "Art & Craft" },
+      { icon: "theatre", title: "Performing Arts", text: "Music | Dance | Theatre & Drama" },
+      { icon: "pe", title: "Physical Education & Sports", text: "Yoga | Taekwondo | Skating | Sports" },
+      { icon: "robotics", title: "Innovation & Technology", text: "Robotics & STEM | Coding | Chess" },
+      { icon: "experiential", title: "Experiential Learning", text: "Field Trips | Nature Walks | Educational Excursions" },
+      { icon: "values", title: "Values & Life Skills", text: "Teamwork | Leadership | Confidence | Life Skills" }
     ]
   },
   moments: {
-    title: "Primary Moments",
+    kicker: "Primary Moments",
+    title: "A Glimpse into Our Learning Journey",
     photos: [
       {
-        src: "/images/home/curriculum/young-explorers.png",
-        alt: "Primary students working with letters and numbers"
+        src: "/images/about/pr-moments-1.png",
+        alt: "Primary students performing yoga on the sports ground at Lawrence High School"
       },
       {
-        src: "/images/home/curriculum/little-learners.png",
-        alt: "Young learners playing and building together"
+        src: "/images/about/pr-moments-2.png",
+        alt: "Primary students in costume on stage at Lawrence High School"
       },
       {
-        src: "/images/home/pathway/explore.png",
-        alt: "Students in a taekwondo session"
+        src: "/images/about/pr-moments-3.png",
+        alt: "Primary students performing a group dance on the sports ground"
       },
       {
-        src: "/images/home/beyond/sports.png",
-        alt: "A student practising cricket at Lawrence High School"
+        src: "/images/about/pr-moments-4.png",
+        alt: "Primary students measuring and weighing in a classroom at Lawrence High School"
+      },
+      {
+        src: "/images/about/pr-moments-5.png",
+        alt: "Primary students presenting Bengaluru on stage at Lawrence High School"
+      },
+      {
+        src: "/images/about/pr-moments-6.png",
+        alt: "Primary students performing an animal-themed play on stage"
       }
     ]
-  },
-  cta: {
-    title: "Every Child Has the Potential to Grow",
-    lede: "Give your child a strong beginning for a confident future.",
-    script: "Learn\nLead\nTomorrow",
-    href: "/admissions",
-    label: "Enquire Now"
   }
 };

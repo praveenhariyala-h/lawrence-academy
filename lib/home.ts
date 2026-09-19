@@ -54,7 +54,7 @@ export type HomeContent = {
 };
 
 export const defaultHome: HomeContent = {
-  heroLearnMoreLabel: "Learn more",
+  heroLearnMoreLabel: "Know more",
   heroLearnMoreHref: "/about",
   heroSlides: [
     {
@@ -74,12 +74,6 @@ export const defaultHome: HomeContent = {
       text: "Warm classrooms where young children discover, play, and learn.",
       image: "/images/home/hero/hero-kindergarten.png",
       alt: "Kindergarten teacher and students exploring together in class"
-    },
-    {
-      title: "Every child a champion",
-      text: "At Lawrence, we blend tradition, innovation and encouragement to make every child a champion.",
-      image: "/images/home/hero/hero-class.png",
-      alt: "Students in a Lawrence High School classroom"
     },
     {
       title: "Learning by doing",
