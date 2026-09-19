@@ -1,7 +1,7 @@
 export const highSchool = {
   hero: {
     kicker: "High School",
-    title: "Grades 8 – 10\nPreparing Today for a Brighter Tomorrow",
+    title: "Grades 8 – 10\nPreparing Today for a *Brighter Tomorrow*",
     lede: "Knowledge. Character. Confidence.",
     image: "/images/about/hs-hero.png",
     imageAlt: "High school students writing in class at Lawrence High School"

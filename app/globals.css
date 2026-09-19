@@ -234,9 +234,13 @@ p {
   flex-wrap: wrap;
 }
 
+.topbar-helpline {
+  font-weight: 700;
+}
+
 .topbar-helpline a {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .topbar-btn {
@@ -1398,7 +1402,7 @@ body.nav-locked {
 
 .home-achievement {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.7fr);
   gap: 1.15rem;
   align-items: start;
 }
@@ -1413,8 +1417,15 @@ body.nav-locked {
   color: var(--sky-blue);
 }
 
+.achievement-carousel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.7fr);
+  column-gap: 1.15rem;
+}
+
 .achievement-carousel-viewport {
   display: grid;
+  grid-column: 1 / -1;
 }
 
 .achievement-slide {
@@ -1436,13 +1447,16 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  grid-column: 1;
+  width: 100%;
   margin-top: 0.85rem;
 }
 
 .home-achievement-photo {
   position: relative;
-  width: 220px;
-  height: 248px;
+  width: 100%;
+  min-height: 200px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 12px;
   background: var(--pearl);
@@ -2165,13 +2179,15 @@ body.nav-locked {
     grid-template-columns: 1fr;
   }
 
-  .home-achievement {
-    grid-template-columns: 180px 1fr;
+  .home-achievement,
+  .achievement-carousel {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr);
   }
 
   .home-achievement-photo {
-    width: 180px;
-    height: 204px;
+    width: 100%;
+    height: auto;
+    min-height: 160px;
   }
 
   .home-campus-photo {
@@ -2462,7 +2478,11 @@ body.nav-locked {
 }
 
 .page-banner-copy .kicker {
-  color: var(--bloom);
+  color: var(--white);
+  font-size: var(--text-kicker);
+  font-weight: 700;
+  letter-spacing: var(--text-kicker-track);
+  text-transform: uppercase;
 }
 
 .page-banner-copy h1 {
@@ -2473,32 +2493,53 @@ body.nav-locked {
   white-space: pre-line;
 }
 
-.page-banner-title .page-banner-copy .kicker {
+.page-banner-title .page-banner-copy .page-banner-kicker-row {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  margin-bottom: 0.55rem;
 }
 
-.page-banner-title .page-banner-copy .kicker::before {
-  content: "";
+.page-banner-title .page-banner-copy .page-banner-dash {
   width: 36px;
   height: 3px;
   background: var(--bloom);
   border-radius: 999px;
 }
 
+.page-banner-title .page-banner-copy .kicker {
+  display: inline;
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .page-banner-title .page-banner-copy .page-banner-meta {
-  margin-bottom: 0.45rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 .page-banner-title .page-banner-copy h1 {
   max-width: 22ch;
   font-size: var(--text-h1);
   font-weight: 500;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.page-banner-title .page-banner-copy .page-banner-accent {
+  color: var(--bloom);
 }
 
 .page-banner-title .page-banner-copy .lede {
-  margin-top: 0.55rem;
+  margin-top: 0.7rem;
+  max-width: 22rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  white-space: normal;
+}
+
+.page-banner-title .page-banner-copy .lede.is-italic {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
@@ -2520,10 +2561,7 @@ body.nav-locked {
 }
 
 .page-banner-copy .lede {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  white-space: normal;
 }
 
 .page-banner-pills {
@@ -2637,9 +2675,22 @@ body.nav-locked {
 .about-campus {
   position: relative;
   margin: 0;
+  height: 100%;
+  min-height: 280px;
   aspect-ratio: 1;
   overflow: hidden;
-  box-shadow: var(--shadow);
+}
+
+.about-campus .kg-slider,
+.about-campus .facility-slider-viewport,
+.about-campus .facility-slider-track,
+.about-campus .facility-slider-slide {
+  height: 100%;
+  min-height: 280px;
+}
+
+.about-campus .facility-slider-nav {
+  z-index: 3;
 }
 
 .about-campus img {
@@ -2998,8 +3049,13 @@ body.nav-locked {
     margin-bottom: 0.5rem;
   }
 
-  .page-banner-copy .lede {
-    -webkit-line-clamp: 2;
+  .page-banner-title .page-banner-copy h1,
+  .hs-hero.page-banner-title .page-banner-copy h1 {
+    max-width: 16ch;
+  }
+
+  .page-banner-title .page-banner-copy .lede {
+    max-width: 18rem;
   }
 }
 
@@ -3386,6 +3442,47 @@ body.nav-locked {
   height: 22px;
 }
 
+.facility-band--sandpit {
+  background: color-mix(in srgb, var(--bloom) 9%, var(--white));
+}
+
+.facility-band--sandpit .facility-copy {
+  position: relative;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 88' fill='none' stroke='%23e2c36a' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='58' cy='28' r='11'/%3E%3Cpath d='M58 6v7M58 43v7M36 28h7M73 28h7M42 12l5 5M69 39l5 5M42 44l5-5M69 12l5 5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 96' fill='none' stroke='%23e6d19a' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M18 88V50h14V36l22-18 22 18v14h14v38H18Z'/%3E%3Cpath d='M54 88V62M54 28a7 7 0 1 0 0.01 0Z'/%3E%3Cpath d='M108 88c10-16 26-26 40-28'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.2rem top 0, right -0.4rem bottom 0.15rem;
+  background-size: 92px, 150px;
+}
+
+.facility-band--sandpit .facility-tagline {
+  color: var(--legacy-blue);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.facility-band--sandpit .facility-features {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.facility-band--sandpit .facility-features li {
+  border: none;
+  background: color-mix(in srgb, var(--pearl) 22%, var(--white));
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--legacy-blue) 6%, transparent);
+}
+
+.facility-band--sandpit .facility-feature-icon {
+  color: var(--sky-blue);
+  background: transparent;
+}
+
+.facility-band--sandpit .facility-photo {
+  min-height: 380px;
+}
+
 .campus-cta {
   background: var(--legacy-blue);
   color: var(--white);
@@ -3405,7 +3502,8 @@ body.nav-locked {
 }
 
 @media (max-width: 1100px) {
-  .facility-features {
+  .facility-features,
+  .facility-band--sandpit .facility-features {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -4603,10 +4701,6 @@ body.nav-locked {
   font-weight: 700;
   letter-spacing: var(--text-kicker-track);
   text-transform: uppercase;
-}
-
-.hs-hero.page-banner-title .page-banner-copy h1 {
-  max-width: 22em;
 }
 
 .hs-approach-media {

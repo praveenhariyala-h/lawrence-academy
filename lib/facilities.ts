@@ -13,7 +13,8 @@ export type CareSpace = {
 };
 
 export const facilitiesHero = {
-  title: "Our Facilities",
+  title: "Our *Facilities*",
+  lede: "Spaces that inspire learning, growth and wellbeing.",
   image: "/images/home/hero/hero-courtyard.png",
   imageAlt: "Students and families in the Lawrence High School courtyard"
 };

@@ -21,6 +21,7 @@ export default function MiddleSchoolBody() {
         kicker={hero.kicker}
         title={hero.title}
         grades={hero.grades}
+        gradesAfter
         className="page-banner-title"
       />
 

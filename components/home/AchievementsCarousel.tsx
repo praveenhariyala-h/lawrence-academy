@@ -62,7 +62,7 @@ export default function AchievementsCarousel({
             tabIndex={slideIndex === index ? 0 : -1}
           >
             <div className="home-achievement-photo">
-              <Image src={item.image} alt={item.alt} fill sizes="(max-width: 900px) 100vw, 280px" />
+              <Image src={item.image} alt={item.alt} fill sizes="(max-width: 900px) 100vw, 52vw" />
             </div>
             <div>
               {item.date ? <span className="home-achievement-date">{item.date}</span> : null}
