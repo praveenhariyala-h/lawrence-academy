@@ -1,8 +1,8 @@
 export const kindergarten = {
   hero: {
     kicker: "Kindergarten",
-    title: "A Joyful Beginning for a Brighter Tomorrow",
-    pills: ["Nursery", "LKG", "UKG"],
+    title: "A Joyful Beginning\nfor a *Brighter Tomorrow*",
+    lede: "Play. Learn. Grow.",
     image: "/images/about/kg-hero.png",
     imageAlt: "Kindergarten children learning together in a Lawrence High School classroom"
   },

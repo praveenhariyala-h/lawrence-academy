@@ -11,7 +11,7 @@ function delay(index: number): CSSProperties {
 export default function FacilitiesBody() {
   return (
     <AboutReveal>
-      <PageBanner src={facilitiesHero.image} alt={facilitiesHero.imageAlt} title={facilitiesHero.title} showTitle className="page-banner-title" />
+      <PageBanner src={facilitiesHero.image} alt={facilitiesHero.imageAlt} title={facilitiesHero.title} lede={facilitiesHero.lede} showTitle className="page-banner-title" />
 
       {careSpaces.map((space, index) => (
         <section

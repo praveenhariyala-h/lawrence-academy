@@ -21,6 +21,7 @@ export default function HighSchoolBody() {
         kicker={hero.kicker}
         title={hero.title}
         lede={hero.lede}
+        ledeItalic
         className="page-banner-title hs-hero"
       />
 

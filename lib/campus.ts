@@ -21,7 +21,8 @@ export type CampusSpace = {
 };
 
 export const campusHero = {
-  title: "Our Campus",
+  title: "Our *Campus*",
+  lede: "A safe and inspiring space for every learner to grow, explore and belong.",
   image: "/images/home/hero/hero-campus.png",
   imageAlt: "Lawrence High School campus in HSR Layout, Bengaluru"
 };
@@ -141,17 +142,17 @@ export const campusSpaces: CampusSpace[] = [
   {
     id: "sandpit",
     title: "Sandpit Area",
-    tagline: "Healthy Meals. Happy Minds.",
-    body: "Our spacious and hygienic canteen provides freshly prepared nutritious meals in a clean and comfortable environment. It is a place where students can unwind in a safe, supervised and friendly atmosphere.",
+    tagline: "Play. Explore. Imagine. Grow.",
+    body: "Our sandpit area offers a safe and engaging outdoor space where children can explore, create and learn through play. It encourages sensory development, fine motor skills, creativity and social interaction in a natural and joyful setting.",
     image: {
       src: "/images/home/hero/hero-kindergarten.png",
-      alt: "A bright shared space for students at Lawrence High School"
+      alt: "Children playing and building in the sandpit at Lawrence High School"
     },
     features: [
-      { icon: "hygiene", label: "Hygienic Facility" },
-      { icon: "meals", label: "Nutritious Meals" },
-      { icon: "dining", label: "Spacious Seating" },
-      { icon: "supervised", label: "Safe & Supervised" }
+      { icon: "safety", label: "Safe & Clean Play Area" },
+      { icon: "handsOn", label: "Sensory Development" },
+      { icon: "innovation", label: "Encourages Creativity" },
+      { icon: "daycare", label: "Builds Social Skills" }
     ]
   }
 ];

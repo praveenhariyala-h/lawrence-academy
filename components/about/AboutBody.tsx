@@ -14,6 +14,7 @@ import {
   aboutValues
 } from "@/lib/about";
 import AboutReveal from "./AboutReveal";
+import FacilitySlider from "./FacilitySlider";
 import TeamsCarousel from "./TeamsCarousel";
 
 function delay(index: number): CSSProperties {
@@ -89,10 +90,9 @@ export default function AboutBody() {
             ))}
           </div>
           <div className="about-campus about-reveal" style={delay(1)}>
-            <Image
-              src={aboutJourney.campusImage}
-              alt={aboutJourney.campusAlt}
-              fill
+            <FacilitySlider
+              photos={aboutJourney.photos}
+              className="kg-slider"
               sizes="(max-width: 900px) 100vw, 34vw"
             />
           </div>

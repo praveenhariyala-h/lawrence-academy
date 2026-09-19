@@ -28,8 +28,16 @@ export const aboutJourney = {
     "Our journey began in 1991 with the establishment of our first school in Koramangala. Over the past 35 years, Lawrence High School ICSE, HSR has grown into a trusted name in ICSE education, rooted in academic excellence, holistic development, and strong values.",
     "As the world evolves, our purpose remains constant—to nurture confident, compassionate, and capable young minds who are prepared not just for the future, but to shape it."
   ],
-  campusImage: "/images/about/journey.png",
-  campusAlt: "Lawrence High School leadership lighting a ceremonial lamp at a school event",
+  photos: [
+    {
+      src: "/images/about/journey.png",
+      alt: "Lawrence High School leadership lighting a ceremonial lamp at a school event"
+    },
+    {
+      src: "/images/home/hero/hero-campus.png",
+      alt: "Lawrence High School campus in HSR Layout, Bengaluru"
+    }
+  ],
   vision: {
     title: "Our Vision",
     text: "To create an environment that inspires and guides a child through exploration to discovery, learning and action, so they grow into a confident, capable citizen of the future."

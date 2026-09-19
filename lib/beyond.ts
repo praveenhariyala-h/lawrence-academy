@@ -1,7 +1,7 @@
 export const beyond = {
   hero: {
     kicker: "Beyond Books",
-    title: "Explore. Experience. Evolve.",
+    title: "Explore.\nExperience.\n*Evolve.*",
     lede: "Opportunities beyond the classroom to discover interests, build skills and create memories for life.",
     badge: "More Than\na Classroom",
     image: "/images/home/beyond/sports.png",

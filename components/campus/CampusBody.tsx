@@ -11,10 +11,14 @@ function delay(index: number): CSSProperties {
 export default function CampusBody() {
   return (
     <AboutReveal>
-      <PageBanner src={campusHero.image} alt={campusHero.imageAlt} title={campusHero.title} showTitle className="page-banner-title" />
+      <PageBanner src={campusHero.image} alt={campusHero.imageAlt} title={campusHero.title} lede={campusHero.lede} showTitle className="page-banner-title" />
 
       {campusSpaces.map((space, index) => (
-        <section className="facility-band" key={space.id} id={space.id}>
+        <section
+          className={space.id === "sandpit" ? "facility-band facility-band--sandpit" : "facility-band"}
+          key={space.id}
+          id={space.id}
+        >
           <div className="wrap">
             <FacilityRow
               title={space.title}

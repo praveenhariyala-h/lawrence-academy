@@ -2,7 +2,7 @@ export const middleSchool = {
   hero: {
     kicker: "Middle School",
     grades: "Grades 5 – 7",
-    title: "Bridging the Gap: Preparing Students for High School Success",
+    title: "Growing *Minds*.\nBuilding *Futures*.",
     image: "/images/home/hero/hero-class.png",
     imageAlt: "Middle school students collaborating in a classroom at Lawrence High School"
   },

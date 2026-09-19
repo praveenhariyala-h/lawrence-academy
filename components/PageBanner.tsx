@@ -1,5 +1,23 @@
 import Image from "next/image";
 
+function BannerHeading({ title }: { title: string }) {
+  const pieces = title.split(/(\*[^*]+\*)/g).filter(Boolean);
+
+  return (
+    <h1>
+      {pieces.map((piece, index) =>
+        piece.startsWith("*") && piece.endsWith("*") ? (
+          <span className="page-banner-accent" key={index}>
+            {piece.slice(1, -1)}
+          </span>
+        ) : (
+          piece
+        )
+      )}
+    </h1>
+  );
+}
+
 export default function PageBanner({
   src,
   alt,
@@ -10,6 +28,8 @@ export default function PageBanner({
   pills,
   path,
   showTitle,
+  gradesAfter,
+  ledeItalic,
   className
 }: {
   src: string;
@@ -21,9 +41,13 @@ export default function PageBanner({
   pills?: string[];
   path?: string[];
   showTitle?: boolean;
+  gradesAfter?: boolean;
+  ledeItalic?: boolean;
   className?: string;
 }) {
   const hasCopy = Boolean(showTitle || kicker || lede || grades || pills?.length || path?.length);
+  const isTitleBanner = Boolean(className?.includes("page-banner-title"));
+  const plainTitle = title.replace(/\*/g, "");
 
   return (
     <section className="about-hero">
@@ -31,9 +55,15 @@ export default function PageBanner({
         <Image src={src} alt={alt} fill priority sizes="100vw" />
         {hasCopy ? (
           <div className="page-banner-copy">
-            {kicker ? <span className="kicker">{kicker}</span> : null}
-            {grades ? <p className="page-banner-meta">{grades}</p> : null}
-            <h1>{title}</h1>
+            {isTitleBanner || kicker ? (
+              <span className="page-banner-kicker-row">
+                {isTitleBanner ? <span className="page-banner-dash" aria-hidden="true" /> : null}
+                {kicker ? <span className="kicker">{kicker}</span> : null}
+              </span>
+            ) : null}
+            {grades && !gradesAfter ? <p className="page-banner-meta">{grades}</p> : null}
+            <BannerHeading title={title} />
+            {grades && gradesAfter ? <p className="page-banner-meta">{grades}</p> : null}
             {pills?.length ? (
               <ul className="page-banner-pills">
                 {pills.map((pill) => (
@@ -48,10 +78,10 @@ export default function PageBanner({
                 ))}
               </ul>
             ) : null}
-            {lede ? <p className="lede">{lede}</p> : null}
+            {lede ? <p className={ledeItalic ? "lede is-italic" : "lede"}>{lede}</p> : null}
           </div>
         ) : (
-          <h1 className="visually-hidden">{title}</h1>
+          <h1 className="visually-hidden">{plainTitle}</h1>
         )}
       </div>
     </section>

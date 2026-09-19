@@ -21,7 +21,8 @@ export default function KindergartenBody() {
         alt={hero.imageAlt}
         kicker={hero.kicker}
         title={hero.title}
-        pills={hero.pills}
+        lede={hero.lede}
+        ledeItalic
         className="page-banner-title"
       />
 
