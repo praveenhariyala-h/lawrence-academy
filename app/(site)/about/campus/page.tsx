@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import CampusBody from "@/components/campus/CampusBody";
+import { getCampusContent } from "@/lib/campus";
 
-export const metadata: Metadata = {
-  title: "Campus",
-  description:
-    "Explore classrooms, labs, the library, auditoriums and campus spaces at Lawrence High School ICSE, HSR Layout."
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const campus = await getCampusContent();
+  return {
+    title: campus.metaTitle,
+    description: campus.metaDescription
+  };
+}
 
-export default function CampusPage() {
-  return <CampusBody />;
+export default async function CampusPage() {
+  const campus = await getCampusContent();
+  return <CampusBody content={campus} />;
 }

@@ -2,13 +2,14 @@ import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilityRow from "@/components/about/FacilityRow";
 import PageBanner from "@/components/PageBanner";
-import { careSpaces, facilitiesHero } from "@/lib/facilities";
+import type { FacilitiesContent } from "@/lib/facilities";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function FacilitiesBody() {
+export default function FacilitiesBody({ content }: { content: FacilitiesContent }) {
+  const { hero: facilitiesHero, spaces: careSpaces } = content;
   return (
     <AboutReveal>
       <PageBanner src={facilitiesHero.image} alt={facilitiesHero.imageAlt} title={facilitiesHero.title} lede={facilitiesHero.lede} showTitle className="page-banner-title" />

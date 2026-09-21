@@ -2,6 +2,8 @@ import { collection, config, fields, singleton } from "@keystatic/core";
 import {
   aboutSchema,
   beyondBooksSchema,
+  campusSchema,
+  facilitiesSchema,
   highSchoolSchema,
   kindergartenSchema,
   middleSchoolSchema,
@@ -127,9 +129,19 @@ export default config({
       }
     }),
     about: singleton({
-      label: "About",
+      label: "About · About Us",
       path: "content/pages/about",
       schema: aboutSchema
+    }),
+    campus: singleton({
+      label: "About · Campus",
+      path: "content/pages/campus",
+      schema: campusSchema
+    }),
+    facilities: singleton({
+      label: "About · Facilities",
+      path: "content/pages/facilities",
+      schema: facilitiesSchema
     }),
     kindergarten: singleton({
       label: "Academics · Kindergarten",
