@@ -1,3 +1,6 @@
+import { imageSrc, mapPhotos, paragraphs, textSrc } from "@/lib/cms";
+import { reader } from "@/lib/keystatic";
+
 export const aboutHero = {
   title: "About Us",
   image: "/images/about/hero.png",
@@ -227,3 +230,177 @@ export const aboutValues = {
 };
 
 export const aboutMotto = "Dream and Believe\nLearn and Achieve";
+
+export type AboutContent = {
+  hero: typeof aboutHero;
+  stats: AboutStat[];
+  journey: typeof aboutJourney;
+  philosophy: typeof aboutPhilosophy;
+  messages: typeof aboutMessages;
+  leadershipTeam: typeof aboutLeadershipTeam;
+  legacy: typeof aboutLegacy;
+  teams: typeof aboutTeams;
+  values: typeof aboutValues;
+  motto: string;
+};
+
+export const defaultAbout: AboutContent = {
+  hero: aboutHero,
+  stats: aboutStats,
+  journey: aboutJourney,
+  philosophy: aboutPhilosophy,
+  messages: aboutMessages,
+  leadershipTeam: aboutLeadershipTeam,
+  legacy: aboutLegacy,
+  teams: aboutTeams,
+  values: aboutValues,
+  motto: aboutMotto
+};
+
+const ABOUT_IMAGES = "/images/about/";
+
+export async function getAboutContent(): Promise<AboutContent> {
+  let entry;
+  try {
+    entry = await reader.singletons.about.read();
+  } catch (error) {
+    console.error("Failed to read Keystatic about content", error);
+    return defaultAbout;
+  }
+  if (!entry) return defaultAbout;
+
+  const stats: AboutStat[] = entry.stats.length
+    ? entry.stats.map((stat, index) => {
+        const fallback = defaultAbout.stats[index] ?? defaultAbout.stats[0];
+        const icon = (stat.icon || fallback.icon) as AboutStat["icon"];
+        return {
+          value: textSrc(stat.value, fallback.value),
+          ...(textSrc(stat.unit, fallback.unit ?? "") ? { unit: textSrc(stat.unit, fallback.unit ?? "") } : {}),
+          label: textSrc(stat.label, fallback.label),
+          icon
+        };
+      })
+    : defaultAbout.stats;
+
+  const journeyPhotos = mapPhotos(entry.journey.photos, defaultAbout.journey.photos, "/images/");
+
+  const messagesPeople = entry.messages.people.length
+    ? entry.messages.people.map((person, index) => {
+        const fallback = defaultAbout.messages.people[index] ?? defaultAbout.messages.people[0];
+        const photo = person.photo
+          ? imageSrc(person.photo, fallback.photo ?? "", ABOUT_IMAGES)
+          : fallback.photo;
+        return {
+          name: textSrc(person.name, fallback.name),
+          role: textSrc(person.role, fallback.role),
+          photo: photo || null,
+          photoAlt: textSrc(person.photoAlt, fallback.photoAlt),
+          initials: textSrc(person.initials, fallback.initials),
+          position: textSrc(person.position, fallback.position),
+          message: textSrc(person.message, fallback.message)
+        };
+      })
+    : defaultAbout.messages.people;
+
+  const leadershipPeople = entry.leadershipTeam.people.length
+    ? entry.leadershipTeam.people.map((person, index) => {
+        const fallback = defaultAbout.leadershipTeam.people[index] ?? defaultAbout.leadershipTeam.people[0];
+        return {
+          name: textSrc(person.name, fallback.name),
+          role: textSrc(person.role, fallback.role),
+          photo: imageSrc(person.photo, fallback.photo, ABOUT_IMAGES),
+          photoAlt: textSrc(person.photoAlt, fallback.photoAlt),
+          position: textSrc(person.position, fallback.position)
+        };
+      })
+    : defaultAbout.leadershipTeam.people;
+
+  const teachers = entry.legacy.teachers.length
+    ? entry.legacy.teachers.map((teacher, index) => {
+        const fallback = defaultAbout.legacy.teachers[index] ?? defaultAbout.legacy.teachers[0];
+        return {
+          name: textSrc(teacher.name, fallback.name),
+          year: textSrc(teacher.year, fallback.year),
+          profile: textSrc(teacher.profile, fallback.profile),
+          photo: imageSrc(teacher.photo, fallback.photo, ABOUT_IMAGES),
+          photoAlt: textSrc(teacher.photoAlt, fallback.photoAlt)
+        };
+      })
+    : defaultAbout.legacy.teachers;
+
+  const groups = entry.teams.groups.length
+    ? entry.teams.groups.map((group, index) => {
+        const fallback = defaultAbout.teams.groups[index] ?? defaultAbout.teams.groups[0];
+        return {
+          name: textSrc(group.name, fallback.name),
+          photo: imageSrc(group.photo, fallback.photo, ABOUT_IMAGES),
+          photoAlt: textSrc(group.photoAlt, fallback.photoAlt)
+        };
+      })
+    : defaultAbout.teams.groups;
+
+  const valueItems = entry.values.items.length
+    ? entry.values.items.map((item, index) => {
+        const fallback = defaultAbout.values.items[index] ?? defaultAbout.values.items[0];
+        return {
+          key: textSrc(item.key, fallback.key),
+          title: textSrc(item.title, fallback.title),
+          text: textSrc(item.text, fallback.text)
+        };
+      })
+    : defaultAbout.values.items;
+
+  return {
+    hero: {
+      title: textSrc(entry.hero.title, defaultAbout.hero.title),
+      image: imageSrc(entry.hero.image, defaultAbout.hero.image, ABOUT_IMAGES),
+      imageAlt: textSrc(entry.hero.imageAlt, defaultAbout.hero.imageAlt)
+    },
+    stats,
+    journey: {
+      title: textSrc(entry.journey.title, defaultAbout.journey.title),
+      body: paragraphs(entry.journey.body, defaultAbout.journey.body),
+      photos: journeyPhotos,
+      vision: {
+        title: textSrc(entry.journey.visionTitle, defaultAbout.journey.vision.title),
+        text: textSrc(entry.journey.visionText, defaultAbout.journey.vision.text)
+      },
+      mission: {
+        title: textSrc(entry.journey.missionTitle, defaultAbout.journey.mission.title),
+        text: textSrc(entry.journey.missionText, defaultAbout.journey.mission.text)
+      }
+    },
+    philosophy: {
+      title: textSrc(entry.philosophy.title, defaultAbout.philosophy.title),
+      body: textSrc(entry.philosophy.body, defaultAbout.philosophy.body),
+      image: imageSrc(entry.philosophy.image, defaultAbout.philosophy.image, ABOUT_IMAGES),
+      imageAlt: textSrc(entry.philosophy.imageAlt, defaultAbout.philosophy.imageAlt)
+    },
+    messages: {
+      title: textSrc(entry.messages.title, defaultAbout.messages.title),
+      kicker: textSrc(entry.messages.kicker, defaultAbout.messages.kicker),
+      people: messagesPeople
+    },
+    leadershipTeam: {
+      title: textSrc(entry.leadershipTeam.title, defaultAbout.leadershipTeam.title),
+      kicker: textSrc(entry.leadershipTeam.kicker, defaultAbout.leadershipTeam.kicker),
+      quote: textSrc(entry.leadershipTeam.quote, defaultAbout.leadershipTeam.quote),
+      people: leadershipPeople
+    },
+    legacy: {
+      title: textSrc(entry.legacy.title, defaultAbout.legacy.title),
+      intro: textSrc(entry.legacy.intro, defaultAbout.legacy.intro),
+      teachers
+    },
+    teams: {
+      title: textSrc(entry.teams.title, defaultAbout.teams.title),
+      kicker: textSrc(entry.teams.kicker, defaultAbout.teams.kicker),
+      groups
+    },
+    values: {
+      title: textSrc(entry.values.title, defaultAbout.values.title),
+      items: valueItems
+    },
+    motto: textSrc(entry.values.motto, defaultAbout.motto)
+  };
+}

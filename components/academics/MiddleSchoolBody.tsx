@@ -4,14 +4,14 @@ import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import MiddleSchoolIcon from "@/components/academics/MiddleSchoolIcon";
 import PageBanner from "@/components/PageBanner";
-import { middleSchool } from "@/lib/middleSchool";
+import type { MiddleSchoolContent } from "@/lib/middleSchool";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function MiddleSchoolBody() {
-  const { hero, approach, curriculum, beyond, moments } = middleSchool;
+export default function MiddleSchoolBody({ content }: { content: MiddleSchoolContent }) {
+  const { hero, approach, curriculum, beyond, moments } = content;
 
   return (
     <AboutReveal>

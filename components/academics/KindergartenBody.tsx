@@ -4,15 +4,14 @@ import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import KindergartenIcon from "@/components/academics/KindergartenIcon";
 import PageBanner from "@/components/PageBanner";
-import { kindergarten } from "@/lib/kindergarten";
+import type { KindergartenContent } from "@/lib/kindergarten";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function KindergartenBody() {
-  const { hero, programme, curriculum, development, visible, families, moments } =
-    kindergarten;
+export default function KindergartenBody({ content }: { content: KindergartenContent }) {
+  const { hero, programme, curriculum, development, visible, families, moments } = content;
 
   return (
     <AboutReveal>

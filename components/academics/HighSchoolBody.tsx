@@ -4,14 +4,14 @@ import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import HighSchoolIcon from "@/components/academics/HighSchoolIcon";
 import PageBanner from "@/components/PageBanner";
-import { highSchool } from "@/lib/highSchool";
+import type { HighSchoolContent } from "@/lib/highSchool";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function HighSchoolBody() {
-  const { hero, approach, curriculum, beyond, moments } = highSchool;
+export default function HighSchoolBody({ content }: { content: HighSchoolContent }) {
+  const { hero, approach, curriculum, beyond, moments } = content;
 
   return (
     <AboutReveal>

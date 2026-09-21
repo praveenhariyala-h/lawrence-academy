@@ -4,7 +4,7 @@ import AboutReveal from "@/components/about/AboutReveal";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import BeyondIcon from "@/components/beyond/BeyondIcon";
 import PageBanner from "@/components/PageBanner";
-import { beyond } from "@/lib/beyond";
+import type { BeyondContent } from "@/lib/beyond";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
@@ -33,8 +33,8 @@ function CaptionPhoto({
   );
 }
 
-export default function BeyondBody() {
-  const { hero, sports, creative, communication, stem, programmes, trips } = beyond;
+export default function BeyondBody({ content }: { content: BeyondContent }) {
+  const { hero, sports, creative, communication, stem, programmes, trips } = content;
 
   return (
     <AboutReveal>
