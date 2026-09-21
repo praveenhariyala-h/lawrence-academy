@@ -1,3 +1,5 @@
+import { imageSrc, textSrc } from "@/lib/cms";
+import { reader } from "@/lib/keystatic";
 import type { SpaceFeature, SpacePhoto } from "@/lib/campus";
 
 export type CareSpace = {
@@ -73,3 +75,69 @@ export const careSpaces: CareSpace[] = [
     ]
   }
 ];
+
+export type FacilitiesContent = {
+  metaTitle: string;
+  metaDescription: string;
+  hero: typeof facilitiesHero;
+  spaces: CareSpace[];
+};
+
+export const defaultFacilities: FacilitiesContent = {
+  metaTitle: "Facilities",
+  metaDescription:
+    "Transport, day care and infirmary support at Lawrence High School ICSE, HSR Layout — care beyond classrooms.",
+  hero: facilitiesHero,
+  spaces: careSpaces
+};
+
+export async function getFacilitiesContent(): Promise<FacilitiesContent> {
+  let entry;
+  try {
+    entry = await reader.singletons.facilities.read();
+  } catch (error) {
+    console.error("Failed to read Keystatic facilities content", error);
+    return defaultFacilities;
+  }
+  if (!entry) return defaultFacilities;
+
+  const spaces: CareSpace[] = entry.spaces.length
+    ? entry.spaces.map((space, index) => {
+        const fallback = defaultFacilities.spaces[index] ?? defaultFacilities.spaces[0];
+        return {
+          id: textSrc(space.id, fallback.id),
+          title: textSrc(space.title, fallback.title),
+          tagline: textSrc(space.tagline, fallback.tagline),
+          body: textSrc(space.body, fallback.body),
+          tone: (textSrc(space.tone, fallback.tone ?? "default") || "default") as CareSpace["tone"],
+          reverse: space.reverse ?? fallback.reverse,
+          leadIcon: textSrc(space.leadIcon, fallback.leadIcon),
+          image: {
+            src: imageSrc(space.image.src, fallback.image.src, "/images/"),
+            alt: textSrc(space.image.alt, fallback.image.alt)
+          },
+          features: space.features.length
+            ? space.features.map((feature, featureIndex) => {
+                const featureFallback = fallback.features[featureIndex] ?? fallback.features[0];
+                return {
+                  icon: textSrc(feature.icon, featureFallback.icon),
+                  label: textSrc(feature.label, featureFallback.label)
+                };
+              })
+            : fallback.features
+        };
+      })
+    : defaultFacilities.spaces;
+
+  return {
+    metaTitle: textSrc(entry.metaTitle, defaultFacilities.metaTitle),
+    metaDescription: textSrc(entry.metaDescription, defaultFacilities.metaDescription),
+    hero: {
+      title: textSrc(entry.hero.title, facilitiesHero.title),
+      lede: textSrc(entry.hero.lede, facilitiesHero.lede),
+      image: imageSrc(entry.hero.image, facilitiesHero.image, "/images/"),
+      imageAlt: textSrc(entry.hero.imageAlt, facilitiesHero.imageAlt)
+    },
+    spaces
+  };
+}

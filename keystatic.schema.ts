@@ -867,3 +867,135 @@ export const beyondBooksSchema = {
     { label: "Field Trips" }
   )
 };
+
+const facilityIcons = [
+  { label: "Smart board", value: "board" },
+  { label: "Furniture", value: "furniture" },
+  { label: "Bright room", value: "bright" },
+  { label: "Computers", value: "computers" },
+  { label: "Internet", value: "internet" },
+  { label: "Software", value: "software" },
+  { label: "Hands-on", value: "handsOn" },
+  { label: "Equipment", value: "equipment" },
+  { label: "Experiment", value: "experiment" },
+  { label: "Safety", value: "safety" },
+  { label: "Curriculum", value: "curriculum" },
+  { label: "LEGO", value: "lego" },
+  { label: "Sensors", value: "sensors" },
+  { label: "Project", value: "project" },
+  { label: "Innovation", value: "innovation" },
+  { label: "Books", value: "books" },
+  { label: "Digital", value: "digital" },
+  { label: "Reading", value: "reading" },
+  { label: "Research", value: "research" },
+  { label: "Seating", value: "seating" },
+  { label: "Audio-visual", value: "av" },
+  { label: "Stage", value: "stage" },
+  { label: "Events", value: "events" },
+  { label: "Transport", value: "transport" },
+  { label: "Bus", value: "bus" },
+  { label: "GPS", value: "gps" },
+  { label: "Driver", value: "driver" },
+  { label: "Shield", value: "shield" },
+  { label: "Day care", value: "daycare" },
+  { label: "Secure", value: "secure" },
+  { label: "Caregivers", value: "caregivers" },
+  { label: "Activities", value: "activities" },
+  { label: "Play", value: "play" },
+  { label: "Infirmary", value: "infirmary" },
+  { label: "First aid", value: "firstaid" },
+  { label: "Emergency", value: "emergency" },
+  { label: "Wellbeing", value: "wellbeing" }
+] as const;
+
+function spaceFeatures() {
+  return fields.array(
+    fields.object({
+      icon: iconSelect(facilityIcons, "board"),
+      label: fields.text({ label: "Label" })
+    }),
+    {
+      label: "Features",
+      itemLabel: (props) => props.fields.label.value || "Feature"
+    }
+  );
+}
+
+export const campusSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      image: cmsImage("Image"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  spaces: fields.array(
+    fields.object({
+      id: fields.text({ label: "Section id (anchor)" }),
+      title: fields.text({ label: "Title" }),
+      tagline: fields.text({ label: "Tagline" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      reverse: fields.checkbox({ label: "Reverse layout" }),
+      image: photo(),
+      gallery: fields.array(captionedPhoto(), {
+        label: "Gallery (optional)",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      }),
+      features: spaceFeatures()
+    }),
+    {
+      label: "Campus spaces",
+      itemLabel: (props) => props.fields.title.value || "Space"
+    }
+  )
+};
+
+export const facilitiesSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      image: cmsImage("Image"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  spaces: fields.array(
+    fields.object({
+      id: fields.text({ label: "Section id (anchor)" }),
+      title: fields.text({ label: "Title" }),
+      tagline: fields.text({ label: "Tagline" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      tone: fields.select({
+        label: "Band colour",
+        options: [
+          { label: "Default", value: "default" },
+          { label: "Pink", value: "pink" }
+        ],
+        defaultValue: "default"
+      }),
+      reverse: fields.checkbox({ label: "Reverse layout" }),
+      leadIcon: iconSelect(facilityIcons, "transport"),
+      image: photo(),
+      features: spaceFeatures()
+    }),
+    {
+      label: "Facilities",
+      itemLabel: (props) => props.fields.title.value || "Facility"
+    }
+  )
+};
