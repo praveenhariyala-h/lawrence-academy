@@ -1,0 +1,869 @@
+import { fields } from "@keystatic/core";
+
+function cmsImage(label: string, folder?: string) {
+  return fields.image({
+    label,
+    directory: folder ? `public/images/${folder}` : "public/images",
+    publicPath: folder ? `/images/${folder}/` : "/images/"
+  });
+}
+
+function photo(folder?: string) {
+  return fields.object({
+    src: cmsImage("Image", folder),
+    alt: fields.text({ label: "Alt text" })
+  });
+}
+
+function captionedPhoto(folder?: string) {
+  return fields.object({
+    src: cmsImage("Image", folder),
+    alt: fields.text({ label: "Alt text" }),
+    caption: fields.text({ label: "Caption" })
+  });
+}
+
+function iconSelect<const T extends readonly { label: string; value: string }[]>(
+  options: T,
+  defaultValue: T[number]["value"]
+) {
+  return fields.select({
+    label: "Icon",
+    options,
+    defaultValue
+  });
+}
+
+const aboutStatIcons = [
+  { label: "Years", value: "years" },
+  { label: "Results", value: "results" },
+  { label: "Campus", value: "campus" },
+  { label: "Faculty", value: "faculty" }
+] as const;
+
+const aboutValueKeys = [
+  { label: "Excellence", value: "excellence" },
+  { label: "Integrity", value: "integrity" },
+  { label: "Respect", value: "respect" },
+  { label: "Curiosity", value: "curiosity" },
+  { label: "Compassion", value: "compassion" },
+  { label: "Responsibility", value: "responsibility" }
+] as const;
+
+const kindergartenIcons = [
+  { label: "Literacy", value: "literacy" },
+  { label: "Numeracy", value: "numeracy" },
+  { label: "Creativity", value: "creativity" },
+  { label: "Communication", value: "communication" },
+  { label: "Physical", value: "physical" },
+  { label: "Social", value: "social" },
+  { label: "Plant", value: "plant" },
+  { label: "Book", value: "book" },
+  { label: "Cap", value: "cap" }
+] as const;
+
+const primaryIcons = [
+  { label: "Child-centred", value: "child" },
+  { label: "Experiential", value: "experiential" },
+  { label: "Holistic", value: "holistic" },
+  { label: "Values", value: "values" },
+  { label: "English", value: "english" },
+  { label: "Mathematics", value: "maths" },
+  { label: "Science", value: "science" },
+  { label: "Social Studies", value: "social" },
+  { label: "Kannada", value: "kannada" },
+  { label: "Hindi", value: "hindi" },
+  { label: "Computers", value: "computer" },
+  { label: "Coding", value: "coding" },
+  { label: "Creative Arts", value: "arts" },
+  { label: "Performing Arts", value: "theatre" },
+  { label: "Physical Education", value: "pe" },
+  { label: "Robotics", value: "robotics" }
+] as const;
+
+const middleSchoolIcons = [
+  { label: "Navigate", value: "navigate" },
+  { label: "Explore", value: "explore" },
+  { label: "Work Hard", value: "work" },
+  { label: "Succeed", value: "succeed" },
+  { label: "English", value: "english" },
+  { label: "Social Studies", value: "social" },
+  { label: "Mathematics", value: "maths" },
+  { label: "Computers", value: "computer" },
+  { label: "Science", value: "science" },
+  { label: "Coding", value: "coding" },
+  { label: "Geography", value: "geography" },
+  { label: "History & Civics", value: "civics" },
+  { label: "Biology", value: "biology" },
+  { label: "Physics", value: "physics" },
+  { label: "Chemistry", value: "chemistry" },
+  { label: "Vedic Math", value: "vedic" },
+  { label: "Financial Literacy", value: "finance" },
+  { label: "Robotics", value: "robotics" },
+  { label: "Sports", value: "run" },
+  { label: "Performing Arts", value: "performing" },
+  { label: "Pottery", value: "pottery" },
+  { label: "Public Speaking", value: "speaking" },
+  { label: "Yoga", value: "yoga" },
+  { label: "Life Skills", value: "life" }
+] as const;
+
+const highSchoolIcons = [
+  { label: "Graduation cap", value: "cap" },
+  { label: "Mentorship", value: "mentorship" },
+  { label: "Trophy", value: "trophy" },
+  { label: "Language", value: "language" },
+  { label: "Literature", value: "literature" },
+  { label: "Second language", value: "secondLanguage" },
+  { label: "History & Civics", value: "civics" },
+  { label: "Geography", value: "geography" },
+  { label: "Biology", value: "biology" },
+  { label: "Physics", value: "physics" },
+  { label: "Chemistry", value: "chemistry" },
+  { label: "Mathematics", value: "maths" },
+  { label: "Science", value: "science" },
+  { label: "Computers", value: "computer" },
+  { label: "Economics", value: "economics" },
+  { label: "Commerce", value: "commerce" },
+  { label: "Physical Education", value: "pe" },
+  { label: "Robotics", value: "robotics" },
+  { label: "Art", value: "art" },
+  { label: "Environment", value: "environment" },
+  { label: "Think", value: "brain" },
+  { label: "Heart", value: "heart" },
+  { label: "Guided", value: "guided" }
+] as const;
+
+const beyondIcons = [
+  { label: "Model United Nations", value: "mun" },
+  { label: "Assembly", value: "assembly" },
+  { label: "Show & Tell", value: "showtell" }
+] as const;
+
+const groupTones = [
+  { label: "Peach", value: "peach" },
+  { label: "Blue", value: "blue" },
+  { label: "Gold", value: "gold" }
+] as const;
+
+const programmeTones = [
+  { label: "Plain", value: "plain" },
+  { label: "Gold", value: "gold" }
+] as const;
+
+export const aboutSchema = {
+  hero: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      image: cmsImage("Image", "about"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  stats: fields.array(
+    fields.object({
+      value: fields.text({ label: "Value" }),
+      unit: fields.text({ label: "Unit (optional)" }),
+      label: fields.text({ label: "Label" }),
+      icon: iconSelect(aboutStatIcons, "years")
+    }),
+    {
+      label: "Stats",
+      itemLabel: (props) => props.fields.label.value || "Stat"
+    }
+  ),
+  journey: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      body: fields.text({
+        label: "Body",
+        multiline: true,
+        description: "Separate paragraphs with a blank line."
+      }),
+      photos: fields.array(photo(), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      }),
+      visionTitle: fields.text({ label: "Vision title" }),
+      visionText: fields.text({ label: "Vision text", multiline: true }),
+      missionTitle: fields.text({ label: "Mission title" }),
+      missionText: fields.text({ label: "Mission text", multiline: true })
+    },
+    { label: "Our Journey" }
+  ),
+  philosophy: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      image: cmsImage("Image", "about"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Educational Philosophy" }
+  ),
+  messages: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      kicker: fields.text({ label: "Kicker" }),
+      people: fields.array(
+        fields.object({
+          name: fields.text({ label: "Name" }),
+          role: fields.text({ label: "Role" }),
+          photo: cmsImage("Photo (optional)", "about"),
+          photoAlt: fields.text({ label: "Photo alt" }),
+          initials: fields.text({ label: "Initials (used if no photo)" }),
+          position: fields.text({
+            label: "Image focus",
+            description: "CSS object-position, e.g. 78% 12%"
+          }),
+          message: fields.text({ label: "Message", multiline: true })
+        }),
+        {
+          label: "People",
+          itemLabel: (props) => props.fields.name.value || "Leader"
+        }
+      )
+    },
+    { label: "Leadership Messages" }
+  ),
+  leadershipTeam: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      kicker: fields.text({ label: "Kicker" }),
+      quote: fields.text({ label: "Quote", multiline: true }),
+      people: fields.array(
+        fields.object({
+          name: fields.text({ label: "Name" }),
+          role: fields.text({ label: "Role" }),
+          photo: cmsImage("Photo", "about"),
+          photoAlt: fields.text({ label: "Photo alt" }),
+          position: fields.text({ label: "Image focus" })
+        }),
+        {
+          label: "People",
+          itemLabel: (props) => props.fields.name.value || "Leader"
+        }
+      )
+    },
+    { label: "Leadership Team" }
+  ),
+  legacy: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      intro: fields.text({ label: "Intro", multiline: true }),
+      teachers: fields.array(
+        fields.object({
+          name: fields.text({ label: "Name" }),
+          year: fields.text({ label: "Joined year" }),
+          profile: fields.text({ label: "Profile" }),
+          photo: cmsImage("Photo", "about"),
+          photoAlt: fields.text({ label: "Photo alt" })
+        }),
+        {
+          label: "Teachers",
+          itemLabel: (props) => props.fields.name.value || "Teacher"
+        }
+      )
+    },
+    { label: "Dedicated Teachers" }
+  ),
+  teams: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      kicker: fields.text({ label: "Kicker" }),
+      groups: fields.array(
+        fields.object({
+          name: fields.text({ label: "Name" }),
+          photo: cmsImage("Photo", "about"),
+          photoAlt: fields.text({ label: "Photo alt" })
+        }),
+        {
+          label: "Teams",
+          itemLabel: (props) => props.fields.name.value || "Team"
+        }
+      )
+    },
+    { label: "Our Teams" }
+  ),
+  values: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      items: fields.array(
+        fields.object({
+          key: fields.select({
+            label: "Icon",
+            options: aboutValueKeys,
+            defaultValue: "excellence"
+          }),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Values",
+          itemLabel: (props) => props.fields.title.value || "Value"
+        }
+      ),
+      motto: fields.text({
+        label: "Motto",
+        multiline: true
+      })
+    },
+    { label: "Values" }
+  )
+};
+
+export const kindergartenSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis. Line breaks are kept."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      image: cmsImage("Image", "about"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  programme: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Programme" }
+  ),
+  curriculum: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      stages: fields.array(
+        fields.object({
+          title: fields.text({ label: "Title" }),
+          age: fields.text({ label: "Age" }),
+          body: fields.text({ label: "Body", multiline: true })
+        }),
+        {
+          label: "Stages",
+          itemLabel: (props) => props.fields.title.value || "Stage"
+        }
+      )
+    },
+    { label: "Curriculum" }
+  ),
+  development: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      items: fields.array(
+        fields.object({
+          icon: iconSelect(kindergartenIcons, "literacy"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Items",
+          itemLabel: (props) => props.fields.title.value || "Item"
+        }
+      )
+    },
+    { label: "Learning & Development" }
+  ),
+  visible: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Making Learning Visible" }
+  ),
+  families: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Engaging Families" }
+  ),
+  moments: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Moments" }
+  )
+};
+
+export const primarySchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      grades: fields.text({ label: "Grades" }),
+      title: fields.text({ label: "Title" }),
+      image: cmsImage("Image", "home/hero"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  approach: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      image: cmsImage("Image", "about"),
+      imageAlt: fields.text({ label: "Alt text" }),
+      values: fields.array(
+        fields.object({
+          icon: iconSelect(primaryIcons, "child"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Values",
+          itemLabel: (props) => props.fields.title.value || "Value"
+        }
+      )
+    },
+    { label: "Approach" }
+  ),
+  curriculum: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      subjects: fields.array(
+        fields.object({
+          icon: iconSelect(primaryIcons, "english"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Subjects",
+          itemLabel: (props) => props.fields.title.value || "Subject"
+        }
+      ),
+      karadiTitle: fields.text({ label: "Karadi Path title" }),
+      karadiBody: fields.text({ label: "Karadi Path body", multiline: true }),
+      karadiLogo: cmsImage("Karadi Path logo", "home/partners"),
+      karadiLogoAlt: fields.text({ label: "Karadi Path logo alt" })
+    },
+    { label: "Curriculum" }
+  ),
+  beyond: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      items: fields.array(
+        fields.object({
+          icon: iconSelect(primaryIcons, "arts"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Items",
+          itemLabel: (props) => props.fields.title.value || "Item"
+        }
+      )
+    },
+    { label: "Beyond the Classroom" }
+  ),
+  moments: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Moments" }
+  )
+};
+
+export const middleSchoolSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      grades: fields.text({ label: "Grades" }),
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis. Line breaks are kept."
+      }),
+      image: cmsImage("Image", "home/hero"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  approach: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo(), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      }),
+      values: fields.array(
+        fields.object({
+          icon: iconSelect(middleSchoolIcons, "navigate"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "NEWS values",
+          itemLabel: (props) => props.fields.title.value || "Value"
+        }
+      )
+    },
+    { label: "Approach" }
+  ),
+  curriculum: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      grade5Title: fields.text({ label: "Grade 5 title" }),
+      grade5Subjects: fields.array(
+        fields.object({
+          icon: iconSelect(middleSchoolIcons, "english"),
+          title: fields.text({ label: "Title" })
+        }),
+        {
+          label: "Grade 5 subjects",
+          itemLabel: (props) => props.fields.title.value || "Subject"
+        }
+      ),
+      grade67Title: fields.text({ label: "Grades 6 & 7 title" }),
+      grade67Subjects: fields.array(
+        fields.object({
+          icon: iconSelect(middleSchoolIcons, "english"),
+          title: fields.text({ label: "Title" })
+        }),
+        {
+          label: "Grades 6 & 7 subjects",
+          itemLabel: (props) => props.fields.title.value || "Subject"
+        }
+      )
+    },
+    { label: "Curriculum" }
+  ),
+  beyond: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      items: fields.array(
+        fields.object({
+          icon: iconSelect(middleSchoolIcons, "vedic"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text (optional)" })
+        }),
+        {
+          label: "Items",
+          itemLabel: (props) => props.fields.title.value || "Item"
+        }
+      )
+    },
+    { label: "Beyond Academics" }
+  ),
+  moments: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Moments" }
+  )
+};
+
+export const highSchoolSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis. Line breaks are kept."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      image: cmsImage("Image", "about"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  approach: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      }),
+      values: fields.array(
+        fields.object({
+          icon: iconSelect(highSchoolIcons, "cap"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Values",
+          itemLabel: (props) => props.fields.title.value || "Value"
+        }
+      )
+    },
+    { label: "Approach" }
+  ),
+  curriculum: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      grade8Title: fields.text({ label: "Grade 8 title" }),
+      grade8Subtitle: fields.text({ label: "Grade 8 subtitle" }),
+      grade8Subjects: fields.array(
+        fields.object({
+          icon: iconSelect(highSchoolIcons, "language"),
+          title: fields.text({ label: "Title" })
+        }),
+        {
+          label: "Grade 8 subjects",
+          itemLabel: (props) => props.fields.title.value || "Subject"
+        }
+      ),
+      grade910Title: fields.text({ label: "Grades 9 & 10 title" }),
+      grade910Subtitle: fields.text({ label: "Grades 9 & 10 subtitle" }),
+      grade910Lede: fields.text({ label: "Grades 9 & 10 lede" }),
+      grade910Groups: fields.array(
+        fields.object({
+          title: fields.text({ label: "Title" }),
+          subtitle: fields.text({ label: "Subtitle" }),
+          note: fields.text({ label: "Note (optional)" }),
+          tone: fields.select({
+            label: "Colour",
+            options: [...groupTones],
+            defaultValue: "peach"
+          }),
+          subjects: fields.array(
+            fields.object({
+              icon: iconSelect(highSchoolIcons, "language"),
+              title: fields.text({ label: "Title" }),
+              detail: fields.text({ label: "Detail (optional)" })
+            }),
+            {
+              label: "Subjects",
+              itemLabel: (props) => props.fields.title.value || "Subject"
+            }
+          )
+        }),
+        {
+          label: "Grade 9 & 10 groups",
+          itemLabel: (props) => props.fields.title.value || "Group"
+        }
+      )
+    },
+    { label: "Curriculum" }
+  ),
+  beyond: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      }),
+      values: fields.array(
+        fields.object({
+          icon: iconSelect(highSchoolIcons, "brain"),
+          title: fields.text({ label: "Title" }),
+          text: fields.text({ label: "Text" })
+        }),
+        {
+          label: "Values",
+          itemLabel: (props) => props.fields.title.value || "Value"
+        }
+      )
+    },
+    { label: "Beyond Academics" }
+  ),
+  moments: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({ label: "Title" }),
+      photos: fields.array(photo("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Moments" }
+  )
+};
+
+export const beyondBooksSchema = {
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis. Line breaks are kept."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      badge: fields.text({ label: "Badge (optional)", multiline: true }),
+      image: cmsImage("Image", "home/beyond"),
+      imageAlt: fields.text({ label: "Alt text" })
+    },
+    { label: "Hero" }
+  ),
+  sports: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      body: fields.text({
+        label: "Body",
+        multiline: true,
+        description: "Separate paragraphs with a blank line."
+      }),
+      photos: fields.array(captionedPhoto("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Sports" }
+  ),
+  creative: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      photos: fields.array(captionedPhoto("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      }),
+      items: fields.array(
+        fields.object({
+          title: fields.text({ label: "Title" }),
+          body: fields.text({ label: "Body", multiline: true })
+        }),
+        {
+          label: "Items",
+          itemLabel: (props) => props.fields.title.value || "Item"
+        }
+      )
+    },
+    { label: "Creative Expression" }
+  ),
+  communication: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      photos: fields.array(captionedPhoto("about"), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      }),
+      items: fields.array(
+        fields.object({
+          icon: iconSelect(beyondIcons, "mun"),
+          title: fields.text({ label: "Title" }),
+          body: fields.text({ label: "Body", multiline: true })
+        }),
+        {
+          label: "Items",
+          itemLabel: (props) => props.fields.title.value || "Item"
+        }
+      )
+    },
+    { label: "Communication Skills" }
+  ),
+  stem: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      kicker: fields.text({ label: "Kicker" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      tracks: fields.array(
+        fields.object({
+          title: fields.text({ label: "Title" }),
+          steps: fields.array(
+            fields.object({
+              grades: fields.text({ label: "Grades" }),
+              text: fields.text({ label: "Text" })
+            }),
+            {
+              label: "Steps",
+              itemLabel: (props) => props.fields.grades.value || "Step"
+            }
+          )
+        }),
+        {
+          label: "Tracks",
+          itemLabel: (props) => props.fields.title.value || "Track"
+        }
+      ),
+      photos: fields.array(captionedPhoto(), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "STEM" }
+  ),
+  programmes: fields.array(
+    fields.object({
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede (optional)" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      image: cmsImage("Image", "home/curriculum"),
+      imageAlt: fields.text({ label: "Alt text" }),
+      tone: fields.select({
+        label: "Style",
+        options: [...programmeTones],
+        defaultValue: "plain"
+      })
+    }),
+    {
+      label: "Programmes",
+      itemLabel: (props) => props.fields.title.value || "Programme"
+    }
+  ),
+  trips: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      lede: fields.text({ label: "Lede" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      photos: fields.array(captionedPhoto(), {
+        label: "Photos",
+        itemLabel: (props) => props.fields.caption.value || props.fields.alt.value || "Photo"
+      })
+    },
+    { label: "Field Trips" }
+  )
+};

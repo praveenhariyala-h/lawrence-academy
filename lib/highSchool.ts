@@ -1,3 +1,6 @@
+import { imageSrc, mapPhotos, textSrc } from "@/lib/cms";
+import { reader } from "@/lib/keystatic";
+
 export const highSchool = {
   hero: {
     kicker: "High School",
@@ -201,3 +204,122 @@ export const highSchool = {
     ]
   }
 };
+
+export type HighSchoolContent = typeof highSchool & {
+  metaTitle: string;
+  metaDescription: string;
+};
+
+export const defaultHighSchool: HighSchoolContent = {
+  ...highSchool,
+  metaTitle: "High School",
+  metaDescription:
+    "High School at Lawrence High School ICSE — Grades 8 to 10. ICSE curriculum, mentorship, and holistic development for board success."
+};
+
+export async function getHighSchoolContent(): Promise<HighSchoolContent> {
+  let entry;
+  try {
+    entry = await reader.singletons.highSchool.read();
+  } catch (error) {
+    console.error("Failed to read Keystatic high school content", error);
+    return defaultHighSchool;
+  }
+  if (!entry) return defaultHighSchool;
+
+  return {
+    metaTitle: textSrc(entry.metaTitle, defaultHighSchool.metaTitle),
+    metaDescription: textSrc(entry.metaDescription, defaultHighSchool.metaDescription),
+    hero: {
+      kicker: textSrc(entry.hero.kicker, highSchool.hero.kicker),
+      title: textSrc(entry.hero.title, highSchool.hero.title),
+      lede: textSrc(entry.hero.lede, highSchool.hero.lede),
+      image: imageSrc(entry.hero.image, highSchool.hero.image, "/images/about/"),
+      imageAlt: textSrc(entry.hero.imageAlt, highSchool.hero.imageAlt)
+    },
+    approach: {
+      kicker: textSrc(entry.approach.kicker, highSchool.approach.kicker),
+      title: textSrc(entry.approach.title, highSchool.approach.title),
+      body: textSrc(entry.approach.body, highSchool.approach.body),
+      photos: mapPhotos(entry.approach.photos, highSchool.approach.photos, "/images/about/"),
+      values: entry.approach.values.length
+        ? entry.approach.values.map((value, index) => {
+            const fallback = highSchool.approach.values[index] ?? highSchool.approach.values[0];
+            return {
+              icon: textSrc(value.icon, fallback.icon),
+              title: textSrc(value.title, fallback.title),
+              text: textSrc(value.text, fallback.text)
+            };
+          })
+        : highSchool.approach.values
+    },
+    curriculum: {
+      kicker: textSrc(entry.curriculum.kicker, highSchool.curriculum.kicker),
+      title: textSrc(entry.curriculum.title, highSchool.curriculum.title),
+      grade8: {
+        title: textSrc(entry.curriculum.grade8Title, highSchool.curriculum.grade8.title),
+        subtitle: textSrc(entry.curriculum.grade8Subtitle, highSchool.curriculum.grade8.subtitle),
+        subjects: entry.curriculum.grade8Subjects.length
+          ? entry.curriculum.grade8Subjects.map((subject, index) => {
+              const fallback = highSchool.curriculum.grade8.subjects[index] ?? highSchool.curriculum.grade8.subjects[0];
+              return {
+                icon: textSrc(subject.icon, fallback.icon),
+                title: textSrc(subject.title, fallback.title)
+              };
+            })
+          : highSchool.curriculum.grade8.subjects
+      },
+      grade910: {
+        title: textSrc(entry.curriculum.grade910Title, highSchool.curriculum.grade910.title),
+        subtitle: textSrc(entry.curriculum.grade910Subtitle, highSchool.curriculum.grade910.subtitle),
+        lede: textSrc(entry.curriculum.grade910Lede, highSchool.curriculum.grade910.lede),
+        groups: entry.curriculum.grade910Groups.length
+          ? entry.curriculum.grade910Groups.map((group, index) => {
+              const fallback = highSchool.curriculum.grade910.groups[index] ?? highSchool.curriculum.grade910.groups[0];
+              return {
+                title: textSrc(group.title, fallback.title),
+                subtitle: textSrc(group.subtitle, fallback.subtitle),
+                ...(textSrc(group.note, "note" in fallback ? fallback.note ?? "" : "")
+                  ? { note: textSrc(group.note, "note" in fallback ? fallback.note ?? "" : "") }
+                  : {}),
+                tone: (textSrc(group.tone, fallback.tone) || fallback.tone) as "peach" | "blue" | "gold",
+                subjects: group.subjects.length
+                  ? group.subjects.map((subject, subjectIndex) => {
+                      const subjectFallback = fallback.subjects[subjectIndex] ?? fallback.subjects[0];
+                      return {
+                        icon: textSrc(subject.icon, subjectFallback.icon),
+                        title: textSrc(subject.title, subjectFallback.title),
+                        ...("detail" in subjectFallback && subjectFallback.detail
+                          ? { detail: textSrc(subject.detail, subjectFallback.detail) }
+                          : textSrc(subject.detail) ? { detail: subject.detail } : {})
+                      };
+                    })
+                  : fallback.subjects
+              };
+            })
+          : highSchool.curriculum.grade910.groups
+      }
+    },
+    beyond: {
+      kicker: textSrc(entry.beyond.kicker, highSchool.beyond.kicker),
+      title: textSrc(entry.beyond.title, highSchool.beyond.title),
+      body: textSrc(entry.beyond.body, highSchool.beyond.body),
+      photos: mapPhotos(entry.beyond.photos, highSchool.beyond.photos, "/images/about/"),
+      values: entry.beyond.values.length
+        ? entry.beyond.values.map((value, index) => {
+            const fallback = highSchool.beyond.values[index] ?? highSchool.beyond.values[0];
+            return {
+              icon: textSrc(value.icon, fallback.icon),
+              title: textSrc(value.title, fallback.title),
+              text: textSrc(value.text, fallback.text)
+            };
+          })
+        : highSchool.beyond.values
+    },
+    moments: {
+      kicker: textSrc(entry.moments.kicker, highSchool.moments.kicker),
+      title: textSrc(entry.moments.title, highSchool.moments.title),
+      photos: mapPhotos(entry.moments.photos, highSchool.moments.photos, "/images/about/")
+    }
+  };
+}

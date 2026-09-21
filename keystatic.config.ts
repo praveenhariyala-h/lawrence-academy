@@ -1,4 +1,12 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
+import {
+  aboutSchema,
+  beyondBooksSchema,
+  highSchoolSchema,
+  kindergartenSchema,
+  middleSchoolSchema,
+  primarySchema
+} from "./keystatic.schema";
 
 const homeImage = (label: string, folder: string) =>
   fields.image({
@@ -9,9 +17,11 @@ const homeImage = (label: string, folder: string) =>
 
 export const showAdminUI = true;
 
+const isDev = process.env.NODE_ENV !== "production";
+
 export default config({
   storage: {
-    kind: "cloud"
+    kind: isDev ? "local" : "cloud"
   },
   cloud: {
     project: "praveen/lawrence-academy"
@@ -115,6 +125,36 @@ export default config({
         chairmanPhoto: homeImage("Chairman portrait", "chairman"),
         chairmanPhotoAlt: fields.text({ label: "Chairman photo alt" })
       }
+    }),
+    about: singleton({
+      label: "About",
+      path: "content/pages/about",
+      schema: aboutSchema
+    }),
+    kindergarten: singleton({
+      label: "Academics · Kindergarten",
+      path: "content/pages/kindergarten",
+      schema: kindergartenSchema
+    }),
+    primary: singleton({
+      label: "Academics · Primary",
+      path: "content/pages/primary",
+      schema: primarySchema
+    }),
+    middleSchool: singleton({
+      label: "Academics · Middle School",
+      path: "content/pages/middle-school",
+      schema: middleSchoolSchema
+    }),
+    highSchool: singleton({
+      label: "Academics · High School",
+      path: "content/pages/high-school",
+      schema: highSchoolSchema
+    }),
+    beyondBooks: singleton({
+      label: "Beyond Books",
+      path: "content/pages/beyond-books",
+      schema: beyondBooksSchema
     })
   }
 });

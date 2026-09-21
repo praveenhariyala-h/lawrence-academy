@@ -4,14 +4,14 @@ import AboutReveal from "@/components/about/AboutReveal";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import PrimaryIcon from "@/components/academics/PrimaryIcon";
 import PageBanner from "@/components/PageBanner";
-import { primary } from "@/lib/primary";
+import type { PrimaryContent } from "@/lib/primary";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function PrimaryBody() {
-  const { hero, approach, curriculum, beyond, moments } = primary;
+export default function PrimaryBody({ content }: { content: PrimaryContent }) {
+  const { hero, approach, curriculum, beyond, moments } = content;
 
   return (
     <AboutReveal>

@@ -1,3 +1,4 @@
+import { imageSrc, readText, textSrc } from "@/lib/cms";
 import { reader } from "@/lib/keystatic";
 
 export type HomeHeroSlide = {
@@ -156,33 +157,6 @@ Long-serving, dedicated teachers work with every child, enabling them to discove
   chairmanPhoto: "/images/home/chairman/chairman.png",
   chairmanPhotoAlt: "P.M. Subbaiah, Chairman, Lawrence High School"
 };
-
-function imageSrc(
-  value: string | null | undefined,
-  fallback: string,
-  basePath: string
-) {
-  if (!value) return fallback;
-  if (value.startsWith("/") || value.startsWith("http")) return value;
-  return `${basePath}${value}`;
-}
-
-async function readText(value: unknown, fallback: string) {
-  if (typeof value === "string" && value.trim()) return value;
-  if (typeof value === "function") {
-    try {
-      const result = await value();
-      if (typeof result === "string" && result.trim()) return result;
-    } catch {
-      return fallback;
-    }
-  }
-  return fallback;
-}
-
-function textSrc(value: string | null | undefined, fallback: string) {
-  return value?.trim() ? value : fallback;
-}
 
 export async function getHomeContent(): Promise<HomeContent> {
   let entry;

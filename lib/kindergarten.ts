@@ -1,3 +1,6 @@
+import { imageSrc, mapPhotos, textSrc } from "@/lib/cms";
+import { reader } from "@/lib/keystatic";
+
 export const kindergarten = {
   hero: {
     kicker: "Kindergarten",
@@ -158,3 +161,90 @@ export const kindergarten = {
     ]
   }
 };
+
+export type KindergartenContent = typeof kindergarten & {
+  metaTitle: string;
+  metaDescription: string;
+};
+
+export const defaultKindergarten: KindergartenContent = {
+  ...kindergarten,
+  metaTitle: "Kindergarten",
+  metaDescription:
+    "Kindergarten at Lawrence High School ICSE — Nursery, LKG and UKG. A play-based programme aligned with NEP 2020 and the Collins Kindergarten Series."
+};
+
+const ABOUT_IMAGES = "/images/about/";
+
+export async function getKindergartenContent(): Promise<KindergartenContent> {
+  let entry;
+  try {
+    entry = await reader.singletons.kindergarten.read();
+  } catch (error) {
+    console.error("Failed to read Keystatic kindergarten content", error);
+    return defaultKindergarten;
+  }
+  if (!entry) return defaultKindergarten;
+
+  return {
+    metaTitle: textSrc(entry.metaTitle, defaultKindergarten.metaTitle),
+    metaDescription: textSrc(entry.metaDescription, defaultKindergarten.metaDescription),
+    hero: {
+      kicker: textSrc(entry.hero.kicker, kindergarten.hero.kicker),
+      title: textSrc(entry.hero.title, kindergarten.hero.title),
+      lede: textSrc(entry.hero.lede, kindergarten.hero.lede),
+      image: imageSrc(entry.hero.image, kindergarten.hero.image, ABOUT_IMAGES),
+      imageAlt: textSrc(entry.hero.imageAlt, kindergarten.hero.imageAlt)
+    },
+    programme: {
+      kicker: textSrc(entry.programme.kicker, kindergarten.programme.kicker),
+      title: textSrc(entry.programme.title, kindergarten.programme.title),
+      body: textSrc(entry.programme.body, kindergarten.programme.body),
+      photos: mapPhotos(entry.programme.photos, kindergarten.programme.photos, ABOUT_IMAGES)
+    },
+    curriculum: {
+      kicker: textSrc(entry.curriculum.kicker, kindergarten.curriculum.kicker),
+      title: textSrc(entry.curriculum.title, kindergarten.curriculum.title),
+      stages: entry.curriculum.stages.length
+        ? entry.curriculum.stages.map((stage, index) => {
+            const fallback = kindergarten.curriculum.stages[index] ?? kindergarten.curriculum.stages[0];
+            return {
+              title: textSrc(stage.title, fallback.title),
+              age: textSrc(stage.age, fallback.age),
+              body: textSrc(stage.body, fallback.body)
+            };
+          })
+        : kindergarten.curriculum.stages
+    },
+    development: {
+      kicker: textSrc(entry.development.kicker, kindergarten.development.kicker),
+      title: textSrc(entry.development.title, kindergarten.development.title),
+      items: entry.development.items.length
+        ? entry.development.items.map((item, index) => {
+            const fallback = kindergarten.development.items[index] ?? kindergarten.development.items[0];
+            return {
+              icon: textSrc(item.icon, fallback.icon),
+              title: textSrc(item.title, fallback.title),
+              text: textSrc(item.text, fallback.text)
+            };
+          })
+        : kindergarten.development.items
+    },
+    visible: {
+      kicker: textSrc(entry.visible.kicker, kindergarten.visible.kicker),
+      title: textSrc(entry.visible.title, kindergarten.visible.title),
+      body: textSrc(entry.visible.body, kindergarten.visible.body),
+      photos: mapPhotos(entry.visible.photos, kindergarten.visible.photos, ABOUT_IMAGES)
+    },
+    families: {
+      kicker: textSrc(entry.families.kicker, kindergarten.families.kicker),
+      title: textSrc(entry.families.title, kindergarten.families.title),
+      body: textSrc(entry.families.body, kindergarten.families.body),
+      photos: mapPhotos(entry.families.photos, kindergarten.families.photos, ABOUT_IMAGES)
+    },
+    moments: {
+      title: textSrc(entry.moments.title, kindergarten.moments.title),
+      photos: mapPhotos(entry.moments.photos, kindergarten.moments.photos, ABOUT_IMAGES)
+    }
+  };
+}

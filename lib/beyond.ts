@@ -1,3 +1,6 @@
+import { imageSrc, mapPhotos, paragraphs, textSrc } from "@/lib/cms";
+import { reader } from "@/lib/keystatic";
+
 export const beyond = {
   hero: {
     kicker: "Beyond Books",
@@ -198,3 +201,107 @@ export const beyond = {
     ]
   }
 };
+
+export type BeyondContent = typeof beyond;
+
+export async function getBeyondContent(): Promise<BeyondContent> {
+  let entry;
+  try {
+    entry = await reader.singletons.beyondBooks.read();
+  } catch (error) {
+    console.error("Failed to read Keystatic beyond books content", error);
+    return beyond;
+  }
+  if (!entry) return beyond;
+
+  return {
+    hero: {
+      kicker: textSrc(entry.hero.kicker, beyond.hero.kicker),
+      title: textSrc(entry.hero.title, beyond.hero.title),
+      lede: textSrc(entry.hero.lede, beyond.hero.lede),
+      badge: textSrc(entry.hero.badge, beyond.hero.badge),
+      image: imageSrc(entry.hero.image, beyond.hero.image, "/images/home/beyond/"),
+      imageAlt: textSrc(entry.hero.imageAlt, beyond.hero.imageAlt)
+    },
+    sports: {
+      title: textSrc(entry.sports.title, beyond.sports.title),
+      lede: textSrc(entry.sports.lede, beyond.sports.lede),
+      body: paragraphs(entry.sports.body, beyond.sports.body),
+      photos: mapPhotos(entry.sports.photos, beyond.sports.photos, "/images/about/")
+    },
+    creative: {
+      title: textSrc(entry.creative.title, beyond.creative.title),
+      lede: textSrc(entry.creative.lede, beyond.creative.lede),
+      photos: mapPhotos(entry.creative.photos, beyond.creative.photos, "/images/about/"),
+      items: entry.creative.items.length
+        ? entry.creative.items.map((item, index) => {
+            const fallback = beyond.creative.items[index] ?? beyond.creative.items[0];
+            return {
+              title: textSrc(item.title, fallback.title),
+              body: textSrc(item.body, fallback.body)
+            };
+          })
+        : beyond.creative.items
+    },
+    communication: {
+      title: textSrc(entry.communication.title, beyond.communication.title),
+      lede: textSrc(entry.communication.lede, beyond.communication.lede),
+      photos: mapPhotos(entry.communication.photos, beyond.communication.photos, "/images/about/"),
+      items: entry.communication.items.length
+        ? entry.communication.items.map((item, index) => {
+            const fallback = beyond.communication.items[index] ?? beyond.communication.items[0];
+            return {
+              icon: textSrc(item.icon, fallback.icon),
+              title: textSrc(item.title, fallback.title),
+              body: textSrc(item.body, fallback.body)
+            };
+          })
+        : beyond.communication.items
+    },
+    stem: {
+      title: textSrc(entry.stem.title, beyond.stem.title),
+      lede: textSrc(entry.stem.lede, beyond.stem.lede),
+      kicker: textSrc(entry.stem.kicker, beyond.stem.kicker),
+      body: textSrc(entry.stem.body, beyond.stem.body),
+      tracks: entry.stem.tracks.length
+        ? entry.stem.tracks.map((track, index) => {
+            const fallback = beyond.stem.tracks[index] ?? beyond.stem.tracks[0];
+            return {
+              title: textSrc(track.title, fallback.title),
+              steps: track.steps.length
+                ? track.steps.map((step, stepIndex) => {
+                    const stepFallback = fallback.steps[stepIndex] ?? fallback.steps[0];
+                    return {
+                      grades: textSrc(step.grades, stepFallback.grades),
+                      text: textSrc(step.text, stepFallback.text)
+                    };
+                  })
+                : fallback.steps
+            };
+          })
+        : beyond.stem.tracks,
+      photos: mapPhotos(entry.stem.photos, beyond.stem.photos, "/images/")
+    },
+    programmes: entry.programmes.length
+      ? entry.programmes.map((item, index) => {
+          const fallback = beyond.programmes[index] ?? beyond.programmes[0];
+          return {
+            title: textSrc(item.title, fallback.title),
+            ...("lede" in fallback && fallback.lede
+              ? { lede: textSrc(item.lede, fallback.lede) }
+              : textSrc(item.lede) ? { lede: item.lede } : {}),
+            body: textSrc(item.body, fallback.body),
+            image: imageSrc(item.image, fallback.image, "/images/home/curriculum/"),
+            imageAlt: textSrc(item.imageAlt, fallback.imageAlt),
+            tone: (textSrc(item.tone, fallback.tone) || fallback.tone) as "plain" | "gold"
+          };
+        })
+      : beyond.programmes,
+    trips: {
+      title: textSrc(entry.trips.title, beyond.trips.title),
+      lede: textSrc(entry.trips.lede, beyond.trips.lede),
+      body: textSrc(entry.trips.body, beyond.trips.body),
+      photos: mapPhotos(entry.trips.photos, beyond.trips.photos, "/images/")
+    }
+  };
+}

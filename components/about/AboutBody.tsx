@@ -1,18 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import PageBanner from "@/components/PageBanner";
-import {
-  aboutHero,
-  aboutJourney,
-  aboutLeadershipTeam,
-  aboutLegacy,
-  aboutMessages,
-  aboutMotto,
-  aboutPhilosophy,
-  aboutStats,
-  aboutTeams,
-  aboutValues
-} from "@/lib/about";
+import type { AboutContent } from "@/lib/about";
 import AboutReveal from "./AboutReveal";
 import FacilitySlider from "./FacilitySlider";
 import TeamsCarousel from "./TeamsCarousel";
@@ -59,7 +48,20 @@ function Portrait({
   );
 }
 
-export default function AboutBody() {
+export default function AboutBody({ content }: { content: AboutContent }) {
+  const {
+    hero: aboutHero,
+    stats: aboutStats,
+    journey: aboutJourney,
+    philosophy: aboutPhilosophy,
+    messages: aboutMessages,
+    leadershipTeam: aboutLeadershipTeam,
+    legacy: aboutLegacy,
+    teams: aboutTeams,
+    values: aboutValues,
+    motto: aboutMotto
+  } = content;
+
   return (
     <AboutReveal>
       <PageBanner src={aboutHero.image} alt={aboutHero.imageAlt} title={aboutHero.title} />
