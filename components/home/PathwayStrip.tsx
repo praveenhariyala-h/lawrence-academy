@@ -150,7 +150,7 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
           ref={stripRef}
         >
           {items.map((item, index) => {
-            const blurb = blurbs[item.title];
+            const blurb = item.blurb || blurbs[item.title];
             const isFlipped = introducing ? Boolean(introFlipped[index]) : flipped === index;
 
             return (

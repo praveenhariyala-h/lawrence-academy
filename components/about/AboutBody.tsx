@@ -64,7 +64,13 @@ export default function AboutBody({ content }: { content: AboutContent }) {
 
   return (
     <AboutReveal>
-      <PageBanner src={aboutHero.image} alt={aboutHero.imageAlt} title={aboutHero.title} />
+      <PageBanner
+        src={aboutHero.image}
+        alt={aboutHero.imageAlt}
+        title={aboutHero.title}
+        showTitle
+        className="page-banner-title"
+      />
 
       <section className="about-stats-band" aria-label="School at a glance">
         <div className="about-stats">

@@ -151,6 +151,159 @@ const programmeTones = [
   { label: "Gold", value: "gold" }
 ] as const;
 
+const imageFit = [
+  { label: "Cover (fill, may crop)", value: "cover" },
+  { label: "Contain (full image, no crop)", value: "contain" }
+] as const;
+
+function homeImage(label: string, folder: string) {
+  return cmsImage(label, `home/${folder}`);
+}
+
+export const homeSchema = {
+  heroLearnMoreLabel: fields.text({ label: "Hero button label" }),
+  heroLearnMoreHref: fields.text({ label: "Hero button link" }),
+  heroSlides: fields.array(
+    fields.object({
+      title: fields.text({
+        label: "Slide label",
+        description: "Used to name this slide in the CMS. The homepage hero is image-only."
+      }),
+      text: fields.text({
+        label: "Notes (optional)",
+        multiline: true,
+        description: "Not shown on the homepage."
+      }),
+      image: homeImage("Image", "hero"),
+      alt: fields.text({ label: "Alt text" }),
+      fit: fields.select({
+        label: "Image fit",
+        description: "Use Contain to show the full image without cropping or stretching.",
+        options: [...imageFit],
+        defaultValue: "cover"
+      })
+    }),
+    {
+      label: "Hero slides",
+      itemLabel: (props) => props.fields.title.value || "Slide"
+    }
+  ),
+  pathwayItems: fields.array(
+    fields.object({
+      title: fields.text({ label: "Title" }),
+      detail: fields.text({ label: "Detail" }),
+      blurb: fields.text({
+        label: "Flip-card blurb",
+        multiline: true
+      }),
+      extra: fields.text({ label: "Extra line (optional)" }),
+      image: homeImage("Image", "pathway"),
+      position: fields.text({
+        label: "Image focus (CSS object-position)",
+        description: "Example: center 30%"
+      })
+    }),
+    {
+      label: "Pathways",
+      itemLabel: (props) => props.fields.title.value || "Pathway"
+    }
+  ),
+  whyTitle: fields.text({ label: "Why Lawrence title" }),
+  whyQuote: fields.text({ label: "Why Lawrence quote" }),
+  whyBody: fields.text({ label: "Why Lawrence body", multiline: true }),
+  whyImage: homeImage("Why Lawrence graphic", "why"),
+  whyImageAlt: fields.text({ label: "Why Lawrence alt" }),
+  curriculumTitle: fields.text({ label: "Curriculum title" }),
+  curriculumKicker: fields.text({ label: "Curriculum kicker" }),
+  curriculum: fields.array(
+    fields.object({
+      title: fields.text({ label: "Name" }),
+      grades: fields.text({ label: "Tagline" }),
+      href: fields.text({ label: "Link" }),
+      photo: homeImage("Photo", "curriculum"),
+      photoAlt: fields.text({ label: "Photo alt" })
+    }),
+    {
+      label: "Curriculum stages",
+      itemLabel: (props) => props.fields.title.value || "Stage"
+    }
+  ),
+  beyondClassroom: fields.object(
+    {
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Line breaks are kept on the homepage."
+      }),
+      body: fields.text({ label: "Body", multiline: true }),
+      ctaLabel: fields.text({ label: "Button label" }),
+      ctaHref: fields.text({ label: "Button link" }),
+      items: fields.array(
+        fields.object({
+          title: fields.text({ label: "Title" }),
+          image: cmsImage("Image", "home"),
+          alt: fields.text({ label: "Alt text" })
+        }),
+        {
+          label: "Tiles",
+          itemLabel: (props) => props.fields.title.value || "Tile"
+        }
+      )
+    },
+    { label: "More Than a Classroom" }
+  ),
+  achievementsTitle: fields.text({ label: "Achievements title" }),
+  achievementsViewAllLabel: fields.text({ label: "Achievements view-all label" }),
+  campusSpotlight: fields.object(
+    {
+      title: fields.text({ label: "Title" }),
+      body: fields.text({ label: "Body", multiline: true }),
+      ctaLabel: fields.text({ label: "Link label" }),
+      ctaHref: fields.text({ label: "Link" }),
+      image: homeImage("Image", "hero"),
+      alt: fields.text({ label: "Alt text" })
+    },
+    { label: "Campus spotlight" }
+  ),
+  upcomingEventsTitle: fields.text({ label: "Upcoming events title" }),
+  upcomingEventsViewAllLabel: fields.text({ label: "Upcoming events view-all label" }),
+  upcomingEvents: fields.array(
+    fields.object({
+      day: fields.text({ label: "Day" }),
+      month: fields.text({ label: "Month" }),
+      title: fields.text({ label: "Title" }),
+      text: fields.text({ label: "Text" })
+    }),
+    {
+      label: "Upcoming events",
+      itemLabel: (props) => props.fields.title.value || "Event"
+    }
+  ),
+  partnersKicker: fields.text({ label: "Partners kicker" }),
+  partnersTitle: fields.text({ label: "Partners title" }),
+  partners: fields.array(
+    fields.object({
+      name: fields.text({ label: "Name" }),
+      category: fields.text({ label: "Category" }),
+      logo: homeImage("Logo (optional)", "partners")
+    }),
+    {
+      label: "Partners",
+      itemLabel: (props) => props.fields.name.value || "Partner"
+    }
+  ),
+  chairmanKicker: fields.text({ label: "Chairman kicker" }),
+  chairmanName: fields.text({ label: "Chairman name" }),
+  chairmanRole: fields.text({ label: "Chairman role" }),
+  chairmanMessage: fields.text({
+    label: "Chairman message",
+    multiline: true,
+    description: "Use **bold** for emphasis. Separate paragraphs with a blank line."
+  }),
+  chairmanPhoto: homeImage("Chairman portrait", "chairman"),
+  chairmanPhotoAlt: fields.text({ label: "Chairman photo alt" })
+};
+
 export const aboutSchema = {
   hero: fields.object(
     {
@@ -865,6 +1018,101 @@ export const beyondBooksSchema = {
       })
     },
     { label: "Field Trips" }
+  )
+};
+
+export const newsSchema = {
+  metaTitle: fields.text({ label: "Page title (browser tab)" }),
+  metaDescription: fields.text({ label: "Page description", multiline: true }),
+  hero: fields.object(
+    {
+      kicker: fields.text({ label: "Kicker" }),
+      title: fields.text({
+        label: "Title",
+        multiline: true,
+        description: "Use *asterisks* for emphasis. Line breaks are kept."
+      }),
+      lede: fields.text({ label: "Lede" }),
+      image: cmsImage("Banner image", "news"),
+      imageAlt: fields.text({ label: "Alt text" }),
+      fit: fields.select({
+        label: "Image fit",
+        description: "Cover fills the banner. Contain shows the full image without cropping.",
+        options: [...imageFit],
+        defaultValue: "cover"
+      })
+    },
+    { label: "Hero" }
+  ),
+  tabs: fields.object(
+    {
+      resultLabel: fields.text({ label: "Result tab" }),
+      achievementLabel: fields.text({ label: "Achievements tab" }),
+      eventLabel: fields.text({ label: "Events tab" }),
+      resultEmpty: fields.text({ label: "Result empty message", multiline: true }),
+      achievementEmpty: fields.text({ label: "Achievements empty message", multiline: true }),
+      eventEmpty: fields.text({ label: "Events empty message", multiline: true })
+    },
+    { label: "Tabs" }
+  ),
+  results: fields.array(
+    fields.object({
+      date: fields.date({ label: "Date" }),
+      title: fields.text({ label: "Title" }),
+      summary: fields.text({
+        label: "Summary",
+        multiline: true,
+        description: "Shown on the Result card."
+      }),
+      href: fields.text({
+        label: "Link (optional)",
+        description: "e.g. /news/kabaddi to open a full story."
+      })
+    }),
+    {
+      label: "Result cards",
+      itemLabel: (props) => props.fields.title.value || "Result"
+    }
+  ),
+  achievements: fields.array(
+    fields.object({
+      kicker: fields.text({
+        label: "Kicker",
+        description: "Small label above the title, e.g. Student Achievements."
+      }),
+      title: fields.text({ label: "Title" }),
+      body: fields.text({
+        label: "Body",
+        multiline: true,
+        description: "Card shows the first paragraph. Full text appears in the popup."
+      }),
+      photos: fields.array(photo("news/achievements"), {
+        label: "Photos",
+        description: "First photo is the card image. Up to 5 photos appear in the popup.",
+        itemLabel: (props) => props.fields.alt.value || "Photo",
+        validation: { length: { max: 5 } }
+      })
+    }),
+    {
+      label: "Achievement cards",
+      itemLabel: (props) => props.fields.title.value || "Achievement"
+    }
+  ),
+  events: fields.array(
+    fields.object({
+      day: fields.text({ label: "Day", description: "e.g. 12" }),
+      month: fields.text({ label: "Month", description: "e.g. Jan" }),
+      title: fields.text({ label: "Title" }),
+      text: fields.text({
+        label: "Summary",
+        multiline: true,
+        description: "Shown on the Event card."
+      })
+    }),
+    {
+      label: "Event cards",
+      itemLabel: (props) => props.fields.title.value || "Event"
+    }
   )
 };
 

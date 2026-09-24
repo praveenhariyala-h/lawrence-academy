@@ -30,6 +30,7 @@ export default function PageBanner({
   showTitle,
   gradesAfter,
   ledeItalic,
+  fit = "cover",
   className
 }: {
   src: string;
@@ -43,6 +44,7 @@ export default function PageBanner({
   showTitle?: boolean;
   gradesAfter?: boolean;
   ledeItalic?: boolean;
+  fit?: "cover" | "contain";
   className?: string;
 }) {
   const hasCopy = Boolean(showTitle || kicker || lede || grades || pills?.length || path?.length);
@@ -51,10 +53,21 @@ export default function PageBanner({
 
   return (
     <section className="about-hero">
-      <div className={`about-hero-banner about-reveal${hasCopy ? " has-copy" : ""}${className ? ` ${className}` : ""}`}>
-        <Image src={src} alt={alt} fill priority sizes="100vw" />
+      <div
+        className={`about-hero-banner${hasCopy ? " has-copy" : ""}${fit === "contain" ? " is-contain" : ""}${className ? ` ${className}` : ""}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority
+          quality={100}
+          unoptimized={fit === "contain"}
+          sizes={fit === "contain" ? "(max-width: 1024px) 100vw, 1024px" : "100vw"}
+          style={{ objectFit: fit, objectPosition: "center center" }}
+        />
         {hasCopy ? (
-          <div className="page-banner-copy">
+          <div className="page-banner-copy about-reveal">
             {isTitleBanner || kicker ? (
               <span className="page-banner-kicker-row">
                 {isTitleBanner ? <span className="page-banner-dash" aria-hidden="true" /> : null}

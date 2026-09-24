@@ -8,8 +8,8 @@ hero:
   badge: |-
     More Than
     a Classroom
-  image: sports.png
-  imageAlt: Students playing sport beyond the classroom at Lawrence High School
+  image: hero.png
+  imageAlt: Students jumping together on the playground at Lawrence High School
 sports:
   title: Sports at Lawrence
   lede: Play. Compete. Grow.

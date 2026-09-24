@@ -2,13 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AchievementsCarousel from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
-import {
-  achievementImageForSlug,
-  beyondClassroom,
-  campusSpotlight,
-  featuredAchievementFallback,
-  upcomingEvents
-} from "@/lib/homeSections";
+import { achievementImageForSlug, featuredAchievementFallback } from "@/lib/homeSections";
 import type { HomeContent } from "@/lib/home";
 import { formatNewsDate, reader } from "@/lib/keystatic";
 
@@ -17,6 +11,8 @@ export default async function HomeBelowFold({
 }: {
   home: HomeContent;
 }) {
+  const beyond = home.beyondClassroom;
+  const campus = home.campusSpotlight;
   let achievements = [featuredAchievementFallback];
   try {
     const posts = await reader.collections.posts.all();
@@ -42,19 +38,19 @@ export default async function HomeBelowFold({
       <section className="beyond">
         <div className="wrap beyond-inner">
           <div className="beyond-copy">
-            <h2>{beyondClassroom.title}</h2>
-            <p>{beyondClassroom.body}</p>
-            <Link className="btn btn--gold" href={beyondClassroom.ctaHref}>
-              {beyondClassroom.ctaLabel}
+            <h2>{beyond.title}</h2>
+            <p>{beyond.body}</p>
+            <Link className="btn btn--gold" href={beyond.ctaHref}>
+              {beyond.ctaLabel}
               <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="beyond-tiles">
-            {beyondClassroom.items.map((item) => (
+            {beyond.items.map((item) => (
               <Link
                 key={item.title}
                 className="beyond-tile"
-                href={beyondClassroom.ctaHref}
+                href={beyond.ctaHref}
                 aria-label={item.title}
               >
                 <Image src={item.image} alt={item.alt} fill sizes="180px" />
@@ -68,37 +64,37 @@ export default async function HomeBelowFold({
         <div className="wrap home-highlights">
           <article className="home-panel home-panel--main">
             <header className="home-panel-head">
-              <h2>Recent Achievements</h2>
-              <Link href="/news">View all</Link>
+              <h2>{home.achievementsTitle}</h2>
+              <Link href="/news?tab=achievement">{home.achievementsViewAllLabel}</Link>
             </header>
             <AchievementsCarousel items={achievements} />
           </article>
 
           <article className="home-panel home-panel--compact">
             <header className="home-panel-head">
-              <h2>{campusSpotlight.title}</h2>
-              <Link href={campusSpotlight.ctaHref}>{campusSpotlight.ctaLabel}</Link>
+              <h2>{campus.title}</h2>
+              <Link href={campus.ctaHref}>{campus.ctaLabel}</Link>
             </header>
-            <Link className="home-campus" href={campusSpotlight.ctaHref}>
+            <Link className="home-campus" href={campus.ctaHref}>
               <div className="home-campus-photo">
                 <Image
-                  src={campusSpotlight.image}
-                  alt={campusSpotlight.alt}
+                  src={campus.image}
+                  alt={campus.alt}
                   fill
                   sizes="(max-width: 900px) 100vw, 14vw"
                 />
               </div>
-              <p>{campusSpotlight.body}</p>
+              <p>{campus.body}</p>
             </Link>
           </article>
 
           <article className="home-panel home-panel--compact">
             <header className="home-panel-head">
-              <h2>Upcoming Events</h2>
-              <Link href="/news">View all</Link>
+              <h2>{home.upcomingEventsTitle}</h2>
+              <Link href="/news?tab=event">{home.upcomingEventsViewAllLabel}</Link>
             </header>
             <ul className="home-events">
-              {upcomingEvents.map((event) => (
+              {home.upcomingEvents.map((event) => (
                 <li key={`${event.day}-${event.title}`}>
                   <span className="home-event-date">
                     <b>{event.day}</b>

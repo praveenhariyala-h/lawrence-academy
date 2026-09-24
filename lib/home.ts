@@ -1,20 +1,63 @@
 import { imageSrc, readText, textSrc } from "@/lib/cms";
+import {
+  beyondClassroom as defaultBeyondClassroom,
+  campusSpotlight as defaultCampusSpotlight,
+  upcomingEvents as defaultUpcomingEvents
+} from "@/lib/homeSections";
 import { reader } from "@/lib/keystatic";
+
+export type HomeImageFit = "cover" | "contain";
 
 export type HomeHeroSlide = {
   title: string;
   text: string;
   image: string;
   alt: string;
+  fit: HomeImageFit;
 };
 
 export type HomePathway = {
   title: string;
   detail: string;
+  blurb: string;
   extra: string;
   image: string;
   position: string;
 };
+
+export type HomeBeyondItem = {
+  title: string;
+  image: string;
+  alt: string;
+};
+
+export type HomeBeyond = {
+  title: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+  items: HomeBeyondItem[];
+};
+
+export type HomeCampusSpotlight = {
+  title: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image: string;
+  alt: string;
+};
+
+export type HomeEvent = {
+  day: string;
+  month: string;
+  title: string;
+  text: string;
+};
+
+function imageFit(value: string | null | undefined): HomeImageFit {
+  return value === "contain" ? "contain" : "cover";
+}
 
 export type HomeCurriculum = {
   title: string;
@@ -43,6 +86,13 @@ export type HomeContent = {
   curriculumTitle: string;
   curriculumKicker: string;
   curriculum: HomeCurriculum[];
+  beyondClassroom: HomeBeyond;
+  achievementsTitle: string;
+  achievementsViewAllLabel: string;
+  campusSpotlight: HomeCampusSpotlight;
+  upcomingEventsTitle: string;
+  upcomingEventsViewAllLabel: string;
+  upcomingEvents: HomeEvent[];
   partnersKicker: string;
   partnersTitle: string;
   partners: HomePartner[];
@@ -62,41 +112,95 @@ export const defaultHome: HomeContent = {
       title: "Welcome to Lawrence",
       text: "Where learning is exciting, purposeful, and relevant.",
       image: "/images/home/hero/hero-building.png",
-      alt: "Lawrence High ICSE campus building in HSR Layout"
+      alt: "Lawrence High ICSE campus building in HSR Layout",
+      fit: "cover"
     },
     {
       title: "Joyful learners",
       text: "A campus filled with energy, curiosity, and belonging.",
       image: "/images/home/hero/hero-courtyard.png",
-      alt: "Primary students walking together in the school courtyard"
+      alt: "Primary students walking together in the school courtyard",
+      fit: "cover"
     },
     {
       title: "Curiosity begins here",
       text: "Warm classrooms where young children discover, play, and learn.",
       image: "/images/home/hero/hero-kindergarten.png",
-      alt: "Kindergarten teacher and students exploring together in class"
+      alt: "Kindergarten teacher and students exploring together in class",
+      fit: "cover"
     },
     {
       title: "Learning by doing",
       text: "Laboratories and studios where ideas become experiments and skills.",
       image: "/images/home/hero/hero-lab.png",
-      alt: "Students working in the chemistry laboratory"
+      alt: "Students working in the chemistry laboratory",
+      fit: "cover"
     },
     {
       title: "One school, one spirit",
       text: "A community that gathers, celebrates, and grows together.",
       image: "/images/home/hero/hero-assembly.png",
-      alt: "School assembly in the Lawrence High School auditorium"
+      alt: "School assembly in the Lawrence High School auditorium",
+      fit: "cover"
     }
   ],
   pathwayItems: [
-    { title: "Learn", detail: "Academics", extra: "", image: "/images/home/pathway/learn.png", position: "center 30%" },
-    { title: "Innovate", detail: "Robotics", extra: "", image: "/images/home/pathway/innovate.png", position: "72% 40%" },
-    { title: "Explore", detail: "Competition", extra: "", image: "/images/home/pathway/explore.png", position: "center 35%" },
-    { title: "Create", detail: "Art", extra: "", image: "/images/home/pathway/create.png", position: "58% 38%" },
-    { title: "Lead", detail: "Leadership", extra: "", image: "/images/home/pathway/lead.png", position: "center 22%" },
-    { title: "Perform", detail: "Sports", extra: "", image: "/images/home/pathway/perform.png", position: "center 30%" },
-    { title: "Grow", detail: "Lifeskills", extra: "Interact Club", image: "/images/home/pathway/grow.png", position: "center 25%" }
+    {
+      title: "Learn",
+      detail: "Academics",
+      blurb: "A strong academic core for every child.",
+      extra: "",
+      image: "/images/home/pathway/learn.png",
+      position: "center 30%"
+    },
+    {
+      title: "Innovate",
+      detail: "Robotics",
+      blurb: "Robotics and STEM in action.",
+      extra: "",
+      image: "/images/home/pathway/innovate.png",
+      position: "72% 40%"
+    },
+    {
+      title: "Explore",
+      detail: "Competition",
+      blurb: "Competitions that stretch potential.",
+      extra: "",
+      image: "/images/home/pathway/explore.png",
+      position: "center 35%"
+    },
+    {
+      title: "Create",
+      detail: "Art",
+      blurb: "Art that gives ideas a voice.",
+      extra: "",
+      image: "/images/home/pathway/create.png",
+      position: "58% 38%"
+    },
+    {
+      title: "Lead",
+      detail: "Leadership",
+      blurb: "Leadership rooted in character.",
+      extra: "",
+      image: "/images/home/pathway/lead.png",
+      position: "center 22%"
+    },
+    {
+      title: "Perform",
+      detail: "Sports",
+      blurb: "Sports that build grit and joy.",
+      extra: "",
+      image: "/images/home/pathway/perform.png",
+      position: "center 30%"
+    },
+    {
+      title: "Grow",
+      detail: "Lifeskills",
+      blurb: "Life skills for a bigger world.",
+      extra: "Interact Club",
+      image: "/images/home/pathway/grow.png",
+      position: "center 25%"
+    }
   ],
   whyTitle: "What Makes the School Special?",
   whyQuote: "“FROM CURIOUS MINDS TO CONFIDENT FUTURES.”",
@@ -137,6 +241,13 @@ export const defaultHome: HomeContent = {
       photoAlt: "High school students working together in class"
     }
   ],
+  beyondClassroom: defaultBeyondClassroom,
+  achievementsTitle: "Recent Achievements",
+  achievementsViewAllLabel: "View all",
+  campusSpotlight: defaultCampusSpotlight,
+  upcomingEventsTitle: "Upcoming Events",
+  upcomingEventsViewAllLabel: "View all",
+  upcomingEvents: defaultUpcomingEvents,
   partnersKicker: "Working together to create richer learning experiences for our students.",
   partnersTitle: "Our Partners & Collaborators",
   partners: [
@@ -175,7 +286,8 @@ export async function getHomeContent(): Promise<HomeContent> {
           title: textSrc(slide.title, fallback.title),
           text: textSrc(slide.text, fallback.text),
           image: imageSrc(slide.image, fallback.image, "/images/home/hero/"),
-          alt: textSrc(slide.alt, fallback.alt)
+          alt: textSrc(slide.alt, fallback.alt),
+          fit: imageFit(slide.fit ?? fallback.fit)
         };
       })
     : defaultHome.heroSlides;
@@ -186,6 +298,7 @@ export async function getHomeContent(): Promise<HomeContent> {
         return {
           title: textSrc(item.title, fallback.title),
           detail: textSrc(item.detail, fallback.detail),
+          blurb: textSrc(item.blurb, fallback.blurb),
           extra: item.extra?.trim() ?? "",
           image: imageSrc(item.image, fallback.image, "/images/home/pathway/"),
           position: textSrc(item.position, fallback.position)
@@ -219,6 +332,45 @@ export async function getHomeContent(): Promise<HomeContent> {
       })
     : defaultHome.partners;
 
+  const beyondSource = entry.beyondClassroom;
+  const beyondItems = beyondSource?.items?.length
+    ? beyondSource.items.map((item, index) => {
+        const fallback =
+          defaultHome.beyondClassroom.items[index] ?? defaultHome.beyondClassroom.items[0];
+        return {
+          title: textSrc(item.title, fallback.title),
+          image: imageSrc(item.image, fallback.image, "/images/home/"),
+          alt: textSrc(item.alt, fallback.alt)
+        };
+      })
+    : defaultHome.beyondClassroom.items;
+
+  const campusSource = entry.campusSpotlight;
+  const campusSpotlight: HomeCampusSpotlight = {
+    title: textSrc(campusSource?.title, defaultHome.campusSpotlight.title),
+    body: textSrc(campusSource?.body, defaultHome.campusSpotlight.body),
+    ctaLabel: textSrc(campusSource?.ctaLabel, defaultHome.campusSpotlight.ctaLabel),
+    ctaHref: textSrc(campusSource?.ctaHref, defaultHome.campusSpotlight.ctaHref),
+    image: imageSrc(
+      campusSource?.image,
+      defaultHome.campusSpotlight.image,
+      "/images/home/hero/"
+    ),
+    alt: textSrc(campusSource?.alt, defaultHome.campusSpotlight.alt)
+  };
+
+  const upcomingEvents = entry.upcomingEvents?.length
+    ? entry.upcomingEvents.map((item, index) => {
+        const fallback = defaultHome.upcomingEvents[index] ?? defaultHome.upcomingEvents[0];
+        return {
+          day: textSrc(item.day, fallback.day),
+          month: textSrc(item.month, fallback.month),
+          title: textSrc(item.title, fallback.title),
+          text: textSrc(item.text, fallback.text)
+        };
+      })
+    : defaultHome.upcomingEvents;
+
   return {
     heroLearnMoreLabel: textSrc(entry.heroLearnMoreLabel, defaultHome.heroLearnMoreLabel),
     heroLearnMoreHref: textSrc(entry.heroLearnMoreHref, defaultHome.heroLearnMoreHref),
@@ -232,6 +384,25 @@ export async function getHomeContent(): Promise<HomeContent> {
     curriculumTitle: textSrc(entry.curriculumTitle, defaultHome.curriculumTitle),
     curriculumKicker: textSrc(entry.curriculumKicker, defaultHome.curriculumKicker),
     curriculum,
+    beyondClassroom: {
+      title: textSrc(beyondSource?.title, defaultHome.beyondClassroom.title),
+      body: textSrc(beyondSource?.body, defaultHome.beyondClassroom.body),
+      ctaLabel: textSrc(beyondSource?.ctaLabel, defaultHome.beyondClassroom.ctaLabel),
+      ctaHref: textSrc(beyondSource?.ctaHref, defaultHome.beyondClassroom.ctaHref),
+      items: beyondItems
+    },
+    achievementsTitle: textSrc(entry.achievementsTitle, defaultHome.achievementsTitle),
+    achievementsViewAllLabel: textSrc(
+      entry.achievementsViewAllLabel,
+      defaultHome.achievementsViewAllLabel
+    ),
+    campusSpotlight,
+    upcomingEventsTitle: textSrc(entry.upcomingEventsTitle, defaultHome.upcomingEventsTitle),
+    upcomingEventsViewAllLabel: textSrc(
+      entry.upcomingEventsViewAllLabel,
+      defaultHome.upcomingEventsViewAllLabel
+    ),
+    upcomingEvents,
     partnersKicker: textSrc(entry.partnersKicker, defaultHome.partnersKicker),
     partnersTitle: textSrc(entry.partnersTitle, defaultHome.partnersTitle),
     partners,

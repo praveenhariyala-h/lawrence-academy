@@ -1,0 +1,244 @@
+hero:
+  kicker: News
+  title: |-
+    Results. Recognition.
+    *Moments that matter.*
+  lede: Board results, student achievements and events from life at Lawrence High School.
+  image: hero.png
+  imageAlt: Lawrence High School kabaddi team with medals at the CISCE Regional Kabaddi Tournament 2026
+  fit: cover
+metaTitle: News
+metaDescription: Results, achievements and events from Lawrence High School ICSE, HSR Layout, Bengaluru.
+tabs:
+  resultLabel: Result
+  achievementLabel: Achievements
+  eventLabel: Events
+  resultEmpty: Results will appear here as they are published.
+  achievementEmpty: Achievements will appear here as they are published.
+  eventEmpty: Upcoming events will appear here soon.
+results:
+  - date: 2025-02-01
+    title: Kabaddi
+    summary: The girls Kabaddi team won first place at Bharathi Public School, Yelahanka.
+    href: /news/kabaddi
+  - date: 2024-11-01
+    title: Football
+    summary: Under 15 boys won the Pro Club Inter-school Football Competition at Begur Turf.
+    href: /news/football
+  - date: 2024-06-01
+    title: CISCE Zonal Chess
+    summary: Lawrence hosted CISCE Zone 6 Chess and brought home multiple team titles.
+    href: /news/cisce-zonal-chess
+events:
+  - day: "12"
+    month: Jan
+    title: Annual Sports Meet
+    text: A celebration of spirit and teamwork.
+  - day: "26"
+    month: Jan
+    title: Republic Day Celebrations
+    text: A proud day marked with pride.
+  - day: "10"
+    month: Feb
+    title: School Carnival
+    text: Fun, creativity, community.
+achievements:
+  - kicker: Student Achievements
+    title: Hannah Maria Johnson Wins Cash Prize at State Computer Olympiad
+    body: >-
+      Hannah Maria Johnson of grade II E secured the sixth rank and a cash prize
+      of ₹700 in the state Level Computer Olympiad conducted by the Indian Talent
+      Olympiad.
+    photos:
+      - src: 01.png
+        alt: Hannah Maria Johnson receiving her Computer Olympiad certificate
+  - kicker: Student Achievements
+    title: Aditi Dash Selected Among Top 100 Science Talents in India
+    body: |-
+      Aditi Dash of Grade VI has secured 2nd Rank and has been selected among the Top 100 Science Talents in India through the National Science Promotion Orient Test (SPOT) 2025–2026, conducted by the Vikram Sarabhai Science Foundation (VSSF), Kochi.
+
+      She has been invited to attend the VSSF Internship Programme in Bengaluru from 17th to 19th July 2026 where she will have the unique opportunity to interact with scientists from ISRO, gain first-hand exposure to scientific concepts and live experiments, and receive her SPOT 100 Badge, Medal, and Certificate of Merit.
+    photos:
+      - src: 02.png
+        alt: Aditi Dash, Grade VI, selected among India's Top 100 Science Talents
+  - kicker: Student Achievements
+    title: K S Sathvik Wins Bronze at Tirak Taekwondo International Championship
+    body: >-
+      K S Sathvik of Grade X represented India at the Tirak Taekwondo International
+      Championship in Bangkok, Thailand and secured the Bronze Medal by defeating
+      his Malaysian opponent in a competition featuring participants from 28 countries.
+    photos:
+      - src: 03.png
+        alt: K S Sathvik with the Indian flag after winning bronze in Bangkok
+  - kicker: Student Achievements
+    title: U-14 Boys Kabaddi Team Runners-Up at State School Olympics
+    body: |-
+      Lawrence school U14 Boys Kabaddi team secured the runners-up at the 18th State Level School Olympics Games Championship - 2026, organized by Youngsters Sports Club, at Kittur Rani Chennamma Stadium, Bangalore on 25th June.
+
+      Team Members: Vinay - VIII B, Veeraj - VIIIA, Guru Charan-VIIA, Nithin - VIIC, Manish - VIII D, Nuthan D - VIIF, Parin - VIII B, Jashwanth - VIII B, Mithun - VIII A
+    photos:
+      - src: 04.png
+        alt: U-14 boys kabaddi team at Kittur Rani Chennamma Stadium
+  - kicker: Student Achievements
+    title: U-17 Girls Handball Team Runners-Up at CISCE Zonal
+    body: >-
+      Lawrence School Under-17 Girls team secured the Runner-up position in the
+      CISCE Zonal Handball Competition held at VIBGYOR High School, Haralur, from
+      27/06/2026 to 28/06/2026. 8 of our students have been selected for the
+      Regional-level competition.
+    photos:
+      - src: 05.png
+        alt: U-17 girls handball team at the CISCE Zonal Championship
+      - src: 05b.png
+        alt: Girls handball team at the CISCE Karnataka and Goa Regional Tournament
+  - kicker: Student Achievements
+    title: U-14 Boys Win Bronze at CISCE Zonal Table Tennis
+    body: >-
+      U-14 Boys team secured bronze medal in the CISCE ZONAL LEVEL Table Tennis
+      Tournament conducted by Primus Public School, Sarjapur on 18th and 19th July.
+    photos:
+      - src: 06.png
+        alt: U-14 boys table tennis medallists at Primus Public School
+  - kicker: Student Achievements
+    title: Lawrence Named Best Delegate School at IIMUN Bangalore
+    body: >-
+      Lawrence High School - the host school of IIMUN Bangalore Chapter held from
+      17th July to 19th July 2026, has been awarded the Best Delegate School among
+      58 schools and 650 student delegates. Lawrence School won the titles- 5 Best
+      Delegate Awards, 2 High Commendation Awards, 1 Special Mention Awards and 3
+      Verbal Mentions.
+    photos:
+      - src: 07.png
+        alt: Lawrence students and teachers at IIMUN Bangalore
+  - kicker: Student Achievements
+    title: Harshitha Goswami and Swasti Prasad Win Bronze in CISCE Zonal Yoga
+    body: >-
+      Harshitha Goswami of grade 7B and Swasti Prasad of grade 7 E secured 3rd place
+      in the Rhythmic Pair event in the U-14 category at CISCE Zonal Level Yoga
+      Competition, held at Primus School on 1st July 2026.
+    photos:
+      - src: 08.png
+        alt: Harshitha Goswami and Swasti Prasad with their yoga medals
+  - kicker: Student Achievements
+    title: U-14 Girls Win CISCE Zonal Kabaddi
+    body: |-
+      CISCE Zonal Level Kabaddi Competition 2026 held at Swami Vivekanand School, Chandapura on July 1st and 2nd July, U-14 girls secured 1st place and 6 students from Lawrence school selected for the regional level.
+
+      Amritha E of grade 7 F is awarded Best defender Award.
+    photos:
+      - src: 09.png
+        alt: U-14 girls kabaddi team with their zonal medals
+  - kicker: Student Achievements
+    title: Mohitha L Wins Bronze in CISCE Zone-E Swimming
+    body: >-
+      Mohitha L of 9B won the third prize in the CISCE – Karnataka & Goa Zone-E
+      Swimming Championship 2026 in the Backstroke event U-17 hosted by Swargarani
+      School, held at Vijaynagar Aquatic Centre on 27th July 2026.
+    photos:
+      - src: 10.png
+        alt: Mohitha L on the podium at the CISCE Zone-E Swimming Championship
+  - kicker: Student Achievements
+    title: Harsha M and Bala Harish Win Gold in CISCE Zonal Lawn Tennis
+    body: |-
+      In the CISCE Zonal Games & Sports 2026 Lawn Tennis Tournament held at Ebenezer International School, Bangalore, from 22nd July 2026 to 23rd July 2026, Harsha M of grade 7 won the Bronze Medal in the U-14 Boys Singles category.
+
+      Harsha M and Bala Harish, both of grade 7, won the Gold Medal in the U-14 Boys Doubles category and have qualified for the Regional Tournament.
+    photos:
+      - src: 11.png
+        alt: Harsha M and Bala Harish on the lawn tennis podium
+  - kicker: Student Achievements
+    title: Students Medal at CISCE Zonal Taekwondo Tournament
+    body: >-
+      In the CISCE Zonal Taekwondo Tournament, held on 16/7/2026, for the Under-14,
+      Under-17, and Under-19 Boys/Girls categories, the following students won medals.
+    photos:
+      - src: 12a.png
+        alt: Boys taekwondo medallists at the CISCE Zonal Tournament
+      - src: 12b.png
+        alt: Girls taekwondo medallists at the CISCE Zonal Tournament
+      - src: 12c.png
+        alt: Lawrence students on the podium at the West India Taekwondo Championship
+  - kicker: Student Achievements
+    title: Students Medal at CISCE Zonal Chess Tournament
+    body: >-
+      At the CISCE Zonal Chess Tournament hosted by Carmel School, Banashankari,
+      Out of 58 schools and around 570 students who participated across all
+      categories, Lawrence students have won the following medals.
+    photos:
+      - src: 13a.png
+        alt: Lawrence chess team at the CISCE Zonal Chess Tournament
+      - src: 13b.png
+        alt: Girls chess medallists on the podium at Carmel School
+  - kicker: Student Achievements
+    title: U-14 Boys Football Team Runners-Up at CISCE Zonal
+    body: >-
+      U-14 boys team secured the runner-up position in the CISCE zonal-level Football
+      Tournament conducted at Christ Academy, Kengeri. Five students are selected
+      for the Regional Level.
+    photos:
+      - src: 14.png
+        alt: U-14 boys football team at Christ Academy, Kengeri
+  - kicker: Student Achievements
+    title: U-15 Girls Team 2nd Runners-Up in Interschool Football
+    body: >-
+      Lawrence, U-15 girls team secured 2nd runner up in the interschool football
+      tournament held at Vibgyor School, Haralur, on 29th July 2026.
+    photos:
+      - src: 15.png
+        alt: U-15 girls football team with their trophy at Vibgyor School
+  - kicker: Student Achievements
+    title: Students Win Prizes at SEVAK Drama Competition
+    body: >-
+      Lawrence students won Second Prize in Group I at the SEVAK Drama Competition
+      and a Consolation Prize in the competition held on 26th July 2026 at
+      Seshadripuram College, Bengaluru.
+    photos:
+      - src: 16.png
+        alt: Lawrence students at the SEVAK World Family Day drama competition
+  - kicker: Student Achievements
+    title: Outstanding Results at CISCE Regional Kabaddi
+    body: |-
+      We are delighted to share the outstanding achievements of our students at the CISCE Regional Level Kabaddi Competition, held at ACTS Secondary School on 20th & 21st August 2026.
+
+      Team Results
+      U-14 Boys – 1st Place
+      U-17 Girls – 1st Place
+      U-19 Boys – 1st Place
+      U-14 Girls – 2nd Place
+
+      Out of 15 students who participated from Lawrence High School, 8 students have been selected for the NATIONAL LEVEL Competition:
+      Vidith Ashok Kumar – Grade 10 A
+      Surya S. – Grade 10 A
+      Dipthanshu Swain – Grade 10 B
+      Mishitha – Grade 10 A
+      Rachana – Grade 9 B
+      Kalpana Bhattrai – Grade 8 A
+      Pranitha P. – Grade 7 D
+      Amritha E. – Grade 7 E
+    photos:
+      - src: 17.png
+        alt: Lawrence kabaddi teams at the CISCE Regional Kabaddi Tournament
+      - src: 17b.png
+        alt: Kabaddi squad with certificates at ACTS School
+      - src: 17c.png
+        alt: Kabaddi medallists with their coach
+      - src: 17d.png
+        alt: Boys kabaddi medallists after the regional tournament
+      - src: 17e.png
+        alt: Lawrence kabaddi team with medals at ACTS School
+  - kicker: Student Achievements
+    title: Mishitha and Lohit Medal at Regional Boxing Championship
+    body: |-
+      Regional Boxing Competition held at Mysore. (3/9/2026)
+
+      Mishitha – Grade 10A
+      Secured 1st Place in the Under-17 category
+      Selected for the National Boxing Competition, to be held in Meerut on 28th September 2026
+
+      Lohit – Grade 9A
+      Secured 2nd Place in the Under-17 category
+    photos:
+      - src: 18.png
+        alt: Mishitha receiving her regional boxing certificate
+      - src: 18a.png
+        alt: Mishitha and Lohit with medals at the CISCE Regional Boxing Championship

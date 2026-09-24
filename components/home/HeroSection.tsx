@@ -67,7 +67,13 @@ export default function HeroSection({
                   alt={slide.alt}
                   fill
                   sizes="100vw"
+                  quality={95}
                   priority={slideIndex === 0}
+                  className={slide.fit === "contain" ? "is-contain" : undefined}
+                  style={{
+                    objectFit: slide.fit === "contain" ? "contain" : "cover",
+                    objectPosition: "center"
+                  }}
                 />
               </section>
             ))}
