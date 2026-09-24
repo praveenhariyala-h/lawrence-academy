@@ -38,7 +38,15 @@ export default function BeyondBody({ content }: { content: BeyondContent }) {
 
   return (
     <AboutReveal>
-      <PageBanner src={hero.image} alt={hero.imageAlt} kicker={hero.kicker} title={hero.title} lede={hero.lede} className="page-banner-title" />
+      <PageBanner
+        src={hero.image}
+        alt={hero.imageAlt}
+        kicker={hero.kicker}
+        title={hero.title}
+        lede={hero.lede}
+        fit="cover"
+        className="page-banner-title"
+      />
 
       <section className="about-band">
         <div className="wrap bb-split bb-split--sports">

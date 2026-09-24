@@ -5,55 +5,67 @@ heroSlides:
     text: Where learning is exciting, purposeful, and relevant.
     image: hero-building.png
     alt: Lawrence High ICSE campus building in HSR Layout
+    fit: cover
   - title: Joyful learners
     text: A campus filled with energy, curiosity, and belonging.
     image: hero-courtyard.png
     alt: Primary students walking together in the school courtyard
+    fit: cover
   - title: Curiosity begins here
     text: Warm classrooms where young children discover, play, and learn.
     image: hero-kindergarten.png
     alt: Kindergarten teacher and students exploring together in class
+    fit: cover
   - title: Learning by doing
     text: Laboratories and studios where ideas become experiments and skills.
     image: hero-lab.png
     alt: Students working in the chemistry laboratory
+    fit: cover
   - title: One school, one spirit
     text: A community that gathers, celebrates, and grows together.
     image: hero-assembly.png
     alt: School assembly in the Lawrence High School auditorium
+    fit: cover
 pathwayItems:
   - title: Learn
     detail: Academics
+    blurb: A strong academic core for every child.
     extra: ""
     image: learn.png
     position: center 30%
   - title: Innovate
     detail: Robotics
+    blurb: Robotics and STEM in action.
     extra: ""
     image: innovate.png
     position: 72% 40%
   - title: Explore
     detail: Competition
+    blurb: Competitions that stretch potential.
     extra: ""
     image: explore.png
     position: center 35%
   - title: Create
     detail: Art
+    blurb: Art that gives ideas a voice.
     extra: ""
     image: create.png
     position: 58% 38%
   - title: Lead
     detail: Leadership
+    blurb: Leadership rooted in character.
     extra: ""
     image: lead.png
     position: center 22%
   - title: Perform
     detail: Sports
+    blurb: Sports that build grit and joy.
     extra: ""
     image: perform.png
     position: center 30%
   - title: Grow
     detail: Lifeskills
+    blurb: Life skills for a bigger world.
     extra: Interact Club
     image: grow.png
     position: center 25%
@@ -90,7 +102,55 @@ curriculum:
     grades: Preparing for tomorrow.
     href: /academics/high-school
     photo: future-leaders.png
-    photoAlt: High school students working together in class
+      photoAlt: High school students working together in class
+beyondClassroom:
+  title: |-
+    More Than
+    a Classroom
+  body: >-
+    Sports, arts, clubs, competitions, field trips and leadership experiences
+    that shape confident individuals.
+  ctaLabel: Explore Beyond Books
+  ctaHref: /beyond-books
+  items:
+    - title: Sports
+      image: beyond/sports.png
+      alt: Student batting in the cricket nets at Lawrence High School
+    - title: Arts & Culture
+      image: beyond/art.png
+      alt: Students painting decorative vases in art class at Lawrence High School
+    - title: Clubs & Activities
+      image: beyond/mun.png
+      alt: Students representing countries at a Model United Nations session
+    - title: Competitions
+      image: pathway/explore.png
+      alt: Students at competitions from Lawrence High School
+achievementsTitle: Recent Achievements
+achievementsViewAllLabel: View all
+campusSpotlight:
+  title: Our Campus
+  body: >-
+    Modern facilities, inspiring spaces, and a safe, well-planned environment
+    for learning and growth.
+  ctaLabel: Explore Campus
+  ctaHref: /about/campus
+  image: hero-building.png
+  alt: Lawrence High School campus, HSR Layout
+upcomingEventsTitle: Upcoming Events
+upcomingEventsViewAllLabel: View all
+upcomingEvents:
+  - day: "12"
+    month: Jan
+    title: Annual Sports Meet
+    text: A celebration of spirit and teamwork.
+  - day: "26"
+    month: Jan
+    title: Republic Day Celebrations
+    text: A proud day marked with pride.
+  - day: "10"
+    month: Feb
+    title: School Carnival
+    text: Fun, creativity, community.
 partnersKicker: Working together to create richer learning experiences for our students.
 partnersTitle: Our Partners & Collaborators
 partners:

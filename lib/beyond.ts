@@ -7,8 +7,8 @@ export const beyond = {
     title: "Explore.\nExperience.\n*Evolve.*",
     lede: "Opportunities beyond the classroom to discover interests, build skills and create memories for life.",
     badge: "More Than\na Classroom",
-    image: "/images/home/beyond/sports.png",
-    imageAlt: "Students playing sport beyond the classroom at Lawrence High School"
+    image: "/images/home/beyond/hero.png",
+    imageAlt: "Students jumping together on the playground at Lawrence High School"
   },
   sports: {
     title: "Sports at Lawrence",
