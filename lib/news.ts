@@ -123,37 +123,37 @@ export const defaultNews: NewsContent = {
       kicker: "ICSE 2025-26",
       title: "Batch of 2025-26 Results",
       body: "Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.\n\nDistinctions (85% and above): 85 students.\n58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.",
-      photos: [resultShot("batch-2025-26.png", "ICSE Batch of 2025-26 results poster for Lawrence High School")]
+      photos: [resultShot("batch-2025-26.jpg", "ICSE Batch of 2025-26 results poster for Lawrence High School")]
     },
     {
       kicker: "ICSE 2025-26",
       title: "Atul Kumar Mishra — 99%",
       body: "Atul Kumar Mishra scored 99% in the ICSE Batch of 2025-26.",
-      photos: [resultShot("atul-kumar-mishra.png", "Atul Kumar Mishra, ICSE Batch of 2025-26")]
+      photos: [resultShot("atul-kumar-mishra.jpg", "Atul Kumar Mishra, ICSE Batch of 2025-26")]
     },
     {
       kicker: "ICSE 2025-26",
       title: "Annareddy Himaja — 97.8%",
       body: "Annareddy Himaja scored 97.8% in the ICSE Batch of 2025-26.",
-      photos: [resultShot("annareddy-himaja.png", "Annareddy Himaja, ICSE Batch of 2025-26")]
+      photos: [resultShot("annareddy-himaja.jpg", "Annareddy Himaja, ICSE Batch of 2025-26")]
     },
     {
       kicker: "ICSE 2025-26",
       title: "Ashima Agarwal — 97.8%",
       body: "Ashima Agarwal scored 97.8% in the ICSE Batch of 2025-26.",
-      photos: [resultShot("ashima-agarwal.png", "Ashima Agarwal, ICSE Batch of 2025-26")]
+      photos: [resultShot("ashima-agarwal.jpg", "Ashima Agarwal, ICSE Batch of 2025-26")]
     },
     {
       kicker: "ICSE 2025-26",
       title: "R Aditi — 97.8%",
       body: "R Aditi scored 97.8% in the ICSE Batch of 2025-26.",
-      photos: [resultShot("r-aditi.png", "R Aditi, ICSE Batch of 2025-26")]
+      photos: [resultShot("r-aditi.jpg", "R Aditi, ICSE Batch of 2025-26")]
     },
     {
       kicker: "ICSE 2025-26",
       title: "Naman Teertha Subash — 97.4%",
       body: "Naman Teertha Subash scored 97.4% in the ICSE Batch of 2025-26.",
-      photos: [resultShot("naman-teertha-subash.png", "Naman Teertha Subash, ICSE Batch of 2025-26")]
+      photos: [resultShot("naman-teertha-subash.jpg", "Naman Teertha Subash, ICSE Batch of 2025-26")]
     }
   ],
   events: [
