@@ -297,6 +297,59 @@ events:
       - src: teachers-day-3.png
         alt: A teacher guiding high school students in the science laboratory
 achievements:
+  - kicker: School Achievements
+    title: Mrs. Pushpa Subbaiah Receives the Dronacharya Award for Teachers 2026
+    body: >-
+      Mrs. Pushpa Subbaiah, Managing Trustee of Lawrence High School, received the
+      Dronacharya Award for Teachers 2026 from BMS Educational Trust on 18 September
+      2026 at BMS College of Engineering, Bull Temple Road, Bengaluru. The award
+      recognises three decades of contribution to education and academic leadership.
+    photos:
+      - src: dronacharya-pushpa-subbaiah.jpg
+        alt: Dronacharya Award 2026 presented to Mrs. Pushpa Subbaiah
+  - kicker: Student Achievements
+    title: Medal at the Handball Girls Tournament 2026
+    body: >-
+      A Lawrence student received a medal and certificate at the Handball Girls
+      Tournament 2026, hosted by St. Jude's School, Mohaddipur, at Syed Modi
+      Railway Stadium, Gorakhpur, from 17 to 19 September 2026.
+    photos:
+      - src: handball-gorakhpur.jpg
+        alt: A Lawrence student with her medal and certificate at the Handball Girls Tournament 2026
+  - kicker: Student Achievements
+    title: Certificates at the Frank Anthony Memorial Debate
+    body: >-
+      Lawrence students received certificates at the Frank Anthony Memorial
+      All-India Inter School Debate Competition 2026, in the preliminary stage for
+      Grade X and below, on 24 July 2026.
+    photos:
+      - src: debate-frank-anthony.jpg
+        alt: Lawrence students with certificates at the Frank Anthony Memorial Debate Competition
+  - kicker: Student Achievements
+    title: Medals at the 7th CISCE National Championship
+    body: >-
+      Three Lawrence students received medals and certificates at the 7th CISCE
+      National Championship hosted by Johnson Grammar School ICSE and ISC.
+    photos:
+      - src: cisce-national.jpg
+        alt: Three Lawrence students with medals and certificates at the 7th CISCE National Championship
+  - kicker: Student Achievements
+    title: Gold at the CISCE Regional Roller Skating Championship
+    body: >-
+      A Lawrence student won gold and received a certificate of merit at the CISCE
+      Regional Games and Sports 2026 roller skating championship with Flyers Roller
+      Skating Club.
+    photos:
+      - src: roller-skating.jpg
+        alt: A Lawrence student with a gold medal at the CISCE regional roller skating championship
+  - kicker: Student Achievements
+    title: Certificate at the School Cricket Championship
+    body: >-
+      A Lawrence student received a certificate at the school cricket championship
+      in September 2026.
+    photos:
+      - src: cricket-certificate.jpg
+        alt: A Lawrence student receiving a certificate at the cricket championship
   - kicker: Student Achievements
     title: Hannah Maria Johnson Wins Cash Prize at State Computer Olympiad
     body: >-
@@ -304,8 +357,8 @@ achievements:
       of ₹700 in the state Level Computer Olympiad conducted by the Indian Talent
       Olympiad.
     photos:
-      - src: 01.png
-        alt: Hannah Maria Johnson receiving her Computer Olympiad certificate
+      - src: hannah-olympiad.jpg
+        alt: Hannah Maria Johnson with her Indian Talent Olympiad medal and certificate
   - kicker: Student Achievements
     title: Aditi Dash Selected Among Top 100 Science Talents in India
     body: |-
@@ -322,8 +375,8 @@ achievements:
       Championship in Bangkok, Thailand and secured the Bronze Medal by defeating
       his Malaysian opponent in a competition featuring participants from 28 countries.
     photos:
-      - src: 03.png
-        alt: K S Sathvik with the Indian flag after winning bronze in Bangkok
+      - src: sathvik-taekwondo.jpg
+        alt: K S Sathvik with the Indian flag at the Tirak Taekwondo International Tournament
   - kicker: Student Achievements
     title: U-14 Boys Kabaddi Team Runners-Up at State School Olympics
     body: |-
@@ -341,10 +394,10 @@ achievements:
       27/06/2026 to 28/06/2026. 8 of our students have been selected for the
       Regional-level competition.
     photos:
+      - src: handball-regional.jpg
+        alt: Girls handball team with gold medals at the Karnataka and Goa Regional Tournament
       - src: 05.png
         alt: U-17 girls handball team at the CISCE Zonal Championship
-      - src: 05b.png
-        alt: Girls handball team at the CISCE Karnataka and Goa Regional Tournament
   - kicker: Student Achievements
     title: U-14 Boys Win Bronze at CISCE Zonal Table Tennis
     body: >-
@@ -470,20 +523,14 @@ achievements:
       Pranitha P. – Grade 7 D
       Amritha E. – Grade 7 E
     photos:
-      - src: 17.png
-        alt: Lawrence kabaddi teams at the CISCE Regional Kabaddi Tournament
-      - src: 17b.png
-        alt: Kabaddi squad with certificates at ACTS School
-      - src: 17c.png
-        alt: Kabaddi medallists with their coach
-      - src: 17d.png
-        alt: Boys kabaddi medallists after the regional tournament
-      - src: 17e.png
-        alt: Lawrence kabaddi team with medals at ACTS School
+      - src: kabaddi-regional-team.jpg
+        alt: Lawrence kabaddi team at the CISCE Regional Kabaddi Tournament, ACTS School
+      - src: kabaddi-regional-certificates.jpg
+        alt: Kabaddi players with certificates at ACTS School
   - kicker: Student Achievements
     title: Mishitha and Lohit Medal at Regional Boxing Championship
     body: |-
-      Regional Boxing Competition held at Mysore. (3/9/2026)
+      CISCE Regional Boxing Championship, Karnataka and Goa, held at De Paul International Residential School, Mysuru, on 14 September 2026.
 
       Mishitha – Grade 10A
       Secured 1st Place in the Under-17 category
@@ -492,7 +539,5 @@ achievements:
       Lohit – Grade 9A
       Secured 2nd Place in the Under-17 category
     photos:
-      - src: 18.png
-        alt: Mishitha receiving her regional boxing certificate
-      - src: 18a.png
-        alt: Mishitha and Lohit with medals at the CISCE Regional Boxing Championship
+      - src: boxing-regional.jpg
+        alt: Mishitha and Lohit with medals at the CISCE Regional Boxing Championship in Mysuru

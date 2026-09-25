@@ -328,10 +328,46 @@ export const defaultNews: NewsContent = {
   ],
   achievements: [
     {
+      kicker: "School Achievements",
+      title: "Mrs. Pushpa Subbaiah Receives the Dronacharya Award for Teachers 2026",
+      body: "Mrs. Pushpa Subbaiah, Managing Trustee of Lawrence High School, received the Dronacharya Award for Teachers 2026 from BMS Educational Trust on 18 September 2026 at BMS College of Engineering, Bull Temple Road, Bengaluru. The award recognises three decades of contribution to education and academic leadership.",
+      photos: [shot("dronacharya-pushpa-subbaiah.jpg", "Dronacharya Award 2026 presented to Mrs. Pushpa Subbaiah")]
+    },
+    {
+      kicker: "Student Achievements",
+      title: "Medal at the Handball Girls Tournament 2026",
+      body: "A Lawrence student received a medal and certificate at the Handball Girls Tournament 2026, hosted by St. Jude's School, Mohaddipur, at Syed Modi Railway Stadium, Gorakhpur, from 17 to 19 September 2026.",
+      photos: [shot("handball-gorakhpur.jpg", "A Lawrence student with her medal and certificate at the Handball Girls Tournament 2026")]
+    },
+    {
+      kicker: "Student Achievements",
+      title: "Certificates at the Frank Anthony Memorial Debate",
+      body: "Lawrence students received certificates at the Frank Anthony Memorial All-India Inter School Debate Competition 2026, in the preliminary stage for Grade X and below, on 24 July 2026.",
+      photos: [shot("debate-frank-anthony.jpg", "Lawrence students with certificates at the Frank Anthony Memorial Debate Competition")]
+    },
+    {
+      kicker: "Student Achievements",
+      title: "Medals at the 7th CISCE National Championship",
+      body: "Three Lawrence students received medals and certificates at the 7th CISCE National Championship hosted by Johnson Grammar School ICSE and ISC.",
+      photos: [shot("cisce-national.jpg", "Three Lawrence students with medals and certificates at the 7th CISCE National Championship")]
+    },
+    {
+      kicker: "Student Achievements",
+      title: "Gold at the CISCE Regional Roller Skating Championship",
+      body: "A Lawrence student won gold and received a certificate of merit at the CISCE Regional Games and Sports 2026 roller skating championship with Flyers Roller Skating Club.",
+      photos: [shot("roller-skating.jpg", "A Lawrence student with a gold medal at the CISCE regional roller skating championship")]
+    },
+    {
+      kicker: "Student Achievements",
+      title: "Certificate at the School Cricket Championship",
+      body: "A Lawrence student received a certificate at the school cricket championship in September 2026.",
+      photos: [shot("cricket-certificate.jpg", "A Lawrence student receiving a certificate at the cricket championship")]
+    },
+    {
       kicker: "Student Achievements",
       title: "Hannah Maria Johnson Wins Cash Prize at State Computer Olympiad",
       body: "Hannah Maria Johnson of grade II E secured the sixth rank and a cash prize of ₹700 in the state Level Computer Olympiad conducted by the Indian Talent Olympiad.",
-      photos: [shot("01.png", "Hannah Maria Johnson receiving her Computer Olympiad certificate")]
+      photos: [shot("hannah-olympiad.jpg", "Hannah Maria Johnson with her Indian Talent Olympiad medal and certificate")]
     },
     {
       kicker: "Student Achievements",
@@ -343,7 +379,7 @@ export const defaultNews: NewsContent = {
       kicker: "Student Achievements",
       title: "K S Sathvik Wins Bronze at Tirak Taekwondo International Championship",
       body: "K S Sathvik of Grade X represented India at the Tirak Taekwondo International Championship in Bangkok, Thailand and secured the Bronze Medal by defeating his Malaysian opponent in a competition featuring participants from 28 countries.",
-      photos: [shot("03.png", "K S Sathvik with the Indian flag after winning bronze in Bangkok")]
+      photos: [shot("sathvik-taekwondo.jpg", "K S Sathvik with the Indian flag at the Tirak Taekwondo International Tournament")]
     },
     {
       kicker: "Student Achievements",
@@ -356,8 +392,8 @@ export const defaultNews: NewsContent = {
       title: "U-17 Girls Handball Team Runners-Up at CISCE Zonal",
       body: "Lawrence School Under-17 Girls team secured the Runner-up position in the CISCE Zonal Handball Competition held at VIBGYOR High School, Haralur, from 27/06/2026 to 28/06/2026. 8 of our students have been selected for the Regional-level competition.",
       photos: [
-        shot("05.png", "U-17 girls handball team at the CISCE Zonal Championship"),
-        shot("05b.png", "Girls handball team at the CISCE Karnataka and Goa Regional Tournament")
+        shot("handball-regional.jpg", "Girls handball team with gold medals at the Karnataka and Goa Regional Tournament"),
+        shot("05.png", "U-17 girls handball team at the CISCE Zonal Championship")
       ]
     },
     {
@@ -438,20 +474,16 @@ export const defaultNews: NewsContent = {
       title: "Outstanding Results at CISCE Regional Kabaddi",
       body: "We are delighted to share the outstanding achievements of our students at the CISCE Regional Level Kabaddi Competition, held at ACTS Secondary School on 20th & 21st August 2026.\n\nTeam Results\nU-14 Boys – 1st Place\nU-17 Girls – 1st Place\nU-19 Boys – 1st Place\nU-14 Girls – 2nd Place\n\nOut of 15 students who participated from Lawrence High School, 8 students have been selected for the NATIONAL LEVEL Competition:\nVidith Ashok Kumar – Grade 10 A\nSurya S. – Grade 10 A\nDipthanshu Swain – Grade 10 B\nMishitha – Grade 10 A\nRachana – Grade 9 B\nKalpana Bhattrai – Grade 8 A\nPranitha P. – Grade 7 D\nAmritha E. – Grade 7 E",
       photos: [
-        shot("17.png", "Lawrence kabaddi teams at the CISCE Regional Kabaddi Tournament"),
-        shot("17b.png", "Kabaddi squad with certificates at ACTS School"),
-        shot("17c.png", "Kabaddi medallists with their coach"),
-        shot("17d.png", "Boys kabaddi medallists after the regional tournament"),
-        shot("17e.png", "Lawrence kabaddi team with medals at ACTS School")
+        shot("kabaddi-regional-team.jpg", "Lawrence kabaddi team at the CISCE Regional Kabaddi Tournament, ACTS School"),
+        shot("kabaddi-regional-certificates.jpg", "Kabaddi players with certificates at ACTS School")
       ]
     },
     {
       kicker: "Student Achievements",
       title: "Mishitha and Lohit Medal at Regional Boxing Championship",
-      body: "Regional Boxing Competition held at Mysore. (3/9/2026)\n\nMishitha – Grade 10A\nSecured 1st Place in the Under-17 category\nSelected for the National Boxing Competition, to be held in Meerut on 28th September 2026\n\nLohit – Grade 9A\nSecured 2nd Place in the Under-17 category",
+      body: "CISCE Regional Boxing Championship, Karnataka and Goa, held at De Paul International Residential School, Mysuru, on 14 September 2026.\n\nMishitha – Grade 10A\nSecured 1st Place in the Under-17 category\nSelected for the National Boxing Competition, to be held in Meerut on 28th September 2026\n\nLohit – Grade 9A\nSecured 2nd Place in the Under-17 category",
       photos: [
-        shot("18.png", "Mishitha receiving her regional boxing certificate"),
-        shot("18a.png", "Mishitha and Lohit with medals at the CISCE Regional Boxing Championship")
+        shot("boxing-regional.jpg", "Mishitha and Lohit with medals at the CISCE Regional Boxing Championship in Mysuru")
       ]
     }
   ]
