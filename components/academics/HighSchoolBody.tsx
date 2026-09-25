@@ -90,7 +90,9 @@ export default function HighSchoolBody({ content }: { content: HighSchoolContent
                     <h4>{group.title}</h4>
                     <p>
                       {group.subtitle}
-                      {"note" in group && group.note ? <span>{group.note}</span> : null}
+                      {"note" in group && typeof group.note === "string" && group.note ? (
+                        <span>{group.note}</span>
+                      ) : null}
                     </p>
                     <ul>
                       {group.subjects.map((subject) => (
