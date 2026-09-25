@@ -59,7 +59,7 @@ messages:
       message: We work to create a school where every learner is known, supported and stretched. Education at Lawrence is not only academic excellence; it is the partnership between students, teachers and families. Our role is to make sure that partnership stays strong, so every child can grow with dignity, curiosity and joy.
     - name: Mrs. Devi
       role: Principal
-      photo:
+      photo: principal-devi.jpg
       photoAlt: Mrs. Devi, Principal of Lawrence High School
       initials: D
       position: center center

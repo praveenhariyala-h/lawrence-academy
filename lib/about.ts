@@ -85,7 +85,7 @@ export const aboutMessages = {
     {
       name: "Mrs. Devi",
       role: "Principal",
-      photo: null,
+      photo: "/images/about/principal-devi.jpg",
       photoAlt: "Mrs. Devi, Principal of Lawrence High School",
       initials: "D",
       position: "center center",
