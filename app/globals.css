@@ -265,7 +265,6 @@ p {
   z-index: 70;
   background: color-mix(in srgb, var(--white) 96%, transparent);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
 }
 
 .header .wrap {
@@ -287,6 +286,119 @@ p {
   min-height: 36px;
   padding: 0.38rem 0.95rem;
   font-size: 0.8rem;
+}
+
+.admit-marquee {
+  overflow: hidden;
+  background: linear-gradient(180deg, #fff8df 0%, #fff1c2 100%);
+  border-top: 1px solid color-mix(in srgb, var(--bloom-deep) 55%, var(--white));
+  border-bottom: 1px solid color-mix(in srgb, var(--legacy-blue) 8%, transparent);
+}
+
+.admit-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: admit-marquee 32s linear infinite;
+}
+
+.admit-marquee:hover .admit-marquee-track,
+.admit-marquee:focus-within .admit-marquee-track {
+  animation-play-state: paused;
+}
+
+.admit-marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.admit-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.42rem 1.15rem 0.42rem 0.85rem;
+  color: var(--legacy-blue);
+  white-space: nowrap;
+}
+
+.admit-marquee-item + .admit-marquee-item {
+  border-left: 1px solid color-mix(in srgb, var(--legacy-blue) 16%, transparent);
+}
+
+.admit-marquee-spark {
+  color: color-mix(in srgb, var(--legacy-blue) 55%, var(--bloom-deep));
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.admit-marquee-cap {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--white) 72%, var(--bloom));
+  color: var(--legacy-blue);
+}
+
+.admit-marquee-cap svg {
+  width: 16px;
+  height: 16px;
+}
+
+.admit-marquee-copy {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admit-marquee-copy strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.admit-marquee-copy span {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--legacy-blue) 78%, var(--silver));
+}
+
+.admit-marquee-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 28px;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: var(--bloom);
+  color: var(--legacy-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admit-marquee-cta:hover {
+  background: var(--bloom-deep);
+  color: var(--legacy-blue);
+}
+
+@keyframes admit-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admit-marquee-track {
+    animation: none;
+  }
 }
 
 .logo-lockup {
@@ -1886,9 +1998,23 @@ body.nav-locked {
   font-weight: 500;
 }
 
-.footer-cta-admissions {
-  font-weight: 700;
-  color: var(--white) !important;
+.footer-cta-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.footer .footer-cta-admissions {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: clamp(1.28rem, 2vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--white);
 }
 
 .footer-cta .btn--gold {
@@ -2052,7 +2178,7 @@ body.nav-locked {
     background: var(--moon);
     flex-direction: column;
     align-items: stretch;
-    padding: 6rem 1.4rem 2rem;
+    padding: 9.2rem 1.4rem 2rem;
     transform: translateX(100%);
     transition: transform 0.28s ease;
     box-shadow: var(--shadow);
@@ -2461,6 +2587,10 @@ body.nav-locked {
 
 .news-achieve-photo img {
   object-fit: cover;
+}
+
+.news-achieve-photo--contain img {
+  object-fit: contain;
 }
 
 .news-achieve-card--photo {

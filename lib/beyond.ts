@@ -7,8 +7,8 @@ export const beyond = {
     title: "Explore.\nExperience.\n*Evolve.*",
     lede: "Opportunities beyond the classroom to discover interests, build skills and create memories for life.",
     badge: "More Than\na Classroom",
-    image: "/images/home/beyond/hero.png",
-    imageAlt: "Students jumping together on the playground at Lawrence High School"
+    image: "/images/home/beyond/hero-sports.png",
+    imageAlt: "Football teams gathered with their coach on the turf at Lawrence High School"
   },
   sports: {
     title: "Sports at Lawrence",
@@ -19,24 +19,24 @@ export const beyond = {
     ],
     photos: [
       {
-        src: "/images/about/bb-sports-1.png",
-        alt: "Students marching with house flags on sports day at Lawrence High School",
-        caption: "Sports Day"
+        src: "/images/about/bb-sports-football-1.png",
+        alt: "Students playing football on the turf at Lawrence High School",
+        caption: "Football"
       },
       {
-        src: "/images/about/bb-sports-2.png",
-        alt: "Students practising yoga on the sports field at Lawrence High School",
-        caption: "Yoga"
+        src: "/images/about/bb-sports-football-2.png",
+        alt: "Football players and their coach on the turf at Lawrence High School",
+        caption: "Football"
       },
       {
-        src: "/images/about/bb-sports-3.png",
-        alt: "Students performing a mass display on sports day at Lawrence High School",
-        caption: "Mass Display"
+        src: "/images/about/bb-sports-volleyball.png",
+        alt: "Students playing volleyball at Lawrence High School",
+        caption: "Volleyball"
       },
       {
-        src: "/images/about/bb-sports-4.png",
-        alt: "Students celebrating together on the playground at Lawrence High School",
-        caption: "Team Spirit"
+        src: "/images/about/bb-sports-kabaddi.png",
+        alt: "Students playing kabaddi at Lawrence High School",
+        caption: "Kabaddi"
       }
     ]
   },

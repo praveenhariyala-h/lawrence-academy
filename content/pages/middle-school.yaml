@@ -6,19 +6,17 @@ hero:
   title: |-
     Growing *Minds*.
     Building *Futures*.
-  image: hero-class.png
-  imageAlt: Middle school students collaborating in a classroom at Lawrence High School
+  image: middle-school-hero.png
+  imageAlt: Middle school students examining a plant together in class at Lawrence High School
 approach:
   kicker: Our Approach
   title: The NEWS Philosophy
   body: "At the Middle School level, we follow the motivational philosophy of NEWS: Navigate, Explore, Work hard, Succeed. We create a learning environment that encourages curiosity, builds resilience and develops independent thinkers who are ready for the opportunities of high school and beyond."
   photos:
-    - src: home/hero/hero-robotics.png
-      alt: Middle school students collaborating on robotics and design at Lawrence High School
-    - src: home/curriculum/creators.png
-      alt: Middle school students working together on a classroom project
-    - src: home/pathway/learn.png
-      alt: Middle school students reading in the Lawrence High School library
+    - src: about/ms-approach-1.png
+      alt: Middle school students examining a preserved crab specimen in science class
+    - src: about/ms-approach-2.png
+      alt: Middle school students using a microscope in the science lab
   values:
     - icon: navigate
       title: Navigate

@@ -52,8 +52,8 @@ spaces:
     reverse: false
     leadIcon: infirmary
     image:
-      src: about/infirmary.png
-      alt: A restful care space supporting student well-being at Lawrence High School
+      src: about/infirmary-room.png
+      alt: The infirmary rest room at Lawrence High School
     features:
       - icon: firstaid
         label: First Aid Care

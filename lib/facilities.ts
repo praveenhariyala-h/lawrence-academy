@@ -65,8 +65,8 @@ export const careSpaces: CareSpace[] = [
     body: "Our infirmary is managed by a qualified nurse and equipped to provide first aid and basic medical care. The well-being and safety of our students are always a priority.",
     leadIcon: "infirmary",
     image: {
-      src: "/images/about/infirmary.png",
-      alt: "A restful care space supporting student well-being at Lawrence High School"
+      src: "/images/about/infirmary-room.png",
+      alt: "The infirmary rest room at Lawrence High School"
     },
     features: [
       { icon: "firstaid", label: "First Aid Care" },

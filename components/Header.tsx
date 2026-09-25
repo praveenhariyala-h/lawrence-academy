@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { memo, useCallback, useEffect, useState } from "react";
+import { Fragment, memo, useCallback, useEffect, useState } from "react";
 import { nav } from "@/lib/site";
 
 const NavLinks = memo(function NavLinks({
@@ -78,6 +78,53 @@ const NavLinks = memo(function NavLinks({
   );
 });
 
+function MarqueeItem({ tabIndex }: { tabIndex?: number }) {
+  return (
+    <span className="admit-marquee-item">
+      <span className="admit-marquee-spark" aria-hidden="true">
+        ✦
+      </span>
+      <span className="admit-marquee-cap" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M12 3 1.5 8.2 12 13.4 20 9.5v5.2h1.6V8.7L12 3Zm-6.2 9.2v2.4c0 2.2 2.8 4 6.2 4s6.2-1.8 6.2-4v-2.4l-6.2 3-6.2-3Z"
+          />
+        </svg>
+      </span>
+      <span className="admit-marquee-spark" aria-hidden="true">
+        +
+      </span>
+      <span className="admit-marquee-copy">
+        <strong>Admissions Open</strong>
+        <span>for academic year</span>
+        <strong>2027–28</strong>
+      </span>
+      <Link className="admit-marquee-cta" href="/admissions" tabIndex={tabIndex}>
+        Apply now <span aria-hidden="true">→</span>
+      </Link>
+    </span>
+  );
+}
+
+function AdmissionsMarquee() {
+  return (
+    <div className="admit-marquee">
+      <div className="admit-marquee-track">
+        {[false, true].map((hidden) => (
+          <div key={String(hidden)} className="admit-marquee-group" aria-hidden={hidden || undefined}>
+            {Array.from({ length: 4 }, (_, index) => (
+              <Fragment key={index}>
+                <MarqueeItem tabIndex={hidden || index > 0 ? -1 : undefined} />
+              </Fragment>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -144,6 +191,7 @@ function Header() {
             Apply
           </Link>
         </div>
+        <AdmissionsMarquee />
       </header>
       <div
         className={open ? "nav-overlay is-open" : "nav-overlay"}

@@ -97,11 +97,13 @@ export default function Footer() {
           <div className="footer-cta-copy">
             <h2>Begin your Journey with Us</h2>
             <p>Give your child the opportunity to learn, grow and shine at Lawrence.</p>
-            <p className="footer-cta-admissions">Admissions Open for 2027 - 2028</p>
           </div>
-          <Link className="btn btn--gold" href="/contact">
-            Enquire Now
-          </Link>
+          <div className="footer-cta-action">
+            <p className="footer-cta-admissions">Admissions Open for 2027 - 2028</p>
+            <Link className="btn btn--gold" href="/contact">
+              Enquire Now
+            </Link>
+          </div>
         </div>
       </section>
       <div className="wrap footer-grid">

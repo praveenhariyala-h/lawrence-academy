@@ -8,7 +8,6 @@ import type {
   NewsCategory,
   NewsEvent,
   NewsPost,
-  NewsResult,
   NewsTabsCopy
 } from "@/lib/news";
 
@@ -89,17 +88,6 @@ export default function NewsTabs({
     () => posts.filter((post) => post.category === tab),
     [posts, tab]
   );
-  const resultCards = useMemo(() => {
-    if (results.length) return results;
-    return posts
-      .filter((post) => post.category === "result")
-      .map((post) => ({
-        dateLabel: post.dateLabel,
-        title: post.title,
-        summary: post.summary,
-        href: `/news/${post.slug}`
-      }));
-  }, [results, posts]);
 
   return (
     <div className="news-tabs">
@@ -143,43 +131,40 @@ export default function NewsTabs({
               <AchievementCards items={achievements} />
             ) : null}
 
-            {id === "result" && resultCards.length ? (
-              <div className="news-achieve-grid">
-                {resultCards.map((item) => (
-                  <NewsCard
-                    key={`${item.title}-${item.href}`}
-                    href={item.href}
-                    kicker={item.dateLabel || "Result"}
-                    title={item.title}
-                    text={item.summary}
-                  />
-                ))}
-              </div>
+            {id === "result" && results.length ? (
+              <AchievementCards items={results} empty="Results will appear here as they are published." imageFit="contain" />
             ) : null}
 
             {showEvents && (events.length || panelItems.length) ? (
-              <div className="news-achieve-grid">
-                {events.map((event) => (
-                  <NewsCard
-                    key={`${event.day}-${event.title}`}
-                    kicker={`${event.day} ${event.month}`}
-                    title={event.title}
-                    text={event.text}
+              <div className="news-events">
+                {events.length ? (
+                  <AchievementCards
+                    items={events.map((event) => ({
+                      kicker: event.day && event.month ? `${event.day} ${event.month}` : "Event",
+                      title: event.title,
+                      body: event.body || event.text,
+                      photos: event.photos
+                    }))}
+                    empty={emptyCopy.event}
                   />
-                ))}
-                {panelItems.map((post) => (
-                  <NewsCard
-                    key={post.slug}
-                    href={`/news/${post.slug}`}
-                    kicker={post.dateLabel || "Event"}
-                    title={post.title}
-                    text={post.summary}
-                  />
-                ))}
+                ) : null}
+                {panelItems.length ? (
+                  <div className="news-achieve-grid">
+                    {panelItems.map((post) => (
+                      <NewsCard
+                        key={post.slug}
+                        href={`/news/${post.slug}`}
+                        kicker={post.dateLabel || "Event"}
+                        title={post.title}
+                        text={post.summary}
+                      />
+                    ))}
+                  </div>
+                ) : null}
               </div>
             ) : null}
 
-            {id === "result" && !resultCards.length ? (
+            {id === "result" && !results.length ? (
               <p className="lede news-empty">{emptyCopy.result}</p>
             ) : null}
 

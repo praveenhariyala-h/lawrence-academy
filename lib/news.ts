@@ -22,18 +22,15 @@ export type NewsTabsCopy = {
   eventEmpty: string;
 };
 
-export type NewsResult = {
-  dateLabel: string;
-  title: string;
-  summary: string;
-  href: string;
-};
+export type NewsResult = NewsAchievement;
 
 export type NewsEvent = {
   day: string;
   month: string;
   title: string;
   text: string;
+  body: string;
+  photos: NewsAchievementPhoto[];
 };
 
 export type NewsPost = {
@@ -68,6 +65,8 @@ export type NewsContent = {
 };
 
 const ACHIEVE = "/images/news/achievements/";
+const RESULTS = "/images/news/results/";
+const EVENTS = "/images/news/events/";
 const categories: NewsCategory[] = ["result", "achievement", "event"];
 
 function newsFit(value: string | null | undefined): NewsImageFit {
@@ -76,6 +75,14 @@ function newsFit(value: string | null | undefined): NewsImageFit {
 
 function shot(file: string, alt: string): NewsAchievementPhoto {
   return { src: `${ACHIEVE}${file}`, alt };
+}
+
+function resultShot(file: string, alt: string): NewsAchievementPhoto {
+  return { src: `${RESULTS}${file}`, alt };
+}
+
+function eventShot(file: string, alt: string): NewsAchievementPhoto {
+  return { src: `${EVENTS}${file}`, alt };
 }
 
 function newsCategory(value: string | null | undefined, slug: string): NewsCategory {
@@ -99,8 +106,8 @@ export const defaultNews: NewsContent = {
     kicker: "News",
     title: "Results. Recognition.\n*Moments that matter.*",
     lede: "Board results, student achievements and events from life at Lawrence High School.",
-    image: "/images/news/hero.png",
-    imageAlt: "Lawrence High School kabaddi team with medals at the CISCE Regional Kabaddi Tournament 2026",
+    image: "/images/news/hero-sports.png",
+    imageAlt: "Lawrence High School football team with a trophy beside the school trophy cabinet",
     fit: "cover"
   },
   tabs: {
@@ -113,42 +120,210 @@ export const defaultNews: NewsContent = {
   },
   results: [
     {
-      dateLabel: formatNewsDate("2025-02-01"),
-      title: "Kabaddi",
-      summary: "The girls Kabaddi team won first place at Bharathi Public School, Yelahanka.",
-      href: "/news/kabaddi"
+      kicker: "ICSE 2025-26",
+      title: "Batch of 2025-26 Results",
+      body: "Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.\n\nDistinctions (85% and above): 85 students.\n58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.",
+      photos: [resultShot("batch-2025-26.png", "ICSE Batch of 2025-26 results poster for Lawrence High School")]
     },
     {
-      dateLabel: formatNewsDate("2024-11-01"),
-      title: "Football",
-      summary: "Under 15 boys won the Pro Club Inter-school Football Competition at Begur Turf.",
-      href: "/news/football"
+      kicker: "ICSE 2025-26",
+      title: "Atul Kumar Mishra — 99%",
+      body: "Atul Kumar Mishra scored 99% in the ICSE Batch of 2025-26.",
+      photos: [resultShot("atul-kumar-mishra.png", "Atul Kumar Mishra, ICSE Batch of 2025-26")]
     },
     {
-      dateLabel: formatNewsDate("2024-06-01"),
-      title: "CISCE Zonal Chess",
-      summary: "Lawrence hosted CISCE Zone 6 Chess and brought home multiple team titles.",
-      href: "/news/cisce-zonal-chess"
+      kicker: "ICSE 2025-26",
+      title: "Annareddy Himaja — 97.8%",
+      body: "Annareddy Himaja scored 97.8% in the ICSE Batch of 2025-26.",
+      photos: [resultShot("annareddy-himaja.png", "Annareddy Himaja, ICSE Batch of 2025-26")]
+    },
+    {
+      kicker: "ICSE 2025-26",
+      title: "Ashima Agarwal — 97.8%",
+      body: "Ashima Agarwal scored 97.8% in the ICSE Batch of 2025-26.",
+      photos: [resultShot("ashima-agarwal.png", "Ashima Agarwal, ICSE Batch of 2025-26")]
+    },
+    {
+      kicker: "ICSE 2025-26",
+      title: "R Aditi — 97.8%",
+      body: "R Aditi scored 97.8% in the ICSE Batch of 2025-26.",
+      photos: [resultShot("r-aditi.png", "R Aditi, ICSE Batch of 2025-26")]
+    },
+    {
+      kicker: "ICSE 2025-26",
+      title: "Naman Teertha Subash — 97.4%",
+      body: "Naman Teertha Subash scored 97.4% in the ICSE Batch of 2025-26.",
+      photos: [resultShot("naman-teertha-subash.png", "Naman Teertha Subash, ICSE Batch of 2025-26")]
     }
   ],
   events: [
     {
-      day: "12",
-      month: "Jan",
-      title: "Annual Sports Meet",
-      text: "A celebration of spirit and teamwork."
+      day: "",
+      month: "",
+      title: "Independence Day",
+      text: "The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit.",
+      body: "The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit. The children came dressed in colourful costumes representing various national figures. They were taken to the ground to participate in the flag-hoisting ceremony and proudly joined in the celebrations.\n\nThe children showed great enthusiasm during the fancy-dress activity and spoke confidently about the characters they represented. Later, they were given outlines of national symbols and asked to decorate them using tri-coloured paper. Working in groups, the children thoroughly enjoyed the creative activity and participated with great excitement.\n\nOverall, it was a memorable and meaningful celebration that helped the children learn about our nation while having fun.",
+      photos: [
+        eventShot("independence-1.png", "Students and teachers gathered for the Independence Day assembly"),
+        eventShot("independence-2.png", "Flag hoisting on Independence Day at Lawrence High School"),
+        eventShot("independence-3.png", "Grade 1 children in costume for the Independence Day celebration")
+      ]
     },
     {
-      day: "26",
-      month: "Jan",
-      title: "Republic Day Celebrations",
-      text: "A proud day marked with pride."
+      day: "",
+      month: "",
+      title: "Investiture Ceremony",
+      text: "Student leaders of 2026–27 received their badges, sashes and house flags.",
+      body: "The Investiture Ceremony for 2026–27 welcomed the new student council to office. Head Girl, house captains and sports leaders stood on stage with their sashes and flags, ready to serve the school.\n\nTeachers presented the house flags, and the student leaders accepted them as a promise to lead with integrity and respect. The ceremony reminded everyone that leadership is not about being in charge. It is about inspiring others and working together for a better tomorrow.\n\nIt was a proud morning for the school, as the new team stepped forward to guide their houses and set an example for every Lawrence student.",
+      photos: [
+        eventShot("investiture-1.png", "Head Girl and sports leaders with the school flags at the Investiture Ceremony"),
+        eventShot("investiture-2.png", "A teacher presenting the house flag to a student captain"),
+        eventShot("investiture-3.png", "The student council and teachers on stage at the Investiture Ceremony")
+      ]
     },
     {
-      day: "10",
-      month: "Feb",
-      title: "School Carnival",
-      text: "Fun, creativity, community."
+      day: "",
+      month: "",
+      title: "Dad and Me",
+      text: "Fathers joined their children in class for a morning of drawing, building and photographs.",
+      body: "Dad and Me brought fathers into the classroom to spend the morning with their children. They sat together at the tables, drawing, writing and building with colourful blocks.\n\nA photo frame decorated with “Best Dad” and “My Hero” became a favourite stop. Fathers and children posed together, proud and happy to be side by side.\n\nIt was a warm morning that let every child show their father what school feels like, and let every father see the joy of learning up close.",
+      photos: [
+        eventShot("dad-and-me-1.png", "Fathers drawing and building with their children during Dad and Me"),
+        eventShot("dad-and-me-2.png", "A father and child posing in the Best Dad photo frame"),
+        eventShot("dad-and-me-3.png", "A father holding his child in the My Hero photo frame")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Mom and Me",
+      text: "Mothers joined their children to paint pots and celebrate together.",
+      body: "Mom and Me brought mothers into school to create something with their children. Together they painted clay pots, adding bright colours and patterns at the table.\n\nSome children came dressed for Krishna Janmashtami, with crowns, beads and festive clothes. Mothers sat beside them, guiding little hands and sharing the work.\n\nThe morning ended in front of a Happy Janmashtami backdrop, with mothers and children greeting the celebration side by side.",
+      photos: [
+        eventShot("mom-and-me-1.png", "A mother and child painting a clay pot together"),
+        eventShot("mom-and-me-2.png", "A child dressed as Krishna decorating a pot with his mother"),
+        eventShot("mom-and-me-3.png", "A mother and child in front of the Happy Janmashtami display")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Best Out of Waste",
+      text: "Students turned paper, sticks and everyday bits into new creations.",
+      body: "Best Out of Waste invited students to make something new from materials that might otherwise be thrown away. Classrooms filled with paper, ice-cream sticks, glue and colour as everyone set to work.\n\nSome folded bright paper fans and hanging decorations. Others built pictures, including a fish made from small reused pieces, and held them up with pride.\n\nThe competition showed how a little imagination can turn ordinary scraps into something worth keeping.",
+      photos: [
+        eventShot("best-out-of-waste-1.png", "A student showing a paper fan made for Best Out of Waste"),
+        eventShot("best-out-of-waste-2.png", "A student holding a fish picture made from reused materials"),
+        eventShot("best-out-of-waste-3.png", "Students crafting with sticks, paper and glue during Best Out of Waste")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Drawing and Colouring",
+      text: "Students filled their pages with boats, rainbows, houses and colour.",
+      body: "Drawing and Colouring gave every class a quiet hour with pencils, crayons and paper. Students bent over their desks, adding lines and colour to pictures of their own.\n\nWhen the work was done, they held their drawings up to share. Boats on the water, rainbows over little houses, bright landscapes and colourful kites all found a place on the page.\n\nIt was a simple afternoon that let imagination lead, one colour at a time.",
+      photos: [
+        eventShot("drawing-1.png", "Students drawing at their desks during Drawing and Colouring"),
+        eventShot("drawing-2.png", "Three students showing their coloured drawings of a boat, a rainbow and a house"),
+        eventShot("drawing-3.png", "Students showing their coloured kite pictures from the colouring competition")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Robotic Fest",
+      text: "Students demonstrated robots and explained their projects to visitors.",
+      body: "Robotic Fest turned the hall into a showcase of student ideas. Tables were lined with models, laptops and small robots, and every team was ready to explain how their project worked.\n\nVisitors watched a robot car run across the floor and stopped at displays such as health-care robots. Students talked through their designs, from the parts on the table to the posters behind them.\n\nIt was a lively morning of building, testing and sharing, and a chance for the school to see what young inventors can do.",
+      photos: [
+        eventShot("robotic-fest-1.png", "Students demonstrating a small robot car at Robotic Fest"),
+        eventShot("robotic-fest-2.png", "Students presenting a health-care robot project"),
+        eventShot("robotic-fest-3.png", "Students explaining their model to visitors at Robotic Fest")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Awareness Week",
+      text: "Students learned to care for the earth with cloth bags, seeds and planting.",
+      body: "Awareness Week turned everyday choices into lessons. Students held up a globe, a cloth bag and a plastic bag, and talked about why a reusable bag is kinder to the earth.\n\nIn class they pressed seeds onto cardboard rolls and filled pots with soil. Hands got messy, and everyone leaned in to help.\n\nBy the end of the week, the children had planted something of their own and taken home a simple idea: small habits can look after the planet.",
+      photos: [
+        eventShot("awareness-1.png", "Students comparing a cloth bag and a plastic bag beside a globe"),
+        eventShot("awareness-2.png", "Students pressing seeds onto a cardboard roll"),
+        eventShot("awareness-3.png", "Students planting seeds in a pot during Awareness Week")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Fancy Dress",
+      text: "Students dressed as fruits, heroes, a firefighter and a rocket for the competition.",
+      body: "The Fancy Dress Competition filled the classroom with colour and character. Children arrived as fruits, princesses, soldiers, an astronaut and even a dinosaur, and lined up to show who they had become.\n\nOne student came as a firefighter, ready to save lives, with a bright engine painted beside him. Another stepped in as an Indian rocket, complete with the tricolour and boosters.\n\nEach child spoke for their character, and the morning became a parade of imagination.",
+      photos: [
+        eventShot("fancy-dress-1.png", "Students in costume for the Fancy Dress Competition"),
+        eventShot("fancy-dress-2.png", "A student dressed as a firefighter at the Fancy Dress Competition"),
+        eventShot("fancy-dress-3.png", "A student wearing an Indian rocket costume at the Fancy Dress Competition")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Field Trip",
+      text: "Students stepped outside school to meet the people who keep the city clean and to explore a garden.",
+      body: "The field trip took the children beyond the classroom. They met workers from Clean Bengaluru, who keep the city tidy, and received a small card as a reminder of the work that happens every day.\n\nOut in the open, the class crouched together to look closely at the ground, curious about what they could find. Later they gathered under a bright arch of painted pots in a green garden.\n\nIt was a day of looking, listening and learning in the world outside school.",
+      photos: [
+        eventShot("field-trip-1.png", "A student receiving a card from a Clean Bengaluru worker"),
+        eventShot("field-trip-2.png", "Students looking closely at the ground during the field trip"),
+        eventShot("field-trip-3.png", "Students posing under a painted pot arch in the garden")
+      ]
+    },
+    {
+      day: "4",
+      month: "Sep",
+      title: "Krishna Janmashtami",
+      text: "Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly.",
+      body: "Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly. The sandpit area was beautifully decorated with colorful matkas, flutes, and chart papers, creating a festive atmosphere.\n\nThe celebration began with the school prayer, followed by students presenting dance, music, shlokas, thought for the day, and word for the day. Many children came dressed as Krishna, Radha, and Gopikas, adding charm to the celebration.\n\nStudents also presented a beautiful Radha-Krishna dance at their level, showcasing their enthusiasm and devotion. The celebration helped students learn about the importance of the festival and feel proud of our rich culture.",
+      photos: [
+        eventShot("janmashtami-1.png", "A teacher and student in costume holding a decorated matka for Janmashtami"),
+        eventShot("janmashtami-2.png", "Students performing a dance for Krishna Janmashtami"),
+        eventShot("janmashtami-3.png", "Students dressed as Krishna and Radha for Janmashtami")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Making Learning Visible",
+      text: "Parents sat with their children and watched letter games unfold at the table.",
+      body: "Making Learning Visible opened the classroom so families could see how children learn. Parents sat beside their little ones as letters, pictures and matching games covered the tables.\n\nOne child paired letter shapes on a black board. Another matched letters with objects in the house, picking cards from a plate while a teacher guided the next step. A teacher also helped a child use a dropper, watching coloured water travel into cotton.\n\nIt was a close look at everyday learning: small hands, careful choices, and families watching the work happen.",
+      photos: [
+        eventShot("learning-visible-1.png", "A child matching letter pairs while parents watch"),
+        eventShot("learning-visible-2.png", "A child matching letters with objects as a teacher and parent look on"),
+        eventShot("learning-visible-3.png", "A teacher helping a child use a dropper with coloured water and cotton")
+      ]
+    },
+    {
+      day: "",
+      month: "",
+      title: "Role Play",
+      text: "Students stepped into character as a chef, an astronaut and a teacher.",
+      body: "Role Play let students try on someone else’s day. In a chef’s hat and apron, one child held a bowl and spoke as if the classroom were a kitchen.\n\nAnother arrived in a silver space suit, ready for a mission. A third came as a teacher, with a bag, a book and a shawl, standing ready to take the class.\n\nBy becoming the character, the children practised words, confidence and a little imagination.",
+      photos: [
+        eventShot("role-play-1.png", "A student dressed as a chef for the Role Play competition"),
+        eventShot("role-play-2.png", "A student in an astronaut costume for the Role Play competition"),
+        eventShot("role-play-3.png", "A student dressed as a teacher for the Role Play competition")
+      ]
+    },
+    {
+      day: "5",
+      month: "Sep",
+      title: "Teachers' Day",
+      text: "Students thank the teachers who guide them from the first classroom to the laboratory.",
+      body: "Teachers' Day is the school's chance to thank the people who guide every child. The thanks belong in many rooms, not only on a stage.\n\nIn the early years, a teacher sits at the table and turns play into learning. With older children, a music lesson becomes a shared discovery. In the laboratory, a teacher stands with students as they test an idea for themselves.\n\nThe day is a reminder of that everyday work, and of the teachers who help Lawrence students grow.",
+      photos: [
+        eventShot("teachers-day-1.png", "A kindergarten teacher exploring with students at Lawrence High School"),
+        eventShot("teachers-day-2.png", "A teacher making music with children in class"),
+        eventShot("teachers-day-3.png", "A teacher guiding high school students in the science laboratory")
+      ]
     }
   ],
   achievements: [
@@ -314,12 +489,11 @@ export async function getNewsContent(): Promise<NewsContent> {
     results: entry.results?.length
       ? entry.results.map((item, index) => {
           const fallback = defaultNews.results[index] ?? defaultNews.results[0];
-          const date = item.date || "";
           return {
-            dateLabel: formatNewsDate(date) || fallback.dateLabel,
+            kicker: textSrc(item.kicker, fallback.kicker),
             title: textSrc(item.title, fallback.title),
-            summary: textSrc(item.summary, fallback.summary),
-            href: (item.href ?? "").trim() || defaultNews.results[index]?.href || ""
+            body: textSrc(item.body, fallback.body),
+            photos: mapPhotos(item.photos, fallback.photos, RESULTS).slice(0, 5)
           };
         })
       : defaultNews.results,
@@ -330,7 +504,9 @@ export async function getNewsContent(): Promise<NewsContent> {
             day: textSrc(item.day, fallback.day),
             month: textSrc(item.month, fallback.month),
             title: textSrc(item.title, fallback.title),
-            text: textSrc(item.text, fallback.text)
+            text: textSrc(item.text, fallback.text),
+            body: textSrc(item.body, fallback.body),
+            photos: mapPhotos(item.photos, fallback.photos, EVENTS).slice(0, 5)
           };
         })
       : defaultNews.events,

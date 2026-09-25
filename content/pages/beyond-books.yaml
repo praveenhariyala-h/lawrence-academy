@@ -8,8 +8,8 @@ hero:
   badge: |-
     More Than
     a Classroom
-  image: hero.png
-  imageAlt: Students jumping together on the playground at Lawrence High School
+  image: hero-sports.png
+  imageAlt: Football teams gathered with their coach on the turf at Lawrence High School
 sports:
   title: Sports at Lawrence
   lede: Play. Compete. Grow.
@@ -18,18 +18,18 @@ sports:
 
     The games played are football, cricket, volleyball, basketball, skating, throwball, kabaddi, taekwondo and kho-kho.
   photos:
-    - src: bb-sports-1.png
-      alt: Students marching with house flags on sports day at Lawrence High School
-      caption: Sports Day
-    - src: bb-sports-2.png
-      alt: Students practising yoga on the sports field at Lawrence High School
-      caption: Yoga
-    - src: bb-sports-3.png
-      alt: Students performing a mass display on sports day at Lawrence High School
-      caption: Mass Display
-    - src: bb-sports-4.png
-      alt: Students celebrating together on the playground at Lawrence High School
-      caption: Team Spirit
+    - src: bb-sports-football-1.png
+      alt: Students playing football on the turf at Lawrence High School
+      caption: Football
+    - src: bb-sports-football-2.png
+      alt: Football players and their coach on the turf at Lawrence High School
+      caption: Football
+    - src: bb-sports-volleyball.png
+      alt: Students playing volleyball at Lawrence High School
+      caption: Volleyball
+    - src: bb-sports-kabaddi.png
+      alt: Students playing kabaddi at Lawrence High School
+      caption: Kabaddi
 creative:
   title: Creative Expression
   lede: “Art Speaks Where Words Are Silent.”

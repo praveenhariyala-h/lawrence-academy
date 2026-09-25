@@ -4,8 +4,8 @@ hero:
     Results. Recognition.
     *Moments that matter.*
   lede: Board results, student achievements and events from life at Lawrence High School.
-  image: hero.png
-  imageAlt: Lawrence High School kabaddi team with medals at the CISCE Regional Kabaddi Tournament 2026
+  image: hero-sports.png
+  imageAlt: Lawrence High School football team with a trophy beside the school trophy cabinet
   fit: cover
 metaTitle: News
 metaDescription: Results, achievements and events from Lawrence High School ICSE, HSR Layout, Bengaluru.
@@ -17,31 +17,285 @@ tabs:
   achievementEmpty: Achievements will appear here as they are published.
   eventEmpty: Upcoming events will appear here soon.
 results:
-  - date: 2025-02-01
-    title: Kabaddi
-    summary: The girls Kabaddi team won first place at Bharathi Public School, Yelahanka.
-    href: /news/kabaddi
-  - date: 2024-11-01
-    title: Football
-    summary: Under 15 boys won the Pro Club Inter-school Football Competition at Begur Turf.
-    href: /news/football
-  - date: 2024-06-01
-    title: CISCE Zonal Chess
-    summary: Lawrence hosted CISCE Zone 6 Chess and brought home multiple team titles.
-    href: /news/cisce-zonal-chess
+  - kicker: ICSE 2025-26
+    title: Batch of 2025-26 Results
+    body: |-
+      Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.
+
+      Distinctions (85% and above): 85 students.
+      58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.
+    photos:
+      - src: batch-2025-26.png
+        alt: ICSE Batch of 2025-26 results poster for Lawrence High School
+  - kicker: ICSE 2025-26
+    title: Atul Kumar Mishra — 99%
+    body: Atul Kumar Mishra scored 99% in the ICSE Batch of 2025-26.
+    photos:
+      - src: atul-kumar-mishra.png
+        alt: Atul Kumar Mishra, ICSE Batch of 2025-26
+  - kicker: ICSE 2025-26
+    title: Annareddy Himaja — 97.8%
+    body: Annareddy Himaja scored 97.8% in the ICSE Batch of 2025-26.
+    photos:
+      - src: annareddy-himaja.png
+        alt: Annareddy Himaja, ICSE Batch of 2025-26
+  - kicker: ICSE 2025-26
+    title: Ashima Agarwal — 97.8%
+    body: Ashima Agarwal scored 97.8% in the ICSE Batch of 2025-26.
+    photos:
+      - src: ashima-agarwal.png
+        alt: Ashima Agarwal, ICSE Batch of 2025-26
+  - kicker: ICSE 2025-26
+    title: R Aditi — 97.8%
+    body: R Aditi scored 97.8% in the ICSE Batch of 2025-26.
+    photos:
+      - src: r-aditi.png
+        alt: R Aditi, ICSE Batch of 2025-26
+  - kicker: ICSE 2025-26
+    title: Naman Teertha Subash — 97.4%
+    body: Naman Teertha Subash scored 97.4% in the ICSE Batch of 2025-26.
+    photos:
+      - src: naman-teertha-subash.png
+        alt: Naman Teertha Subash, ICSE Batch of 2025-26
 events:
-  - day: "12"
-    month: Jan
-    title: Annual Sports Meet
-    text: A celebration of spirit and teamwork.
-  - day: "26"
-    month: Jan
-    title: Republic Day Celebrations
-    text: A proud day marked with pride.
-  - day: "10"
-    month: Feb
-    title: School Carnival
-    text: Fun, creativity, community.
+  - day: ""
+    month: ""
+    title: Independence Day
+    text: The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit.
+    body: |-
+      The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit. The children came dressed in colourful costumes representing various national figures. They were taken to the ground to participate in the flag-hoisting ceremony and proudly joined in the celebrations.
+
+      The children showed great enthusiasm during the fancy-dress activity and spoke confidently about the characters they represented. Later, they were given outlines of national symbols and asked to decorate them using tri-coloured paper. Working in groups, the children thoroughly enjoyed the creative activity and participated with great excitement.
+
+      Overall, it was a memorable and meaningful celebration that helped the children learn about our nation while having fun.
+    photos:
+      - src: independence-1.png
+        alt: Students and teachers gathered for the Independence Day assembly
+      - src: independence-2.png
+        alt: Flag hoisting on Independence Day at Lawrence High School
+      - src: independence-3.png
+        alt: Grade 1 children in costume for the Independence Day celebration
+  - day: ""
+    month: ""
+    title: Investiture Ceremony
+    text: Student leaders of 2026–27 received their badges, sashes and house flags.
+    body: |-
+      The Investiture Ceremony for 2026–27 welcomed the new student council to office. Head Girl, house captains and sports leaders stood on stage with their sashes and flags, ready to serve the school.
+
+      Teachers presented the house flags, and the student leaders accepted them as a promise to lead with integrity and respect. The ceremony reminded everyone that leadership is not about being in charge. It is about inspiring others and working together for a better tomorrow.
+
+      It was a proud morning for the school, as the new team stepped forward to guide their houses and set an example for every Lawrence student.
+    photos:
+      - src: investiture-1.png
+        alt: Head Girl and sports leaders with the school flags at the Investiture Ceremony
+      - src: investiture-2.png
+        alt: A teacher presenting the house flag to a student captain
+      - src: investiture-3.png
+        alt: The student council and teachers on stage at the Investiture Ceremony
+  - day: ""
+    month: ""
+    title: Dad and Me
+    text: Fathers joined their children in class for a morning of drawing, building and photographs.
+    body: |-
+      Dad and Me brought fathers into the classroom to spend the morning with their children. They sat together at the tables, drawing, writing and building with colourful blocks.
+
+      A photo frame decorated with “Best Dad” and “My Hero” became a favourite stop. Fathers and children posed together, proud and happy to be side by side.
+
+      It was a warm morning that let every child show their father what school feels like, and let every father see the joy of learning up close.
+    photos:
+      - src: dad-and-me-1.png
+        alt: Fathers drawing and building with their children during Dad and Me
+      - src: dad-and-me-2.png
+        alt: A father and child posing in the Best Dad photo frame
+      - src: dad-and-me-3.png
+        alt: A father holding his child in the My Hero photo frame
+  - day: ""
+    month: ""
+    title: Mom and Me
+    text: Mothers joined their children to paint pots and celebrate together.
+    body: |-
+      Mom and Me brought mothers into school to create something with their children. Together they painted clay pots, adding bright colours and patterns at the table.
+
+      Some children came dressed for Krishna Janmashtami, with crowns, beads and festive clothes. Mothers sat beside them, guiding little hands and sharing the work.
+
+      The morning ended in front of a Happy Janmashtami backdrop, with mothers and children greeting the celebration side by side.
+    photos:
+      - src: mom-and-me-1.png
+        alt: A mother and child painting a clay pot together
+      - src: mom-and-me-2.png
+        alt: A child dressed as Krishna decorating a pot with his mother
+      - src: mom-and-me-3.png
+        alt: A mother and child in front of the Happy Janmashtami display
+  - day: ""
+    month: ""
+    title: Best Out of Waste
+    text: Students turned paper, sticks and everyday bits into new creations.
+    body: |-
+      Best Out of Waste invited students to make something new from materials that might otherwise be thrown away. Classrooms filled with paper, ice-cream sticks, glue and colour as everyone set to work.
+
+      Some folded bright paper fans and hanging decorations. Others built pictures, including a fish made from small reused pieces, and held them up with pride.
+
+      The competition showed how a little imagination can turn ordinary scraps into something worth keeping.
+    photos:
+      - src: best-out-of-waste-1.png
+        alt: A student showing a paper fan made for Best Out of Waste
+      - src: best-out-of-waste-2.png
+        alt: A student holding a fish picture made from reused materials
+      - src: best-out-of-waste-3.png
+        alt: Students crafting with sticks, paper and glue during Best Out of Waste
+  - day: ""
+    month: ""
+    title: Drawing and Colouring
+    text: Students filled their pages with boats, rainbows, houses and colour.
+    body: |-
+      Drawing and Colouring gave every class a quiet hour with pencils, crayons and paper. Students bent over their desks, adding lines and colour to pictures of their own.
+
+      When the work was done, they held their drawings up to share. Boats on the water, rainbows over little houses, bright landscapes and colourful kites all found a place on the page.
+
+      It was a simple afternoon that let imagination lead, one colour at a time.
+    photos:
+      - src: drawing-1.png
+        alt: Students drawing at their desks during Drawing and Colouring
+      - src: drawing-2.png
+        alt: Three students showing their coloured drawings of a boat, a rainbow and a house
+      - src: drawing-3.png
+        alt: Students showing their coloured kite pictures from the colouring competition
+  - day: ""
+    month: ""
+    title: Robotic Fest
+    text: Students demonstrated robots and explained their projects to visitors.
+    body: |-
+      Robotic Fest turned the hall into a showcase of student ideas. Tables were lined with models, laptops and small robots, and every team was ready to explain how their project worked.
+
+      Visitors watched a robot car run across the floor and stopped at displays such as health-care robots. Students talked through their designs, from the parts on the table to the posters behind them.
+
+      It was a lively morning of building, testing and sharing, and a chance for the school to see what young inventors can do.
+    photos:
+      - src: robotic-fest-1.png
+        alt: Students demonstrating a small robot car at Robotic Fest
+      - src: robotic-fest-2.png
+        alt: Students presenting a health-care robot project
+      - src: robotic-fest-3.png
+        alt: Students explaining their model to visitors at Robotic Fest
+  - day: ""
+    month: ""
+    title: Awareness Week
+    text: Students learned to care for the earth with cloth bags, seeds and planting.
+    body: |-
+      Awareness Week turned everyday choices into lessons. Students held up a globe, a cloth bag and a plastic bag, and talked about why a reusable bag is kinder to the earth.
+
+      In class they pressed seeds onto cardboard rolls and filled pots with soil. Hands got messy, and everyone leaned in to help.
+
+      By the end of the week, the children had planted something of their own and taken home a simple idea: small habits can look after the planet.
+    photos:
+      - src: awareness-1.png
+        alt: Students comparing a cloth bag and a plastic bag beside a globe
+      - src: awareness-2.png
+        alt: Students pressing seeds onto a cardboard roll
+      - src: awareness-3.png
+        alt: Students planting seeds in a pot during Awareness Week
+  - day: ""
+    month: ""
+    title: Fancy Dress
+    text: Students dressed as fruits, heroes, a firefighter and a rocket for the competition.
+    body: |-
+      The Fancy Dress Competition filled the classroom with colour and character. Children arrived as fruits, princesses, soldiers, an astronaut and even a dinosaur, and lined up to show who they had become.
+
+      One student came as a firefighter, ready to save lives, with a bright engine painted beside him. Another stepped in as an Indian rocket, complete with the tricolour and boosters.
+
+      Each child spoke for their character, and the morning became a parade of imagination.
+    photos:
+      - src: fancy-dress-1.png
+        alt: Students in costume for the Fancy Dress Competition
+      - src: fancy-dress-2.png
+        alt: A student dressed as a firefighter at the Fancy Dress Competition
+      - src: fancy-dress-3.png
+        alt: A student wearing an Indian rocket costume at the Fancy Dress Competition
+  - day: ""
+    month: ""
+    title: Field Trip
+    text: Students stepped outside school to meet the people who keep the city clean and to explore a garden.
+    body: |-
+      The field trip took the children beyond the classroom. They met workers from Clean Bengaluru, who keep the city tidy, and received a small card as a reminder of the work that happens every day.
+
+      Out in the open, the class crouched together to look closely at the ground, curious about what they could find. Later they gathered under a bright arch of painted pots in a green garden.
+
+      It was a day of looking, listening and learning in the world outside school.
+    photos:
+      - src: field-trip-1.png
+        alt: A student receiving a card from a Clean Bengaluru worker
+      - src: field-trip-2.png
+        alt: Students looking closely at the ground during the field trip
+      - src: field-trip-3.png
+        alt: Students posing under a painted pot arch in the garden
+  - day: "4"
+    month: Sep
+    title: Krishna Janmashtami
+    text: Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly.
+    body: |-
+      Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly. The sandpit area was beautifully decorated with colorful matkas, flutes, and chart papers, creating a festive atmosphere.
+
+      The celebration began with the school prayer, followed by students presenting dance, music, shlokas, thought for the day, and word for the day. Many children came dressed as Krishna, Radha, and Gopikas, adding charm to the celebration.
+
+      Students also presented a beautiful Radha-Krishna dance at their level, showcasing their enthusiasm and devotion. The celebration helped students learn about the importance of the festival and feel proud of our rich culture.
+    photos:
+      - src: janmashtami-1.png
+        alt: A teacher and student in costume holding a decorated matka for Janmashtami
+      - src: janmashtami-2.png
+        alt: Students performing a dance for Krishna Janmashtami
+      - src: janmashtami-3.png
+        alt: Students dressed as Krishna and Radha for Janmashtami
+  - day: ""
+    month: ""
+    title: Making Learning Visible
+    text: Parents sat with their children and watched letter games unfold at the table.
+    body: |-
+      Making Learning Visible opened the classroom so families could see how children learn. Parents sat beside their little ones as letters, pictures and matching games covered the tables.
+
+      One child paired letter shapes on a black board. Another matched letters with objects in the house, picking cards from a plate while a teacher guided the next step. A teacher also helped a child use a dropper, watching coloured water travel into cotton.
+
+      It was a close look at everyday learning: small hands, careful choices, and families watching the work happen.
+    photos:
+      - src: learning-visible-1.png
+        alt: A child matching letter pairs while parents watch
+      - src: learning-visible-2.png
+        alt: A child matching letters with objects as a teacher and parent look on
+      - src: learning-visible-3.png
+        alt: A teacher helping a child use a dropper with coloured water and cotton
+  - day: ""
+    month: ""
+    title: Role Play
+    text: Students stepped into character as a chef, an astronaut and a teacher.
+    body: |-
+      Role Play let students try on someone else’s day. In a chef’s hat and apron, one child held a bowl and spoke as if the classroom were a kitchen.
+
+      Another arrived in a silver space suit, ready for a mission. A third came as a teacher, with a bag, a book and a shawl, standing ready to take the class.
+
+      By becoming the character, the children practised words, confidence and a little imagination.
+    photos:
+      - src: role-play-1.png
+        alt: A student dressed as a chef for the Role Play competition
+      - src: role-play-2.png
+        alt: A student in an astronaut costume for the Role Play competition
+      - src: role-play-3.png
+        alt: A student dressed as a teacher for the Role Play competition
+  - day: "5"
+    month: Sep
+    title: Teachers' Day
+    text: Students thank the teachers who guide them from the first classroom to the laboratory.
+    body: |-
+      Teachers' Day is the school's chance to thank the people who guide every child. The thanks belong in many rooms, not only on a stage.
+
+      In the early years, a teacher sits at the table and turns play into learning. With older children, a music lesson becomes a shared discovery. In the laboratory, a teacher stands with students as they test an idea for themselves.
+
+      The day is a reminder of that everyday work, and of the teachers who help Lawrence students grow.
+    photos:
+      - src: teachers-day-1.png
+        alt: A kindergarten teacher exploring with students at Lawrence High School
+      - src: teachers-day-2.png
+        alt: A teacher making music with children in class
+      - src: teachers-day-3.png
+        alt: A teacher guiding high school students in the science laboratory
 achievements:
   - kicker: Student Achievements
     title: Hannah Maria Johnson Wins Cash Prize at State Computer Olympiad
