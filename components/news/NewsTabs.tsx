@@ -8,6 +8,7 @@ import type {
   NewsCategory,
   NewsEvent,
   NewsPost,
+  NewsResult,
   NewsTabsCopy
 } from "@/lib/news";
 

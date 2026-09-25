@@ -273,12 +273,11 @@ export async function getHighSchoolContent(): Promise<HighSchoolContent> {
         groups: entry.curriculum.grade910Groups.length
           ? entry.curriculum.grade910Groups.map((group, index) => {
               const fallback = highSchool.curriculum.grade910.groups[index] ?? highSchool.curriculum.grade910.groups[0];
+              const note = textSrc(typeof group.note === "string" ? group.note : "");
               return {
                 title: textSrc(group.title, fallback.title),
                 subtitle: textSrc(group.subtitle, fallback.subtitle),
-                ...(textSrc(group.note, "note" in fallback ? fallback.note ?? "" : "")
-                  ? { note: textSrc(group.note, "note" in fallback ? fallback.note ?? "" : "") }
-                  : {}),
+                ...(note ? { note } : {}),
                 tone: (textSrc(group.tone, fallback.tone) || fallback.tone) as "peach" | "blue" | "gold",
                 subjects: group.subjects.length
                   ? group.subjects.map((subject, subjectIndex) => {
