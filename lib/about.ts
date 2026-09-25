@@ -58,7 +58,21 @@ export const aboutPhilosophy = {
   imageAlt: "Lawrence High School leaders collaborating on teaching and learning"
 };
 
-export const aboutMessages = {
+type AboutMessagePerson = {
+  name: string;
+  role: string;
+  photo: string | null;
+  photoAlt: string;
+  initials: string;
+  position: string;
+  message: string;
+};
+
+export const aboutMessages: {
+  title: string;
+  kicker: string;
+  people: AboutMessagePerson[];
+} = {
   title: "Messages from Our Leadership",
   kicker: "Guided by vision, grounded in values, committed to every child.",
   people: [
@@ -85,7 +99,7 @@ export const aboutMessages = {
     {
       name: "Mrs. Devi",
       role: "Principal",
-      photo: null,
+      photo: "/images/about/principal-devi.jpg",
       photoAlt: "Mrs. Devi, Principal of Lawrence High School",
       initials: "D",
       position: "center center",
