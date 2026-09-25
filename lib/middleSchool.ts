@@ -6,8 +6,8 @@ export const middleSchool = {
     kicker: "Middle School",
     grades: "Grades 5 – 7",
     title: "Growing *Minds*.\nBuilding *Futures*.",
-    image: "/images/home/hero/hero-class.png",
-    imageAlt: "Middle school students collaborating in a classroom at Lawrence High School"
+    image: "/images/home/hero/middle-school-hero.png",
+    imageAlt: "Middle school students examining a plant together in class at Lawrence High School"
   },
   approach: {
     kicker: "Our Approach",
@@ -15,16 +15,12 @@ export const middleSchool = {
     body: "At the Middle School level, we follow the motivational philosophy of NEWS: Navigate, Explore, Work hard, Succeed. We create a learning environment that encourages curiosity, builds resilience and develops independent thinkers who are ready for the opportunities of high school and beyond.",
     photos: [
       {
-        src: "/images/home/hero/hero-robotics.png",
-        alt: "Middle school students collaborating on robotics and design at Lawrence High School"
+        src: "/images/about/ms-approach-1.png",
+        alt: "Middle school students examining a preserved crab specimen in science class"
       },
       {
-        src: "/images/home/curriculum/creators.png",
-        alt: "Middle school students working together on a classroom project"
-      },
-      {
-        src: "/images/home/pathway/learn.png",
-        alt: "Middle school students reading in the Lawrence High School library"
+        src: "/images/about/ms-approach-2.png",
+        alt: "Middle school students using a microscope in the science lab"
       }
     ],
     values: [

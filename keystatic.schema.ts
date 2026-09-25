@@ -1057,16 +1057,21 @@ export const newsSchema = {
   ),
   results: fields.array(
     fields.object({
-      date: fields.date({ label: "Date" }),
-      title: fields.text({ label: "Title" }),
-      summary: fields.text({
-        label: "Summary",
-        multiline: true,
-        description: "Shown on the Result card."
+      kicker: fields.text({
+        label: "Kicker",
+        description: "Small label above the title, e.g. ICSE 2025-26."
       }),
-      href: fields.text({
-        label: "Link (optional)",
-        description: "e.g. /news/kabaddi to open a full story."
+      title: fields.text({ label: "Title" }),
+      body: fields.text({
+        label: "Body",
+        multiline: true,
+        description: "Card shows the first paragraph. Full text appears in the popup."
+      }),
+      photos: fields.array(photo("news/results"), {
+        label: "Photos",
+        description: "First photo is the card image. Up to 5 photos appear in the popup.",
+        itemLabel: (props) => props.fields.alt.value || "Photo",
+        validation: { length: { max: 5 } }
       })
     }),
     {
@@ -1106,7 +1111,18 @@ export const newsSchema = {
       text: fields.text({
         label: "Summary",
         multiline: true,
-        description: "Shown on the Event card."
+        description: "Shown on the Event card when there is no longer story."
+      }),
+      body: fields.text({
+        label: "Popup story",
+        multiline: true,
+        description: "Full text in the popup. Leave blank to use the summary."
+      }),
+      photos: fields.array(photo("news/events"), {
+        label: "Photos",
+        description: "Shown in a slider above the story. The first photo is the card image.",
+        itemLabel: (props) => props.fields.alt.value || "Photo",
+        validation: { length: { max: 5 } }
       })
     }),
     {

@@ -77,46 +77,43 @@ curriculum:
           detail: ""
     - title: Group 2
       subtitle: Elective Subjects
-      note: (Choose any two)
+      note: ""
       tone: blue
       subjects:
-        - icon: maths
-          title: Mathematics
-          detail: ""
         - icon: science
-          title: Science
-          detail: (Physics, Chemistry, Biology)
-        - icon: computer
-          title: Computer Applications
+          title: Mathematics and Science
+          detail: ""
+        - icon: environment
+          title: Mathematics and Environmental Science
           detail: ""
         - icon: economics
-          title: Economic Applications
+          title: Economics and Commerce
           detail: ""
         - icon: commerce
-          title: Commercial Applications
+          title: Commerce and Mathematics
           detail: ""
     - title: Group 3
       subtitle: Other Elective Subjects
-      note: (Choose any one)
+      note: ""
       tone: gold
       subjects:
         - icon: computer
           title: Computer Applications
           detail: ""
+        - icon: art
+          title: Art
+          detail: ""
         - icon: pe
           title: Physical Education
           detail: ""
         - icon: robotics
-          title: Robotics and AI
+          title: AI and Robotics
           detail: ""
         - icon: economics
-          title: Economics
-          detail: ""
-        - icon: art
-          title: Art
+          title: Economics Applications
           detail: ""
         - icon: environment
-          title: Environmental Science
+          title: Environmental Applications
           detail: ""
 beyond:
   kicker: Beyond Academics

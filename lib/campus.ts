@@ -115,8 +115,8 @@ export const campusSpaces: CampusSpace[] = [
     tagline: "Read. Learn. Grow.",
     body: "Our well-stocked library provides a peaceful and enriching environment for students to explore a wide range of books, reference materials, magazines and digital resources. It nurtures a love for reading, critical thinking and lifelong learning.",
     image: {
-      src: "/images/home/pathway/learn.png",
-      alt: "Students reading and learning at Lawrence High School"
+      src: "/images/campus/library.png",
+      alt: "Students browsing books in the Lawrence High School library"
     },
     features: [
       { icon: "books", label: "Wide Range of Books" },
@@ -148,8 +148,8 @@ export const campusSpaces: CampusSpace[] = [
     tagline: "Play. Explore. Imagine. Grow.",
     body: "Our sandpit area offers a safe and engaging outdoor space where children can explore, create and learn through play. It encourages sensory development, fine motor skills, creativity and social interaction in a natural and joyful setting.",
     image: {
-      src: "/images/home/hero/hero-kindergarten.png",
-      alt: "Children playing and building in the sandpit at Lawrence High School"
+      src: "/images/campus/sandpit.png",
+      alt: "Children playing in the sandpit at Lawrence High School"
     },
     features: [
       { icon: "safety", label: "Safe & Clean Play Area" },

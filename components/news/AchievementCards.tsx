@@ -5,7 +5,15 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import type { NewsAchievement } from "@/lib/news";
 
-export default function AchievementCards({ items }: { items: NewsAchievement[] }) {
+export default function AchievementCards({
+  items,
+  empty = "Achievements will appear here as they are published.",
+  imageFit = "cover"
+}: {
+  items: NewsAchievement[];
+  empty?: string;
+  imageFit?: "cover" | "contain";
+}) {
   const [active, setActive] = useState<number | null>(null);
   const [slide, setSlide] = useState(0);
   const [mounted, setMounted] = useState(false);
@@ -50,7 +58,7 @@ export default function AchievementCards({ items }: { items: NewsAchievement[] }
   }, [active, close, go]);
 
   if (!items.length) {
-    return <p className="lede news-empty">Achievements will appear here as they are published.</p>;
+    return <p className="lede news-empty">{empty}</p>;
   }
 
   return (
@@ -70,7 +78,7 @@ export default function AchievementCards({ items }: { items: NewsAchievement[] }
               }}
             >
               {photo ? (
-                <span className="news-achieve-photo">
+                <span className={imageFit === "contain" ? "news-achieve-photo news-achieve-photo--contain" : "news-achieve-photo"}>
                   <Image
                     src={photo.src}
                     alt=""

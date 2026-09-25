@@ -6,8 +6,8 @@ export const primary = {
     kicker: "Primary School",
     grades: "Grades 1 – 4",
     title: "Nurturing Foundations, Inspiring Futures",
-    image: "/images/home/hero/hero-classroom.png",
-    imageAlt: "Primary students exploring letters, numbers and classroom materials at Lawrence High School"
+    image: "/images/home/hero/primary-hero.png",
+    imageAlt: "Primary students presenting a vertical farming project at Lawrence High School"
   },
   approach: {
     kicker: "Our Approach",

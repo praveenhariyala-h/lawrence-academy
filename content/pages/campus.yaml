@@ -91,8 +91,8 @@ spaces:
     body: Our well-stocked library provides a peaceful and enriching environment for students to explore a wide range of books, reference materials, magazines and digital resources. It nurtures a love for reading, critical thinking and lifelong learning.
     reverse: false
     image:
-      src: home/pathway/learn.png
-      alt: Students reading and learning at Lawrence High School
+      src: campus/library.png
+      alt: Students browsing books in the Lawrence High School library
     gallery: []
     features:
       - icon: books
@@ -127,8 +127,8 @@ spaces:
     body: Our sandpit area offers a safe and engaging outdoor space where children can explore, create and learn through play. It encourages sensory development, fine motor skills, creativity and social interaction in a natural and joyful setting.
     reverse: false
     image:
-      src: home/hero/hero-kindergarten.png
-      alt: Children playing and building in the sandpit at Lawrence High School
+      src: campus/sandpit.png
+      alt: Children playing in the sandpit at Lawrence High School
     gallery: []
     features:
       - icon: safety

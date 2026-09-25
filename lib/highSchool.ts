@@ -82,28 +82,25 @@ export const highSchool = {
         {
           title: "Group 2",
           subtitle: "Elective Subjects",
-          note: "(Choose any two)",
           tone: "blue",
           subjects: [
-            { icon: "maths", title: "Mathematics" },
-            { icon: "science", title: "Science", detail: "(Physics, Chemistry, Biology)" },
-            { icon: "computer", title: "Computer Applications" },
-            { icon: "economics", title: "Economic Applications" },
-            { icon: "commerce", title: "Commercial Applications" }
+            { icon: "science", title: "Mathematics and Science" },
+            { icon: "environment", title: "Mathematics and Environmental Science" },
+            { icon: "economics", title: "Economics and Commerce" },
+            { icon: "commerce", title: "Commerce and Mathematics" }
           ]
         },
         {
           title: "Group 3",
           subtitle: "Other Elective Subjects",
-          note: "(Choose any one)",
           tone: "gold",
           subjects: [
             { icon: "computer", title: "Computer Applications" },
-            { icon: "pe", title: "Physical Education" },
-            { icon: "robotics", title: "Robotics and AI" },
-            { icon: "economics", title: "Economics" },
             { icon: "art", title: "Art" },
-            { icon: "environment", title: "Environmental Science" }
+            { icon: "pe", title: "Physical Education" },
+            { icon: "robotics", title: "AI and Robotics" },
+            { icon: "economics", title: "Economics Applications" },
+            { icon: "environment", title: "Environmental Applications" }
           ]
         }
       ]

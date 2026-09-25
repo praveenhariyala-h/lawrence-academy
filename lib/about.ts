@@ -83,11 +83,11 @@ export const aboutMessages = {
         "We work to create a school where every learner is known, supported and stretched. Education at Lawrence is not only academic excellence; it is the partnership between students, teachers and families. Our role is to make sure that partnership stays strong, so every child can grow with dignity, curiosity and joy."
     },
     {
-      name: "Mrs. Supriya Johnson",
+      name: "Mrs. Devi",
       role: "Principal",
       photo: null,
-      photoAlt: "Mrs. Supriya Johnson, Principal of Lawrence High School",
-      initials: "SJ",
+      photoAlt: "Mrs. Devi, Principal of Lawrence High School",
+      initials: "D",
       position: "center center",
       message:
         "At Lawrence High School, we believe every child is unique and has the potential to achieve great things. Our goal is to provide a nurturing and stimulating environment where students discover their strengths, develop character, and grow into confident, capable citizens. We work closely with parents to make school a second home."
