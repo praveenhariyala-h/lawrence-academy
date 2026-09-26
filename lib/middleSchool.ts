@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export const middleSchool = {
   hero: {
     kicker: "Middle School",
@@ -143,5 +145,5 @@ export const defaultMiddleSchool: MiddleSchoolContent = {
 };
 
 export async function getMiddleSchoolContent(): Promise<MiddleSchoolContent> {
-  return defaultMiddleSchool;
+  return readContent("content/middle-school/middle-school.json", defaultMiddleSchool);
 }

@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       { source: "/learning", destination: "/academics/kindergarten", permanent: false },
       { source: "/learning/:path*", destination: "/academics/:path*", permanent: false }
     ];
+  },
+  async rewrites() {
+    return [{ source: "/admin", destination: "/admin/index.html" }];
   }
 };
 

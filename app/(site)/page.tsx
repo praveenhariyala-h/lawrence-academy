@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import HeroSection from "@/components/home/HeroSection";
 import HomeBelowFold from "@/components/home/HomeBelowFold";
 import PathwayStrip from "@/components/home/PathwayStrip";
 import CurriculumMosaic from "@/components/home/CurriculumMosaic";
 import { getHomeContent } from "@/lib/home";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const home = await getHomeContent();
+  return {
+    title: { absolute: home.metaTitle },
+    description: home.metaDescription
+  };
+}
 
 export default async function HomePage() {
   const home = await getHomeContent();

@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export type NewsCategory = "result" | "achievement" | "event";
 export type NewsImageFit = "cover" | "contain";
 
@@ -459,5 +461,5 @@ export const defaultNews: NewsContent = {
 };
 
 export async function getNewsContent(): Promise<NewsContent> {
-  return defaultNews;
+  return readContent("content/news/news.json", defaultNews);
 }

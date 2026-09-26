@@ -1,4 +1,5 @@
 import type { SpaceFeature, SpacePhoto } from "@/lib/campus";
+import { readContent } from "@/lib/readContent";
 
 export type CareSpace = {
   id: string;
@@ -90,5 +91,5 @@ export const defaultFacilities: FacilitiesContent = {
 };
 
 export async function getFacilitiesContent(): Promise<FacilitiesContent> {
-  return defaultFacilities;
+  return readContent("content/facilities/facilities.json", defaultFacilities);
 }

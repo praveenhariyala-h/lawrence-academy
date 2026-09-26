@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import BeyondBody from "@/components/beyond/BeyondBody";
 import { getBeyondContent } from "@/lib/beyond";
 
-export const metadata: Metadata = {
-  title: "Beyond Books",
-  description:
-    "Sports, creative expression, communication, STEM, Vedic Maths, financial literacy and field trips at Lawrence High School ICSE, HSR Layout."
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getBeyondContent();
+  return {
+    title: content.metaTitle,
+    description: content.metaDescription
+  };
+}
 
 export default async function BeyondBooksPage() {
   const content = await getBeyondContent();

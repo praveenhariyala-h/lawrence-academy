@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { school } from "@/lib/site";
+import { getSchool } from "@/lib/siteContent";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -88,6 +88,7 @@ function ContactIcon({ type }: { type: "pin" | "phone" | "mail" }) {
 }
 
 export default function Footer() {
+  const school = getSchool();
   const year = new Date().getFullYear();
 
   return (
@@ -95,13 +96,13 @@ export default function Footer() {
       <section className="campus-cta footer-cta">
         <div className="wrap campus-cta-row">
           <div className="footer-cta-copy">
-            <h2>Begin your Journey with Us</h2>
-            <p>Give your child the opportunity to learn, grow and shine at Lawrence.</p>
+            <h2>{school.footerCtaTitle}</h2>
+            <p>{school.footerCtaText}</p>
           </div>
           <div className="footer-cta-action">
-            <p className="footer-cta-admissions">Admissions Open for 2027 - 2028</p>
-            <Link className="btn btn--gold" href="/contact">
-              Enquire Now
+            <p className="footer-cta-admissions">{school.footerCtaAdmissions}</p>
+            <Link className="btn btn--gold" href={school.footerCtaHref}>
+              {school.footerCtaLabel}
             </Link>
           </div>
         </div>

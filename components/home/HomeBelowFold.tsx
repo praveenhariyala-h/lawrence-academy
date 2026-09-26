@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import AchievementsCarousel from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
-import { featuredAchievementFallback } from "@/lib/homeSections";
 import type { HomeContent } from "@/lib/home";
 
 export default function HomeBelowFold({
@@ -12,7 +11,7 @@ export default function HomeBelowFold({
 }) {
   const beyond = home.beyondClassroom;
   const campus = home.campusSpotlight;
-  const achievements = [featuredAchievementFallback];
+  const achievements = [home.featuredAchievement];
 
   return (
     <>

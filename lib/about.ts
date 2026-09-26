@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export const aboutHero = {
   title: "About Us",
   image: "/images/about/hero.png",
@@ -243,6 +245,8 @@ export const aboutValues = {
 export const aboutMotto = "Dream and Believe\nLearn and Achieve";
 
 export type AboutContent = {
+  metaTitle: string;
+  metaDescription: string;
   hero: typeof aboutHero;
   stats: AboutStat[];
   journey: typeof aboutJourney;
@@ -256,6 +260,9 @@ export type AboutContent = {
 };
 
 export const defaultAbout: AboutContent = {
+  metaTitle: "About Us",
+  metaDescription:
+    "Lawrence High School ICSE, HSR Layout — our journey, educational philosophy, leadership, dedicated teachers, and values.",
   hero: aboutHero,
   stats: aboutStats,
   journey: aboutJourney,
@@ -269,5 +276,5 @@ export const defaultAbout: AboutContent = {
 };
 
 export async function getAboutContent(): Promise<AboutContent> {
-  return defaultAbout;
+  return readContent("content/about/about.json", defaultAbout);
 }

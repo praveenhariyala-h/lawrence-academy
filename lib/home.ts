@@ -1,8 +1,10 @@
 import {
   beyondClassroom as defaultBeyondClassroom,
   campusSpotlight as defaultCampusSpotlight,
+  featuredAchievementFallback,
   upcomingEvents as defaultUpcomingEvents
 } from "@/lib/homeSections";
+import { readContent } from "@/lib/readContent";
 
 export type HomeImageFit = "cover" | "contain";
 
@@ -67,7 +69,18 @@ export type HomePartner = {
   logo: string | null;
 };
 
+export type HomeFeaturedAchievement = {
+  title: string;
+  text: string;
+  date: string;
+  image: string;
+  alt: string;
+  href: string;
+};
+
 export type HomeContent = {
+  metaTitle: string;
+  metaDescription: string;
   heroLearnMoreLabel: string;
   heroLearnMoreHref: string;
   heroSlides: HomeHeroSlide[];
@@ -90,6 +103,7 @@ export type HomeContent = {
   partnersKicker: string;
   partnersTitle: string;
   partners: HomePartner[];
+  featuredAchievement: HomeFeaturedAchievement;
   chairmanKicker: string;
   chairmanName: string;
   chairmanRole: string;
@@ -99,6 +113,9 @@ export type HomeContent = {
 };
 
 export const defaultHome: HomeContent = {
+  metaTitle: "Lawrence High School | ICSE HSR Layout, Bengaluru",
+  metaDescription:
+    "Lawrence High School ICSE, HSR Layout, Bengaluru — 35 years of academic excellence, 100% student engagement, and the A.C.T. framework.",
   heroLearnMoreLabel: "Know more",
   heroLearnMoreHref: "/about",
   heroSlides: [
@@ -253,6 +270,7 @@ export const defaultHome: HomeContent = {
     { name: "IQ Academy", category: "Enrichment", logo: "/images/home/partners/iq-academy.png" },
     { name: "Taekwon-Do Association of Karnataka", category: "Sports", logo: "/images/home/partners/taekwondo-tak.png" }
   ],
+  featuredAchievement: featuredAchievementFallback,
   chairmanKicker: "Chairman’s message",
   chairmanName: "P.M. Subbaiah",
   chairmanRole: "Chairman, Lawrence High School",
@@ -264,5 +282,5 @@ Long-serving, dedicated teachers work with every child, enabling them to discove
 };
 
 export async function getHomeContent(): Promise<HomeContent> {
-  return defaultHome;
+  return readContent("content/home/home.json", defaultHome);
 }

@@ -2,34 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
-import {
-  admissionDocuments,
-  admissionFees,
-  admissionHero,
-  admissionStages,
-  admissionSteps
-} from "@/lib/admissions";
-import { school } from "@/lib/site";
+import { getAdmissionsContent } from "@/lib/admissions";
+import { getSchool } from "@/lib/siteContent";
 
-export const metadata: Metadata = {
-  title: "Admissions",
-  description:
-    "Enquire, visit campus, and join Lawrence High School ICSE, HSR Layout — from Kindergarten to Grade 10."
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getAdmissionsContent();
+  return {
+    title: content.metaTitle,
+    description: content.metaDescription
+  };
+}
 
-export default function AdmissionsPage() {
-  const helpline = school.phones[0];
+export default async function AdmissionsPage() {
+  const content = await getAdmissionsContent();
+  const school = getSchool();
+  const helpline = school.phones[0] ?? "";
+  const email = school.emails[0] ?? "";
 
   return (
     <>
-      <PageHero kicker={admissionHero.kicker} title={admissionHero.title} lede={admissionHero.lede} />
+      <PageHero kicker={content.hero.kicker} title={content.hero.title} lede={content.hero.lede} />
 
       <section className="band band--white">
         <div className="wrap">
-          <span className="kicker">Openings</span>
-          <h2 className="section-title">Where your child can begin.</h2>
+          <span className="kicker">{content.openingsKicker}</span>
+          <h2 className="section-title">{content.openingsTitle}</h2>
           <div className="cards cards--4">
-            {admissionStages.map((stage) => (
+            {content.stages.map((stage) => (
               <article key={stage.title} className="card">
                 <h3>{stage.title}</h3>
                 <p>{stage.text}</p>
@@ -41,10 +40,10 @@ export default function AdmissionsPage() {
 
       <section id="process" className="band band--pearl section-anchor">
         <div className="wrap">
-          <span className="kicker">Admission process</span>
-          <h2 className="section-title">Five clear steps.</h2>
+          <span className="kicker">{content.processKicker}</span>
+          <h2 className="section-title">{content.processTitle}</h2>
           <div className="timeline">
-            {admissionSteps.map((step, index) => (
+            {content.steps.map((step, index) => (
               <div key={step.title} className="step">
                 <span className="step-num">{index + 1}</span>
                 <div>
@@ -59,12 +58,9 @@ export default function AdmissionsPage() {
 
       <section id="fees" className="band band--white section-anchor">
         <div className="wrap">
-          <span className="kicker">Fee structure</span>
-          <h2 className="section-title">What fees cover.</h2>
-          <p className="lede">
-            Figures for the current academic year are shared by the admissions office during your campus visit, or on
-            the helpline. We do not publish last year’s numbers here so families always receive the latest schedule.
-          </p>
+          <span className="kicker">{content.feesKicker}</span>
+          <h2 className="section-title">{content.feesTitle}</h2>
+          <p className="lede">{content.feesNote}</p>
           <div className="table-wrap">
             <table className="table">
               <thead>
@@ -75,7 +71,7 @@ export default function AdmissionsPage() {
                 </tr>
               </thead>
               <tbody>
-                {admissionFees.map((fee) => (
+                {content.fees.map((fee) => (
                   <tr key={fee.name}>
                     <td>{fee.name}</td>
                     <td>{fee.covers}</td>
@@ -86,9 +82,8 @@ export default function AdmissionsPage() {
             </table>
           </div>
           <p>
-            Call{" "}
-            <a href={`tel:${helpline.replace(/\s/g, "")}`}>{helpline}</a> or write to{" "}
-            <a href={`mailto:${school.emails[0]}`}>{school.emails[0]}</a> for this year’s schedule.
+            Call <a href={`tel:${helpline.replace(/\s/g, "")}`}>{helpline}</a> or write to{" "}
+            <a href={`mailto:${email}`}>{email}</a> for this year’s schedule.
           </p>
         </div>
       </section>
@@ -96,14 +91,12 @@ export default function AdmissionsPage() {
       <section className="band band--pearl">
         <div className="wrap split">
           <div>
-            <span className="kicker">Documents</span>
-            <h2 className="section-title">What to keep ready.</h2>
-            <p>
-              Bring originals for verification. Photocopies can be submitted after a place is offered.
-            </p>
+            <span className="kicker">{content.documentsKicker}</span>
+            <h2 className="section-title">{content.documentsTitle}</h2>
+            <p>{content.documentsBody}</p>
           </div>
           <ul className="offer-list">
-            {admissionDocuments.map((item) => (
+            {content.documents.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -114,15 +107,12 @@ export default function AdmissionsPage() {
         <div className="wrap contact-grid">
           <div className="contact-details">
             <div>
-              <span className="kicker">Apply now</span>
-              <h2>Start an enquiry.</h2>
-              <p>
-                Tell us about your child. The admissions team will reply with next dates for campus visits and
-                interactions.
-              </p>
+              <span className="kicker">{content.applyKicker}</span>
+              <h2>{content.applyTitle}</h2>
+              <p>{content.applyBody}</p>
             </div>
             <div>
-              <h2>Admission helpline</h2>
+              <h2>{content.helplineTitle}</h2>
               <p>
                 {school.phones.map((phone, index) => (
                   <span key={phone}>
@@ -132,15 +122,14 @@ export default function AdmissionsPage() {
                 ))}
               </p>
               <p>
-                <a href={`mailto:${school.emails[0]}`}>{school.emails[0]}</a>
+                <a href={`mailto:${email}`}>{email}</a>
               </p>
               <p>
-                Prefer to visit first? See the map on the{" "}
-                <Link href="/contact">contact page</Link>.
+                {content.visitNote} <Link href="/contact">{content.visitLinkLabel}</Link>.
               </p>
             </div>
           </div>
-          <ContactForm submitLabel="Start an enquiry" />
+          <ContactForm submitLabel={content.submitLabel} />
         </div>
       </section>
     </>

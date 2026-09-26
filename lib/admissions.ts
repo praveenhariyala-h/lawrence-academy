@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export const admissionHero = {
   kicker: "Admissions",
   title: "Begin with a conversation.",
@@ -77,3 +79,67 @@ export const admissionDocuments = [
   "Transfer certificate from the previous school (Grade 1 and above)",
   "Latest report card, if transferring mid-stream"
 ];
+
+export type AdmissionStage = (typeof admissionStages)[number];
+export type AdmissionStep = (typeof admissionSteps)[number];
+export type AdmissionFee = (typeof admissionFees)[number];
+
+export type AdmissionsContent = {
+  metaTitle: string;
+  metaDescription: string;
+  hero: typeof admissionHero;
+  openingsKicker: string;
+  openingsTitle: string;
+  stages: AdmissionStage[];
+  processKicker: string;
+  processTitle: string;
+  steps: AdmissionStep[];
+  feesKicker: string;
+  feesTitle: string;
+  feesNote: string;
+  fees: AdmissionFee[];
+  documentsKicker: string;
+  documentsTitle: string;
+  documentsBody: string;
+  documents: string[];
+  applyKicker: string;
+  applyTitle: string;
+  applyBody: string;
+  helplineTitle: string;
+  visitNote: string;
+  visitLinkLabel: string;
+  submitLabel: string;
+};
+
+export const defaultAdmissions: AdmissionsContent = {
+  metaTitle: "Admissions",
+  metaDescription:
+    "Enquire, visit campus, and join Lawrence High School ICSE, HSR Layout — from Kindergarten to Grade 10.",
+  hero: admissionHero,
+  openingsKicker: "Openings",
+  openingsTitle: "Where your child can begin.",
+  stages: admissionStages,
+  processKicker: "Admission process",
+  processTitle: "Five clear steps.",
+  steps: admissionSteps,
+  feesKicker: "Fee structure",
+  feesTitle: "What fees cover.",
+  feesNote:
+    "Figures for the current academic year are shared by the admissions office during your campus visit, or on the helpline. We do not publish last year’s numbers here so families always receive the latest schedule.",
+  fees: admissionFees,
+  documentsKicker: "Documents",
+  documentsTitle: "What to keep ready.",
+  documentsBody: "Bring originals for verification. Photocopies can be submitted after a place is offered.",
+  documents: admissionDocuments,
+  applyKicker: "Apply now",
+  applyTitle: "Start an enquiry.",
+  applyBody: "Tell us about your child. The admissions team will reply with next dates for campus visits and interactions.",
+  helplineTitle: "Admission helpline",
+  visitNote: "Prefer to visit first? See the map on the",
+  visitLinkLabel: "contact page",
+  submitLabel: "Start an enquiry"
+};
+
+export async function getAdmissionsContent(): Promise<AdmissionsContent> {
+  return readContent("content/admissions/admissions.json", defaultAdmissions);
+}
