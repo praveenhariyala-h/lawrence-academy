@@ -1,16 +1,20 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import AboutReveal from "@/components/about/AboutReveal";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import PrimaryIcon from "@/components/academics/PrimaryIcon";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { PrimaryContent } from "@/lib/primary";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function PrimaryBody({ content }: { content: PrimaryContent }) {
+export default function PrimaryBody({ content: initial }: { content: PrimaryContent }) {
+  const content = useEditable("primary", initial);
   const { hero, approach, curriculum, beyond, moments } = content;
 
   return (

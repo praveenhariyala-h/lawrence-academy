@@ -1,14 +1,18 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilityRow from "@/components/about/FacilityRow";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { FacilitiesContent } from "@/lib/facilities";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function FacilitiesBody({ content }: { content: FacilitiesContent }) {
+export default function FacilitiesBody({ content: initial }: { content: FacilitiesContent }) {
+  const content = useEditable("facilities", initial);
   const { hero: facilitiesHero, spaces: careSpaces } = content;
   return (
     <AboutReveal>

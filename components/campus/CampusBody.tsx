@@ -1,14 +1,18 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilityRow from "@/components/about/FacilityRow";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { CampusContent } from "@/lib/campus";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function CampusBody({ content }: { content: CampusContent }) {
+export default function CampusBody({ content: initial }: { content: CampusContent }) {
+  const content = useEditable("campus", initial);
   const { hero: campusHero, spaces: campusSpaces } = content;
   return (
     <AboutReveal>

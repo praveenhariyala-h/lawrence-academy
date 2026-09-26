@@ -1,16 +1,20 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import KindergartenIcon from "@/components/academics/KindergartenIcon";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { KindergartenContent } from "@/lib/kindergarten";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function KindergartenBody({ content }: { content: KindergartenContent }) {
+export default function KindergartenBody({ content: initial }: { content: KindergartenContent }) {
+  const content = useEditable("kindergarten", initial);
   const { hero, programme, curriculum, development, visible, families, moments } = content;
 
   return (

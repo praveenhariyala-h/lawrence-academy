@@ -1,6 +1,9 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { AboutContent } from "@/lib/about";
 import AboutReveal from "./AboutReveal";
 import FacilitySlider from "./FacilitySlider";
@@ -48,7 +51,8 @@ function Portrait({
   );
 }
 
-export default function AboutBody({ content }: { content: AboutContent }) {
+export default function AboutBody({ content: initial }: { content: AboutContent }) {
+  const content = useEditable("about", initial);
   const {
     hero: aboutHero,
     stats: aboutStats,

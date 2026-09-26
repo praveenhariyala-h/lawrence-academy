@@ -1,16 +1,20 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import HighSchoolIcon from "@/components/academics/HighSchoolIcon";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { HighSchoolContent } from "@/lib/highSchool";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function HighSchoolBody({ content }: { content: HighSchoolContent }) {
+export default function HighSchoolBody({ content: initial }: { content: HighSchoolContent }) {
+  const content = useEditable("highSchool", initial);
   const { hero, approach, curriculum, beyond, moments } = content;
 
   return (

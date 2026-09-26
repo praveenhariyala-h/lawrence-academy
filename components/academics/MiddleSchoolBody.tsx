@@ -1,16 +1,20 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import MiddleSchoolIcon from "@/components/academics/MiddleSchoolIcon";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { MiddleSchoolContent } from "@/lib/middleSchool";
 
 function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-export default function MiddleSchoolBody({ content }: { content: MiddleSchoolContent }) {
+export default function MiddleSchoolBody({ content: initial }: { content: MiddleSchoolContent }) {
+  const content = useEditable("middleSchool", initial);
   const { hero, approach, curriculum, beyond, moments } = content;
 
   return (
