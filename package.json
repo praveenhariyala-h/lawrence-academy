@@ -2,11 +2,11 @@
   "name": "lawrence-academy",
   "private": true,
   "scripts": {
-    "dev": "tinacms dev -c \"next dev\"",
-    "build": "node scripts/build.mjs",
-    "build:tina": "tinacms build && next build",
-    "start": "next start"
-  },
+  "dev": "tinacms dev -c \"next dev\"",
+  "build": "tinacms build && node scripts/build.mjs",
+  "build:tina": "tinacms build && next build",
+  "start": "next start"
+},
   "dependencies": {
     "next": "^15.5.2",
     "react": "^19.1.1",
