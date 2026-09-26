@@ -1,0 +1,670 @@
+{
+  "metaTitle": "News",
+  "metaDescription": "Results, achievements and events from Lawrence High School ICSE, HSR Layout, Bengaluru.",
+  "hero": {
+    "kicker": "News",
+    "title": "Results. Recognition.\n*Moments that matter.*",
+    "lede": "Board results, student achievements and events from life at Lawrence High School.",
+    "image": "/images/news/hero-sports.png",
+    "imageAlt": "Lawrence High School football team with a trophy beside the school trophy cabinet",
+    "fit": "cover"
+  },
+  "tabs": {
+    "resultLabel": "Result",
+    "achievementLabel": "Achievements",
+    "eventLabel": "Events",
+    "resultEmpty": "Results will appear here as they are published.",
+    "achievementEmpty": "Achievements will appear here as they are published.",
+    "eventEmpty": "Upcoming events will appear here soon."
+  },
+  "results": [
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "Batch of 2025-26 Results",
+      "body": "Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.\n\nDistinctions (85% and above): 85 students.\n58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.",
+      "photos": [
+        {
+          "src": "/images/news/results/batch-2025-26.jpg",
+          "alt": "ICSE Batch of 2025-26 results poster for Lawrence High School"
+        }
+      ]
+    },
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "Atul Kumar Mishra — 99%",
+      "body": "Atul Kumar Mishra scored 99% in the ICSE Batch of 2025-26.",
+      "photos": [
+        {
+          "src": "/images/news/results/atul-kumar-mishra.jpg",
+          "alt": "Atul Kumar Mishra, ICSE Batch of 2025-26"
+        }
+      ]
+    },
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "Annareddy Himaja — 97.8%",
+      "body": "Annareddy Himaja scored 97.8% in the ICSE Batch of 2025-26.",
+      "photos": [
+        {
+          "src": "/images/news/results/annareddy-himaja.jpg",
+          "alt": "Annareddy Himaja, ICSE Batch of 2025-26"
+        }
+      ]
+    },
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "Ashima Agarwal — 97.8%",
+      "body": "Ashima Agarwal scored 97.8% in the ICSE Batch of 2025-26.",
+      "photos": [
+        {
+          "src": "/images/news/results/ashima-agarwal.jpg",
+          "alt": "Ashima Agarwal, ICSE Batch of 2025-26"
+        }
+      ]
+    },
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "R Aditi — 97.8%",
+      "body": "R Aditi scored 97.8% in the ICSE Batch of 2025-26.",
+      "photos": [
+        {
+          "src": "/images/news/results/r-aditi.jpg",
+          "alt": "R Aditi, ICSE Batch of 2025-26"
+        }
+      ]
+    },
+    {
+      "kicker": "ICSE 2025-26",
+      "title": "Naman Teertha Subash — 97.4%",
+      "body": "Naman Teertha Subash scored 97.4% in the ICSE Batch of 2025-26.",
+      "photos": [
+        {
+          "src": "/images/news/results/naman-teertha-subash.jpg",
+          "alt": "Naman Teertha Subash, ICSE Batch of 2025-26"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "day": "",
+      "month": "",
+      "title": "Independence Day",
+      "text": "The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit.",
+      "body": "The Independence Day celebration for Grade 1 was filled with joy, enthusiasm, and patriotic spirit. The children came dressed in colourful costumes representing various national figures. They were taken to the ground to participate in the flag-hoisting ceremony and proudly joined in the celebrations.\n\nThe children showed great enthusiasm during the fancy-dress activity and spoke confidently about the characters they represented. Later, they were given outlines of national symbols and asked to decorate them using tri-coloured paper. Working in groups, the children thoroughly enjoyed the creative activity and participated with great excitement.\n\nOverall, it was a memorable and meaningful celebration that helped the children learn about our nation while having fun.",
+      "photos": [
+        {
+          "src": "/images/news/events/independence-1.png",
+          "alt": "Students and teachers gathered for the Independence Day assembly"
+        },
+        {
+          "src": "/images/news/events/independence-2.png",
+          "alt": "Flag hoisting on Independence Day at Lawrence High School"
+        },
+        {
+          "src": "/images/news/events/independence-3.png",
+          "alt": "Grade 1 children in costume for the Independence Day celebration"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Investiture Ceremony",
+      "text": "Student leaders of 2026–27 received their badges, sashes and house flags.",
+      "body": "The Investiture Ceremony for 2026–27 welcomed the new student council to office. Head Girl, house captains and sports leaders stood on stage with their sashes and flags, ready to serve the school.\n\nTeachers presented the house flags, and the student leaders accepted them as a promise to lead with integrity and respect. The ceremony reminded everyone that leadership is not about being in charge. It is about inspiring others and working together for a better tomorrow.\n\nIt was a proud morning for the school, as the new team stepped forward to guide their houses and set an example for every Lawrence student.",
+      "photos": [
+        {
+          "src": "/images/news/events/investiture-1.png",
+          "alt": "Head Girl and sports leaders with the school flags at the Investiture Ceremony"
+        },
+        {
+          "src": "/images/news/events/investiture-2.png",
+          "alt": "A teacher presenting the house flag to a student captain"
+        },
+        {
+          "src": "/images/news/events/investiture-3.png",
+          "alt": "The student council and teachers on stage at the Investiture Ceremony"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Dad and Me",
+      "text": "Fathers joined their children in class for a morning of drawing, building and photographs.",
+      "body": "Dad and Me brought fathers into the classroom to spend the morning with their children. They sat together at the tables, drawing, writing and building with colourful blocks.\n\nA photo frame decorated with “Best Dad” and “My Hero” became a favourite stop. Fathers and children posed together, proud and happy to be side by side.\n\nIt was a warm morning that let every child show their father what school feels like, and let every father see the joy of learning up close.",
+      "photos": [
+        {
+          "src": "/images/news/events/dad-and-me-1.png",
+          "alt": "Fathers drawing and building with their children during Dad and Me"
+        },
+        {
+          "src": "/images/news/events/dad-and-me-2.png",
+          "alt": "A father and child posing in the Best Dad photo frame"
+        },
+        {
+          "src": "/images/news/events/dad-and-me-3.png",
+          "alt": "A father holding his child in the My Hero photo frame"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Mom and Me",
+      "text": "Mothers joined their children to paint pots and celebrate together.",
+      "body": "Mom and Me brought mothers into school to create something with their children. Together they painted clay pots, adding bright colours and patterns at the table.\n\nSome children came dressed for Krishna Janmashtami, with crowns, beads and festive clothes. Mothers sat beside them, guiding little hands and sharing the work.\n\nThe morning ended in front of a Happy Janmashtami backdrop, with mothers and children greeting the celebration side by side.",
+      "photos": [
+        {
+          "src": "/images/news/events/mom-and-me-1.png",
+          "alt": "A mother and child painting a clay pot together"
+        },
+        {
+          "src": "/images/news/events/mom-and-me-2.png",
+          "alt": "A child dressed as Krishna decorating a pot with his mother"
+        },
+        {
+          "src": "/images/news/events/mom-and-me-3.png",
+          "alt": "A mother and child in front of the Happy Janmashtami display"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Best Out of Waste",
+      "text": "Students turned paper, sticks and everyday bits into new creations.",
+      "body": "Best Out of Waste invited students to make something new from materials that might otherwise be thrown away. Classrooms filled with paper, ice-cream sticks, glue and colour as everyone set to work.\n\nSome folded bright paper fans and hanging decorations. Others built pictures, including a fish made from small reused pieces, and held them up with pride.\n\nThe competition showed how a little imagination can turn ordinary scraps into something worth keeping.",
+      "photos": [
+        {
+          "src": "/images/news/events/best-out-of-waste-1.png",
+          "alt": "A student showing a paper fan made for Best Out of Waste"
+        },
+        {
+          "src": "/images/news/events/best-out-of-waste-2.png",
+          "alt": "A student holding a fish picture made from reused materials"
+        },
+        {
+          "src": "/images/news/events/best-out-of-waste-3.png",
+          "alt": "Students crafting with sticks, paper and glue during Best Out of Waste"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Drawing and Colouring",
+      "text": "Students filled their pages with boats, rainbows, houses and colour.",
+      "body": "Drawing and Colouring gave every class a quiet hour with pencils, crayons and paper. Students bent over their desks, adding lines and colour to pictures of their own.\n\nWhen the work was done, they held their drawings up to share. Boats on the water, rainbows over little houses, bright landscapes and colourful kites all found a place on the page.\n\nIt was a simple afternoon that let imagination lead, one colour at a time.",
+      "photos": [
+        {
+          "src": "/images/news/events/drawing-1.png",
+          "alt": "Students drawing at their desks during Drawing and Colouring"
+        },
+        {
+          "src": "/images/news/events/drawing-2.png",
+          "alt": "Three students showing their coloured drawings of a boat, a rainbow and a house"
+        },
+        {
+          "src": "/images/news/events/drawing-3.png",
+          "alt": "Students showing their coloured kite pictures from the colouring competition"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Robotic Fest",
+      "text": "Students demonstrated robots and explained their projects to visitors.",
+      "body": "Robotic Fest turned the hall into a showcase of student ideas. Tables were lined with models, laptops and small robots, and every team was ready to explain how their project worked.\n\nVisitors watched a robot car run across the floor and stopped at displays such as health-care robots. Students talked through their designs, from the parts on the table to the posters behind them.\n\nIt was a lively morning of building, testing and sharing, and a chance for the school to see what young inventors can do.",
+      "photos": [
+        {
+          "src": "/images/news/events/robotic-fest-1.png",
+          "alt": "Students demonstrating a small robot car at Robotic Fest"
+        },
+        {
+          "src": "/images/news/events/robotic-fest-2.png",
+          "alt": "Students presenting a health-care robot project"
+        },
+        {
+          "src": "/images/news/events/robotic-fest-3.png",
+          "alt": "Students explaining their model to visitors at Robotic Fest"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Awareness Week",
+      "text": "Students learned to care for the earth with cloth bags, seeds and planting.",
+      "body": "Awareness Week turned everyday choices into lessons. Students held up a globe, a cloth bag and a plastic bag, and talked about why a reusable bag is kinder to the earth.\n\nIn class they pressed seeds onto cardboard rolls and filled pots with soil. Hands got messy, and everyone leaned in to help.\n\nBy the end of the week, the children had planted something of their own and taken home a simple idea: small habits can look after the planet.",
+      "photos": [
+        {
+          "src": "/images/news/events/awareness-1.png",
+          "alt": "Students comparing a cloth bag and a plastic bag beside a globe"
+        },
+        {
+          "src": "/images/news/events/awareness-2.png",
+          "alt": "Students pressing seeds onto a cardboard roll"
+        },
+        {
+          "src": "/images/news/events/awareness-3.png",
+          "alt": "Students planting seeds in a pot during Awareness Week"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Fancy Dress",
+      "text": "Students dressed as fruits, heroes, a firefighter and a rocket for the competition.",
+      "body": "The Fancy Dress Competition filled the classroom with colour and character. Children arrived as fruits, princesses, soldiers, an astronaut and even a dinosaur, and lined up to show who they had become.\n\nOne student came as a firefighter, ready to save lives, with a bright engine painted beside him. Another stepped in as an Indian rocket, complete with the tricolour and boosters.\n\nEach child spoke for their character, and the morning became a parade of imagination.",
+      "photos": [
+        {
+          "src": "/images/news/events/fancy-dress-1.png",
+          "alt": "Students in costume for the Fancy Dress Competition"
+        },
+        {
+          "src": "/images/news/events/fancy-dress-2.png",
+          "alt": "A student dressed as a firefighter at the Fancy Dress Competition"
+        },
+        {
+          "src": "/images/news/events/fancy-dress-3.png",
+          "alt": "A student wearing an Indian rocket costume at the Fancy Dress Competition"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Field Trip",
+      "text": "Students stepped outside school to meet the people who keep the city clean and to explore a garden.",
+      "body": "The field trip took the children beyond the classroom. They met workers from Clean Bengaluru, who keep the city tidy, and received a small card as a reminder of the work that happens every day.\n\nOut in the open, the class crouched together to look closely at the ground, curious about what they could find. Later they gathered under a bright arch of painted pots in a green garden.\n\nIt was a day of looking, listening and learning in the world outside school.",
+      "photos": [
+        {
+          "src": "/images/news/events/field-trip-1.png",
+          "alt": "A student receiving a card from a Clean Bengaluru worker"
+        },
+        {
+          "src": "/images/news/events/field-trip-2.png",
+          "alt": "Students looking closely at the ground during the field trip"
+        },
+        {
+          "src": "/images/news/events/field-trip-3.png",
+          "alt": "Students posing under a painted pot arch in the garden"
+        }
+      ]
+    },
+    {
+      "day": "4",
+      "month": "Sep",
+      "title": "Krishna Janmashtami",
+      "text": "Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly.",
+      "body": "Grades 1 students celebrated Janmashtami with great devotion and joy on 4th September during the General Assembly. The sandpit area was beautifully decorated with colorful matkas, flutes, and chart papers, creating a festive atmosphere.\n\nThe celebration began with the school prayer, followed by students presenting dance, music, shlokas, thought for the day, and word for the day. Many children came dressed as Krishna, Radha, and Gopikas, adding charm to the celebration.\n\nStudents also presented a beautiful Radha-Krishna dance at their level, showcasing their enthusiasm and devotion. The celebration helped students learn about the importance of the festival and feel proud of our rich culture.",
+      "photos": [
+        {
+          "src": "/images/news/events/janmashtami-1.png",
+          "alt": "A teacher and student in costume holding a decorated matka for Janmashtami"
+        },
+        {
+          "src": "/images/news/events/janmashtami-2.png",
+          "alt": "Students performing a dance for Krishna Janmashtami"
+        },
+        {
+          "src": "/images/news/events/janmashtami-3.png",
+          "alt": "Students dressed as Krishna and Radha for Janmashtami"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Making Learning Visible",
+      "text": "Parents sat with their children and watched letter games unfold at the table.",
+      "body": "Making Learning Visible opened the classroom so families could see how children learn. Parents sat beside their little ones as letters, pictures and matching games covered the tables.\n\nOne child paired letter shapes on a black board. Another matched letters with objects in the house, picking cards from a plate while a teacher guided the next step. A teacher also helped a child use a dropper, watching coloured water travel into cotton.\n\nIt was a close look at everyday learning: small hands, careful choices, and families watching the work happen.",
+      "photos": [
+        {
+          "src": "/images/news/events/learning-visible-1.png",
+          "alt": "A child matching letter pairs while parents watch"
+        },
+        {
+          "src": "/images/news/events/learning-visible-2.png",
+          "alt": "A child matching letters with objects as a teacher and parent look on"
+        },
+        {
+          "src": "/images/news/events/learning-visible-3.png",
+          "alt": "A teacher helping a child use a dropper with coloured water and cotton"
+        }
+      ]
+    },
+    {
+      "day": "",
+      "month": "",
+      "title": "Role Play",
+      "text": "Students stepped into character as a chef, an astronaut and a teacher.",
+      "body": "Role Play let students try on someone else’s day. In a chef’s hat and apron, one child held a bowl and spoke as if the classroom were a kitchen.\n\nAnother arrived in a silver space suit, ready for a mission. A third came as a teacher, with a bag, a book and a shawl, standing ready to take the class.\n\nBy becoming the character, the children practised words, confidence and a little imagination.",
+      "photos": [
+        {
+          "src": "/images/news/events/role-play-1.png",
+          "alt": "A student dressed as a chef for the Role Play competition"
+        },
+        {
+          "src": "/images/news/events/role-play-2.png",
+          "alt": "A student in an astronaut costume for the Role Play competition"
+        },
+        {
+          "src": "/images/news/events/role-play-3.png",
+          "alt": "A student dressed as a teacher for the Role Play competition"
+        }
+      ]
+    },
+    {
+      "day": "5",
+      "month": "Sep",
+      "title": "Teachers' Day",
+      "text": "Students thank the teachers who guide them from the first classroom to the laboratory.",
+      "body": "Teachers' Day is the school's chance to thank the people who guide every child. The thanks belong in many rooms, not only on a stage.\n\nIn the early years, a teacher sits at the table and turns play into learning. With older children, a music lesson becomes a shared discovery. In the laboratory, a teacher stands with students as they test an idea for themselves.\n\nThe day is a reminder of that everyday work, and of the teachers who help Lawrence students grow.",
+      "photos": [
+        {
+          "src": "/images/news/events/teachers-day-1.png",
+          "alt": "A kindergarten teacher exploring with students at Lawrence High School"
+        },
+        {
+          "src": "/images/news/events/teachers-day-2.png",
+          "alt": "A teacher making music with children in class"
+        },
+        {
+          "src": "/images/news/events/teachers-day-3.png",
+          "alt": "A teacher guiding high school students in the science laboratory"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "kicker": "School Achievements",
+      "title": "Mrs. Pushpa Subbaiah Receives the Dronacharya Award for Teachers 2026",
+      "body": "Mrs. Pushpa Subbaiah, Managing Trustee of Lawrence High School, received the Dronacharya Award for Teachers 2026 from BMS Educational Trust on 18 September 2026 at BMS College of Engineering, Bull Temple Road, Bengaluru. The award recognises three decades of contribution to education and academic leadership.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/dronacharya-pushpa-subbaiah.jpg",
+          "alt": "Dronacharya Award 2026 presented to Mrs. Pushpa Subbaiah"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Medal at the Handball Girls Tournament 2026",
+      "body": "A Lawrence student received a medal and certificate at the Handball Girls Tournament 2026, hosted by St. Jude's School, Mohaddipur, at Syed Modi Railway Stadium, Gorakhpur, from 17 to 19 September 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/handball-gorakhpur.jpg",
+          "alt": "A Lawrence student with her medal and certificate at the Handball Girls Tournament 2026"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Certificates at the Frank Anthony Memorial Debate",
+      "body": "Lawrence students received certificates at the Frank Anthony Memorial All-India Inter School Debate Competition 2026, in the preliminary stage for Grade X and below, on 24 July 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/debate-frank-anthony.jpg",
+          "alt": "Lawrence students with certificates at the Frank Anthony Memorial Debate Competition"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Medals at the 7th CISCE National Championship",
+      "body": "Three Lawrence students received medals and certificates at the 7th CISCE National Championship hosted by Johnson Grammar School ICSE and ISC.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/cisce-national.jpg",
+          "alt": "Three Lawrence students with medals and certificates at the 7th CISCE National Championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Gold at the CISCE Regional Roller Skating Championship",
+      "body": "A Lawrence student won gold and received a certificate of merit at the CISCE Regional Games and Sports 2026 roller skating championship with Flyers Roller Skating Club.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/roller-skating.jpg",
+          "alt": "A Lawrence student with a gold medal at the CISCE regional roller skating championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Certificate at the School Cricket Championship",
+      "body": "A Lawrence student received a certificate at the school cricket championship in September 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/cricket-certificate.jpg",
+          "alt": "A Lawrence student receiving a certificate at the cricket championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Hannah Maria Johnson Wins Cash Prize at State Computer Olympiad",
+      "body": "Hannah Maria Johnson of grade II E secured the sixth rank and a cash prize of ₹700 in the state Level Computer Olympiad conducted by the Indian Talent Olympiad.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/hannah-olympiad.jpg",
+          "alt": "Hannah Maria Johnson with her Indian Talent Olympiad medal and certificate"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Aditi Dash Selected Among Top 100 Science Talents in India",
+      "body": "Aditi Dash of Grade VI has secured 2nd Rank and has been selected among the Top 100 Science Talents in India through the National Science Promotion Orient Test (SPOT) 2025–2026, conducted by the Vikram Sarabhai Science Foundation (VSSF), Kochi.\n\nShe has been invited to attend the VSSF Internship Programme in Bengaluru from 17th to 19th July 2026 where she will have the unique opportunity to interact with scientists from ISRO, gain first-hand exposure to scientific concepts and live experiments, and receive her SPOT 100 Badge, Medal, and Certificate of Merit.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/02.png",
+          "alt": "Aditi Dash, Grade VI, selected among India's Top 100 Science Talents"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "K S Sathvik Wins Bronze at Tirak Taekwondo International Championship",
+      "body": "K S Sathvik of Grade X represented India at the Tirak Taekwondo International Championship in Bangkok, Thailand and secured the Bronze Medal by defeating his Malaysian opponent in a competition featuring participants from 28 countries.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/sathvik-taekwondo.jpg",
+          "alt": "K S Sathvik with the Indian flag at the Tirak Taekwondo International Tournament"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-14 Boys Kabaddi Team Runners-Up at State School Olympics",
+      "body": "Lawrence school U14 Boys Kabaddi team secured the runners-up at the 18th State Level School Olympics Games Championship - 2026, organized by Youngsters Sports Club, at Kittur Rani Chennamma Stadium, Bangalore on 25th June.\n\nTeam Members: Vinay - VIII B, Veeraj - VIIIA, Guru Charan-VIIA, Nithin - VIIC, Manish - VIII D, Nuthan D - VIIF, Parin - VIII B, Jashwanth - VIII B, Mithun - VIII A",
+      "photos": [
+        {
+          "src": "/images/news/achievements/04.png",
+          "alt": "U-14 boys kabaddi team at Kittur Rani Chennamma Stadium"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-17 Girls Handball Team Runners-Up at CISCE Zonal",
+      "body": "Lawrence School Under-17 Girls team secured the Runner-up position in the CISCE Zonal Handball Competition held at VIBGYOR High School, Haralur, from 27/06/2026 to 28/06/2026. 8 of our students have been selected for the Regional-level competition.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/handball-regional.jpg",
+          "alt": "Girls handball team with gold medals at the Karnataka and Goa Regional Tournament"
+        },
+        {
+          "src": "/images/news/achievements/05.png",
+          "alt": "U-17 girls handball team at the CISCE Zonal Championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-14 Boys Win Bronze at CISCE Zonal Table Tennis",
+      "body": "U-14 Boys team secured bronze medal in the CISCE ZONAL LEVEL Table Tennis Tournament conducted by Primus Public School, Sarjapur on 18th and 19th July.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/06.png",
+          "alt": "U-14 boys table tennis medallists at Primus Public School"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Lawrence Named Best Delegate School at IIMUN Bangalore",
+      "body": "Lawrence High School - the host school of IIMUN Bangalore Chapter held from 17th July to 19th July 2026, has been awarded the Best Delegate School among 58 schools and 650 student delegates. Lawrence School won the titles- 5 Best Delegate Awards, 2 High Commendation Awards, 1 Special Mention Awards and 3 Verbal Mentions.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/07.png",
+          "alt": "Lawrence students and teachers at IIMUN Bangalore"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Harshitha Goswami and Swasti Prasad Win Bronze in CISCE Zonal Yoga",
+      "body": "Harshitha Goswami of grade 7B and Swasti Prasad of grade 7 E secured 3rd place in the Rhythmic Pair event in the U-14 category at CISCE Zonal Level Yoga Competition, held at Primus School on 1st July 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/08.png",
+          "alt": "Harshitha Goswami and Swasti Prasad with their yoga medals"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-14 Girls Win CISCE Zonal Kabaddi",
+      "body": "CISCE Zonal Level Kabaddi Competition 2026 held at Swami Vivekanand School, Chandapura on July 1st and 2nd July, U-14 girls secured 1st place and 6 students from Lawrence school selected for the regional level.\n\nAmritha E of grade 7 F is awarded Best defender Award.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/09.png",
+          "alt": "U-14 girls kabaddi team with their zonal medals"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Mohitha L Wins Bronze in CISCE Zone-E Swimming",
+      "body": "Mohitha L of 9B won the third prize in the CISCE – Karnataka & Goa Zone-E Swimming Championship 2026 in the Backstroke event U-17 hosted by Swargarani School, held at Vijaynagar Aquatic Centre on 27th July 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/10.png",
+          "alt": "Mohitha L on the podium at the CISCE Zone-E Swimming Championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Harsha M and Bala Harish Win Gold in CISCE Zonal Lawn Tennis",
+      "body": "In the CISCE Zonal Games & Sports 2026 Lawn Tennis Tournament held at Ebenezer International School, Bangalore, from 22nd July 2026 to 23rd July 2026, Harsha M of grade 7 won the Bronze Medal in the U-14 Boys Singles category.\n\nHarsha M and Bala Harish, both of grade 7, won the Gold Medal in the U-14 Boys Doubles category and have qualified for the Regional Tournament.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/11.png",
+          "alt": "Harsha M and Bala Harish on the lawn tennis podium"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Students Medal at CISCE Zonal Taekwondo Tournament",
+      "body": "In the CISCE Zonal Taekwondo Tournament, held on 16/7/2026, for the Under-14, Under-17, and Under-19 Boys/Girls categories, the following students won medals.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/12a.png",
+          "alt": "Boys taekwondo medallists at the CISCE Zonal Tournament"
+        },
+        {
+          "src": "/images/news/achievements/12b.png",
+          "alt": "Girls taekwondo medallists at the CISCE Zonal Tournament"
+        },
+        {
+          "src": "/images/news/achievements/12c.png",
+          "alt": "Lawrence students on the podium at the West India Taekwondo Championship"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Students Medal at CISCE Zonal Chess Tournament",
+      "body": "At the CISCE Zonal Chess Tournament hosted by Carmel School, Banashankari, Out of 58 schools and around 570 students who participated across all categories, Lawrence students have won the following medals.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/13a.png",
+          "alt": "Lawrence chess team at the CISCE Zonal Chess Tournament"
+        },
+        {
+          "src": "/images/news/achievements/13b.png",
+          "alt": "Girls chess medallists on the podium at Carmel School"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-14 Boys Football Team Runners-Up at CISCE Zonal",
+      "body": "U-14 boys team secured the runner-up position in the CISCE zonal-level Football Tournament conducted at Christ Academy, Kengeri. Five students are selected for the Regional Level.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/14.png",
+          "alt": "U-14 boys football team at Christ Academy, Kengeri"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "U-15 Girls Team 2nd Runners-Up in Interschool Football",
+      "body": "Lawrence, U-15 girls team secured 2nd runner up in the interschool football tournament held at Vibgyor School, Haralur, on 29th July 2026.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/15.png",
+          "alt": "U-15 girls football team with their trophy at Vibgyor School"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Students Win Prizes at SEVAK Drama Competition",
+      "body": "Lawrence students won Second Prize in Group I at the SEVAK Drama Competition and a Consolation Prize in the competition held on 26th July 2026 at Seshadripuram College, Bengaluru.",
+      "photos": [
+        {
+          "src": "/images/news/achievements/16.png",
+          "alt": "Lawrence students at the SEVAK World Family Day drama competition"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Outstanding Results at CISCE Regional Kabaddi",
+      "body": "We are delighted to share the outstanding achievements of our students at the CISCE Regional Level Kabaddi Competition, held at ACTS Secondary School on 20th & 21st August 2026.\n\nTeam Results\nU-14 Boys – 1st Place\nU-17 Girls – 1st Place\nU-19 Boys – 1st Place\nU-14 Girls – 2nd Place\n\nOut of 15 students who participated from Lawrence High School, 8 students have been selected for the NATIONAL LEVEL Competition:\nVidith Ashok Kumar – Grade 10 A\nSurya S. – Grade 10 A\nDipthanshu Swain – Grade 10 B\nMishitha – Grade 10 A\nRachana – Grade 9 B\nKalpana Bhattrai – Grade 8 A\nPranitha P. – Grade 7 D\nAmritha E. – Grade 7 E",
+      "photos": [
+        {
+          "src": "/images/news/achievements/kabaddi-regional-team.jpg",
+          "alt": "Lawrence kabaddi team at the CISCE Regional Kabaddi Tournament, ACTS School"
+        },
+        {
+          "src": "/images/news/achievements/kabaddi-regional-certificates.jpg",
+          "alt": "Kabaddi players with certificates at ACTS School"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
+      "title": "Mishitha and Lohit Medal at Regional Boxing Championship",
+      "body": "CISCE Regional Boxing Championship, Karnataka and Goa, held at De Paul International Residential School, Mysuru, on 14 September 2026.\n\nMishitha – Grade 10A\nSecured 1st Place in the Under-17 category\nSelected for the National Boxing Competition, to be held in Meerut on 28th September 2026\n\nLohit – Grade 9A\nSecured 2nd Place in the Under-17 category",
+      "photos": [
+        {
+          "src": "/images/news/achievements/boxing-regional.jpg",
+          "alt": "Mishitha and Lohit with medals at the CISCE Regional Boxing Championship in Mysuru"
+        }
+      ]
+    }
+  ]
+}

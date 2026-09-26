@@ -1,0 +1,162 @@
+{
+  "hero": {
+    "kicker": "Kindergarten",
+    "title": "A Joyful Beginning\nfor a *Brighter Tomorrow*",
+    "lede": "Play. Learn. Grow.",
+    "image": "/images/about/kg-hero.png",
+    "imageAlt": "Kindergarten children learning together in a Lawrence High School classroom"
+  },
+  "programme": {
+    "kicker": "Our Approach",
+    "title": "Learning Through Joy and Discovery",
+    "body": "We believe that the early years are a time of endless possibilities. Our play-based and activity-driven approach helps children build essential skills in literacy, numeracy, communication and creativity, while nurturing curiosity and confidence.",
+    "photos": [
+      {
+        "src": "/images/about/kg-approach-1.png",
+        "alt": "A kindergarten child and parent decorating a pot together at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-approach-2.png",
+        "alt": "Families learning classroom rules together in a kindergarten classroom"
+      },
+      {
+        "src": "/images/about/kg-approach-3.png",
+        "alt": "A teacher making music with kindergarten children at Lawrence High School"
+      }
+    ]
+  },
+  "curriculum": {
+    "kicker": "Our Curriculum",
+    "title": "Age-appropriate Learning, A Strong Foundation for Life.",
+    "stages": [
+      {
+        "title": "Nursery",
+        "age": "Age 3 – 4 years",
+        "body": "A joyful introduction through rhymes, stories, art, pre-math concepts, phonics and play."
+      },
+      {
+        "title": "LKG",
+        "age": "Age 4 – 5 years",
+        "body": "Building early reading, numeracy and communication through engaging activities, three-letter words, theme-based learning and exploration."
+      },
+      {
+        "title": "UKG",
+        "age": "Age 5 – 6 years",
+        "body": "A well-rounded programme that strengthens academics, creativity, communication skills and independent thinking."
+      }
+    ]
+  },
+  "development": {
+    "kicker": "Learning & Development",
+    "title": "Nurturing Every Aspect of a Child’s Growth",
+    "items": [
+      {
+        "icon": "literacy",
+        "title": "Early Literacy",
+        "text": "Phonics, reading and language skills"
+      },
+      {
+        "icon": "numeracy",
+        "title": "Numeracy",
+        "text": "Pre-math concepts and logical thinking"
+      },
+      {
+        "icon": "creativity",
+        "title": "Creativity",
+        "text": "Art, music and imaginative play"
+      },
+      {
+        "icon": "communication",
+        "title": "Communication",
+        "text": "Expression and confidence"
+      },
+      {
+        "icon": "physical",
+        "title": "Physical Development",
+        "text": "Indoor and outdoor activities and motor skills"
+      },
+      {
+        "icon": "social",
+        "title": "Social & Emotional Growth",
+        "text": "Teamwork, empathy and self-confidence"
+      }
+    ]
+  },
+  "visible": {
+    "kicker": "Making Learning Visible",
+    "title": "Every Experience Tells a Story",
+    "body": "Our Making Learning Visible approach invites parents into the classroom to witness the learning journey as it happens. Through displays, portfolios and child-led presentations, we celebrate progress, creativity and confidence.",
+    "photos": [
+      {
+        "src": "/images/about/kg-visible-1.png",
+        "alt": "Kindergarten children working on colour and number worksheets at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-visible-2.png",
+        "alt": "A kindergarten child during Sugar Free Day at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-visible-3.png",
+        "alt": "Kindergarten children planting and exploring growth at Lawrence High School"
+      }
+    ]
+  },
+  "families": {
+    "kicker": "Engaging Families",
+    "title": "A Stronger Journey Together",
+    "body": "We value the involvement of parents and grandparents in every kindergarten journey. Through regular interactions, workshops and celebrations, we create a meaningful home-school partnership that nurtures every child’s growth.",
+    "photos": [
+      {
+        "src": "/images/about/kg-families-1.png",
+        "alt": "A parent drawing with a kindergarten child at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-families-2.png",
+        "alt": "A father and child celebrating Best Dad day at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-families-3.png",
+        "alt": "A parent and child cooking together at Lawrence High School"
+      }
+    ]
+  },
+  "moments": {
+    "title": "Kindergarten Moments",
+    "photos": [
+      {
+        "src": "/images/about/kg-moments-1.png",
+        "alt": "Kindergarten children in festive dress around a rangoli at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-moments-2.png",
+        "alt": "Kindergarten children in hats celebrating summer at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-moments-3.png",
+        "alt": "Kindergarten children working on colour and number worksheets"
+      },
+      {
+        "src": "/images/about/kg-moments-4.png",
+        "alt": "Kindergarten children colouring with crayons at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-moments-5.png",
+        "alt": "Kindergarten children finger painting at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-moments-6.png",
+        "alt": "Kindergarten children playing with building blocks"
+      },
+      {
+        "src": "/images/about/kg-moments-7.png",
+        "alt": "Kindergarten children balancing on a play track at Lawrence High School"
+      },
+      {
+        "src": "/images/about/kg-moments-8.png",
+        "alt": "Kindergarten children skating at Lawrence High School"
+      }
+    ]
+  },
+  "metaTitle": "Kindergarten",
+  "metaDescription": "Kindergarten at Lawrence High School ICSE — Nursery, LKG and UKG. A play-based programme aligned with NEP 2020 and the Collins Kindergarten Series."
+}

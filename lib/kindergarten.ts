@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export const kindergarten = {
   hero: {
     kicker: "Kindergarten",
@@ -172,5 +174,5 @@ export const defaultKindergarten: KindergartenContent = {
 };
 
 export async function getKindergartenContent(): Promise<KindergartenContent> {
-  return defaultKindergarten;
+  return readContent("content/kindergarten/kindergarten.json", defaultKindergarten);
 }

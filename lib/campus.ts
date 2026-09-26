@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export type SpaceFeature = {
   icon: string;
   label: string;
@@ -180,5 +182,5 @@ export const defaultCampus: CampusContent = {
 };
 
 export async function getCampusContent(): Promise<CampusContent> {
-  return defaultCampus;
+  return readContent("content/campus/campus.json", defaultCampus);
 }

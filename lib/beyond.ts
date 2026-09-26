@@ -1,3 +1,5 @@
+import { readContent } from "@/lib/readContent";
+
 export const beyond = {
   hero: {
     kicker: "Beyond Books",
@@ -199,8 +201,18 @@ export const beyond = {
   }
 };
 
-export type BeyondContent = typeof beyond;
+export type BeyondContent = typeof beyond & {
+  metaTitle: string;
+  metaDescription: string;
+};
+
+export const defaultBeyond: BeyondContent = {
+  ...beyond,
+  metaTitle: "Beyond Books",
+  metaDescription:
+    "Sports, creative expression, communication, STEM, Vedic Maths, financial literacy and field trips at Lawrence High School ICSE, HSR Layout."
+};
 
 export async function getBeyondContent(): Promise<BeyondContent> {
-  return beyond;
+  return readContent("content/beyond-books/beyond-books.json", defaultBeyond);
 }

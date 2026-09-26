@@ -1,0 +1,96 @@
+{
+  "metaTitle": "Admissions",
+  "metaDescription": "Enquire, visit campus, and join Lawrence High School ICSE, HSR Layout — from Kindergarten to Grade 10.",
+  "hero": {
+    "kicker": "Admissions",
+    "title": "Begin with a conversation.",
+    "lede": "Lawrence High School ICSE, HSR Layout welcomes families from Kindergarten to Grade 10. Start with an enquiry, visit campus, and we will walk you through the rest."
+  },
+  "openingsKicker": "Openings",
+  "openingsTitle": "Where your child can begin.",
+  "stages": [
+    {
+      "title": "Kindergarten",
+      "text": "Curiosity begins here — a gentle first year of play, language, and belonging."
+    },
+    {
+      "title": "Primary School",
+      "text": "Strong foundations in reading, writing, number sense, and classroom confidence."
+    },
+    {
+      "title": "Middle School",
+      "text": "Exploring, questioning, and creating — with growing independence."
+    },
+    {
+      "title": "High School",
+      "text": "ICSE preparation for tomorrow, with character and leadership alongside academics."
+    }
+  ],
+  "processKicker": "Admission process",
+  "processTitle": "Five clear steps.",
+  "steps": [
+    {
+      "title": "Enquire",
+      "text": "Share your child’s age or grade and a little about your family. Use the form on this page or call the admission helpline."
+    },
+    {
+      "title": "Visit campus",
+      "text": "Walk the classrooms, labs, and grounds. Meet coordinators and see how a Lawrence day feels."
+    },
+    {
+      "title": "Interaction",
+      "text": "An age-appropriate conversation or observation helps us understand your child and answer your questions."
+    },
+    {
+      "title": "Documents",
+      "text": "If a place is offered, we collect the records listed below so joining is smooth."
+    },
+    {
+      "title": "Confirm your place",
+      "text": "Complete the fee formalities shared by the office. We then welcome your child into the Lawrence community."
+    }
+  ],
+  "feesKicker": "Fee structure",
+  "feesTitle": "What fees cover.",
+  "feesNote": "Figures for the current academic year are shared by the admissions office during your campus visit, or on the helpline. We do not publish last year’s numbers here so families always receive the latest schedule.",
+  "fees": [
+    {
+      "name": "Admission fee",
+      "covers": "One-time joining fee for a new student.",
+      "when": "On confirmation of a place"
+    },
+    {
+      "name": "Tuition",
+      "covers": "Teaching, campus facilities, and the school-day programme.",
+      "when": "Term-wise"
+    },
+    {
+      "name": "Transport",
+      "covers": "Optional school bus on available routes.",
+      "when": "If opted, with the transport desk"
+    },
+    {
+      "name": "Books & uniform",
+      "covers": "Issued through school vendors at the start of the year.",
+      "when": "At joining / year start"
+    }
+  ],
+  "documentsKicker": "Documents",
+  "documentsTitle": "What to keep ready.",
+  "documentsBody": "Bring originals for verification. Photocopies can be submitted after a place is offered.",
+  "documents": [
+    "Child’s birth certificate",
+    "Passport-size photographs of the child",
+    "Aadhaar of the child and parent, as applicable",
+    "Address proof of the parent or guardian",
+    "Transfer certificate from the previous school (Grade 1 and above)",
+    "Latest report card, if transferring mid-stream"
+  ],
+  "applyKicker": "Apply now",
+  "applyTitle": "Start an enquiry.",
+  "applyBody": "Tell us about your child. The admissions team will reply with next dates for campus visits and interactions.",
+  "helplineTitle": "Admission helpline",
+  "visitNote": "Prefer to visit first? See the map on the",
+  "visitLinkLabel": "contact page",
+  "submitLabel": "Start an enquiry"
+}

@@ -17,8 +17,15 @@ export const school = {
     { label: "LinkedIn", href: "https://www.linkedin.com" }
   ],
   mapUrl:
-    "https://www.google.com/maps?q=CA3,+9th+Main,+Sector+6,+HSR+Layout,+Bengaluru+560102&output=embed"
+    "https://www.google.com/maps?q=CA3,+9th+Main,+Sector+6,+HSR+Layout,+Bengaluru+560102&output=embed",
+  footerCtaTitle: "Begin your Journey with Us",
+  footerCtaText: "Give your child the opportunity to learn, grow and shine at Lawrence.",
+  footerCtaAdmissions: "Admissions Open for 2027 - 2028",
+  footerCtaLabel: "Enquire Now",
+  footerCtaHref: "/contact"
 };
+
+export type School = typeof school;
 
 export type NavChild = {
   href: string;
