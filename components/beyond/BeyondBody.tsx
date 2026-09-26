@@ -1,9 +1,12 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import BeyondIcon from "@/components/beyond/BeyondIcon";
 import PageBanner from "@/components/PageBanner";
+import { useEditable } from "@/components/tina/EditablePage";
 import type { BeyondContent } from "@/lib/beyond";
 
 function delay(index: number): CSSProperties {
@@ -33,7 +36,8 @@ function CaptionPhoto({
   );
 }
 
-export default function BeyondBody({ content }: { content: BeyondContent }) {
+export default function BeyondBody({ content: initial }: { content: BeyondContent }) {
+  const content = useEditable("beyondBooks", initial);
   const { hero, sports, creative, communication, stem, programmes, trips } = content;
 
   return (
