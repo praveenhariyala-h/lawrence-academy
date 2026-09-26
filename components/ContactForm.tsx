@@ -3,9 +3,11 @@
 import { memo, useCallback, useState, type FormEvent } from "react";
 
 function ContactForm({
-  submitLabel = "Send message"
+  submitLabel = "Send message",
+  submitField
 }: {
   submitLabel?: string;
+  submitField?: string;
 }) {
   const [sent, setSent] = useState(false);
 
@@ -50,7 +52,7 @@ function ContactForm({
         Message
         <textarea name="message" required placeholder="Tell us about your child or your question." />
       </label>
-      <button className="btn btn--blue" type="submit">
+      <button className="btn btn--blue" type="submit" data-tina-field={submitField}>
         {submitLabel}
       </button>
     </form>
