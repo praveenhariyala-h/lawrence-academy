@@ -1,4 +1,6 @@
 {
+  "metaTitle": "Kindergarten",
+  "metaDescription": "Kindergarten at Lawrence High School ICSE — Nursery, LKG and UKG. A play-based programme aligned with NEP 2020 and the Collins Kindergarten Series.",
   "hero": {
     "kicker": "Kindergarten",
     "title": "A Joyful Beginning\nfor a *Brighter Tomorrow*",
@@ -8,7 +10,7 @@
   },
   "programme": {
     "kicker": "Our Approach",
-    "title": "Learning Through Joy and Discovery",
+    "title": "FROM CURIOSITY TO POSSIBILITY  ",
     "body": "We believe that the early years are a time of endless possibilities. Our play-based and activity-driven approach helps children build essential skills in literacy, numeracy, communication and creativity, while nurturing curiosity and confidence.",
     "photos": [
       {
@@ -156,7 +158,5 @@
         "alt": "Kindergarten children skating at Lawrence High School"
       }
     ]
-  },
-  "metaTitle": "Kindergarten",
-  "metaDescription": "Kindergarten at Lawrence High School ICSE — Nursery, LKG and UKG. A play-based programme aligned with NEP 2020 and the Collins Kindergarten Series."
+  }
 }
