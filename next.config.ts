@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/admin", destination: "/keystatic", permanent: false },
       { source: "/academics", destination: "/academics/kindergarten", permanent: false },
       { source: "/learning", destination: "/academics/kindergarten", permanent: false },
       { source: "/learning/:path*", destination: "/academics/:path*", permanent: false }

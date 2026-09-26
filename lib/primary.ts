@@ -1,6 +1,3 @@
-import { imageSrc, mapPhotos, textSrc } from "@/lib/cms";
-import { reader } from "@/lib/keystatic";
-
 export const primary = {
   hero: {
     kicker: "Primary School",
@@ -101,82 +98,5 @@ export const defaultPrimary: PrimaryContent = {
 };
 
 export async function getPrimaryContent(): Promise<PrimaryContent> {
-  let entry;
-  try {
-    entry = await reader.singletons.primary.read();
-  } catch (error) {
-    console.error("Failed to read Keystatic primary content", error);
-    return defaultPrimary;
-  }
-  if (!entry) return defaultPrimary;
-
-  return {
-    metaTitle: textSrc(entry.metaTitle, defaultPrimary.metaTitle),
-    metaDescription: textSrc(entry.metaDescription, defaultPrimary.metaDescription),
-    hero: {
-      kicker: textSrc(entry.hero.kicker, primary.hero.kicker),
-      grades: textSrc(entry.hero.grades, primary.hero.grades),
-      title: textSrc(entry.hero.title, primary.hero.title),
-      image: imageSrc(entry.hero.image, primary.hero.image, "/images/home/hero/"),
-      imageAlt: textSrc(entry.hero.imageAlt, primary.hero.imageAlt)
-    },
-    approach: {
-      kicker: textSrc(entry.approach.kicker, primary.approach.kicker),
-      title: textSrc(entry.approach.title, primary.approach.title),
-      body: textSrc(entry.approach.body, primary.approach.body),
-      image: imageSrc(entry.approach.image, primary.approach.image, "/images/about/"),
-      imageAlt: textSrc(entry.approach.imageAlt, primary.approach.imageAlt),
-      values: entry.approach.values.length
-        ? entry.approach.values.map((value, index) => {
-            const fallback = primary.approach.values[index] ?? primary.approach.values[0];
-            return {
-              icon: textSrc(value.icon, fallback.icon),
-              title: textSrc(value.title, fallback.title),
-              text: textSrc(value.text, fallback.text)
-            };
-          })
-        : primary.approach.values
-    },
-    curriculum: {
-      kicker: textSrc(entry.curriculum.kicker, primary.curriculum.kicker),
-      title: textSrc(entry.curriculum.title, primary.curriculum.title),
-      body: textSrc(entry.curriculum.body, primary.curriculum.body),
-      subjects: entry.curriculum.subjects.length
-        ? entry.curriculum.subjects.map((subject, index) => {
-            const fallback = primary.curriculum.subjects[index] ?? primary.curriculum.subjects[0];
-            return {
-              icon: textSrc(subject.icon, fallback.icon),
-              title: textSrc(subject.title, fallback.title),
-              text: textSrc(subject.text, fallback.text)
-            };
-          })
-        : primary.curriculum.subjects,
-      karadi: {
-        title: textSrc(entry.curriculum.karadiTitle, primary.curriculum.karadi.title),
-        body: textSrc(entry.curriculum.karadiBody, primary.curriculum.karadi.body),
-        logo: imageSrc(entry.curriculum.karadiLogo, primary.curriculum.karadi.logo, "/images/home/partners/"),
-        logoAlt: textSrc(entry.curriculum.karadiLogoAlt, primary.curriculum.karadi.logoAlt)
-      }
-    },
-    beyond: {
-      kicker: textSrc(entry.beyond.kicker, primary.beyond.kicker),
-      title: textSrc(entry.beyond.title, primary.beyond.title),
-      body: textSrc(entry.beyond.body, primary.beyond.body),
-      items: entry.beyond.items.length
-        ? entry.beyond.items.map((item, index) => {
-            const fallback = primary.beyond.items[index] ?? primary.beyond.items[0];
-            return {
-              icon: textSrc(item.icon, fallback.icon),
-              title: textSrc(item.title, fallback.title),
-              text: textSrc(item.text, fallback.text)
-            };
-          })
-        : primary.beyond.items
-    },
-    moments: {
-      kicker: textSrc(entry.moments.kicker, primary.moments.kicker),
-      title: textSrc(entry.moments.title, primary.moments.title),
-      photos: mapPhotos(entry.moments.photos, primary.moments.photos, "/images/about/")
-    }
-  };
+  return defaultPrimary;
 }

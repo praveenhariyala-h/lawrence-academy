@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import NewsBody from "@/components/news/NewsBody";
-import { getNewsContent, getNewsPosts } from "@/lib/news";
+import { getNewsContent } from "@/lib/news";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getNewsContent();
@@ -15,11 +15,7 @@ export default async function NewsPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
-  const [{ tab }, content, posts] = await Promise.all([
-    searchParams,
-    getNewsContent(),
-    getNewsPosts()
-  ]);
+  const [{ tab }, content] = await Promise.all([searchParams, getNewsContent()]);
 
-  return <NewsBody content={content} posts={posts} initialTab={tab} />;
+  return <NewsBody content={content} initialTab={tab} />;
 }

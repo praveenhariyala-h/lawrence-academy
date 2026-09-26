@@ -1,15 +1,13 @@
 import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import NewsTabs from "@/components/news/NewsTabs";
-import type { NewsContent, NewsPost } from "@/lib/news";
+import type { NewsContent } from "@/lib/news";
 
 export default function NewsBody({
   content,
-  posts,
   initialTab
 }: {
   content: NewsContent;
-  posts: NewsPost[];
   initialTab?: string;
 }) {
   const { hero, events } = content;
@@ -29,7 +27,6 @@ export default function NewsBody({
       <section className="band band--white news-band">
         <div className="wrap">
           <NewsTabs
-            posts={posts}
             events={events}
             results={content.results}
             achievements={content.achievements}

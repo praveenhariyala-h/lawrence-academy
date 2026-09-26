@@ -1,10 +1,8 @@
-import { imageSrc, readText, textSrc } from "@/lib/cms";
 import {
   beyondClassroom as defaultBeyondClassroom,
   campusSpotlight as defaultCampusSpotlight,
   upcomingEvents as defaultUpcomingEvents
 } from "@/lib/homeSections";
-import { reader } from "@/lib/keystatic";
 
 export type HomeImageFit = "cover" | "contain";
 
@@ -54,10 +52,6 @@ export type HomeEvent = {
   title: string;
   text: string;
 };
-
-function imageFit(value: string | null | undefined): HomeImageFit {
-  return value === "contain" ? "contain" : "cover";
-}
 
 export type HomeCurriculum = {
   title: string;
@@ -270,147 +264,5 @@ Long-serving, dedicated teachers work with every child, enabling them to discove
 };
 
 export async function getHomeContent(): Promise<HomeContent> {
-  let entry;
-  try {
-    entry = await reader.singletons.home.read();
-  } catch (error) {
-    console.error("Failed to read Keystatic home content", error);
-    return defaultHome;
-  }
-  if (!entry) return defaultHome;
-
-  const heroSlides = entry.heroSlides.length
-    ? entry.heroSlides.map((slide, index) => {
-        const fallback = defaultHome.heroSlides[index] ?? defaultHome.heroSlides[0];
-        return {
-          title: textSrc(slide.title, fallback.title),
-          text: textSrc(slide.text, fallback.text),
-          image: imageSrc(slide.image, fallback.image, "/images/home/hero/"),
-          alt: textSrc(slide.alt, fallback.alt),
-          fit: imageFit(slide.fit ?? fallback.fit)
-        };
-      })
-    : defaultHome.heroSlides;
-
-  const pathwayItems = entry.pathwayItems.length
-    ? entry.pathwayItems.map((item, index) => {
-        const fallback = defaultHome.pathwayItems[index] ?? defaultHome.pathwayItems[0];
-        return {
-          title: textSrc(item.title, fallback.title),
-          detail: textSrc(item.detail, fallback.detail),
-          blurb: textSrc(item.blurb, fallback.blurb),
-          extra: item.extra?.trim() ?? "",
-          image: imageSrc(item.image, fallback.image, "/images/home/pathway/"),
-          position: textSrc(item.position, fallback.position)
-        };
-      })
-    : defaultHome.pathwayItems;
-
-  const curriculum = entry.curriculum.length
-    ? entry.curriculum.map((item, index) => {
-        const fallback = defaultHome.curriculum[index] ?? defaultHome.curriculum[0];
-        return {
-          title: textSrc(item.title, fallback.title),
-          grades: textSrc(item.grades, fallback.grades),
-          href: textSrc(item.href, fallback.href),
-          photo: imageSrc(item.photo, fallback.photo, "/images/home/curriculum/"),
-          photoAlt: textSrc(item.photoAlt, fallback.photoAlt)
-        };
-      })
-    : defaultHome.curriculum;
-
-  const partners = entry.partners.length
-    ? entry.partners.map((item, index) => {
-        const fallback = defaultHome.partners[index];
-        return {
-          name: textSrc(item.name, fallback?.name ?? "Partner"),
-          category: textSrc(item.category, fallback?.category ?? ""),
-          logo: item.logo
-            ? imageSrc(item.logo, fallback?.logo ?? item.logo, "/images/home/partners/")
-            : fallback?.logo ?? null
-        };
-      })
-    : defaultHome.partners;
-
-  const beyondSource = entry.beyondClassroom;
-  const beyondItems = beyondSource?.items?.length
-    ? beyondSource.items.map((item, index) => {
-        const fallback =
-          defaultHome.beyondClassroom.items[index] ?? defaultHome.beyondClassroom.items[0];
-        return {
-          title: textSrc(item.title, fallback.title),
-          image: imageSrc(item.image, fallback.image, "/images/home/"),
-          alt: textSrc(item.alt, fallback.alt)
-        };
-      })
-    : defaultHome.beyondClassroom.items;
-
-  const campusSource = entry.campusSpotlight;
-  const campusSpotlight: HomeCampusSpotlight = {
-    title: textSrc(campusSource?.title, defaultHome.campusSpotlight.title),
-    body: textSrc(campusSource?.body, defaultHome.campusSpotlight.body),
-    ctaLabel: textSrc(campusSource?.ctaLabel, defaultHome.campusSpotlight.ctaLabel),
-    ctaHref: textSrc(campusSource?.ctaHref, defaultHome.campusSpotlight.ctaHref),
-    image: imageSrc(
-      campusSource?.image,
-      defaultHome.campusSpotlight.image,
-      "/images/home/hero/"
-    ),
-    alt: textSrc(campusSource?.alt, defaultHome.campusSpotlight.alt)
-  };
-
-  const upcomingEvents = entry.upcomingEvents?.length
-    ? entry.upcomingEvents.map((item, index) => {
-        const fallback = defaultHome.upcomingEvents[index] ?? defaultHome.upcomingEvents[0];
-        return {
-          day: textSrc(item.day, fallback.day),
-          month: textSrc(item.month, fallback.month),
-          title: textSrc(item.title, fallback.title),
-          text: textSrc(item.text, fallback.text)
-        };
-      })
-    : defaultHome.upcomingEvents;
-
-  return {
-    heroLearnMoreLabel: textSrc(entry.heroLearnMoreLabel, defaultHome.heroLearnMoreLabel),
-    heroLearnMoreHref: textSrc(entry.heroLearnMoreHref, defaultHome.heroLearnMoreHref),
-    heroSlides,
-    pathwayItems,
-    whyTitle: textSrc(entry.whyTitle, defaultHome.whyTitle),
-    whyQuote: textSrc(entry.whyQuote, defaultHome.whyQuote),
-    whyBody: textSrc(entry.whyBody, defaultHome.whyBody),
-    whyImage: imageSrc(entry.whyImage, defaultHome.whyImage, "/images/home/why/"),
-    whyImageAlt: textSrc(entry.whyImageAlt, defaultHome.whyImageAlt),
-    curriculumTitle: textSrc(entry.curriculumTitle, defaultHome.curriculumTitle),
-    curriculumKicker: textSrc(entry.curriculumKicker, defaultHome.curriculumKicker),
-    curriculum,
-    beyondClassroom: {
-      title: textSrc(beyondSource?.title, defaultHome.beyondClassroom.title),
-      body: textSrc(beyondSource?.body, defaultHome.beyondClassroom.body),
-      ctaLabel: textSrc(beyondSource?.ctaLabel, defaultHome.beyondClassroom.ctaLabel),
-      ctaHref: textSrc(beyondSource?.ctaHref, defaultHome.beyondClassroom.ctaHref),
-      items: beyondItems
-    },
-    achievementsTitle: textSrc(entry.achievementsTitle, defaultHome.achievementsTitle),
-    achievementsViewAllLabel: textSrc(
-      entry.achievementsViewAllLabel,
-      defaultHome.achievementsViewAllLabel
-    ),
-    campusSpotlight,
-    upcomingEventsTitle: textSrc(entry.upcomingEventsTitle, defaultHome.upcomingEventsTitle),
-    upcomingEventsViewAllLabel: textSrc(
-      entry.upcomingEventsViewAllLabel,
-      defaultHome.upcomingEventsViewAllLabel
-    ),
-    upcomingEvents,
-    partnersKicker: textSrc(entry.partnersKicker, defaultHome.partnersKicker),
-    partnersTitle: textSrc(entry.partnersTitle, defaultHome.partnersTitle),
-    partners,
-    chairmanKicker: textSrc(entry.chairmanKicker, defaultHome.chairmanKicker),
-    chairmanName: textSrc(entry.chairmanName, defaultHome.chairmanName),
-    chairmanRole: textSrc(entry.chairmanRole, defaultHome.chairmanRole),
-    chairmanMessage: await readText(entry.chairmanMessage, defaultHome.chairmanMessage),
-    chairmanPhoto: imageSrc(entry.chairmanPhoto, defaultHome.chairmanPhoto, "/images/home/chairman/"),
-    chairmanPhotoAlt: textSrc(entry.chairmanPhotoAlt, defaultHome.chairmanPhotoAlt)
-  };
+  return defaultHome;
 }

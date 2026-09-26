@@ -1,6 +1,3 @@
-import { imageSrc, mapPhotos, textSrc } from "@/lib/cms";
-import { reader } from "@/lib/keystatic";
-
 export type SpaceFeature = {
   icon: string;
   label: string;
@@ -182,65 +179,6 @@ export const defaultCampus: CampusContent = {
   spaces: campusSpaces
 };
 
-function mapSpaceImage(
-  entry: { src: string | null; alt: string | null } | undefined,
-  fallback?: SpacePhoto
-): SpacePhoto | undefined {
-  if (entry?.src) {
-    return {
-      src: imageSrc(entry.src, fallback?.src ?? "", "/images/"),
-      alt: textSrc(entry.alt, fallback?.alt ?? "")
-    };
-  }
-  return fallback;
-}
-
 export async function getCampusContent(): Promise<CampusContent> {
-  let entry;
-  try {
-    entry = await reader.singletons.campus.read();
-  } catch (error) {
-    console.error("Failed to read Keystatic campus content", error);
-    return defaultCampus;
-  }
-  if (!entry) return defaultCampus;
-
-  const spaces: CampusSpace[] = entry.spaces.length
-    ? entry.spaces.map((space, index) => {
-        const fallback = defaultCampus.spaces[index] ?? defaultCampus.spaces[0];
-        const gallery = space.gallery.length
-          ? mapPhotos(space.gallery, fallback.gallery ?? [], "/images/")
-          : fallback.gallery;
-        return {
-          id: textSrc(space.id, fallback.id),
-          title: textSrc(space.title, fallback.title),
-          tagline: textSrc(space.tagline, fallback.tagline),
-          body: textSrc(space.body, fallback.body),
-          reverse: space.reverse ?? fallback.reverse,
-          image: mapSpaceImage(space.image, fallback.image),
-          gallery,
-          features: space.features.length
-            ? space.features.map((feature, featureIndex) => {
-                const featureFallback = fallback.features[featureIndex] ?? fallback.features[0];
-                return {
-                  icon: textSrc(feature.icon, featureFallback.icon),
-                  label: textSrc(feature.label, featureFallback.label)
-                };
-              })
-            : fallback.features
-        };
-      })
-    : defaultCampus.spaces;
-
-  return {
-    metaTitle: textSrc(entry.metaTitle, defaultCampus.metaTitle),
-    metaDescription: textSrc(entry.metaDescription, defaultCampus.metaDescription),
-    hero: {
-      title: textSrc(entry.hero.title, campusHero.title),
-      lede: textSrc(entry.hero.lede, campusHero.lede),
-      image: imageSrc(entry.hero.image, campusHero.image, "/images/"),
-      imageAlt: textSrc(entry.hero.imageAlt, campusHero.imageAlt)
-    },
-    spaces
-  };
+  return defaultCampus;
 }
