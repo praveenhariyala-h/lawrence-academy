@@ -724,8 +724,9 @@ const contact = page({
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
+  process.env.NEXT_PUBLIC_TINA_BRANCH ||
   process.env.HEAD ||
-  "main";
+  "cursor/nextjs-school-spa";
 
 export default defineConfig({
   branch,

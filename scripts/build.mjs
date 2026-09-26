@@ -7,7 +7,7 @@ if (hasTinaCloud) {
   if (tina.status !== 0) process.exit(tina.status ?? 1);
 } else {
   console.log(
-    "TinaCloud credentials are not set, so this build skips the hosted admin. The site still reads content/*.json. Use npm run dev to edit locally, or set NEXT_PUBLIC_TINA_CLIENT_ID and TINA_TOKEN and run npm run build:tina."
+    "Skipping the hosted Tina admin build. Add TINA_TOKEN to .env when you want TinaCloud, and stop npm run dev first so port 9000 is free. The site build continues from content/*.json."
   );
 }
 
