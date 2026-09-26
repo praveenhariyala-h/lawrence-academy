@@ -1,6 +1,3 @@
-import { imageSrc, mapPhotos, textSrc } from "@/lib/cms";
-import { formatNewsDate, reader } from "@/lib/keystatic";
-
 export type NewsCategory = "result" | "achievement" | "event";
 export type NewsImageFit = "cover" | "contain";
 
@@ -33,15 +30,6 @@ export type NewsEvent = {
   photos: NewsAchievementPhoto[];
 };
 
-export type NewsPost = {
-  slug: string;
-  title: string;
-  date: string;
-  dateLabel: string;
-  summary: string;
-  category: NewsCategory;
-};
-
 export type NewsAchievementPhoto = {
   src: string;
   alt: string;
@@ -67,12 +55,6 @@ export type NewsContent = {
 const ACHIEVE = "/images/news/achievements/";
 const RESULTS = "/images/news/results/";
 const EVENTS = "/images/news/events/";
-const categories: NewsCategory[] = ["result", "achievement", "event"];
-
-function newsFit(value: string | null | undefined): NewsImageFit {
-  return value === "contain" ? "contain" : "cover";
-}
-
 function shot(file: string, alt: string): NewsAchievementPhoto {
   return { src: `${ACHIEVE}${file}`, alt };
 }
@@ -83,19 +65,6 @@ function resultShot(file: string, alt: string): NewsAchievementPhoto {
 
 function eventShot(file: string, alt: string): NewsAchievementPhoto {
   return { src: `${EVENTS}${file}`, alt };
-}
-
-function newsCategory(value: string | null | undefined, slug: string): NewsCategory {
-  if (value && categories.includes(value as NewsCategory)) {
-    return value as NewsCategory;
-  }
-  if (slug.includes("award") || slug.includes("principal") || slug.includes("iimun")) {
-    return "achievement";
-  }
-  if (slug.includes("sports-meet") || slug.includes("carnival") || slug.includes("republic")) {
-    return "event";
-  }
-  return "result";
 }
 
 export const defaultNews: NewsContent = {
@@ -490,87 +459,5 @@ export const defaultNews: NewsContent = {
 };
 
 export async function getNewsContent(): Promise<NewsContent> {
-  let entry;
-  try {
-    entry = await reader.singletons.news.read();
-  } catch (error) {
-    console.error("Failed to read Keystatic news content", error);
-    return defaultNews;
-  }
-  if (!entry) return defaultNews;
-
-  return {
-    metaTitle: textSrc(entry.metaTitle, defaultNews.metaTitle),
-    metaDescription: textSrc(entry.metaDescription, defaultNews.metaDescription),
-    hero: {
-      kicker: textSrc(entry.hero?.kicker, defaultNews.hero.kicker),
-      title: textSrc(entry.hero?.title, defaultNews.hero.title),
-      lede: textSrc(entry.hero?.lede, defaultNews.hero.lede),
-      image: imageSrc(entry.hero?.image, defaultNews.hero.image, "/images/news/"),
-      imageAlt: textSrc(entry.hero?.imageAlt, defaultNews.hero.imageAlt),
-      fit: newsFit(entry.hero?.fit)
-    },
-    tabs: {
-      resultLabel: textSrc(entry.tabs?.resultLabel, defaultNews.tabs.resultLabel),
-      achievementLabel: textSrc(entry.tabs?.achievementLabel, defaultNews.tabs.achievementLabel),
-      eventLabel: textSrc(entry.tabs?.eventLabel, defaultNews.tabs.eventLabel),
-      resultEmpty: textSrc(entry.tabs?.resultEmpty, defaultNews.tabs.resultEmpty),
-      achievementEmpty: textSrc(entry.tabs?.achievementEmpty, defaultNews.tabs.achievementEmpty),
-      eventEmpty: textSrc(entry.tabs?.eventEmpty, defaultNews.tabs.eventEmpty)
-    },
-    results: entry.results?.length
-      ? entry.results.map((item, index) => {
-          const fallback = defaultNews.results[index] ?? defaultNews.results[0];
-          return {
-            kicker: textSrc(item.kicker, fallback.kicker),
-            title: textSrc(item.title, fallback.title),
-            body: textSrc(item.body, fallback.body),
-            photos: mapPhotos(item.photos, fallback.photos, RESULTS).slice(0, 5)
-          };
-        })
-      : defaultNews.results,
-    events: entry.events?.length
-      ? entry.events.map((item, index) => {
-          const fallback = defaultNews.events[index] ?? defaultNews.events[0];
-          return {
-            day: textSrc(item.day, fallback.day),
-            month: textSrc(item.month, fallback.month),
-            title: textSrc(item.title, fallback.title),
-            text: textSrc(item.text, fallback.text),
-            body: textSrc(item.body, fallback.body),
-            photos: mapPhotos(item.photos, fallback.photos, EVENTS).slice(0, 5)
-          };
-        })
-      : defaultNews.events,
-    achievements: entry.achievements?.length
-      ? entry.achievements.map((item, index) => {
-          const fallback = defaultNews.achievements[index] ?? defaultNews.achievements[0];
-          return {
-            kicker: textSrc(item.kicker, fallback.kicker),
-            title: textSrc(item.title, fallback.title),
-            body: textSrc(item.body, fallback.body),
-            photos: mapPhotos(item.photos, fallback.photos, ACHIEVE).slice(0, 5)
-          };
-        })
-      : defaultNews.achievements
-  };
-}
-
-export async function getNewsPosts(): Promise<NewsPost[]> {
-  try {
-    const posts = await reader.collections.posts.all();
-    return [...posts]
-      .sort((a, b) => (b.entry.date ?? "").localeCompare(a.entry.date ?? ""))
-      .map((post) => ({
-        slug: post.slug,
-        title: post.entry.title,
-        date: post.entry.date ?? "",
-        dateLabel: formatNewsDate(post.entry.date),
-        summary: post.entry.summary || "",
-        category: newsCategory(post.entry.category, post.slug)
-      }));
-  } catch (error) {
-    console.error("Failed to read Keystatic news posts", error);
-    return [];
-  }
+  return defaultNews;
 }

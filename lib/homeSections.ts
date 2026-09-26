@@ -66,15 +66,3 @@ export const featuredAchievementFallback = {
   href: "/news"
 };
 
-export function achievementImageForSlug(slug: string) {
-  if (slug.includes("football") || slug.includes("kabaddi")) {
-    return "/images/home/pathway/perform.png";
-  }
-  if (slug.includes("chess") || slug.includes("iimun") || slug.includes("compet")) {
-    return "/images/home/pathway/explore.png";
-  }
-  if (slug.includes("principal") || slug.includes("award")) {
-    return "/images/home/hero/hero-classroom.png";
-  }
-  return "/images/home/hero/hero-robotics.png";
-}

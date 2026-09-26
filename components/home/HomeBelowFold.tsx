@@ -2,36 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import AchievementsCarousel from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
-import { achievementImageForSlug, featuredAchievementFallback } from "@/lib/homeSections";
+import { featuredAchievementFallback } from "@/lib/homeSections";
 import type { HomeContent } from "@/lib/home";
-import { formatNewsDate, reader } from "@/lib/keystatic";
 
-export default async function HomeBelowFold({
+export default function HomeBelowFold({
   home
 }: {
   home: HomeContent;
 }) {
   const beyond = home.beyondClassroom;
   const campus = home.campusSpotlight;
-  let achievements = [featuredAchievementFallback];
-  try {
-    const posts = await reader.collections.posts.all();
-    const sorted = [...posts].sort((a, b) =>
-      (b.entry.date ?? "").localeCompare(a.entry.date ?? "")
-    );
-    if (sorted.length) {
-      achievements = sorted.map((post) => ({
-        title: post.entry.title,
-        text: post.entry.summary || "",
-        date: formatNewsDate(post.entry.date),
-        image: achievementImageForSlug(post.slug),
-        alt: post.entry.title,
-        href: `/news/${post.slug}`
-      }));
-    }
-  } catch {
-    achievements = [featuredAchievementFallback];
-  }
+  const achievements = [featuredAchievementFallback];
 
   return (
     <>
