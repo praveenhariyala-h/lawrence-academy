@@ -4,8 +4,15 @@
   "hero": {
     "kicker": "Admissions",
     "title": "Begin with a conversation.",
-    "lede": "Lawrence High School ICSE, HSR Layout welcomes families from Kindergarten to Grade 10. Start with an enquiry, visit campus, and we will walk you through the rest."
+    "lede": "From Kindergarten to Grade 10, \nyour journey with Lawrence begins here."
   },
+  "applyKicker": "Apply now",
+  "applyTitle": "Admission Enquiry",
+  "applyBody": "Let's begin your child's journey. Share a few details and our Admissions Team will get in touch with you shortly.",
+  "helplineTitle": "Admission helpline",
+  "visitNote": "Prefer to visit first? See the map on the",
+  "visitLinkLabel": "contact page",
+  "submitLabel": "Submit Enquiry",
   "openingsKicker": "Openings",
   "openingsTitle": "Where your child can begin.",
   "stages": [
@@ -91,13 +98,6 @@
     "Academic records / transcripts for the last 3 years (if applicable)",
     "If your child is not an Indian citizen, a copy of his/her visa / permit"
   ],
-  "applyKicker": "Apply now",
-  "applyTitle": "Admission Enquiry",
-  "applyBody": "Let's begin your child's journey. Share a few details and our Admissions Team will get in touch with you shortly.",
-  "helplineTitle": "Admission helpline",
-  "visitNote": "Prefer to visit first? See the map on the",
-  "visitLinkLabel": "contact page",
-  "submitLabel": "Submit Enquiry",
   "administrationTeam": {
     "title": "Administration Team",
     "image": "/images/about/principal-devi.jpg",
