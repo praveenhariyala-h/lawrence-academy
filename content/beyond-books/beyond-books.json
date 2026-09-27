@@ -1,4 +1,6 @@
 {
+  "metaTitle": "Beyond Books",
+  "metaDescription": "Sports, creative expression, communication, STEM, Vedic Maths, financial literacy and field trips at Lawrence High School ICSE, HSR Layout.",
   "hero": {
     "kicker": "Beyond Books",
     "title": "Explore.\nExperience.\n*Evolve.*",
@@ -246,10 +248,10 @@
     ]
   },
   "transportTeam": {
-    "title": "Transport Team",
+    "title": "Co-Curricular Team",
     "photos": [
       {
-        "src": "/images/about/transport-team-1.jpg",
+        "src": "/images/Sports-Staff-(1).JPG",
         "alt": "The driver of a Lawrence High School bus"
       },
       {
@@ -257,7 +259,5 @@
         "alt": "Students and a staff member beside a Lawrence High School bus"
       }
     ]
-  },
-  "metaTitle": "Beyond Books",
-  "metaDescription": "Sports, creative expression, communication, STEM, Vedic Maths, financial literacy and field trips at Lawrence High School ICSE, HSR Layout."
+  }
 }
