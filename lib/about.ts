@@ -225,7 +225,7 @@ export type AboutContent = {
   messages: typeof aboutMessages;
   legacy: typeof aboutLegacy;
   teams: typeof aboutTeams;
-  values: typeof aboutValues;
+  schoolValues: typeof aboutValues;
   motto: string;
 };
 
@@ -240,7 +240,7 @@ export const defaultAbout: AboutContent = {
   messages: aboutMessages,
   legacy: aboutLegacy,
   teams: aboutTeams,
-  values: aboutValues,
+  schoolValues: aboutValues,
   motto: aboutMotto
 };
 

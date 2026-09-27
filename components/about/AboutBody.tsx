@@ -61,7 +61,7 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
     messages: aboutMessages,
     legacy: aboutLegacy,
     teams: aboutTeams,
-    values: aboutValues,
+    schoolValues: aboutValues,
     motto: aboutMotto
   } = content;
 
