@@ -46,11 +46,18 @@ function group(name: string, label: string, fields: TinaField[]): TinaField {
   return { type: "object", name, label, fields };
 }
 
-function list(name: string, label: string, fields: TinaField[], labelKey = "title"): TinaField {
+function list(
+  name: string,
+  label: string,
+  fields: TinaField[],
+  labelKey = "title",
+  description?: string
+): TinaField {
   return {
     type: "object",
     name,
     label,
+    description,
     list: true,
     ui: {
       itemProps: (item) => ({
@@ -128,6 +135,7 @@ const site: Collection = {
     area("address", "Address"),
     words("phones", "Phone numbers"),
     words("emails", "Email addresses"),
+    text("whatsapp", "WhatsApp number"),
     text("transportPhone", "Transport phone"),
     list(
       "socials",
@@ -193,16 +201,12 @@ const home = page({
       text("ctaHref", "Button link"),
       list("items", "Tiles", [text("title", "Title"), image("image", "Image"), text("alt", "Alt text")])
     ]),
-    text("achievementsTitle", "Achievements heading"),
+    text(
+      "achievementsTitle",
+      "Achievements heading",
+      "The slides come from the first three items under News → Achievements."
+    ),
     text("achievementsViewAllLabel", "Achievements link label"),
-    group("featuredAchievement", "Featured achievement", [
-      text("title", "Title"),
-      area("text", "Text"),
-      text("date", "Date"),
-      image("image", "Image"),
-      text("alt", "Alt text"),
-      text("href", "Link")
-    ]),
     group("campusSpotlight", "Campus spotlight", [
       text("title", "Title"),
       area("body", "Text"),
@@ -279,12 +283,6 @@ const about = page({
         text("position", "Photo position"),
         area("message", "Message")
       ], "name")
-    ]),
-    group("leadershipTeam", "Leadership team", [
-      text("title", "Title"),
-      text("kicker", "Kicker"),
-      area("quote", "Quote"),
-      list("people", "People", [...person, text("position", "Photo position")], "name")
     ]),
     group("legacy", "Legacy teachers", [
       text("title", "Title"),
@@ -656,7 +654,13 @@ const news = page({
       text("eventEmpty", "Empty events message")
     ]),
     list("results", "Results", newsCard),
-    list("achievements", "Achievements", newsCard),
+    list(
+      "achievements",
+      "Achievements",
+      newsCard,
+      "title",
+      "The first three items, in this order, are the home page Recent Achievements slider."
+    ),
     list("events", "Events", [
       text("day", "Day"),
       text("month", "Month"),
@@ -676,6 +680,13 @@ const admissions = page({
   fields: [
     ...metaFields,
     group("hero", "Hero", [text("kicker", "Kicker"), text("title", "Title"), area("lede", "Introduction")]),
+    text("applyKicker", "Enquiry kicker"),
+    text("applyTitle", "Enquiry heading"),
+    area("applyBody", "Enquiry text"),
+    text("helplineTitle", "Helpline heading"),
+    text("visitNote", "Visit note"),
+    text("visitLinkLabel", "Visit link label"),
+    text("submitLabel", "Form button label"),
     text("openingsKicker", "Openings kicker"),
     text("openingsTitle", "Openings heading"),
     list("stages", "Stages", [text("title", "Title"), area("text", "Text")]),
@@ -693,14 +704,7 @@ const admissions = page({
     text("documentsKicker", "Documents kicker"),
     text("documentsTitle", "Documents heading"),
     area("documentsBody", "Documents introduction"),
-    words("documents", "Documents"),
-    text("applyKicker", "Enquiry kicker"),
-    text("applyTitle", "Enquiry heading"),
-    area("applyBody", "Enquiry text"),
-    text("helplineTitle", "Helpline heading"),
-    text("visitNote", "Visit note"),
-    text("visitLinkLabel", "Visit link label"),
-    text("submitLabel", "Form button label")
+    words("documents", "Documents")
   ]
 });
 
@@ -711,13 +715,77 @@ const contact = page({
   route: "/contact",
   fields: [
     ...metaFields,
-    text("kicker", "Kicker"),
-    text("title", "Title"),
+    image("heroImage", "Hero image"),
+    text("heroImageAlt", "Hero image alt text"),
+    text("title", "Title", emphasis),
+    text("subtitle", "Subtitle"),
     area("lede", "Introduction"),
-    text("officeHeading", "Office heading"),
-    text("transportHeading", "Transport heading"),
-    area("transportBody", "Transport text"),
-    text("mapTitle", "Map heading")
+    text("touchHeading", "Get in touch heading"),
+    text("addressLabel", "Address label"),
+    text("phoneLabel", "Phone label"),
+    text("emailLabel", "Email label"),
+    text("hoursHeading", "Working hours heading"),
+    list("hours", "Working hours", [text("days", "Days"), text("time", "Hours")], "days"),
+    text("formHeading", "Form heading"),
+    text("nameLabel", "Name label"),
+    text("namePlaceholder", "Name placeholder"),
+    text("emailFieldLabel", "Email label"),
+    text("emailPlaceholder", "Email placeholder"),
+    text("phoneFieldLabel", "Phone label"),
+    text("phonePlaceholder", "Phone placeholder"),
+    text("subjectLabel", "Subject label"),
+    text("subjectPlaceholder", "Subject placeholder"),
+    words("subjects", "Subject options"),
+    text("messageLabel", "Message label"),
+    text("messagePlaceholder", "Message placeholder"),
+    text("submitLabel", "Submit label"),
+    text("successMessage", "Success message"),
+    text("recruitTitle", "Recruitment heading", emphasis),
+    area("recruitBody", "Recruitment text"),
+    text("recruitLabel", "Recruitment button"),
+    text("recruitHref", "Recruitment link"),
+    text("mapTitle", "Map heading"),
+    text("connectTitle", "Social heading"),
+    words("motto", "Motto lines")
+  ]
+});
+
+const recruitment = page({
+  name: "recruitment",
+  label: "Staff Recruitment",
+  folder: "recruitment",
+  route: "/recruitment",
+  fields: [
+    ...metaFields,
+    image("heroImage", "Hero image"),
+    text("heroImageAlt", "Hero image alt text"),
+    text("title", "Title", emphasis),
+    area("lede", "Introduction"),
+    text("formHeading", "Form heading"),
+    text("nameLabel", "Name label"),
+    text("namePlaceholder", "Name placeholder"),
+    text("dobLabel", "Date of birth label"),
+    text("emailLabel", "Email label"),
+    text("emailPlaceholder", "Email placeholder"),
+    text("phoneLabel", "Phone label"),
+    text("phonePlaceholder", "Phone placeholder"),
+    text("addressLabel", "Address label"),
+    text("addressPlaceholder", "Address placeholder"),
+    text("subjectLabel", "Subject label"),
+    text("subjectPlaceholder", "Subject placeholder"),
+    text("positionLabel", "Position label"),
+    text("positionPlaceholder", "Position placeholder"),
+    words("positions", "Positions"),
+    text("educationLabel", "Education label"),
+    text("educationPlaceholder", "Education placeholder"),
+    text("experienceLabel", "Experience label"),
+    text("experiencePlaceholder", "Experience placeholder"),
+    text("photoLabel", "Profile photo label"),
+    text("payslipLabel", "Pay slip label"),
+    text("resumeLabel", "Resume label"),
+    text("submitLabel", "Submit label"),
+    text("resetLabel", "Reset label"),
+    text("successMessage", "Success message")
   ]
 });
 
@@ -756,7 +824,8 @@ export default defineConfig({
       beyondBooks,
       news,
       admissions,
-      contact
+      contact,
+      recruitment
     ]
   }
 });

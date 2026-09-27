@@ -67,6 +67,42 @@ export default function AdmissionsView(props: AdmissionsTinaProps) {
         }}
       />
 
+      <section id="apply" className="band band--white section-anchor">
+        <div className="wrap contact-grid">
+          <div className="contact-details">
+            <div>
+              <span className="kicker" data-tina-field={mark(content, "applyKicker")}>
+                {text(content, "applyKicker")}
+              </span>
+              <h2 data-tina-field={mark(content, "applyTitle")}>{text(content, "applyTitle")}</h2>
+              <p data-tina-field={mark(content, "applyBody")}>{text(content, "applyBody")}</p>
+            </div>
+            <div>
+              <h2 data-tina-field={mark(content, "helplineTitle")}>{text(content, "helplineTitle")}</h2>
+              <p>
+                {props.phones.map((phone, index) => (
+                  <span key={phone}>
+                    {index > 0 ? " · " : null}
+                    <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
+                  </span>
+                ))}
+              </p>
+              <p>
+                <a href={`mailto:${props.email}`}>{props.email}</a>
+              </p>
+              <p>
+                <span data-tina-field={mark(content, "visitNote")}>{text(content, "visitNote")}</span>{" "}
+                <Link href="/contact" data-tina-field={mark(content, "visitLinkLabel")}>
+                  {text(content, "visitLinkLabel")}
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+          <ContactForm submitLabel={text(content, "submitLabel")} submitField={mark(content, "submitLabel")} />
+        </div>
+      </section>
+
       <section className="band band--white">
         <div className="wrap">
           <span className="kicker" data-tina-field={mark(content, "openingsKicker")}>
@@ -178,42 +214,6 @@ export default function AdmissionsView(props: AdmissionsTinaProps) {
               ) : null
             )}
           </ul>
-        </div>
-      </section>
-
-      <section id="apply" className="band band--white section-anchor">
-        <div className="wrap contact-grid">
-          <div className="contact-details">
-            <div>
-              <span className="kicker" data-tina-field={mark(content, "applyKicker")}>
-                {text(content, "applyKicker")}
-              </span>
-              <h2 data-tina-field={mark(content, "applyTitle")}>{text(content, "applyTitle")}</h2>
-              <p data-tina-field={mark(content, "applyBody")}>{text(content, "applyBody")}</p>
-            </div>
-            <div>
-              <h2 data-tina-field={mark(content, "helplineTitle")}>{text(content, "helplineTitle")}</h2>
-              <p>
-                {props.phones.map((phone, index) => (
-                  <span key={phone}>
-                    {index > 0 ? " · " : null}
-                    <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
-                  </span>
-                ))}
-              </p>
-              <p>
-                <a href={`mailto:${props.email}`}>{props.email}</a>
-              </p>
-              <p>
-                <span data-tina-field={mark(content, "visitNote")}>{text(content, "visitNote")}</span>{" "}
-                <Link href="/contact" data-tina-field={mark(content, "visitLinkLabel")}>
-                  {text(content, "visitLinkLabel")}
-                </Link>
-                .
-              </p>
-            </div>
-          </div>
-          <ContactForm submitLabel={text(content, "submitLabel")} submitField={mark(content, "submitLabel")} />
         </div>
       </section>
     </>

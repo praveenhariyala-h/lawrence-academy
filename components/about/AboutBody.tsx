@@ -59,7 +59,6 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
     journey: aboutJourney,
     philosophy: aboutPhilosophy,
     messages: aboutMessages,
-    leadershipTeam: aboutLeadershipTeam,
     legacy: aboutLegacy,
     teams: aboutTeams,
     values: aboutValues,
@@ -170,35 +169,6 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                 <p>{person.message}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="about-band about-band--soft">
-        <div className="wrap">
-          <header className="about-head about-reveal">
-            <SectionTitle>{aboutLeadershipTeam.title}</SectionTitle>
-            <p className="about-kicker">{aboutLeadershipTeam.kicker}</p>
-          </header>
-          <div className="about-leaders">
-            <div className="about-leader-grid">
-              {aboutLeadershipTeam.people.map((person, index) => (
-                <article className="about-leader about-reveal" style={delay(index)} key={person.name}>
-                  <Portrait
-                    src={person.photo}
-                    alt={person.photoAlt}
-                    position={person.position}
-                    sizes="180px"
-                    className="about-portrait--md"
-                  />
-                  <h3>{person.name}</h3>
-                  <p className="about-role">{person.role}</p>
-                </article>
-              ))}
-            </div>
-            <blockquote className="about-pullquote about-reveal" style={delay(3)}>
-              <p>{aboutLeadershipTeam.quote}</p>
-            </blockquote>
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
 import {
   beyondClassroom as defaultBeyondClassroom,
   campusSpotlight as defaultCampusSpotlight,
-  featuredAchievementFallback,
   upcomingEvents as defaultUpcomingEvents
 } from "@/lib/homeSections";
 import { readContent } from "@/lib/readContent";
@@ -69,15 +68,6 @@ export type HomePartner = {
   logo: string | null;
 };
 
-export type HomeFeaturedAchievement = {
-  title: string;
-  text: string;
-  date: string;
-  image: string;
-  alt: string;
-  href: string;
-};
-
 export type HomeContent = {
   metaTitle: string;
   metaDescription: string;
@@ -103,7 +93,6 @@ export type HomeContent = {
   partnersKicker: string;
   partnersTitle: string;
   partners: HomePartner[];
-  featuredAchievement: HomeFeaturedAchievement;
   chairmanKicker: string;
   chairmanName: string;
   chairmanRole: string;
@@ -270,7 +259,6 @@ export const defaultHome: HomeContent = {
     { name: "IQ Academy", category: "Enrichment", logo: "/images/home/partners/iq-academy.png" },
     { name: "Taekwon-Do Association of Karnataka", category: "Sports", logo: "/images/home/partners/taekwondo-tak.png" }
   ],
-  featuredAchievement: featuredAchievementFallback,
   chairmanKicker: "Chairman’s message",
   chairmanName: "P.M. Subbaiah",
   chairmanRole: "Chairman, Lawrence High School",
