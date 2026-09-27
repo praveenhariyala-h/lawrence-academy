@@ -8,7 +8,7 @@
   },
   "stats": [
     {
-      "value": "36",
+      "value": "25",
       "label": "Years of excellence",
       "icon": "years"
     },
@@ -57,11 +57,11 @@
   "philosophy": {
     "title": "Our Educational Philosophy",
     "body": "We believe that every child is unique and has the potential to achieve great things. Our approach is student-centric, focusing on academic rigour, character building and experiential learning. We strive to create a supportive environment where curiosity is encouraged, creativity is celebrated and values are lived every day.",
-    "image": "/images/about/philosophy.png",
+    "image": "/images/about/_SHI9936.JPG",
     "imageAlt": "Lawrence High School leaders collaborating on teaching and learning"
   },
   "messages": {
-    "title": "Messages from Our Leadership",
+    "title": "The Leadership Team",
     "kicker": "Guided by vision, grounded in values, committed to every child.",
     "people": [
       {

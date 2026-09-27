@@ -1,4 +1,6 @@
 {
+  "metaTitle": "Primary",
+  "metaDescription": "Primary School at Lawrence High School ICSE — Grades 1 to 4. Strong foundations in knowledge, curiosity, confidence and character.",
   "hero": {
     "kicker": "Primary School",
     "grades": "Grades 1 – 4",
@@ -8,7 +10,7 @@
   },
   "approach": {
     "kicker": "Our Approach",
-    "title": "Joyful Learning for Lifelong Skills",
+    "title": "Learning Through Exploration",
     "body": "We provide a safe, nurturing and stimulating environment where children learn through meaningful experiences, question, explore, collaborate and grow at their own pace.",
     "image": "/images/about/pr-approach.png",
     "imageAlt": "Primary students exploring soluble substances in a science activity at Lawrence High School",
@@ -154,7 +156,5 @@
         "alt": "Primary students performing an animal-themed play on stage"
       }
     ]
-  },
-  "metaTitle": "Primary",
-  "metaDescription": "Primary School at Lawrence High School ICSE — Grades 1 to 4. Strong foundations in knowledge, curiosity, confidence and character."
+  }
 }

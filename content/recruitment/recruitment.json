@@ -19,7 +19,14 @@
   "subjectPlaceholder": "Enter subject preferred",
   "positionLabel": "Position Applied",
   "positionPlaceholder": "Teacher, Research, Counseling, Clerical, etc.",
-  "positions": ["Teacher", "Researcher", "Counselor", "Clerical", "Administrative", "Support Staff"],
+  "positions": [
+    "Teacher (Kindergarten)",
+    "Primary Teacher (Grades 1-4)",
+    "Middle School Teacher (Grades 5-7)",
+    "High School Teacher(Grades 8-10)",
+    "Front Office",
+    "Others"
+  ],
   "educationLabel": "Education Details",
   "educationPlaceholder": "Enter your education details",
   "experienceLabel": "Experience Details",

@@ -1,4 +1,6 @@
 {
+  "metaTitle": "High School",
+  "metaDescription": "High School at Lawrence High School ICSE — Grades 8 to 10. ICSE curriculum, mentorship, and holistic development for board success.",
   "hero": {
     "kicker": "High School",
     "title": "Grades 8 – 10\nPreparing Today for a *Brighter Tomorrow*",
@@ -175,7 +177,7 @@
   },
   "beyond": {
     "kicker": "Beyond Academics",
-    "title": "Growing in Mind, Body & Character",
+    "title": "Shaping Minds, Building Character",
     "body": "High school at Lawrence goes beyond academic preparation. We nurture strength of mind and body, resilience and values, with our teachers guiding and supporting students through every step of their journey.",
     "photos": [
       {
@@ -266,7 +268,5 @@
         "alt": "A high school student performing a classical dance at Lawrence High School"
       }
     ]
-  },
-  "metaTitle": "High School",
-  "metaDescription": "High School at Lawrence High School ICSE — Grades 8 to 10. ICSE curriculum, mentorship, and holistic development for board success."
+  }
 }
