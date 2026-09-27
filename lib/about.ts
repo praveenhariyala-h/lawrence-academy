@@ -108,35 +108,6 @@ export const aboutMessages: {
   ]
 };
 
-export const aboutLeadershipTeam = {
-  title: "Our Leadership Team",
-  kicker: "Committed to accomplishing each student’s well-being",
-  quote: "Leadership is not a position but a shared responsibility to empower every learner.",
-  people: [
-    {
-      name: "Mrs. Manjula Ramachandran",
-      role: "Vice Principal",
-      photo: "/images/about/vice-principal.png",
-      photoAlt: "Mrs. Manjula Ramachandran, Vice Principal",
-      position: "22% 28%"
-    },
-    {
-      name: "Mrs. Malini Raghu",
-      role: "Headmistress",
-      photo: "/images/about/headmistress.png",
-      photoAlt: "Mrs. Malini Raghu, Headmistress",
-      position: "72% 18%"
-    },
-    {
-      name: "Mrs. Roopa De",
-      role: "KG Coordinator",
-      photo: "/images/about/kg-coordinator.png",
-      photoAlt: "Mrs. Roopa De, Kindergarten Coordinator",
-      position: "42% 20%"
-    }
-  ]
-};
-
 export const aboutLegacy = {
   title: "Our Legacy of Dedicated Teachers",
   intro:
@@ -252,7 +223,6 @@ export type AboutContent = {
   journey: typeof aboutJourney;
   philosophy: typeof aboutPhilosophy;
   messages: typeof aboutMessages;
-  leadershipTeam: typeof aboutLeadershipTeam;
   legacy: typeof aboutLegacy;
   teams: typeof aboutTeams;
   values: typeof aboutValues;
@@ -268,7 +238,6 @@ export const defaultAbout: AboutContent = {
   journey: aboutJourney,
   philosophy: aboutPhilosophy,
   messages: aboutMessages,
-  leadershipTeam: aboutLeadershipTeam,
   legacy: aboutLegacy,
   teams: aboutTeams,
   values: aboutValues,

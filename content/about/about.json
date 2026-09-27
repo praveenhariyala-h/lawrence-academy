@@ -93,34 +93,6 @@
       }
     ]
   },
-  "leadershipTeam": {
-    "title": "Our Leadership Team",
-    "kicker": "Committed to accomplishing each student’s well-being",
-    "quote": "Leadership is not a position but a shared responsibility to empower every learner.",
-    "people": [
-      {
-        "name": "Mrs. Manjula Ramachandran",
-        "role": "Vice Principal",
-        "photo": "/images/about/vice-principal.png",
-        "photoAlt": "Mrs. Manjula Ramachandran, Vice Principal",
-        "position": "22% 28%"
-      },
-      {
-        "name": "Mrs. Malini Raghu",
-        "role": "Headmistress",
-        "photo": "/images/about/headmistress.png",
-        "photoAlt": "Mrs. Malini Raghu, Headmistress",
-        "position": "72% 18%"
-      },
-      {
-        "name": "Mrs. Roopa De",
-        "role": "KG Coordinator",
-        "photo": "/images/about/kg-coordinator.png",
-        "photoAlt": "Mrs. Roopa De, Kindergarten Coordinator",
-        "position": "42% 20%"
-      }
-    ]
-  },
   "legacy": {
     "title": "Our Legacy of Dedicated Teachers",
     "intro": "Each member of our faculty brings knowledge, teaching expertise, and a deep commitment to student growth, creating a positive learning environment where every child feels seen, supported, and challenged to become the best version of themselves.",

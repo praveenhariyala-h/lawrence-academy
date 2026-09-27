@@ -26,11 +26,13 @@ export default async function ContactPage() {
     >
       <ContactView
         content={content}
+        schoolName={school.name}
         address={school.address}
-        phones={school.phones}
+        phone={school.phones[0] ?? ""}
         email={school.emails[0] ?? ""}
-        transportPhone={school.transportPhone}
+        whatsapp={school.whatsapp}
         mapUrl={school.mapUrl}
+        socials={school.socials}
       />
     </EditablePage>
   );

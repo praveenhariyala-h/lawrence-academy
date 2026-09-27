@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import AchievementCards from "@/components/news/AchievementCards";
+import ResultCards from "@/components/news/ResultCards";
 import type {
   NewsAchievement,
   NewsCategory,
@@ -85,9 +86,7 @@ export default function NewsTabs({
               <AchievementCards items={achievements} />
             ) : null}
 
-            {id === "result" && results.length ? (
-              <AchievementCards items={results} empty="Results will appear here as they are published." imageFit="contain" />
-            ) : null}
+            {id === "result" && results.length ? <ResultCards items={results} /> : null}
 
             {id === "event" && events.length ? (
               <div className="news-events">

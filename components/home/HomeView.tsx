@@ -7,8 +7,15 @@ import HomeBelowFold from "@/components/home/HomeBelowFold";
 import PathwayStrip from "@/components/home/PathwayStrip";
 import { useEditable } from "@/components/tina/EditablePage";
 import type { HomeContent } from "@/lib/home";
+import type { RecentAchievementSlide } from "@/lib/news";
 
-export default function HomeView({ content: initial }: { content: HomeContent }) {
+export default function HomeView({
+  content: initial,
+  achievements
+}: {
+  content: HomeContent;
+  achievements: RecentAchievementSlide[];
+}) {
   const home = useEditable("home", initial);
 
   return (
@@ -48,7 +55,7 @@ export default function HomeView({ content: initial }: { content: HomeContent })
         stages={home.curriculum}
       />
 
-      <HomeBelowFold home={home} />
+      <HomeBelowFold home={home} achievements={achievements} />
     </>
   );
 }

@@ -463,3 +463,30 @@ export const defaultNews: NewsContent = {
 export async function getNewsContent(): Promise<NewsContent> {
   return readContent("content/news/news.json", defaultNews);
 }
+
+export type RecentAchievementSlide = {
+  title: string;
+  text: string;
+  date: string;
+  image: string;
+  alt: string;
+  href: string;
+};
+
+export function recentAchievementSlides(items: NewsAchievement[], count = 3): RecentAchievementSlide[] {
+  return items.slice(0, count).flatMap((item) => {
+    const photo = item.photos?.[0];
+    if (!photo?.src || !item.title) return [];
+    const text = item.body.split(/\n+/)[0]?.replace(/\s+/g, " ").trim() ?? "";
+    return [
+      {
+        title: item.title,
+        text,
+        date: item.kicker,
+        image: photo.src,
+        alt: photo.alt || item.title,
+        href: "/news?tab=achievement"
+      }
+    ];
+  });
+}

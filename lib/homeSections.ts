@@ -57,12 +57,3 @@ export const upcomingEvents = [
   }
 ];
 
-export const featuredAchievementFallback = {
-  title: "Champions at International Robotics Competition",
-  text: "Our students brought home top honours, showcasing innovation and teamwork on a global stage.",
-  date: "",
-  image: "/images/home/hero/hero-robotics.png",
-  alt: "Lawrence High School students with a robotics award",
-  href: "/news"
-};
-

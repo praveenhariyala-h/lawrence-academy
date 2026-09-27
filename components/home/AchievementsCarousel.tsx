@@ -51,7 +51,7 @@ export default function AchievementsCarousel({
       <div className="achievement-carousel-viewport">
         {items.map((item, slideIndex) => (
           <Link
-            key={item.href}
+            key={item.image}
             className={
               slideIndex === index
                 ? "home-achievement achievement-slide is-active"
@@ -77,7 +77,7 @@ export default function AchievementsCarousel({
         <div className="achievement-carousel-nav">
           {items.map((slide, slideIndex) => (
             <button
-              key={slide.href}
+              key={slide.image}
               className={slideIndex === index ? "dot is-on" : "dot"}
               type="button"
               aria-label={`Show ${slide.title}`}

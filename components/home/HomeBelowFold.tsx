@@ -3,15 +3,17 @@ import Link from "next/link";
 import AchievementsCarousel from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
 import type { HomeContent } from "@/lib/home";
+import type { RecentAchievementSlide } from "@/lib/news";
 
 export default function HomeBelowFold({
-  home
+  home,
+  achievements
 }: {
   home: HomeContent;
+  achievements: RecentAchievementSlide[];
 }) {
   const beyond = home.beyondClassroom;
   const campus = home.campusSpotlight;
-  const achievements = [home.featuredAchievement];
 
   return (
     <>

@@ -9,6 +9,7 @@ export const school = {
   address: "CA3, 9th Main, Sector 6, HSR Layout, Bengaluru 560102",
   phones: ["080 2572 2777", "080 4090 3777"],
   emails: ["lawrence.school.icse@gmail.com"],
+  whatsapp: "98457 60764",
   transportPhone: "98457 60764",
   socials: [
     { label: "Facebook", href: "https://www.facebook.com" },
