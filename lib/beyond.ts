@@ -198,6 +198,13 @@ export const beyond = {
       { src: "/images/home/hero/hero-courtyard.png", alt: "Students together on campus", caption: "Learning Experiences" },
       { src: "/images/home/pathway/grow.png", alt: "Students sharing a joyful learning moment", caption: "Fun and Friendship" }
     ]
+  },
+  transportTeam: {
+    title: "Transport Team",
+    photos: [
+      { src: "/images/about/transport-team-1.jpg", alt: "The driver of a Lawrence High School bus" },
+      { src: "/images/about/transport-team-3.jpg", alt: "Students and a staff member beside a Lawrence High School bus" }
+    ]
   }
 };
 

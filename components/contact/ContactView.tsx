@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import AboutReveal from "@/components/about/AboutReveal";
 import ContactForm from "@/components/ContactForm";
+import PageBanner from "@/components/PageBanner";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { ContactContent } from "@/lib/contact";
 
@@ -160,28 +161,18 @@ export default function ContactView({
 
   return (
     <div className="contact-page">
-      <section className="contact-hero">
-        <Image
+      <AboutReveal>
+        <PageBanner
           src={content.heroImage}
           alt={content.heroImageAlt}
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
+          title={content.title}
+          grades={content.subtitle}
+          gradesAfter
+          lede={content.lede}
+          fit="cover"
+          className="page-banner-title"
         />
-        <div className="contact-hero-copy">
-          <h1 data-tina-field={tinaMark(content, "title")}>
-            <Emphasised text={content.title} />
-          </h1>
-          <span className="contact-hero-rule" aria-hidden="true" />
-          <p className="contact-hero-sub" data-tina-field={tinaMark(content, "subtitle")}>
-            {content.subtitle}
-          </p>
-          <p className="contact-hero-lede" data-tina-field={tinaMark(content, "lede")}>
-            {content.lede}
-          </p>
-        </div>
-      </section>
+      </AboutReveal>
 
       <section className="contact-main">
         <div className="wrap contact-main-grid">

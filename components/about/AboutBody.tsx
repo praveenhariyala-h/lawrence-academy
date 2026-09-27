@@ -59,7 +59,7 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
     journey: aboutJourney,
     philosophy: aboutPhilosophy,
     messages: aboutMessages,
-    legacy: aboutLegacy,
+    leadershipTeam,
     teams: aboutTeams,
     schoolValues: aboutValues,
     motto: aboutMotto
@@ -176,24 +176,28 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band">
         <div className="wrap">
           <header className="about-head about-reveal">
-            <SectionTitle>{aboutLegacy.title}</SectionTitle>
-            <p>{aboutLegacy.intro}</p>
+            <SectionTitle>{leadershipTeam.title}</SectionTitle>
+            <p className="about-kicker">{leadershipTeam.kicker}</p>
           </header>
-          <div className="about-teachers">
-            {aboutLegacy.teachers.map((teacher, index) => (
-              <article className="about-teacher about-reveal" style={delay(index)} key={teacher.name}>
-                <Portrait
-                  src={teacher.photo}
-                  alt={teacher.photoAlt}
-                  position="center 12%"
-                  sizes="160px"
-                  className="about-portrait--md"
-                />
-                <h3>{teacher.name}</h3>
-                <p className="about-role">Joined in {teacher.year}</p>
-                <p>{teacher.profile}</p>
-              </article>
-            ))}
+          <div className="about-lead-layout">
+            <div className="about-lead-people">
+              {leadershipTeam.people.map((person, index) => (
+                <article className="about-lead-person about-reveal" style={delay(index)} key={person.name}>
+                  <Portrait
+                    src={person.photo}
+                    alt={person.photoAlt}
+                    position={person.position}
+                    sizes="(max-width: 640px) 70vw, 18vw"
+                    className="about-portrait--square"
+                  />
+                  <h3>{person.name}</h3>
+                  <p className="about-role">{person.role}</p>
+                </article>
+              ))}
+            </div>
+            <blockquote className="about-lead-quote about-reveal" style={delay(3)}>
+              {leadershipTeam.quote}
+            </blockquote>
           </div>
         </div>
       </section>

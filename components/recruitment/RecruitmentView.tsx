@@ -1,22 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useRef, useState, type FormEvent } from "react";
+import AboutReveal from "@/components/about/AboutReveal";
+import PageBanner from "@/components/PageBanner";
 import type { RecruitmentContent } from "@/lib/recruitment";
 import { attachedFileName, sendToMailAndWhatsApp, type EnquiryDelivery } from "@/lib/sendEnquiry";
 import { useEditable } from "@/components/tina/EditablePage";
-
-function Emphasised({ text }: { text: string }) {
-  return text.split(/(\*[^*]+\*)/g).filter(Boolean).map((piece, index) =>
-    piece.startsWith("*") && piece.endsWith("*") ? (
-      <span className="contact-accent" key={index}>
-        {piece.slice(1, -1)}
-      </span>
-    ) : (
-      piece
-    )
-  );
-}
 
 function RequiredMark() {
   return (
@@ -101,23 +90,16 @@ export default function RecruitmentView({
 
   return (
     <div className="recruit-page">
-      <section className="recruit-hero">
-        <Image
+      <AboutReveal>
+        <PageBanner
           src={content.heroImage}
           alt={content.heroImageAlt}
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
+          title={content.title}
+          lede={content.lede}
+          fit="cover"
+          className="page-banner-title"
         />
-        <div className="recruit-hero-copy">
-          <span className="recruit-hero-rule" aria-hidden="true" />
-          <h1>
-            <Emphasised text={content.title} />
-          </h1>
-          <p>{content.lede}</p>
-        </div>
-      </section>
+      </AboutReveal>
 
       <section className="recruit-main">
         <div className="wrap">

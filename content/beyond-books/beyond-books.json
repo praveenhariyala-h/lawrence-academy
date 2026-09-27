@@ -245,6 +245,19 @@
       }
     ]
   },
+  "transportTeam": {
+    "title": "Transport Team",
+    "photos": [
+      {
+        "src": "/images/about/transport-team-1.jpg",
+        "alt": "The driver of a Lawrence High School bus"
+      },
+      {
+        "src": "/images/about/transport-team-3.jpg",
+        "alt": "Students and a staff member beside a Lawrence High School bus"
+      }
+    ]
+  },
   "metaTitle": "Beyond Books",
   "metaDescription": "Sports, creative expression, communication, STEM, Vedic Maths, financial literacy and field trips at Lawrence High School ICSE, HSR Layout."
 }

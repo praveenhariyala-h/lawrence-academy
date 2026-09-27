@@ -284,16 +284,17 @@ const about = page({
         area("message", "Message")
       ], "name")
     ]),
-    group("legacy", "Legacy teachers", [
+    group("leadershipTeam", "Leadership team", [
       text("title", "Title"),
-      area("intro", "Introduction"),
-      list("teachers", "Teachers", [
+      text("kicker", "Kicker"),
+      list("people", "People", [
         text("name", "Name"),
-        text("year", "Year"),
-        text("profile", "Profile"),
+        text("role", "Role"),
         image("photo", "Photo"),
-        text("photoAlt", "Photo alt text")
-      ], "name")
+        text("photoAlt", "Photo alt text"),
+        text("position", "Photo position")
+      ], "name"),
+      area("quote", "Quote")
     ]),
     group("teams", "Teams", [
       text("title", "Title"),
@@ -373,7 +374,11 @@ const facilities = page({
         list("features", "Features", feature, "label")
       ],
       "title"
-    )
+    ),
+    group("transportTeam", "Transport team", [
+      text("title", "Title"),
+      photos("photos", "Photos")
+    ])
   ]
 });
 
@@ -619,6 +624,10 @@ const beyondBooks = page({
       text("lede", "Introduction"),
       area("body", "Text"),
       photos("photos", "Photos", true)
+    ]),
+    group("transportTeam", "Transport team", [
+      text("title", "Title"),
+      photos("photos", "Photos")
     ])
   ]
 });
@@ -692,7 +701,11 @@ const admissions = page({
     list("stages", "Stages", [text("title", "Title"), area("text", "Text")]),
     text("processKicker", "Process kicker"),
     text("processTitle", "Process heading"),
-    list("steps", "Steps", [text("title", "Title"), area("text", "Text")]),
+    list("steps", "Steps", [
+      text("icon", "Icon", "enquire, visit, apply, interaction, or offer."),
+      text("title", "Title"),
+      area("text", "Text")
+    ]),
     text("feesKicker", "Fees kicker"),
     text("feesTitle", "Fees heading"),
     area("feesNote", "Fees note"),
@@ -704,7 +717,12 @@ const admissions = page({
     text("documentsKicker", "Documents kicker"),
     text("documentsTitle", "Documents heading"),
     area("documentsBody", "Documents introduction"),
-    words("documents", "Documents")
+    words("documents", "Documents"),
+    group("administrationTeam", "Administration team", [
+      text("title", "Title"),
+      image("image", "Image"),
+      text("imageAlt", "Image alt text")
+    ])
   ]
 });
 
