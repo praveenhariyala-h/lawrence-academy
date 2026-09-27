@@ -27,24 +27,29 @@ export const admissionStages = [
 
 export const admissionSteps = [
   {
-    title: "Enquire",
-    text: "Share your child’s age or grade and a little about your family. Use the form on this page or call the admission helpline."
+    icon: "enquire",
+    title: "Make an Enquiry",
+    text: "Fill the enquiry form or get in touch. Our team will reach out to schedule a visit or interaction."
   },
   {
-    title: "Visit campus",
-    text: "Walk the classrooms, labs, and grounds. Meet coordinators and see how a Lawrence day feels."
+    icon: "visit",
+    title: "Visit Us",
+    text: "Tour our campus and meet us, in person or online."
   },
   {
-    title: "Interaction",
-    text: "An age-appropriate conversation or observation helps us understand your child and answer your questions."
+    icon: "apply",
+    title: "Apply for Admission",
+    text: "Fill and submit the application form along with the required documents."
   },
   {
-    title: "Documents",
-    text: "If a place is offered, we collect the records listed below so joining is smooth."
+    icon: "interaction",
+    title: "Admission Interaction",
+    text: "Once the paperwork is submitted, we will schedule face to face meetings and/or placement tests to check grade readiness. Details may vary by grade level."
   },
   {
-    title: "Confirm your place",
-    text: "Complete the fee formalities shared by the office. We then welcome your child into the Lawrence community."
+    icon: "offer",
+    title: "Admission Offer",
+    text: "Once approved, you will receive an offer via email. Confirm your acceptance and pay the required fee within the stipulated time."
   }
 ];
 
@@ -72,12 +77,12 @@ export const admissionFees = [
 ];
 
 export const admissionDocuments = [
-  "Child’s birth certificate",
-  "Passport-size photographs of the child",
-  "Aadhaar of the child and parent, as applicable",
-  "Address proof of the parent or guardian",
-  "Transfer certificate from the previous school (Grade 1 and above)",
-  "Latest report card, if transferring mid-stream"
+  "One photograph of your child",
+  "Co-/extra-curricular records / achievement certificates, if any",
+  "A copy of your child's Birth Certificate",
+  "Transfer Certificate from his/her previous school",
+  "Academic records / transcripts for the last 3 years (if applicable)",
+  "If your child is not an Indian citizen, a copy of his/her visa / permit"
 ];
 
 export type AdmissionStage = (typeof admissionStages)[number];
@@ -109,6 +114,11 @@ export type AdmissionsContent = {
   visitNote: string;
   visitLinkLabel: string;
   submitLabel: string;
+  administrationTeam: {
+    title: string;
+    image: string;
+    imageAlt: string;
+  };
 };
 
 export const defaultAdmissions: AdmissionsContent = {
@@ -120,7 +130,7 @@ export const defaultAdmissions: AdmissionsContent = {
   openingsTitle: "Where your child can begin.",
   stages: admissionStages,
   processKicker: "Admission process",
-  processTitle: "Five clear steps.",
+  processTitle: "Admission Process",
   steps: admissionSteps,
   feesKicker: "Fee structure",
   feesTitle: "What fees cover.",
@@ -128,16 +138,22 @@ export const defaultAdmissions: AdmissionsContent = {
     "Figures for the current academic year are shared by the admissions office during your campus visit, or on the helpline. We do not publish last year’s numbers here so families always receive the latest schedule.",
   fees: admissionFees,
   documentsKicker: "Documents",
-  documentsTitle: "What to keep ready.",
-  documentsBody: "Bring originals for verification. Photocopies can be submitted after a place is offered.",
+  documentsTitle: "Documents Required",
+  documentsBody: "Please keep the following documents ready when you apply for admission.",
   documents: admissionDocuments,
   applyKicker: "Apply now",
-  applyTitle: "Start an enquiry.",
-  applyBody: "Tell us about your child. The admissions team will reply with next dates for campus visits and interactions.",
+  applyTitle: "Admission Enquiry",
+  applyBody:
+    "Let's begin your child's journey. Share a few details and our Admissions Team will get in touch with you shortly.",
   helplineTitle: "Admission helpline",
   visitNote: "Prefer to visit first? See the map on the",
   visitLinkLabel: "contact page",
-  submitLabel: "Start an enquiry"
+  submitLabel: "Submit Enquiry",
+  administrationTeam: {
+    title: "Administration Team",
+    image: "/images/about/principal-devi.jpg",
+    imageAlt: "The Principal of Lawrence High School"
+  }
 };
 
 export async function getAdmissionsContent(): Promise<AdmissionsContent> {

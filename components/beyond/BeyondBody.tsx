@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import AboutReveal from "@/components/about/AboutReveal";
+import FacilityIcon from "@/components/FacilityIcon";
 import FacilitySlider from "@/components/about/FacilitySlider";
 import BeyondIcon from "@/components/beyond/BeyondIcon";
 import PageBanner from "@/components/PageBanner";
@@ -38,7 +39,7 @@ function CaptionPhoto({
 
 export default function BeyondBody({ content: initial }: { content: BeyondContent }) {
   const content = useEditable("beyondBooks", initial);
-  const { hero, sports, creative, communication, stem, programmes, trips } = content;
+  const { hero, sports, creative, communication, stem, programmes, trips, transportTeam } = content;
 
   return (
     <AboutReveal>
@@ -147,7 +148,7 @@ export default function BeyondBody({ content: initial }: { content: BeyondConten
         </div>
       </section>
 
-      <section className="about-band about-band--soft">
+      <section className="about-band about-band--soft bb-stem">
         <div className="wrap">
           <header className="kg-head about-reveal">
             <h2 className="kg-title">{stem.title}</h2>
@@ -177,7 +178,7 @@ export default function BeyondBody({ content: initial }: { content: BeyondConten
         </div>
       </section>
 
-      <section className="about-band about-band--soft">
+      <section className="about-band bb-programmes-band">
         <div className="wrap">
           <div className="bb-programmes">
             {programmes.map((item, index) => (
@@ -186,26 +187,49 @@ export default function BeyondBody({ content: initial }: { content: BeyondConten
                 style={delay(index)}
                 key={item.title}
               >
-                <h2 className="kg-title">{item.title}</h2>
-                {"lede" in item && item.lede ? <p className="kg-lede">{item.lede}</p> : null}
-                <p>{item.body}</p>
+                <div className="bb-programme-copy">
+                  <h2 className="kg-title">{item.title}</h2>
+                  {"lede" in item && item.lede ? <p className="kg-lede">{item.lede}</p> : null}
+                  <p>{item.body}</p>
+                </div>
                 <div className="kg-photo bb-programme-photo">
-                  <Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 900px) 100vw, 46vw" />
+                  <Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 900px) 100vw, 52vw" />
                 </div>
               </article>
             ))}
           </div>
-          <div className="bb-split bb-split--trips">
-            <div className="kg-copy about-reveal">
-              <h2 className="kg-title">{trips.title}</h2>
-              <p className="kg-lede">{trips.lede}</p>
-              <p>{trips.body}</p>
-            </div>
-            <div className="bb-shots bb-shots--3 about-reveal" style={delay(1)}>
-              {trips.photos.map((photo) => (
-                <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 22vw" />
-              ))}
-            </div>
+        </div>
+      </section>
+
+      <section className="about-band about-band--soft bb-trips">
+        <div className="wrap bb-split bb-split--trips">
+          <div className="kg-copy about-reveal">
+            <h2 className="kg-title">{trips.title}</h2>
+            <p className="kg-lede">{trips.lede}</p>
+            <p>{trips.body}</p>
+          </div>
+          <div className="bb-shots bb-shots--3 about-reveal" style={delay(1)}>
+            {trips.photos.map((photo) => (
+              <CaptionPhoto key={photo.caption} {...photo} sizes="(max-width: 900px) 50vw, 22vw" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="about-band">
+        <div className="wrap facility-team">
+          <h2 className="about-reveal">
+            <span className="facility-lead-icon" aria-hidden="true">
+              <FacilityIcon name="transport" />
+            </span>
+            {transportTeam.title}
+          </h2>
+          <div className="facility-team-photos facility-team-photos--2 about-reveal" style={delay(1)}>
+            {transportTeam.photos.map((photo) => (
+              <div className="facility-team-photo" key={photo.src}>
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 46vw, 34vw" />
+              </div>
+            ))}
           </div>
         </div>
       </section>

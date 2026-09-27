@@ -93,5 +93,22 @@
         }
       ]
     }
-  ]
+  ],
+  "transportTeam": {
+    "title": "Transport Team",
+    "photos": [
+      {
+        "src": "/images/about/transport-team-1.jpg",
+        "alt": "The driver of a Lawrence High School bus"
+      },
+      {
+        "src": "/images/about/transport-team-2.jpg",
+        "alt": "Students boarding a Lawrence High School bus"
+      },
+      {
+        "src": "/images/about/transport-team-3.jpg",
+        "alt": "Students and a staff member beside a Lawrence High School bus"
+      }
+    ]
+  }
 }

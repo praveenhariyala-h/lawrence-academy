@@ -1,7 +1,9 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import AboutReveal from "@/components/about/AboutReveal";
+import FacilityIcon from "@/components/FacilityIcon";
 import FacilityRow from "@/components/about/FacilityRow";
 import PageBanner from "@/components/PageBanner";
 import { useEditable } from "@/components/tina/EditablePage";
@@ -13,7 +15,7 @@ function delay(index: number): CSSProperties {
 
 export default function FacilitiesBody({ content: initial }: { content: FacilitiesContent }) {
   const content = useEditable("facilities", initial);
-  const { hero: facilitiesHero, spaces: careSpaces } = content;
+  const { hero: facilitiesHero, spaces: careSpaces, transportTeam } = content;
   return (
     <AboutReveal>
       <PageBanner src={facilitiesHero.image} alt={facilitiesHero.imageAlt} title={facilitiesHero.title} lede={facilitiesHero.lede} showTitle className="page-banner-title" />
@@ -38,6 +40,24 @@ export default function FacilitiesBody({ content: initial }: { content: Faciliti
           </div>
         </section>
       ))}
+
+      <section className="facility-band" id="transport-team">
+        <div className="wrap facility-team">
+          <h2 className="about-reveal">
+            <span className="facility-lead-icon" aria-hidden="true">
+              <FacilityIcon name="transport" />
+            </span>
+            {transportTeam.title}
+          </h2>
+          <div className="facility-team-photos about-reveal" style={delay(1)}>
+            {transportTeam.photos.map((photo) => (
+              <div className="facility-team-photo" key={photo.src}>
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 30vw, 22vw" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </AboutReveal>
   );
 }

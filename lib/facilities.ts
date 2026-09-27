@@ -75,11 +75,30 @@ export const careSpaces: CareSpace[] = [
   }
 ];
 
+export const transportTeam = {
+  title: "Transport Team",
+  photos: [
+    {
+      src: "/images/about/transport-team-1.jpg",
+      alt: "The driver of a Lawrence High School bus"
+    },
+    {
+      src: "/images/about/transport-team-2.jpg",
+      alt: "Students boarding a Lawrence High School bus"
+    },
+    {
+      src: "/images/about/transport-team-3.jpg",
+      alt: "Students and a staff member beside a Lawrence High School bus"
+    }
+  ]
+};
+
 export type FacilitiesContent = {
   metaTitle: string;
   metaDescription: string;
   hero: typeof facilitiesHero;
   spaces: CareSpace[];
+  transportTeam: typeof transportTeam;
 };
 
 export const defaultFacilities: FacilitiesContent = {
@@ -87,7 +106,8 @@ export const defaultFacilities: FacilitiesContent = {
   metaDescription:
     "Transport, day care and infirmary support at Lawrence High School ICSE, HSR Layout — care beyond classrooms.",
   hero: facilitiesHero,
-  spaces: careSpaces
+  spaces: careSpaces,
+  transportTeam
 };
 
 export async function getFacilitiesContent(): Promise<FacilitiesContent> {

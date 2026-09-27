@@ -108,38 +108,31 @@ export const aboutMessages: {
   ]
 };
 
-export const aboutLegacy = {
-  title: "Our Legacy of Dedicated Teachers",
-  intro:
-    "Each member of our faculty brings knowledge, teaching expertise, and a deep commitment to student growth, creating a positive learning environment where every child feels seen, supported, and challenged to become the best version of themselves.",
-  teachers: [
+export const aboutLeadershipTeam = {
+  title: "Our Leadership Team",
+  kicker: "Committed to accomplishing each student's well-being",
+  quote: "Leadership is not a position but a shared responsibility to empower every learner.",
+  people: [
     {
-      name: "Ms. Roopa Pandey",
-      year: "2008",
-      profile: "High School Biology",
-      photo: "/images/about/roopa-pandey.png",
-      photoAlt: "Ms. Roopa Pandey, High School Biology"
+      name: "Mrs. Manjula Ramachandran",
+      role: "Vice Principal",
+      photo: "/images/about/vice-principal.png",
+      photoAlt: "Mrs. Manjula Ramachandran, Vice Principal of Lawrence High School",
+      position: "28% 32%"
     },
     {
-      name: "Ms. Irene Manoj",
-      year: "2007",
-      profile: "Primary School Science",
-      photo: "/images/about/irene.png",
-      photoAlt: "Ms. Irene Manoj, Primary School Science"
+      name: "Mrs. Malini Raghu",
+      role: "Headmistress",
+      photo: "/images/about/headmistress.png",
+      photoAlt: "Mrs. Malini Raghu, Headmistress of Lawrence High School",
+      position: "62% 28%"
     },
     {
-      name: "Ms. Thulasi",
-      year: "2006",
-      profile: "Middle School Kannada",
-      photo: "/images/about/thulasi.png",
-      photoAlt: "Ms. Thulasi, Middle School Kannada"
-    },
-    {
-      name: "Ms. Kanchan",
-      year: "2007",
-      profile: "High School Hindi",
-      photo: "/images/about/kanchan.png",
-      photoAlt: "Ms. Kanchan, High School Hindi"
+      name: "Mrs. Roopa De",
+      role: "KG Coordinator",
+      photo: "/images/about/kg-coordinator.png",
+      photoAlt: "Mrs. Roopa De, KG Coordinator of Lawrence High School",
+      position: "34% 38%"
     }
   ]
 };
@@ -223,7 +216,7 @@ export type AboutContent = {
   journey: typeof aboutJourney;
   philosophy: typeof aboutPhilosophy;
   messages: typeof aboutMessages;
-  legacy: typeof aboutLegacy;
+  leadershipTeam: typeof aboutLeadershipTeam;
   teams: typeof aboutTeams;
   schoolValues: typeof aboutValues;
   motto: string;
@@ -232,13 +225,13 @@ export type AboutContent = {
 export const defaultAbout: AboutContent = {
   metaTitle: "About Us",
   metaDescription:
-    "Lawrence High School ICSE, HSR Layout — our journey, educational philosophy, leadership, dedicated teachers, and values.",
+    "Lawrence High School ICSE, HSR Layout — our journey, educational philosophy, leadership, and values.",
   hero: aboutHero,
   stats: aboutStats,
   journey: aboutJourney,
   philosophy: aboutPhilosophy,
   messages: aboutMessages,
-  legacy: aboutLegacy,
+  leadershipTeam: aboutLeadershipTeam,
   teams: aboutTeams,
   schoolValues: aboutValues,
   motto: aboutMotto

@@ -84,11 +84,3 @@ export const leadership = [
   { name: "Mrs. Malini Raghu", role: "Jr School Headmistress" },
   { name: "Mrs. Roopa De", role: "Kindergarten Coordinator" }
 ];
-
-export const legacyTeachers = [
-  { name: "Ms. Roopa Pandey", year: "2008", profile: "High School Biology" },
-  { name: "Ms. Irene Manoj", year: "2007", profile: "Primary School Science" },
-  { name: "Ms. Thulasi", year: "2006", profile: "Middle School Kannada" },
-  { name: "Ms. Kanchan", year: "2007", profile: "High School Hindi" },
-  { name: "Mrs. Manjula Ramachandran", year: "2008", profile: "Vice Principal & High School Geography" }
-];
