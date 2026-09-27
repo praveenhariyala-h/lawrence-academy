@@ -137,7 +137,7 @@
       "tagline": "Read. Learn. Grow.",
       "body": "Our well-stocked library provides a peaceful and enriching environment for students to explore a wide range of books, reference materials, magazines and digital resources. It nurtures a love for reading, critical thinking and lifelong learning.",
       "image": {
-        "src": "/images/campus/library.png",
+        "src": "/images/VJN00059.jpg",
         "alt": "Students browsing books in the Lawrence High School library"
       },
       "features": [
@@ -190,9 +190,9 @@
     },
     {
       "id": "sandpit",
-      "title": "Sandpit Area",
+      "title": "Outdoor Play Zone ",
       "tagline": "Play. Explore. Imagine. Grow.",
-      "body": "Our sandpit area offers a safe and engaging outdoor space where children can explore, create and learn through play. It encourages sensory development, fine motor skills, creativity and social interaction in a natural and joyful setting.",
+      "body": "Our vibrant outdoor play space provides children with a safe and joyful environment to play, explore and discover. Through climbing, balancing, swinging and imaginative play, children develop physical coordination, confidence, creativity and social skills while enjoying the freedom of outdoor activity.",
       "image": {
         "src": "/images/campus/sandpit.png",
         "alt": "Children playing in the sandpit at Lawrence High School"
