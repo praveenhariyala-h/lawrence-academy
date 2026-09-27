@@ -3,17 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment, memo, useCallback, useEffect, useState } from "react";
+import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { nav } from "@/lib/site";
 
 const NavLinks = memo(function NavLinks({
   pathname,
-  onNavigate
+  onNavigate,
+  mode = "desktop"
 }: {
   pathname: string;
   onNavigate: () => void;
+  mode?: "desktop" | "drawer";
 }) {
   const [closedHref, setClosedHref] = useState<string | null>(null);
+  const [openHref, setOpenHref] = useState<string | null>(null);
+  const drawer = mode === "drawer";
+
+  useEffect(() => {
+    setClosedHref(null);
+    setOpenHref(null);
+  }, [pathname]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -26,6 +35,10 @@ const NavLinks = memo(function NavLinks({
     },
     [onNavigate]
   );
+
+  const toggleSection = useCallback((href: string) => {
+    setOpenHref((current) => (current === href ? null : href));
+  }, []);
 
   return (
     <>
@@ -46,15 +59,33 @@ const NavLinks = memo(function NavLinks({
         return (
           <div
             key={link.href}
-            className={closedHref === link.href ? "nav-item is-closed" : "nav-item"}
-            onMouseLeave={() => setClosedHref(null)}
+            className={
+              drawer
+                ? openHref === link.href
+                  ? "nav-item is-open"
+                  : "nav-item"
+                : closedHref === link.href
+                  ? "nav-item is-closed"
+                  : "nav-item"
+            }
+            onMouseLeave={() => {
+              if (!drawer) setClosedHref(null);
+            }}
           >
             <Link
               href={link.href}
               className="nav-parent"
               aria-current={isActive(link.href) ? "page" : undefined}
               aria-haspopup="true"
-              onClick={(event) => closeDropdown(link.href, event)}
+              aria-expanded={drawer ? openHref === link.href : undefined}
+              onClick={(event) => {
+                if (drawer) {
+                  event.preventDefault();
+                  toggleSection(link.href);
+                  return;
+                }
+                closeDropdown(link.href, event);
+              }}
             >
               {link.label}
               <span className="nav-caret" aria-hidden="true" />
@@ -127,10 +158,28 @@ function AdmissionsMarquee() {
 
 function Header() {
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
   const closeMenu = useCallback(() => setOpen(false), []);
   const toggleMenu = useCallback(() => setOpen((value) => !value), []);
+
+  const syncDrawerTop = useCallback(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const bottom = Math.max(0, Math.ceil(header.getBoundingClientRect().bottom));
+    document.documentElement.style.setProperty("--nav-drawer-top", `${bottom}px`);
+  }, []);
+
+  useLayoutEffect(() => {
+    syncDrawerTop();
+    window.addEventListener("resize", syncDrawerTop);
+    window.addEventListener("scroll", syncDrawerTop, { passive: true });
+    return () => {
+      window.removeEventListener("resize", syncDrawerTop);
+      window.removeEventListener("scroll", syncDrawerTop);
+    };
+  }, [syncDrawerTop]);
 
   useEffect(() => {
     setOpen(false);
@@ -146,8 +195,9 @@ function Header() {
 
   useEffect(() => {
     document.body.classList.toggle("nav-locked", open);
+    if (open) syncDrawerTop();
     return () => document.body.classList.remove("nav-locked");
-  }, [open]);
+  }, [open, syncDrawerTop]);
 
   return (
     <>
@@ -162,7 +212,7 @@ function Header() {
           </Link>
         </div>
       </div>
-      <header className="header">
+      <header className="header" ref={headerRef}>
         <div className="wrap">
           <Link className="logo" href="/" onClick={closeMenu}>
             <Image
@@ -203,7 +253,7 @@ function Header() {
         aria-label="Mobile"
         aria-hidden={!open}
       >
-        <NavLinks pathname={pathname} onNavigate={closeMenu} />
+        <NavLinks pathname={pathname} onNavigate={closeMenu} mode="drawer" />
         <Link className="btn btn--blue" href="/admissions" onClick={closeMenu}>
           Apply
         </Link>
