@@ -1,4 +1,6 @@
 {
+  "metaTitle": "Middle School",
+  "metaDescription": "Middle School at Lawrence High School ICSE — Grades 5 to 7. NEWS: Navigate, Explore, Work Hard, Succeed.",
   "hero": {
     "kicker": "Middle School",
     "grades": "Grades 5 – 7",
@@ -163,9 +165,9 @@
     ]
   },
   "moments": {
-    "kicker": "Middle School Moments",
-    "title": "A Glimpse into Our Learning Journey",
-    "lede": "Exploring. Experiencing. Growing.",
+    "kicker": "",
+    "title": "Middle School Moments",
+    "lede": "",
     "photos": [
       {
         "src": "/images/about/ms-moments-1.png",
@@ -200,7 +202,5 @@
         "alt": "Middle school students performing a bakery scene on stage"
       }
     ]
-  },
-  "metaTitle": "Middle School",
-  "metaDescription": "Middle School at Lawrence High School ICSE — Grades 5 to 7. NEWS: Navigate, Explore, Work Hard, Succeed."
+  }
 }
