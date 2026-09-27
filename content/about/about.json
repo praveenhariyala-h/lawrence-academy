@@ -94,9 +94,8 @@
     ]
   },
   "leadershipTeam": {
-    "title": "Our Leadership Team",
+    "title": "The Team Behind Every Journey",
     "kicker": "Committed to accomplishing each student's well-being",
-    "quote": "Leadership is not a position but a shared responsibility to empower every learner.",
     "people": [
       {
         "name": "Mrs. Manjula Ramachandran",
@@ -119,7 +118,8 @@
         "photoAlt": "Mrs. Roopa De, KG Coordinator of Lawrence High School",
         "position": "34% 38%"
       }
-    ]
+    ],
+    "quote": "Leadership is not a position but a shared responsibility to empower every learner."
   },
   "teams": {
     "title": "Our Teams",
