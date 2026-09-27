@@ -30,7 +30,7 @@ function lines(name: string, label: string): TinaField {
     name,
     label,
     list: true,
-    ui: { component: "textarea" }
+    description: "Add one paragraph per entry."
   };
 }
 
@@ -304,7 +304,7 @@ const about = page({
         text("photoAlt", "Photo alt text")
       ], "name")
     ]),
-    group("values", "Values", [
+    group("schoolValues", "Values", [
       text("title", "Title"),
       list("items", "Values", [
         text("key", "Icon", "excellence, integrity, respect, curiosity, compassion, or responsibility."),

@@ -1481,6 +1481,47 @@ body.nav-locked {
   align-items: start;
 }
 
+@media (min-width: 1101px) {
+  .home-highlights {
+    align-items: start;
+  }
+
+  .home-panel--main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-panel--main .achievement-carousel {
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .home-panel--main .achievement-carousel-viewport,
+  .home-panel--main .home-achievement {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .home-panel--main .home-achievement {
+    align-items: stretch;
+  }
+
+  .home-panel--main .home-achievement-photo {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .home-panel--main .home-achievement-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+}
+
 .home-panel-head {
   display: flex;
   justify-content: space-between;
@@ -1569,14 +1610,18 @@ body.nav-locked {
 .home-achievement-photo {
   position: relative;
   width: 100%;
-  min-height: 200px;
-  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 12px;
   background: var(--pearl);
 }
 
-.home-achievement-photo img,
+.home-achievement-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .home-campus-photo img {
   object-fit: cover;
 }
@@ -3098,8 +3143,6 @@ body.nav-locked {
 
   .home-achievement-photo {
     width: 100%;
-    height: auto;
-    min-height: 160px;
   }
 
   .home-campus-photo {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 export type AchievementSlide = {
   title: string;
@@ -30,6 +30,36 @@ export default function AchievementsCarousel({
     },
     [count]
   );
+
+  useLayoutEffect(() => {
+    const photos = Array.from(document.querySelectorAll<HTMLElement>(".home-achievement-photo"));
+    const campus = document.querySelector(".home-highlights .home-panel--compact");
+    if (!photos.length || !campus) return undefined;
+
+    const apply = () => {
+      const wide = window.matchMedia("(min-width: 1101px)").matches;
+      if (!wide) {
+        photos.forEach((photo) => {
+          photo.style.height = "";
+        });
+        return;
+      }
+      const bottom = campus.getBoundingClientRect().bottom;
+      photos.forEach((photo) => {
+        const height = Math.round(bottom - photo.getBoundingClientRect().top);
+        photo.style.height = height > 0 ? `${height}px` : "";
+      });
+    };
+
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(campus);
+    window.addEventListener("resize", apply);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", apply);
+    };
+  }, [count]);
 
   useEffect(() => {
     if (paused || count < 2) return undefined;
@@ -62,7 +92,14 @@ export default function AchievementsCarousel({
             tabIndex={slideIndex === index ? 0 : -1}
           >
             <div className="home-achievement-photo">
-              <Image src={item.image} alt={item.alt} fill sizes="(max-width: 900px) 100vw, 52vw" />
+              <Image
+                src={item.image}
+                alt={item.alt}
+                width={960}
+                height={1200}
+                sizes="(max-width: 900px) 92vw, 42vw"
+                className="home-achievement-img"
+              />
             </div>
             <div>
               {item.date ? <span className="home-achievement-date">{item.date}</span> : null}
