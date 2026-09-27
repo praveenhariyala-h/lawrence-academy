@@ -136,7 +136,7 @@
     }
   ],
   "beyondClassroom": {
-    "title": "More Than\na Classroom",
+    "title": "Beyond Books",
     "body": "Sports, arts, clubs, competitions, field trips and leadership experiences that shape confident individuals.",
     "ctaLabel": "Explore Beyond Books",
     "ctaHref": "/beyond-books",
@@ -167,9 +167,9 @@
   "achievementsViewAllLabel": "View all",
   "campusSpotlight": {
     "title": "Our Campus",
+    "body": "Modern facilities, inspiring spaces, and a safe, well-planned environment for learning and growth.",
     "ctaLabel": "Explore Campus",
     "ctaHref": "/about/campus",
-    "body": "Modern facilities, inspiring spaces, and a safe, well-planned environment for learning and growth.",
     "image": "/images/home/hero/hero-building.png",
     "alt": "Lawrence High School campus, HSR Layout"
   },
