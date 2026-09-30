@@ -1,0 +1,106 @@
+{
+  "metaTitle": "Alumni",
+  "metaDescription": "Lawrence School Alumni networking and engagement form. Reconnect with Lawrence High School and share how you would like to be involved.",
+  "hero": {
+    "kicker": "Alumni",
+    "title": "Once a *Lawrencian*, always a Lawrencian.",
+    "lede": "Come back to the community that shaped you, and tell us how you would like to stay involved.",
+    "image": "/images/about/bb-assembly-1.png",
+    "imageAlt": "Lawrence High School students gathered together in assembly"
+  },
+  "stories": {
+    "title": "Alumni stories",
+    "intro": "Wherever life takes them, our alumni carry Lawrence with them — the lessons, the friendships, the values and the person they are today.",
+    "items": [
+      {
+        "name": "Ananya Rao",
+        "batch": "Batch of 2018",
+        "role": "Software Engineer",
+        "place": "Bangalore, India",
+        "photo": "/images/alumni/ananya.jpg",
+        "photoAlt": "Ananya Rao",
+        "quote": "My years at Lawrence gave me a strong foundation, wonderful friendships and the confidence to chase my dreams. The nurturing environment here helped me discover my interests and believe in myself."
+      },
+      {
+        "name": "Rohan Mehta",
+        "batch": "Batch of 2016",
+        "role": "Mechanical Engineer",
+        "place": "Singapore",
+        "photo": "/images/alumni/rohan.jpg",
+        "photoAlt": "Rohan Mehta",
+        "quote": "Lawrence taught me the importance of discipline, curiosity and kindness. The values I learnt here continue to guide me in every step of my journey. I am grateful to my teachers who always encouraged me to do my best."
+      },
+      {
+        "name": "Meera Nair",
+        "batch": "Batch of 2019",
+        "role": "Medical Student",
+        "place": "Chennai, India",
+        "photo": "/images/alumni/meera.jpg",
+        "photoAlt": "Meera Nair",
+        "quote": "Lawrence gave me a space to learn, grow and explore my passions. The support from teachers and the friendships I built here will always remain a special part of my life."
+      },
+      {
+        "name": "Arjun Singh",
+        "batch": "Batch of 2015",
+        "role": "Entrepreneur",
+        "place": "Dubai, UAE",
+        "photo": "/images/alumni/arjun.jpg",
+        "photoAlt": "Arjun Singh",
+        "quote": "From sports to academics, Lawrence helped me develop confidence, resilience and a love for learning. The experiences here shaped who I am today."
+      },
+      {
+        "name": "Neha Varghese",
+        "batch": "Batch of 2017",
+        "role": "Chartered Accountant",
+        "place": "Bangalore, India",
+        "photo": "/images/alumni/neha.jpg",
+        "photoAlt": "Neha Varghese",
+        "quote": "The values, teachers and opportunities at Lawrence helped me become a better version of myself. I will always be proud to be a Lawrencian."
+      }
+    ]
+  },
+  "form": {
+    "heading": "Lawrence School Alumni - networking & engagement form",
+    "intro": "Share where life has taken you, and the ways you would like to give back to Lawrence.",
+    "successMessage": "Thank you. Your details are with the school, and we will be in touch.",
+    "detailsHeading": "Your details",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@email.com",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Your full name",
+    "genderLabel": "Gender",
+    "genders": ["Male", "Female"],
+    "clearGenderLabel": "Clear selection",
+    "dobLabel": "Date of Birth",
+    "phoneLabel": "Mobile Number",
+    "phonePlaceholder": "10-digit mobile number",
+    "yearLabel": "Year of Graduation (10th Standard)",
+    "yearPlaceholder": "Select year",
+    "backgroundHeading": "What do you do (professional background)",
+    "backgroundNote": "(Or education background)",
+    "organisationLabel": "Organisation / Company Name",
+    "organisationPlaceholder": "School, college, or company",
+    "roleLabel": "Your Role / job description",
+    "rolePlaceholder": "Your role, or what you are studying",
+    "networkLabel": "Would you like to join the Lawrence school alumni network",
+    "yesLabel": "Yes",
+    "noLabel": "No",
+    "engagementHeading": "Engagement & Networking",
+    "involveLabel": "How would you like to be involved with the school?",
+    "involveError": "Choose at least one way you would like to be involved.",
+    "involvement": [
+      "Offer an Internship / Job Opportunities",
+      "Guest Lecture - share your knowledge",
+      "Financial support for school infrastructure",
+      "Sponsor a student, offer scholarships or awards"
+    ],
+    "otherLabel": "Other:",
+    "otherPlaceholder": "Please specify",
+    "influenceLabel": "How did Lawrence school influence you?",
+    "influencePlaceholder": "Your answer",
+    "featureLabel": "What would you like to be featured on our website?",
+    "featurePlaceholder": "Your answer",
+    "submitLabel": "Submit",
+    "resetLabel": "Reset"
+  }
+}

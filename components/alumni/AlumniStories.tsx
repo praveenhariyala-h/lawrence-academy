@@ -1,52 +1,6 @@
 import Image from "next/image";
-
-const stories = [
-  {
-    name: "Ananya Rao",
-    batch: "Batch of 2018",
-    role: "Software Engineer",
-    place: "Bangalore, India",
-    photo: "/images/alumni/ananya.jpg",
-    quote:
-      "My years at Lawrence gave me a strong foundation, wonderful friendships and the confidence to chase my dreams. The nurturing environment here helped me discover my interests and believe in myself."
-  },
-  {
-    name: "Rohan Mehta",
-    batch: "Batch of 2016",
-    role: "Mechanical Engineer",
-    place: "Singapore",
-    photo: "/images/alumni/rohan.jpg",
-    quote:
-      "Lawrence taught me the importance of discipline, curiosity and kindness. The values I learnt here continue to guide me in every step of my journey. I am grateful to my teachers who always encouraged me to do my best."
-  },
-  {
-    name: "Meera Nair",
-    batch: "Batch of 2019",
-    role: "Medical Student",
-    place: "Chennai, India",
-    photo: "/images/alumni/meera.jpg",
-    quote:
-      "Lawrence gave me a space to learn, grow and explore my passions. The support from teachers and the friendships I built here will always remain a special part of my life."
-  },
-  {
-    name: "Arjun Singh",
-    batch: "Batch of 2015",
-    role: "Entrepreneur",
-    place: "Dubai, UAE",
-    photo: "/images/alumni/arjun.jpg",
-    quote:
-      "From sports to academics, Lawrence helped me develop confidence, resilience and a love for learning. The experiences here shaped who I am today."
-  },
-  {
-    name: "Neha Varghese",
-    batch: "Batch of 2017",
-    role: "Chartered Accountant",
-    place: "Bangalore, India",
-    photo: "/images/alumni/neha.jpg",
-    quote:
-      "The values, teachers and opportunities at Lawrence helped me become a better version of myself. I will always be proud to be a Lawrencian."
-  }
-];
+import { tinaMark } from "@/components/tina/EditablePage";
+import type { AlumniContent } from "@/lib/alumni";
 
 function Leaves() {
   return (
@@ -73,35 +27,42 @@ function Leaves() {
   );
 }
 
-export default function AlumniStories() {
+export default function AlumniStories({ stories }: { stories: AlumniContent["stories"] }) {
+  const items = (stories.items ?? []).filter((story) => story && (story.name || story.quote || story.photo));
+
   return (
     <section className="alumni-stories" aria-labelledby="alumni-stories-title">
       <Leaves />
       <div className="wrap">
-        <h2 className="visually-hidden" id="alumni-stories-title">
-          Alumni stories
+        <h2 className="visually-hidden" id="alumni-stories-title" data-tina-field={tinaMark(stories, "title")}>
+          {stories.title}
         </h2>
-        <p className="alumni-stories-intro">
-          Wherever life takes them, our alumni carry Lawrence with them — the lessons, the friendships, the values and the person they are today.
+        <p className="alumni-stories-intro" data-tina-field={tinaMark(stories, "intro")}>
+          {stories.intro}
         </p>
         <div className="alumni-story-list">
-          {stories.map((story, index) => (
-            <article className={index % 2 === 1 ? "alumni-story is-reverse" : "alumni-story"} key={story.name}>
-              <Image
-                className="alumni-story-photo"
-                src={story.photo}
-                alt=""
-                width={480}
-                height={360}
-              />
+          {items.map((story, index) => (
+            <article className={index % 2 === 1 ? "alumni-story is-reverse" : "alumni-story"} key={`${story.name}-${index}`}>
+              {story.photo ? (
+                <Image
+                  className="alumni-story-photo"
+                  src={story.photo}
+                  alt={story.photoAlt || story.name}
+                  width={480}
+                  height={360}
+                  data-tina-field={tinaMark(story, "photo")}
+                />
+              ) : null}
               <div className="alumni-story-id">
-                <h3>{story.name}</h3>
-                <p className="alumni-story-batch">{story.batch}</p>
-                <p>{story.role}</p>
-                <p>{story.place}</p>
+                <h3 data-tina-field={tinaMark(story, "name")}>{story.name}</h3>
+                <p className="alumni-story-batch" data-tina-field={tinaMark(story, "batch")}>
+                  {story.batch}
+                </p>
+                <p data-tina-field={tinaMark(story, "role")}>{story.role}</p>
+                <p data-tina-field={tinaMark(story, "place")}>{story.place}</p>
               </div>
               <span className="alumni-story-rule" aria-hidden="true" />
-              <blockquote className="alumni-story-quote">
+              <blockquote className="alumni-story-quote" data-tina-field={tinaMark(story, "quote")}>
                 <span aria-hidden="true">“</span>
                 <p>&ldquo;{story.quote}&rdquo;</p>
               </blockquote>

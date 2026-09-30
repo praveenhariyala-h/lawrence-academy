@@ -762,6 +762,75 @@ const contact = page({
   ]
 });
 
+const alumni = page({
+  name: "alumni",
+  label: "Alumni",
+  folder: "alumni",
+  route: "/alumni",
+  fields: [
+    ...metaFields,
+    group("hero", "Hero", [
+      text("kicker", "Kicker"),
+      text("title", "Title", emphasis),
+      area("lede", "Introduction"),
+      image("image", "Image"),
+      text("imageAlt", "Image alt text")
+    ]),
+    group("stories", "Stories", [
+      text("title", "Heading"),
+      area("intro", "Introduction"),
+      list("items", "Alumni", [
+        text("name", "Name"),
+        text("batch", "Batch"),
+        text("role", "Role"),
+        text("place", "Place"),
+        image("photo", "Photo"),
+        text("photoAlt", "Photo alt text"),
+        area("quote", "Quote")
+      ], "name")
+    ]),
+    group("form", "Form", [
+      text("heading", "Heading"),
+      area("intro", "Introduction"),
+      text("successMessage", "Success message"),
+      text("detailsHeading", "Your details heading"),
+      text("emailLabel", "Email label"),
+      text("emailPlaceholder", "Email placeholder"),
+      text("nameLabel", "Name label"),
+      text("namePlaceholder", "Name placeholder"),
+      text("genderLabel", "Gender label"),
+      words("genders", "Gender options"),
+      text("clearGenderLabel", "Clear gender label"),
+      text("dobLabel", "Date of birth label"),
+      text("phoneLabel", "Mobile label"),
+      text("phonePlaceholder", "Mobile placeholder"),
+      text("yearLabel", "Graduation year label"),
+      text("yearPlaceholder", "Graduation year placeholder"),
+      text("backgroundHeading", "Background heading"),
+      text("backgroundNote", "Background note"),
+      text("organisationLabel", "Organisation label"),
+      text("organisationPlaceholder", "Organisation placeholder"),
+      text("roleLabel", "Role label"),
+      text("rolePlaceholder", "Role placeholder"),
+      text("networkLabel", "Network question"),
+      text("yesLabel", "Yes label"),
+      text("noLabel", "No label"),
+      text("engagementHeading", "Engagement heading"),
+      text("involveLabel", "Involvement question"),
+      text("involveError", "Involvement error"),
+      words("involvement", "Involvement options"),
+      text("otherLabel", "Other label"),
+      text("otherPlaceholder", "Other placeholder"),
+      text("influenceLabel", "Influence question"),
+      text("influencePlaceholder", "Influence placeholder"),
+      text("featureLabel", "Feature question"),
+      text("featurePlaceholder", "Feature placeholder"),
+      text("submitLabel", "Submit label"),
+      text("resetLabel", "Reset label")
+    ])
+  ]
+});
+
 const recruitment = page({
   name: "recruitment",
   label: "Staff Recruitment",
@@ -835,6 +904,7 @@ export default defineConfig({
       highSchool,
       beyondBooks,
       news,
+      alumni,
       admissions,
       contact,
       recruitment
