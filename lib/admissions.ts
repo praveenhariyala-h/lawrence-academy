@@ -6,25 +6,6 @@ export const admissionHero = {
   lede: "Lawrence High School ICSE, HSR Layout welcomes families from Kindergarten to Grade 10. Start with an enquiry, visit campus, and we will walk you through the rest."
 };
 
-export const admissionStages = [
-  {
-    title: "Kindergarten",
-    text: "Curiosity begins here — a gentle first year of play, language, and belonging."
-  },
-  {
-    title: "Primary School",
-    text: "Strong foundations in reading, writing, number sense, and classroom confidence."
-  },
-  {
-    title: "Middle School",
-    text: "Exploring, questioning, and creating — with growing independence."
-  },
-  {
-    title: "High School",
-    text: "ICSE preparation for tomorrow, with character and leadership alongside academics."
-  }
-];
-
 export const admissionSteps = [
   {
     icon: "enquire",
@@ -77,15 +58,16 @@ export const admissionFees = [
 ];
 
 export const admissionDocuments = [
-  "One photograph of your child",
-  "Co-/extra-curricular records / achievement certificates, if any",
-  "A copy of your child's Birth Certificate",
-  "Transfer Certificate from his/her previous school",
-  "Academic records / transcripts for the last 3 years (if applicable)",
-  "If your child is not an Indian citizen, a copy of his/her visa / permit"
+  "2 PP Size Photographs",
+  "Copy of Birth Certificate",
+  "Original T.C.",
+  "Copy of Marks Statement",
+  "Declaration form",
+  "Transport requisition form",
+  "Family Photograph 4x6",
+  "Copy of Aadhaar Card (Parents and Student)"
 ];
 
-export type AdmissionStage = (typeof admissionStages)[number];
 export type AdmissionStep = (typeof admissionSteps)[number];
 export type AdmissionFee = (typeof admissionFees)[number];
 
@@ -93,9 +75,6 @@ export type AdmissionsContent = {
   metaTitle: string;
   metaDescription: string;
   hero: typeof admissionHero;
-  openingsKicker: string;
-  openingsTitle: string;
-  stages: AdmissionStage[];
   processKicker: string;
   processTitle: string;
   steps: AdmissionStep[];
@@ -114,11 +93,6 @@ export type AdmissionsContent = {
   visitNote: string;
   visitLinkLabel: string;
   submitLabel: string;
-  administrationTeam: {
-    title: string;
-    image: string;
-    imageAlt: string;
-  };
 };
 
 export const defaultAdmissions: AdmissionsContent = {
@@ -126,9 +100,6 @@ export const defaultAdmissions: AdmissionsContent = {
   metaDescription:
     "Enquire, visit campus, and join Lawrence High School ICSE, HSR Layout — from Kindergarten to Grade 10.",
   hero: admissionHero,
-  openingsKicker: "Openings",
-  openingsTitle: "Where your child can begin.",
-  stages: admissionStages,
   processKicker: "Admission process",
   processTitle: "Admission Process",
   steps: admissionSteps,
@@ -139,7 +110,7 @@ export const defaultAdmissions: AdmissionsContent = {
   fees: admissionFees,
   documentsKicker: "Documents",
   documentsTitle: "Documents Required",
-  documentsBody: "Please keep the following documents ready when you apply for admission.",
+  documentsBody: "Submit the following relevant documents along with the Application Form.",
   documents: admissionDocuments,
   applyKicker: "Apply now",
   applyTitle: "Admission Enquiry",
@@ -148,12 +119,7 @@ export const defaultAdmissions: AdmissionsContent = {
   helplineTitle: "Admission helpline",
   visitNote: "Prefer to visit first? See the map on the",
   visitLinkLabel: "contact page",
-  submitLabel: "Submit Enquiry",
-  administrationTeam: {
-    title: "Administration Team",
-    image: "/images/about/principal-devi.jpg",
-    imageAlt: "The Principal of Lawrence High School"
-  }
+  submitLabel: "Submit Enquiry"
 };
 
 export async function getAdmissionsContent(): Promise<AdmissionsContent> {

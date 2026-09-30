@@ -36,8 +36,7 @@ export default function HomeView({
               <Image
                 src={home.whyImage}
                 alt={home.whyImageAlt}
-                width={1024}
-                height={641}
+                fill
                 sizes="(max-width: 900px) 100vw, 58vw"
               />
             </div>

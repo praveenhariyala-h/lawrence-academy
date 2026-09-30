@@ -224,7 +224,7 @@ export default function BeyondBody({ content: initial }: { content: BeyondConten
             </span>
             {transportTeam.title}
           </h2>
-          <div className="facility-team-photos facility-team-photos--2 about-reveal" style={delay(1)}>
+          <div className="facility-team-photos facility-team-photos--2 facility-team-photos--fit about-reveal" style={delay(1)}>
             {transportTeam.photos.map((photo) => (
               <div className="facility-team-photo" key={photo.src}>
                 <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 46vw, 34vw" />

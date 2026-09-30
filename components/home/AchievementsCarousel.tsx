@@ -95,8 +95,7 @@ export default function AchievementsCarousel({
               <Image
                 src={item.image}
                 alt={item.alt}
-                width={960}
-                height={1200}
+                fill
                 sizes="(max-width: 900px) 92vw, 42vw"
                 className="home-achievement-img"
               />

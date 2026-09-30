@@ -16,6 +16,7 @@ export type NewsTabsCopy = {
   resultLabel: string;
   achievementLabel: string;
   eventLabel: string;
+  resultHeading: string;
   resultEmpty: string;
   achievementEmpty: string;
   eventEmpty: string;
@@ -85,6 +86,7 @@ export const defaultNews: NewsContent = {
     resultLabel: "Result",
     achievementLabel: "Achievements",
     eventLabel: "Events",
+    resultHeading: "ICSE CLASS X RESULTS 2025–26",
     resultEmpty: "Results will appear here as they are published.",
     achievementEmpty: "Achievements will appear here as they are published.",
     eventEmpty: "Upcoming events will appear here soon."

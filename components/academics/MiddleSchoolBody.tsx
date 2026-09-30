@@ -25,7 +25,6 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
         kicker={hero.kicker}
         title={hero.title}
         grades={hero.grades}
-        gradesAfter
         className="page-banner-title"
       />
 
