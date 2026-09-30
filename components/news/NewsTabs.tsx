@@ -86,7 +86,12 @@ export default function NewsTabs({
               <AchievementCards items={achievements} />
             ) : null}
 
-            {id === "result" && results.length ? <ResultCards items={results} /> : null}
+            {id === "result" && results.length ? (
+              <>
+                <h2 className="news-result-title">{copy.resultHeading}</h2>
+                <ResultCards items={results} />
+              </>
+            ) : null}
 
             {id === "event" && events.length ? (
               <div className="news-events">

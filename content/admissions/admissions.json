@@ -13,26 +13,6 @@
   "visitNote": "Prefer to visit first? See the map on the",
   "visitLinkLabel": "contact page",
   "submitLabel": "Submit Enquiry",
-  "openingsKicker": "Openings",
-  "openingsTitle": "Where your child can begin.",
-  "stages": [
-    {
-      "title": "Kindergarten",
-      "text": "Curiosity begins here — a gentle first year of play, language, and belonging."
-    },
-    {
-      "title": "Primary School",
-      "text": "Strong foundations in reading, writing, number sense, and classroom confidence."
-    },
-    {
-      "title": "Middle School",
-      "text": "Exploring, questioning, and creating — with growing independence."
-    },
-    {
-      "title": "High School",
-      "text": "ICSE preparation for tomorrow, with character and leadership alongside academics."
-    }
-  ],
   "processKicker": "Admission process",
   "processTitle": "Admission Process",
   "steps": [
@@ -89,18 +69,15 @@
   ],
   "documentsKicker": "Documents",
   "documentsTitle": "Documents Required",
-  "documentsBody": "Please keep the following documents ready when you apply for admission.",
+  "documentsBody": "Submit the following relevant documents along with the Application Form.",
   "documents": [
-    "One photograph of your child",
-    "Co-/extra-curricular records / achievement certificates, if any",
-    "A copy of your child's Birth Certificate",
-    "Transfer Certificate from his/her previous school",
-    "Academic records / transcripts for the last 3 years (if applicable)",
-    "If your child is not an Indian citizen, a copy of his/her visa / permit"
-  ],
-  "administrationTeam": {
-    "title": "Administration Team",
-    "image": "/images/Office-Admin-Staff-(1).JPG",
-    "imageAlt": "The Principal of Lawrence High School"
-  }
+    "2 PP Size Photographs",
+    "Copy of Birth Certificate",
+    "Original T.C.",
+    "Copy of Marks Statement",
+    "Declaration form",
+    "Transport requisition form",
+    "Family Photograph 4x6",
+    "Copy of Aadhaar Card (Parents and Student)"
+  ]
 }

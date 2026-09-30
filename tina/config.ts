@@ -109,6 +109,7 @@ function page(options: {
 
 const heroBanner = group("hero", "Hero", [
   text("kicker", "Kicker"),
+  text("grades", "Grades"),
   text("title", "Title", emphasis),
   area("lede", "Introduction"),
   image("image", "Image"),
@@ -658,6 +659,7 @@ const news = page({
       text("resultLabel", "Results label"),
       text("achievementLabel", "Achievements label"),
       text("eventLabel", "Events label"),
+      text("resultHeading", "Results heading"),
       text("resultEmpty", "Empty results message"),
       text("achievementEmpty", "Empty achievements message"),
       text("eventEmpty", "Empty events message")
@@ -696,9 +698,6 @@ const admissions = page({
     text("visitNote", "Visit note"),
     text("visitLinkLabel", "Visit link label"),
     text("submitLabel", "Form button label"),
-    text("openingsKicker", "Openings kicker"),
-    text("openingsTitle", "Openings heading"),
-    list("stages", "Stages", [text("title", "Title"), area("text", "Text")]),
     text("processKicker", "Process kicker"),
     text("processTitle", "Process heading"),
     list("steps", "Steps", [
@@ -717,12 +716,7 @@ const admissions = page({
     text("documentsKicker", "Documents kicker"),
     text("documentsTitle", "Documents heading"),
     area("documentsBody", "Documents introduction"),
-    words("documents", "Documents"),
-    group("administrationTeam", "Administration team", [
-      text("title", "Title"),
-      image("image", "Image"),
-      text("imageAlt", "Image alt text")
-    ])
+    words("documents", "Documents")
   ]
 });
 

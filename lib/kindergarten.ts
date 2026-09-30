@@ -3,6 +3,7 @@ import { readContent } from "@/lib/readContent";
 export const kindergarten = {
   hero: {
     kicker: "Kindergarten",
+    grades: "Nursery – UKG",
     title: "A Joyful Beginning\nfor a *Brighter Tomorrow*",
     lede: "Play. Learn. Grow.",
     image: "/images/about/kg-hero.png",

@@ -23,6 +23,7 @@ export default function HighSchoolBody({ content: initial }: { content: HighScho
         src={hero.image}
         alt={hero.imageAlt}
         kicker={hero.kicker}
+        grades={hero.grades}
         title={hero.title}
         lede={hero.lede}
         ledeItalic

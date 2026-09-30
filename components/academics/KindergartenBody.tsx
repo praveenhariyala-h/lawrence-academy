@@ -23,10 +23,11 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
         src={hero.image}
         alt={hero.imageAlt}
         kicker={hero.kicker}
+        grades={hero.grades}
         title={hero.title}
         lede={hero.lede}
         ledeItalic
-        className="page-banner-title"
+        className="page-banner-title kg-hero"
       />
 
       <section className="about-band">
