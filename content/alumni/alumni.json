@@ -4,7 +4,7 @@
   "hero": {
     "kicker": "Alumni",
     "title": "Once a *Lawrencian*, always a Lawrencian.",
-    "lede": "Come back to the community that shaped you, and tell us how you would like to stay involved.",
+    "lede": "",
     "image": "/images/about/bb-assembly-1.png",
     "imageAlt": "Lawrence High School students gathered together in assembly"
   },
@@ -69,7 +69,10 @@
     "nameLabel": "Full Name",
     "namePlaceholder": "Your full name",
     "genderLabel": "Gender",
-    "genders": ["Male", "Female"],
+    "genders": [
+      "Male",
+      "Female"
+    ],
     "clearGenderLabel": "Clear selection",
     "dobLabel": "Date of Birth",
     "phoneLabel": "Mobile Number",
