@@ -1,14 +1,29 @@
 import type { Metadata } from "next";
 import AlumniView from "@/components/alumni/AlumniView";
+import { EditablePage } from "@/components/tina/EditablePage";
+import { getAlumniContent } from "@/lib/alumni";
 import { getSchool } from "@/lib/siteContent";
+import { AlumniDocument } from "@/tina/__generated__/types";
 
-export const metadata: Metadata = {
-  title: "Alumni",
-  description:
-    "Lawrence School Alumni networking and engagement form. Reconnect with Lawrence High School and share how you would like to be involved."
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getAlumniContent();
+  return {
+    title: content.metaTitle,
+    description: content.metaDescription
+  };
+}
 
-export default function AlumniPage() {
+export default async function AlumniPage() {
+  const content = await getAlumniContent();
   const school = getSchool();
-  return <AlumniView email={school.emails[0] ?? ""} whatsapp={school.whatsapp} />;
+  return (
+    <EditablePage
+      query={AlumniDocument}
+      variables={{ relativePath: "alumni.json" }}
+      data={{ alumni: content }}
+      documentPath="content/alumni/alumni.json"
+    >
+      <AlumniView content={content} email={school.emails[0] ?? ""} whatsapp={school.whatsapp} />
+    </EditablePage>
+  );
 }

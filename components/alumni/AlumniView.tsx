@@ -4,14 +4,9 @@ import { useMemo, useRef, useState, type FormEvent, type ReactNode } from "react
 import AboutReveal from "@/components/about/AboutReveal";
 import AlumniStories from "@/components/alumni/AlumniStories";
 import PageBanner from "@/components/PageBanner";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
+import type { AlumniContent } from "@/lib/alumni";
 import { sendToMailAndWhatsApp, type EnquiryDelivery } from "@/lib/sendEnquiry";
-
-const involvement = [
-  "Offer an Internship / Job Opportunities",
-  "Guest Lecture - share your knowledge",
-  "Financial support for school infrastructure",
-  "Sponsor a student, offer scholarships or awards"
-];
 
 function RequiredMark() {
   return (
@@ -25,16 +20,18 @@ function Field({
   label,
   required,
   children,
-  wide
+  wide,
+  field
 }: {
   label: string;
   required?: boolean;
   children: ReactNode;
   wide?: boolean;
+  field?: string;
 }) {
   return (
     <label className={wide ? "enquiry-span" : undefined}>
-      <span>
+      <span data-tina-field={field}>
         {label}
         {required ? <> <RequiredMark /></> : null}
       </span>
@@ -43,15 +40,21 @@ function Field({
   );
 }
 
-function involveValidity(form: HTMLFormElement) {
-  const boxes = [...form.querySelectorAll<HTMLInputElement>('input[name="involve"]')];
-  const first = boxes[0];
-  if (!first) return;
-  const chosen = boxes.some((box) => box.checked);
-  first.setCustomValidity(chosen ? "" : "Choose at least one way you would like to be involved.");
+function filled(values: Array<string | null | undefined>) {
+  return values.filter((value): value is string => Boolean(value));
 }
 
-export default function AlumniView({ email, whatsapp }: { email: string; whatsapp: string }) {
+export default function AlumniView({
+  content: initial,
+  email,
+  whatsapp
+}: {
+  content: AlumniContent;
+  email: string;
+  whatsapp: string;
+}) {
+  const content = useEditable("alumni", initial);
+  const form = content.form;
   const [sent, setSent] = useState(false);
   const [delivery, setDelivery] = useState<EnquiryDelivery | null>(null);
   const [gender, setGender] = useState("");
@@ -62,14 +65,24 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
     () => Array.from({ length: thisYear - 1979 }, (_, index) => String(thisYear - index)),
     [thisYear]
   );
+  const genders = filled(form.genders);
+  const involvement = filled(form.involvement);
+
+  function involveValidity(node: HTMLFormElement) {
+    const boxes = [...node.querySelectorAll<HTMLInputElement>('input[name="involve"]')];
+    const first = boxes[0];
+    if (!first) return;
+    const chosen = boxes.some((box) => box.checked);
+    first.setCustomValidity(chosen ? "" : form.involveError);
+  }
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.currentTarget;
-    involveValidity(form);
-    if (!form.reportValidity()) return;
+    const node = event.currentTarget;
+    involveValidity(node);
+    if (!node.reportValidity()) return;
 
-    const data = new FormData(form);
+    const data = new FormData(node);
     const chosen = data
       .getAll("involve")
       .map(String)
@@ -77,27 +90,27 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
       .map((item) => {
         if (item !== "Other") return item;
         const detail = String(data.get("involveOther") ?? "").trim();
-        return detail ? `Other: ${detail}` : "Other";
+        return detail ? `${form.otherLabel} ${detail}` : form.otherLabel;
       });
     const dob = String(data.get("dob") ?? "");
     const body = [
-      "Lawrence School Alumni - networking & engagement form",
+      form.heading,
       "",
-      `Email: ${data.get("email") ?? ""}`,
-      `Full name: ${data.get("fullName") ?? ""}`,
-      `Gender: ${data.get("gender") || "Not specified"}`,
-      `Date of birth: ${dob || "Not specified"}`,
-      `Mobile number: ${data.get("phone") ?? ""}`,
-      `Year of graduation (10th standard): ${data.get("graduationYear") ?? ""}`,
-      `Organisation / company: ${data.get("organisation") || "Not specified"}`,
-      `Role / job description: ${data.get("role") || "Not specified"}`,
-      `Join the alumni network: ${data.get("joinNetwork") || "Not specified"}`,
-      `How they would like to be involved: ${chosen.join("; ")}`,
+      `${form.emailLabel}: ${data.get("email") ?? ""}`,
+      `${form.nameLabel}: ${data.get("fullName") ?? ""}`,
+      `${form.genderLabel}: ${data.get("gender") || "Not specified"}`,
+      `${form.dobLabel}: ${dob || "Not specified"}`,
+      `${form.phoneLabel}: ${data.get("phone") ?? ""}`,
+      `${form.yearLabel}: ${data.get("graduationYear") ?? ""}`,
+      `${form.organisationLabel}: ${data.get("organisation") || "Not specified"}`,
+      `${form.roleLabel}: ${data.get("role") || "Not specified"}`,
+      `${form.networkLabel}: ${data.get("joinNetwork") || "Not specified"}`,
+      `${form.involveLabel} ${chosen.join("; ")}`,
       "",
-      "How Lawrence School influenced them:",
+      `${form.influenceLabel}`,
       String(data.get("influence") ?? ""),
       "",
-      "What they would like featured on the website:",
+      `${form.featureLabel}`,
       String(data.get("feature") ?? "")
     ].join("\n");
 
@@ -106,7 +119,7 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
         sendToMailAndWhatsApp({
           email,
           whatsapp,
-          subject: "Lawrence School Alumni - networking & engagement form",
+          subject: form.heading,
           body
         })
       );
@@ -114,7 +127,7 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
 
     setSent(true);
     clearing.current = true;
-    form.reset();
+    node.reset();
     setGender("");
     setOther(false);
     clearing.current = false;
@@ -124,16 +137,16 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
     <div className="alumni-page">
       <AboutReveal>
         <PageBanner
-          src="/images/about/bb-assembly-1.png"
-          alt="Lawrence High School students gathered together in assembly"
-          kicker="Alumni"
-          title="Once a *Lawrencian*, always a Lawrencian."
-          lede="Come back to the community that shaped you, and tell us how you would like to stay involved."
+          src={content.hero.image}
+          alt={content.hero.imageAlt}
+          kicker={content.hero.kicker}
+          title={content.hero.title}
+          lede={content.hero.lede}
           className="page-banner-title"
         />
       </AboutReveal>
 
-      <AlumniStories />
+      <AlumniStories stories={content.stories} />
 
       <section className="alumni-main" id="alumni-form">
         <div className="wrap">
@@ -156,12 +169,12 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
             noValidate
           >
             <header className="enquiry-head">
-              <h2>Lawrence School Alumni - networking & engagement form</h2>
-              <p>Share where life has taken you, and the ways you would like to give back to Lawrence.</p>
+              <h2 data-tina-field={tinaMark(form, "heading")}>{form.heading}</h2>
+              <p data-tina-field={tinaMark(form, "intro")}>{form.intro}</p>
             </header>
 
             <div className="form-success" role="status">
-              <p>Thank you. Your details are with the school, and we will be in touch.</p>
+              <p data-tina-field={tinaMark(form, "successMessage")}>{form.successMessage}</p>
               {delivery ? (
                 <p className="form-delivery">
                   <a href={delivery.mail}>Open email</a>
@@ -173,67 +186,62 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
             </div>
 
             <section className="enquiry-block">
-              <h3>Your details</h3>
+              <h3 data-tina-field={tinaMark(form, "detailsHeading")}>{form.detailsHeading}</h3>
               <div className="enquiry-grid">
-                <Field label="Email" required>
-                  <input name="email" type="email" required autoComplete="email" placeholder="name@email.com" />
+                <Field label={form.emailLabel} required field={tinaMark(form, "emailLabel")}>
+                  <input name="email" type="email" required autoComplete="email" placeholder={form.emailPlaceholder} />
                 </Field>
-                <Field label="Full Name" required>
-                  <input name="fullName" required autoComplete="name" placeholder="Your full name" />
+                <Field label={form.nameLabel} required field={tinaMark(form, "nameLabel")}>
+                  <input name="fullName" required autoComplete="name" placeholder={form.namePlaceholder} />
                 </Field>
                 <div className="enquiry-span alumni-field">
-                  <span id="alumni-gender">Gender</span>
+                  <span id="alumni-gender" data-tina-field={tinaMark(form, "genderLabel")}>
+                    {form.genderLabel}
+                  </span>
                   <div className="alumni-gender" role="radiogroup" aria-labelledby="alumni-gender">
-                    <label className="alumni-option">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="Male"
-                        checked={gender === "Male"}
-                        onChange={() => setGender("Male")}
-                      />
-                      Male
-                    </label>
-                    <label className="alumni-option">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="Female"
-                        checked={gender === "Female"}
-                        onChange={() => setGender("Female")}
-                      />
-                      Female
-                    </label>
+                    {genders.map((option) => (
+                      <label className="alumni-option" key={option}>
+                        <input
+                          type="radio"
+                          name="gender"
+                          value={option}
+                          checked={gender === option}
+                          onChange={() => setGender(option)}
+                        />
+                        {option}
+                      </label>
+                    ))}
                     <button
                       className="alumni-clear"
                       type="button"
                       disabled={!gender}
                       onClick={() => setGender("")}
+                      data-tina-field={tinaMark(form, "clearGenderLabel")}
                     >
-                      Clear selection
+                      {form.clearGenderLabel}
                     </button>
                   </div>
                 </div>
-                <Field label="Date of Birth">
+                <Field label={form.dobLabel} field={tinaMark(form, "dobLabel")}>
                   <span className="enquiry-date">
                     <input name="dob" type="date" autoComplete="bday" />
                   </span>
                 </Field>
-                <Field label="Mobile Number" required>
+                <Field label={form.phoneLabel} required field={tinaMark(form, "phoneLabel")}>
                   <input
                     name="phone"
                     type="tel"
                     required
                     autoComplete="tel"
                     inputMode="tel"
-                    placeholder="10-digit mobile number"
+                    placeholder={form.phonePlaceholder}
                     pattern="[0-9+\s()-]{10,16}"
                     title="Enter a valid mobile number"
                   />
                 </Field>
-                <Field label="Year of Graduation (10th Standard)" required>
+                <Field label={form.yearLabel} required field={tinaMark(form, "yearLabel")}>
                   <select name="graduationYear" required defaultValue="">
-                    <option value="">Select year</option>
+                    <option value="">{form.yearPlaceholder}</option>
                     {years.map((year) => (
                       <option key={year}>{year}</option>
                     ))}
@@ -244,26 +252,30 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
 
             <section className="enquiry-block">
               <h3>
-                What do you do (professional background)
-                <span className="alumni-sub">(Or education background)</span>
+                <span data-tina-field={tinaMark(form, "backgroundHeading")}>{form.backgroundHeading}</span>
+                <span className="alumni-sub" data-tina-field={tinaMark(form, "backgroundNote")}>
+                  {form.backgroundNote}
+                </span>
               </h3>
               <div className="enquiry-grid">
-                <Field label="Organisation / Company Name">
-                  <input name="organisation" placeholder="School, college, or company" />
+                <Field label={form.organisationLabel} field={tinaMark(form, "organisationLabel")}>
+                  <input name="organisation" placeholder={form.organisationPlaceholder} />
                 </Field>
-                <Field label="Your Role / job description">
-                  <input name="role" placeholder="Your role, or what you are studying" />
+                <Field label={form.roleLabel} field={tinaMark(form, "roleLabel")}>
+                  <input name="role" placeholder={form.rolePlaceholder} />
                 </Field>
                 <div className="enquiry-span alumni-field">
-                  <span id="alumni-network">Would you like to join the Lawrence school alumni network</span>
+                  <span id="alumni-network" data-tina-field={tinaMark(form, "networkLabel")}>
+                    {form.networkLabel}
+                  </span>
                   <div className="alumni-yesno" role="radiogroup" aria-labelledby="alumni-network">
                     <label className="alumni-option">
-                      <input type="radio" name="joinNetwork" value="Yes" />
-                      Yes
+                      <input type="radio" name="joinNetwork" value={form.yesLabel} />
+                      <span data-tina-field={tinaMark(form, "yesLabel")}>{form.yesLabel}</span>
                     </label>
                     <label className="alumni-option">
-                      <input type="radio" name="joinNetwork" value="No" />
-                      No
+                      <input type="radio" name="joinNetwork" value={form.noLabel} />
+                      <span data-tina-field={tinaMark(form, "noLabel")}>{form.noLabel}</span>
                     </label>
                   </div>
                 </div>
@@ -271,13 +283,13 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
             </section>
 
             <section className="enquiry-block">
-              <h3>Engagement & Networking</h3>
+              <h3 data-tina-field={tinaMark(form, "engagementHeading")}>{form.engagementHeading}</h3>
               <div className="enquiry-grid">
                 <div className="enquiry-span alumni-field">
-                  <span id="alumni-involve">
-                    How would you like to be involved with the school? <RequiredMark />
+                  <span id="alumni-involve" data-tina-field={tinaMark(form, "involveLabel")}>
+                    {form.involveLabel} <RequiredMark />
                   </span>
-                  <div className="alumni-checks" role="group" aria-labelledby="alumni-involve">
+                  <div className="alumni-checks" role="group" aria-labelledby="alumni-involve" data-tina-field={tinaMark(form, "involvement")}>
                     {involvement.map((item) => (
                       <label className="alumni-check" key={item}>
                         <input type="checkbox" name="involve" value={item} />
@@ -299,34 +311,34 @@ export default function AlumniView({ email, whatsapp }: { email: string; whatsap
                             }
                           }}
                         />
-                        Other:
+                        <span data-tina-field={tinaMark(form, "otherLabel")}>{form.otherLabel}</span>
                       </label>
                       <input
                         className="alumni-other-input"
                         name="involveOther"
                         disabled={!other}
                         required={other}
-                        placeholder="Please specify"
-                        aria-label="Other way to be involved"
+                        placeholder={form.otherPlaceholder}
+                        aria-label={form.otherPlaceholder}
                       />
                     </div>
                   </div>
                 </div>
-                <Field label="How did Lawrence school influence you?" required wide>
-                  <textarea name="influence" required rows={4} placeholder="Your answer" />
+                <Field label={form.influenceLabel} required wide field={tinaMark(form, "influenceLabel")}>
+                  <textarea name="influence" required rows={4} placeholder={form.influencePlaceholder} />
                 </Field>
-                <Field label="What would you like to be featured on our website?" required wide>
-                  <textarea name="feature" required rows={4} placeholder="Your answer" />
+                <Field label={form.featureLabel} required wide field={tinaMark(form, "featureLabel")}>
+                  <textarea name="feature" required rows={4} placeholder={form.featurePlaceholder} />
                 </Field>
               </div>
             </section>
 
             <div className="alumni-actions">
-              <button className="btn btn--gold contact-submit alumni-submit" type="submit">
-                Submit
+              <button className="btn btn--gold contact-submit alumni-submit" type="submit" data-tina-field={tinaMark(form, "submitLabel")}>
+                {form.submitLabel}
               </button>
-              <button className="btn recruit-reset" type="reset">
-                Reset
+              <button className="btn recruit-reset" type="reset" data-tina-field={tinaMark(form, "resetLabel")}>
+                {form.resetLabel}
               </button>
             </div>
           </form>
