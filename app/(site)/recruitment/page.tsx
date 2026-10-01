@@ -25,7 +25,7 @@ export default async function RecruitmentPage() {
     >
       <RecruitmentView
         content={content}
-        email={school.emails[0] ?? ""}
+        email="lawrencestaffrecruitment@gmail.com"
         whatsapp={school.whatsapp}
       />
     </EditablePage>

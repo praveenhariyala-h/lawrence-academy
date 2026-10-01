@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { HomeHeroSlide } from "@/lib/home";
 
 const SLIDE_MS = 5000;
@@ -10,11 +11,13 @@ const SLIDE_MS = 5000;
 export default function HeroSection({
   slides,
   learnMoreHref,
-  learnMoreLabel
+  learnMoreLabel,
+  learnMoreField
 }: {
   slides: HomeHeroSlide[];
   learnMoreHref: string;
   learnMoreLabel: string;
+  learnMoreField?: string;
 }) {
   const [index, setIndex] = useState(0);
   const [manual, setManual] = useState(false);
@@ -70,6 +73,7 @@ export default function HeroSection({
                   quality={95}
                   priority={slideIndex === 0}
                   className={slide.fit === "contain" ? "is-contain" : undefined}
+                  data-tina-field={tinaMark(slide, "image")}
                   style={{
                     objectFit: slide.fit === "contain" ? "contain" : "cover",
                     objectPosition: "center"
@@ -109,7 +113,7 @@ export default function HeroSection({
           </div>
         ) : null}
       </div>
-      <Link className="hero-learn-more" href={learnMoreHref}>
+      <Link className="hero-learn-more" href={learnMoreHref} data-tina-field={learnMoreField}>
         {learnMoreLabel}
       </Link>
     </div>

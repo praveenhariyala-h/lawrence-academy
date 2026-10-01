@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import AchievementCards from "@/components/news/AchievementCards";
 import ResultCards from "@/components/news/ResultCards";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type {
   NewsAchievement,
   NewsCategory,
@@ -33,6 +34,7 @@ export default function NewsTabs({
   initialTab?: string;
 }) {
   const [tab, setTab] = useState<NewsCategory>(resolveTab(initialTab));
+  const [batchOpen, setBatchOpen] = useState(resolveTab(initialTab) === "result");
   const tabs = useMemo(
     () => [
       { id: "result" as const, label: copy.resultLabel },
@@ -60,13 +62,14 @@ export default function NewsTabs({
             aria-controls={`news-panel-${item.id}`}
             tabIndex={tab === item.id ? 0 : -1}
             onClick={() => {
+              if (item.id !== "result") setBatchOpen(false);
               setTab(item.id);
               const url = new URL(window.location.href);
               url.searchParams.set("tab", item.id);
               window.history.replaceState(null, "", `${url.pathname}${url.search}`);
             }}
           >
-            {item.label}
+            <span data-tina-field={tinaMark(copy, `${item.id}Label`)}>{item.label}</span>
           </button>
         ))}
       </div>
@@ -88,8 +91,10 @@ export default function NewsTabs({
 
             {id === "result" && results.length ? (
               <>
-                <h2 className="news-result-title">{copy.resultHeading}</h2>
-                <ResultCards items={results} />
+                <h2 className="news-result-title" data-tina-field={tinaMark(copy, "resultHeading")}>
+                  {copy.resultHeading}
+                </h2>
+                <ResultCards items={results} startOpen={batchOpen} onDismiss={() => setBatchOpen(false)} />
               </>
             ) : null}
 
@@ -97,6 +102,7 @@ export default function NewsTabs({
               <div className="news-events">
                 <AchievementCards
                   items={events.map((event) => ({
+                    ...event,
                     kicker: event.day && event.month ? `${event.day} ${event.month}` : "Event",
                     title: event.title,
                     body: event.body || event.text,
@@ -108,15 +114,21 @@ export default function NewsTabs({
             ) : null}
 
             {id === "result" && !results.length ? (
-              <p className="lede news-empty">{emptyCopy.result}</p>
+              <p className="lede news-empty" data-tina-field={tinaMark(copy, "resultEmpty")}>
+                {emptyCopy.result}
+              </p>
             ) : null}
 
             {id === "event" && !events.length ? (
-              <p className="lede news-empty">{emptyCopy.event}</p>
+              <p className="lede news-empty" data-tina-field={tinaMark(copy, "eventEmpty")}>
+                {emptyCopy.event}
+              </p>
             ) : null}
 
             {id === "achievement" && !achievements.length ? (
-              <p className="lede news-empty">{emptyCopy.achievement}</p>
+              <p className="lede news-empty" data-tina-field={tinaMark(copy, "achievementEmpty")}>
+                {emptyCopy.achievement}
+              </p>
             ) : null}
           </div>
         );

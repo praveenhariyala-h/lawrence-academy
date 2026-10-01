@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { HomePathway } from "@/lib/home";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
@@ -174,10 +175,11 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
                         fill
                         sizes="(max-width: 1100px) 148px, 14vw"
                         style={{ objectPosition: item.position || "center" }}
+                        data-tina-field={tinaMark(item, "image")}
                       />
                     </div>
                     <span className="pathway-icon">{icons[item.title] ?? fallbackIcon}</span>
-                    <strong>{item.title}</strong>
+                    <strong data-tina-field={tinaMark(item, "title")}>{item.title}</strong>
                   </div>
                   <div className="pathway-card-face pathway-card-back">
                     <div className="pathway-card-media">
@@ -190,9 +192,15 @@ export default function PathwayStrip({ items }: { items: HomePathway[] }) {
                       />
                     </div>
                     <div className="pathway-card-back-copy">
-                      <span className="pathway-card-kicker">{item.detail}</span>
-                      {blurb ? <p>{blurb}</p> : null}
-                      {item.extra ? <span className="pathway-extra">{item.extra}</span> : null}
+                      <span className="pathway-card-kicker" data-tina-field={tinaMark(item, "detail")}>
+                        {item.detail}
+                      </span>
+                      {blurb ? <p data-tina-field={tinaMark(item, "blurb")}>{blurb}</p> : null}
+                      {item.extra ? (
+                        <span className="pathway-extra" data-tina-field={tinaMark(item, "extra")}>
+                          {item.extra}
+                        </span>
+                      ) : null}
                     </div>
                   </div>
                 </div>

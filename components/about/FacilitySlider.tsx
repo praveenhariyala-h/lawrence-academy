@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { SpacePhoto } from "@/lib/campus";
 
 function chunkPhotos(photos: SpacePhoto[], size: number) {
@@ -69,8 +70,16 @@ export default function FacilitySlider({
               <div className={`facility-slider-page is-${perView}`}>
                 {page.map((photo, photoIndex) => (
                   <figure key={`${photo.src}-${photo.caption ?? photoIndex}`}>
-                    <Image src={photo.src} alt={photo.alt} fill sizes={sizes} />
-                    {photo.caption ? <figcaption>{photo.caption}</figcaption> : null}
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes={sizes}
+                      data-tina-field={tinaMark(photo, "src")}
+                    />
+                    {photo.caption ? (
+                      <figcaption data-tina-field={tinaMark(photo, "caption")}>{photo.caption}</figcaption>
+                    ) : null}
                   </figure>
                 ))}
               </div>

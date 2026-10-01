@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { NewsAchievement } from "@/lib/news";
 
 export default function AchievementCards({
@@ -84,13 +85,20 @@ export default function AchievementCards({
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    data-tina-field={tinaMark(photo, "src")}
                   />
                 </span>
               ) : null}
               <span className="news-achieve-copy">
-                <span className="news-achieve-kicker">{item.kicker}</span>
-                <strong>{item.title}</strong>
-                {preview ? <span className="news-achieve-text">{preview}</span> : null}
+                <span className="news-achieve-kicker" data-tina-field={tinaMark(item, "kicker")}>
+                  {item.kicker}
+                </span>
+                <strong data-tina-field={tinaMark(item, "title")}>{item.title}</strong>
+                {preview ? (
+                  <span className="news-achieve-text" data-tina-field={tinaMark(item, "body")}>
+                    {preview}
+                  </span>
+                ) : null}
               </span>
               <span className="news-achieve-arrow" aria-hidden="true">
                 ↗
@@ -127,6 +135,7 @@ export default function AchievementCards({
                         alt={photo.alt}
                         fill
                         sizes="(max-width: 800px) 92vw, 720px"
+                        data-tina-field={tinaMark(photo, "src")}
                       />
                     </div>
                   ))}
@@ -155,11 +164,17 @@ export default function AchievementCards({
               </div>
             ) : null}
             <div className="news-modal-copy">
-              <span className="news-achieve-kicker">{open.kicker}</span>
-              <h2 id={titleId}>{open.title}</h2>
-              {open.body.split(/\n\s*\n/).map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <span className="news-achieve-kicker" data-tina-field={tinaMark(open, "kicker")}>
+                {open.kicker}
+              </span>
+              <h2 id={titleId} data-tina-field={tinaMark(open, "title")}>
+                {open.title}
+              </h2>
+              <div data-tina-field={tinaMark(open, "body")}>
+                {open.body.split(/\n\s*\n/).map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </div>
         </div>,

@@ -2,8 +2,10 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PageHero from "@/components/PageHero";
+import { getSchool } from "@/lib/siteContent";
 
 export default function NotFound() {
+  const school = getSchool();
   return (
     <>
       <Header />
@@ -24,7 +26,7 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer school={school} />
     </>
   );
 }

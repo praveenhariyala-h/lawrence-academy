@@ -6,7 +6,7 @@ import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import KindergartenIcon from "@/components/academics/KindergartenIcon";
 import PageBanner from "@/components/PageBanner";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { KindergartenContent } from "@/lib/kindergarten";
 
 function delay(index: number): CSSProperties {
@@ -28,14 +28,25 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
         lede={hero.lede}
         ledeItalic
         className="page-banner-title kg-hero"
+        fields={{
+          image: tinaMark(hero, "image"),
+          kicker: tinaMark(hero, "kicker"),
+          grades: tinaMark(hero, "grades"),
+          title: tinaMark(hero, "title"),
+          lede: tinaMark(hero, "lede")
+        }}
       />
 
       <section className="about-band">
         <div className="wrap kg-split">
           <div className="kg-copy about-reveal">
-            <p className="about-kicker">{programme.kicker}</p>
-            <h2 className="kg-title">{programme.title}</h2>
-            <p>{programme.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(programme, "kicker")}>
+              {programme.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(programme, "title")}>
+              {programme.title}
+            </h2>
+            <p data-tina-field={tinaMark(programme, "body")}>{programme.body}</p>
           </div>
           <div className="about-reveal" style={delay(1)}>
             <FacilitySlider photos={programme.photos} className="kg-slider" />
@@ -46,15 +57,21 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
       <section className="about-band about-band--soft">
         <div className="wrap kg-curriculum-layout">
           <div className="kg-curriculum-copy about-reveal">
-            <p className="about-kicker">{curriculum.kicker}</p>
-            <h2 className="kg-title">{curriculum.title}</h2>
+            <p className="about-kicker" data-tina-field={tinaMark(curriculum, "kicker")}>
+              {curriculum.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(curriculum, "title")}>
+              {curriculum.title}
+            </h2>
           </div>
           <div className="kg-curriculum">
             {curriculum.stages.map((stage, index) => (
               <article className="kg-curriculum-card about-reveal" style={delay(index)} key={stage.title}>
-                <h3>{stage.title}</h3>
-                <span className="kg-age">{stage.age}</span>
-                <p>{stage.body}</p>
+                <h3 data-tina-field={tinaMark(stage, "title")}>{stage.title}</h3>
+                <span className="kg-age" data-tina-field={tinaMark(stage, "age")}>
+                  {stage.age}
+                </span>
+                <p data-tina-field={tinaMark(stage, "body")}>{stage.body}</p>
               </article>
             ))}
           </div>
@@ -64,8 +81,12 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
       <section className="about-band">
         <div className="wrap">
           <header className="kg-head about-reveal">
-            <p className="about-kicker">{development.kicker}</p>
-            <h2 className="kg-title">{development.title}</h2>
+            <p className="about-kicker" data-tina-field={tinaMark(development, "kicker")}>
+              {development.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(development, "title")}>
+              {development.title}
+            </h2>
           </header>
           <div className="kg-develop">
             {development.items.map((item, index) => (
@@ -74,8 +95,8 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
                   <KindergartenIcon name={item.icon} />
                 </span>
                 <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                  <h3 data-tina-field={tinaMark(item, "title")}>{item.title}</h3>
+                  <p data-tina-field={tinaMark(item, "text")}>{item.text}</p>
                 </div>
               </div>
             ))}
@@ -86,9 +107,13 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
       <section className="about-band about-band--soft">
         <div className="wrap kg-split">
           <div className="kg-copy about-reveal">
-            <p className="about-kicker">{visible.kicker}</p>
-            <h2 className="kg-title">{visible.title}</h2>
-            <p>{visible.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(visible, "kicker")}>
+              {visible.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(visible, "title")}>
+              {visible.title}
+            </h2>
+            <p data-tina-field={tinaMark(visible, "body")}>{visible.body}</p>
           </div>
           <div className="about-reveal" style={delay(1)}>
             <FacilitySlider photos={visible.photos} className="kg-slider" />
@@ -102,9 +127,13 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
             <FacilitySlider photos={families.photos} className="kg-slider" />
           </div>
           <div className="kg-copy about-reveal" style={delay(1)}>
-            <p className="about-kicker">{families.kicker}</p>
-            <h2 className="kg-title">{families.title}</h2>
-            <p>{families.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(families, "kicker")}>
+              {families.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(families, "title")}>
+              {families.title}
+            </h2>
+            <p data-tina-field={tinaMark(families, "body")}>{families.body}</p>
           </div>
         </div>
       </section>
@@ -112,7 +141,9 @@ export default function KindergartenBody({ content: initial }: { content: Kinder
       <section className="about-band about-band--soft" id="moments">
         <div className="wrap">
           <header className="kg-moments-head about-reveal">
-            <h2 className="kg-title">{moments.title}</h2>
+            <h2 className="kg-title" data-tina-field={tinaMark(moments, "title")}>
+              {moments.title}
+            </h2>
           </header>
           <div className="about-reveal">
             <PhotoCarousel photos={moments.photos} />

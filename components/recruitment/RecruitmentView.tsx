@@ -5,7 +5,7 @@ import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import type { RecruitmentContent } from "@/lib/recruitment";
 import { attachedFileName, sendToMailAndWhatsApp, type EnquiryDelivery } from "@/lib/sendEnquiry";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 
 function RequiredMark() {
   return (
@@ -98,6 +98,11 @@ export default function RecruitmentView({
           lede={content.lede}
           fit="cover"
           className="page-banner-title"
+          fields={{
+            image: tinaMark(content, "heroImage"),
+            title: tinaMark(content, "title"),
+            lede: tinaMark(content, "lede")
+          }}
         />
       </AboutReveal>
 
@@ -106,7 +111,7 @@ export default function RecruitmentView({
           <div className="recruit-card">
             <h2>
               <span className="recruit-heading-rule" aria-hidden="true" />
-              {content.formHeading}
+              <span data-tina-field={tinaMark(content, "formHeading")}>{content.formHeading}</span>
             </h2>
             <form
               className={sent ? "recruit-form is-sent" : "recruit-form"}
@@ -119,7 +124,7 @@ export default function RecruitmentView({
               noValidate
             >
               <div className="form-success recruit-span" role="status">
-                <p>{content.successMessage}</p>
+                <p data-tina-field={tinaMark(content, "successMessage")}>{content.successMessage}</p>
                 {delivery ? (
                   <p className="form-delivery">
                     <a href={delivery.mail}>Open email</a>
@@ -131,13 +136,13 @@ export default function RecruitmentView({
               </div>
               <label>
                 <span>
-                  {content.nameLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "nameLabel")}>{content.nameLabel}</span> <RequiredMark />
                 </span>
                 <input name="name" required autoComplete="name" placeholder={content.namePlaceholder} />
               </label>
               <div className="recruit-dob-field">
                 <span>
-                  {content.dobLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "dobLabel")}>{content.dobLabel}</span> <RequiredMark />
                 </span>
                 <div className="recruit-dob">
                 <select name="dobDay" required defaultValue="" aria-label="Day">
@@ -162,31 +167,31 @@ export default function RecruitmentView({
               </div>
               <label>
                 <span>
-                  {content.emailLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "emailLabel")}>{content.emailLabel}</span> <RequiredMark />
                 </span>
                 <input name="email" type="email" required autoComplete="email" placeholder={content.emailPlaceholder} />
               </label>
               <label>
                 <span>
-                  {content.phoneLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "phoneLabel")}>{content.phoneLabel}</span> <RequiredMark />
                 </span>
                 <input name="phone" type="tel" required autoComplete="tel" placeholder={content.phonePlaceholder} />
               </label>
               <label>
                 <span>
-                  {content.addressLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "addressLabel")}>{content.addressLabel}</span> <RequiredMark />
                 </span>
                 <input name="address" required autoComplete="street-address" placeholder={content.addressPlaceholder} />
               </label>
               <label>
                 <span>
-                  {content.subjectLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "subjectLabel")}>{content.subjectLabel}</span> <RequiredMark />
                 </span>
                 <input name="subject" required placeholder={content.subjectPlaceholder} />
               </label>
               <label>
                 <span>
-                  {content.positionLabel} <RequiredMark />
+                  <span data-tina-field={tinaMark(content, "positionLabel")}>{content.positionLabel}</span> <RequiredMark />
                 </span>
                 <select name="position" required defaultValue="">
                   <option value="">{content.positionPlaceholder}</option>
@@ -196,31 +201,31 @@ export default function RecruitmentView({
                 </select>
               </label>
               <label>
-                <span>{content.educationLabel}</span>
+                <span data-tina-field={tinaMark(content, "educationLabel")}>{content.educationLabel}</span>
                 <input name="education" placeholder={content.educationPlaceholder} />
               </label>
               <label>
-                <span>{content.experienceLabel}</span>
+                <span data-tina-field={tinaMark(content, "experienceLabel")}>{content.experienceLabel}</span>
                 <input name="experience" placeholder={content.experiencePlaceholder} />
               </label>
               <label className="recruit-file">
-                <span>{content.photoLabel}</span>
+                <span data-tina-field={tinaMark(content, "photoLabel")}>{content.photoLabel}</span>
                 <input name="photo" type="file" accept="image/*" />
               </label>
               <label className="recruit-file">
-                <span>{content.payslipLabel}</span>
+                <span data-tina-field={tinaMark(content, "payslipLabel")}>{content.payslipLabel}</span>
                 <input name="payslip" type="file" accept="image/*,.pdf" />
               </label>
               <label className="recruit-file">
-                <span>{content.resumeLabel}</span>
+                <span data-tina-field={tinaMark(content, "resumeLabel")}>{content.resumeLabel}</span>
                 <input name="resume" type="file" accept=".pdf,.doc,.docx,image/*" />
               </label>
               <div className="recruit-actions">
                 <button className="btn btn--gold contact-submit" type="submit">
-                  {content.submitLabel}
+                  <span data-tina-field={tinaMark(content, "submitLabel")}>{content.submitLabel}</span>
                 </button>
                 <button className="btn recruit-reset" type="reset">
-                  {content.resetLabel}
+                  <span data-tina-field={tinaMark(content, "resetLabel")}>{content.resetLabel}</span>
                 </button>
               </div>
             </form>

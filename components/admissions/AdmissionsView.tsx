@@ -170,6 +170,11 @@ export default function AdmissionsView(props: AdmissionsTinaProps) {
               </p>
             </div>
             <div className="admit-checklist">
+              {text(content, "documentsKicker") ? (
+                <span className="admit-checklist-kicker" data-tina-field={mark(content, "documentsKicker")}>
+                  {text(content, "documentsKicker")}
+                </span>
+              ) : null}
               <h3 data-tina-field={mark(content, "documentsTitle")}>{text(content, "documentsTitle")}</h3>
               <p data-tina-field={mark(content, "documentsBody")}>{text(content, "documentsBody")}</p>
               <ol>

@@ -11,6 +11,9 @@ export type AlumniStory = {
 };
 
 export type AlumniFormContent = {
+  ctaTitle: string;
+  ctaBody: string;
+  ctaLabel: string;
   heading: string;
   intro: string;
   successMessage: string;
@@ -64,6 +67,18 @@ export type AlumniContent = {
     title: string;
     intro: string;
     items: AlumniStory[];
+  };
+  testimonials: {
+    title: string;
+    intro: string;
+    youtubeHref: string;
+    youtubeLabel: string;
+    instagramHref: string;
+    instagramLabel: string;
+    items: Array<{
+      title: string;
+      videoId: string;
+    }>;
   };
   form: AlumniFormContent;
 };
@@ -136,7 +151,27 @@ export const defaultAlumni: AlumniContent = {
       }
     ]
   },
+  testimonials: {
+    title: "Alumni testimonials",
+    intro: "Watch Lawrencians talk about the years that shaped them, and the school they still call home.",
+    youtubeHref: "https://www.youtube.com/@lawrencehighschool1793",
+    youtubeLabel: "Watch on YouTube",
+    instagramHref: "https://www.instagram.com/lawrence_high_school_blr",
+    instagramLabel: "Follow on Instagram",
+    items: [
+      { title: "Syeda Umme Haani", videoId: "y5i64wnt27g" },
+      { title: "B Suhanth", videoId: "rW8bmrInlCE" },
+      { title: "Shreya Shakthivelan", videoId: "e8aBX_WDzXM" },
+      { title: "Faleesha Azmeen", videoId: "t3xjv9wAxtA" },
+      { title: "Ivaan Kasthuri", videoId: "pMGiGqbONd8" },
+      { title: "Darshini Story", videoId: "TjD3VNLdPj4" }
+    ]
+  },
   form: {
+    ctaTitle: "Stay part of our\n*Lawrence Family*",
+    ctaBody:
+      "Reconnect with Lawrence, share where life has taken you, and tell us how you would like to stay involved.",
+    ctaLabel: "Engagement Form",
     heading: "Lawrence School Alumni - networking & engagement form",
     intro: "Share where life has taken you, and the ways you would like to give back to Lawrence.",
     successMessage: "Thank you. Your details are with the school, and we will be in touch.",

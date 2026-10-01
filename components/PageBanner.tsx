@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-function BannerHeading({ title }: { title: string }) {
+function BannerHeading({ title, field }: { title: string; field?: string }) {
   const pieces = title.split(/(\*[^*]+\*)/g).filter(Boolean);
 
   return (
-    <h1>
+    <h1 data-tina-field={field}>
       {pieces.map((piece, index) =>
         piece.startsWith("*") && piece.endsWith("*") ? (
           <span className="page-banner-accent" key={index}>
@@ -31,7 +31,8 @@ export default function PageBanner({
   gradesAfter,
   ledeItalic,
   fit = "cover",
-  className
+  className,
+  fields
 }: {
   src: string;
   alt: string;
@@ -46,6 +47,13 @@ export default function PageBanner({
   ledeItalic?: boolean;
   fit?: "cover" | "contain";
   className?: string;
+  fields?: {
+    image?: string;
+    kicker?: string;
+    title?: string;
+    lede?: string;
+    grades?: string;
+  };
 }) {
   const hasCopy = Boolean(showTitle || kicker || lede || grades || pills?.length || path?.length);
   const isTitleBanner = Boolean(className?.includes("page-banner-title"));
@@ -65,18 +73,31 @@ export default function PageBanner({
           unoptimized={fit === "contain"}
           sizes={fit === "contain" ? "(max-width: 1024px) 100vw, 1024px" : "100vw"}
           style={{ objectFit: fit, objectPosition: "center center" }}
+          data-tina-field={fields?.image}
         />
         {hasCopy ? (
           <div className="page-banner-copy about-reveal">
             {isTitleBanner || kicker ? (
               <span className="page-banner-kicker-row">
                 {isTitleBanner ? <span className="page-banner-dash" aria-hidden="true" /> : null}
-                {kicker ? <span className="kicker">{kicker}</span> : null}
+                {kicker ? (
+                  <span className="kicker" data-tina-field={fields?.kicker}>
+                    {kicker}
+                  </span>
+                ) : null}
               </span>
             ) : null}
-            {grades && !gradesAfter ? <p className="page-banner-meta">{grades}</p> : null}
-            <BannerHeading title={title} />
-            {grades && gradesAfter ? <p className="page-banner-meta">{grades}</p> : null}
+            {grades && !gradesAfter ? (
+              <p className="page-banner-meta" data-tina-field={fields?.grades}>
+                {grades}
+              </p>
+            ) : null}
+            <BannerHeading title={title} field={fields?.title} />
+            {grades && gradesAfter ? (
+              <p className="page-banner-meta" data-tina-field={fields?.grades}>
+                {grades}
+              </p>
+            ) : null}
             {pills?.length ? (
               <ul className="page-banner-pills">
                 {pills.map((pill) => (
@@ -91,7 +112,11 @@ export default function PageBanner({
                 ))}
               </ul>
             ) : null}
-            {lede ? <p className={ledeItalic ? "lede is-italic" : "lede"}>{lede}</p> : null}
+            {lede ? (
+              <p className={ledeItalic ? "lede is-italic" : "lede"} data-tina-field={fields?.lede}>
+                {lede}
+              </p>
+            ) : null}
           </div>
         ) : (
           <h1 className="visually-hidden">{plainTitle}</h1>

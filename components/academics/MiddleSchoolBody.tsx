@@ -6,7 +6,7 @@ import FacilitySlider from "@/components/about/FacilitySlider";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import MiddleSchoolIcon from "@/components/academics/MiddleSchoolIcon";
 import PageBanner from "@/components/PageBanner";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { MiddleSchoolContent } from "@/lib/middleSchool";
 
 function delay(index: number): CSSProperties {
@@ -26,6 +26,12 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
         title={hero.title}
         grades={hero.grades}
         className="page-banner-title"
+        fields={{
+          image: tinaMark(hero, "image"),
+          kicker: tinaMark(hero, "kicker"),
+          title: tinaMark(hero, "title"),
+          grades: tinaMark(hero, "grades")
+        }}
       />
 
       <section className="about-band">
@@ -38,17 +44,21 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
             />
           </div>
           <div className="pr-approach-copy about-reveal" style={delay(1)}>
-            <p className="about-kicker">{approach.kicker}</p>
-            <h2 className="kg-title">{approach.title}</h2>
-            <p>{approach.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(approach, "kicker")}>
+              {approach.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(approach, "title")}>
+              {approach.title}
+            </h2>
+            <p data-tina-field={tinaMark(approach, "body")}>{approach.body}</p>
             <div className="pr-approach-values ms-news-grid">
               {approach.values.map((value) => (
                 <article className="pr-value-card ms-news-card" key={value.title}>
                   <span className="kg-icon kg-icon--sm" aria-hidden="true">
                     <MiddleSchoolIcon name={value.icon} />
                   </span>
-                  <h3>{value.title}</h3>
-                  <p>{value.text}</p>
+                  <h3 data-tina-field={tinaMark(value, "title")}>{value.title}</h3>
+                  <p data-tina-field={tinaMark(value, "text")}>{value.text}</p>
                 </article>
               ))}
             </div>
@@ -59,33 +69,37 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
       <section className="about-band about-band--soft">
         <div className="wrap">
           <header className="ms-curriculum-head about-reveal">
-            <p className="about-kicker ms-curriculum-kicker">{curriculum.kicker}</p>
-            <h2 className="kg-title">{curriculum.title}</h2>
-            <p>{curriculum.body}</p>
+            <p className="about-kicker ms-curriculum-kicker" data-tina-field={tinaMark(curriculum, "kicker")}>
+              {curriculum.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(curriculum, "title")}>
+              {curriculum.title}
+            </h2>
+            <p data-tina-field={tinaMark(curriculum, "body")}>{curriculum.body}</p>
           </header>
           <div className="ms-grade-groups">
             <article className="ms-grade-panel ms-grade-panel--blue about-reveal">
-              <h3>{curriculum.grade5.title}</h3>
+              <h3 data-tina-field={tinaMark(curriculum.grade5, "title")}>{curriculum.grade5.title}</h3>
               <ul className="ms-subjects">
                 {curriculum.grade5.subjects.map((subject) => (
                   <li key={subject.title}>
                     <span className="kg-icon kg-icon--sm" aria-hidden="true">
                       <MiddleSchoolIcon name={subject.icon} />
                     </span>
-                    <span>{subject.title}</span>
+                    <span data-tina-field={tinaMark(subject, "title")}>{subject.title}</span>
                   </li>
                 ))}
               </ul>
             </article>
             <article className="ms-grade-panel ms-grade-panel--gold about-reveal" style={delay(1)}>
-              <h3>{curriculum.grade67.title}</h3>
+              <h3 data-tina-field={tinaMark(curriculum.grade67, "title")}>{curriculum.grade67.title}</h3>
               <ul className="ms-subjects">
                 {curriculum.grade67.subjects.map((subject) => (
                   <li key={subject.title}>
                     <span className="kg-icon kg-icon--sm" aria-hidden="true">
                       <MiddleSchoolIcon name={subject.icon} />
                     </span>
-                    <span>{subject.title}</span>
+                    <span data-tina-field={tinaMark(subject, "title")}>{subject.title}</span>
                   </li>
                 ))}
               </ul>
@@ -97,9 +111,13 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
       <section className="about-band">
         <div className="wrap">
           <header className="kg-head ms-beyond-head about-reveal">
-            <p className="about-kicker ms-curriculum-kicker">{beyond.kicker}</p>
-            <h2 className="kg-title">{beyond.title}</h2>
-            <p>{beyond.body}</p>
+            <p className="about-kicker ms-curriculum-kicker" data-tina-field={tinaMark(beyond, "kicker")}>
+              {beyond.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(beyond, "title")}>
+              {beyond.title}
+            </h2>
+            <p data-tina-field={tinaMark(beyond, "body")}>{beyond.body}</p>
           </header>
           <div className="ms-beyond-grid">
             {beyond.items.map((item, index) => (
@@ -107,8 +125,8 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
                 <span className="kg-icon" aria-hidden="true">
                   <MiddleSchoolIcon name={item.icon} />
                 </span>
-                <h3>{item.title}</h3>
-                {item.text ? <p>{item.text}</p> : null}
+                <h3 data-tina-field={tinaMark(item, "title")}>{item.title}</h3>
+                {item.text ? <p data-tina-field={tinaMark(item, "text")}>{item.text}</p> : null}
               </article>
             ))}
           </div>
@@ -118,9 +136,13 @@ export default function MiddleSchoolBody({ content: initial }: { content: Middle
       <section className="about-band about-band--soft">
         <div className="wrap">
           <header className="kg-head about-reveal">
-            <p className="about-kicker">{moments.kicker}</p>
-            <h2 className="kg-title">{moments.title}</h2>
-            <p>{moments.lede}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(moments, "kicker")}>
+              {moments.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(moments, "title")}>
+              {moments.title}
+            </h2>
+            <p data-tina-field={tinaMark(moments, "lede")}>{moments.lede}</p>
           </header>
           <div className="about-reveal">
             <PhotoCarousel photos={moments.photos} perView={4} />

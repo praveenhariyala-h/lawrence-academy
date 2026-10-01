@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { HomePartner } from "@/lib/home";
 
 const INTERVAL = 3500;
@@ -107,6 +108,7 @@ export default function PartnersGrid({ items }: { items: HomePartner[] }) {
                   width={240}
                   height={140}
                   sizes="(max-width: 640px) 46vw, (max-width: 900px) 30vw, 22vw"
+                  data-tina-field={tinaMark(item, "logo")}
                 />
               </div>
             </article>

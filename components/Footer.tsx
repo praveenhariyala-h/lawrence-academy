@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { getSchool } from "@/lib/siteContent";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
+import type { School } from "@/lib/site";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -87,8 +90,8 @@ function ContactIcon({ type }: { type: "pin" | "phone" | "mail" }) {
   );
 }
 
-export default function Footer() {
-  const school = getSchool();
+export default function Footer({ school: initial }: { school: School }) {
+  const school = useEditable("site", initial);
   const year = new Date().getFullYear();
 
   return (
@@ -96,12 +99,14 @@ export default function Footer() {
       <section className="campus-cta footer-cta">
         <div className="wrap campus-cta-row">
           <div className="footer-cta-copy">
-            <h2>{school.footerCtaTitle}</h2>
-            <p>{school.footerCtaText}</p>
+            <h2 data-tina-field={tinaMark(school, "footerCtaTitle")}>{school.footerCtaTitle}</h2>
+            <p data-tina-field={tinaMark(school, "footerCtaText")}>{school.footerCtaText}</p>
           </div>
           <div className="footer-cta-action">
-            <p className="footer-cta-admissions">{school.footerCtaAdmissions}</p>
-            <Link className="btn btn--gold" href={school.footerCtaHref}>
+            <p className="footer-cta-admissions" data-tina-field={tinaMark(school, "footerCtaAdmissions")}>
+              {school.footerCtaAdmissions}
+            </p>
+            <Link className="btn btn--gold" href={school.footerCtaHref} data-tina-field={tinaMark(school, "footerCtaLabel")}>
               {school.footerCtaLabel}
             </Link>
           </div>
@@ -113,6 +118,7 @@ export default function Footer() {
             <Image
               src="/images/logo-footer.png"
               alt={school.name}
+              data-tina-field={tinaMark(school, "name")}
               width={1024}
               height={341}
               sizes="240px"
@@ -147,15 +153,19 @@ export default function Footer() {
           <h3>Contact</h3>
           <p className="footer-contact-line">
             <ContactIcon type="pin" />
-            <span>{school.address}</span>
+            <span data-tina-field={tinaMark(school, "address")}>{school.address}</span>
           </p>
           <p className="footer-contact-line">
             <ContactIcon type="phone" />
-            <a href={`tel:${school.phones[0].replace(/\s/g, "")}`}>{school.phones[0]}</a>
+            <a href={`tel:${school.phones[0].replace(/\s/g, "")}`} data-tina-field={tinaMark(school, "phones", 0)}>
+              {school.phones[0]}
+            </a>
           </p>
           <p className="footer-contact-line">
             <ContactIcon type="mail" />
-            <a href={`mailto:${school.emails[0]}`}>{school.emails[0]}</a>
+            <a href={`mailto:${school.emails[0]}`} data-tina-field={tinaMark(school, "emails", 0)}>
+              {school.emails[0]}
+            </a>
           </p>
         </div>
 
@@ -163,7 +173,14 @@ export default function Footer() {
           <h3>Follow Us</h3>
           <div className="footer-socials">
             {school.socials.map((item) => (
-              <a key={item.label} href={item.href} aria-label={item.label} target="_blank" rel="noreferrer">
+              <a
+                key={item.label}
+                href={item.href}
+                aria-label={item.label}
+                target="_blank"
+                rel="noreferrer"
+                data-tina-field={tinaMark(item, "href")}
+              >
                 <SocialIcon label={item.label} />
               </a>
             ))}
@@ -172,7 +189,9 @@ export default function Footer() {
       </div>
 
       <div className="wrap legal">
-        <span>© {year} {school.name}. All rights reserved.</span>
+        <span>
+          © {year} <span data-tina-field={tinaMark(school, "name")}>{school.name}</span>. All rights reserved.
+        </span>
         <span className="legal-links">
           <Link href="/contact">Privacy Policy</Link>
           <Link href="/contact">Terms of Use</Link>
