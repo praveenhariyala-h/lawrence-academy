@@ -17,6 +17,7 @@ export default function SiteLayout({
       variables={{ relativePath: "site.json" }}
       data={{ site: school }}
       documentPath="content/settings/site.json"
+      selectForm={false}
     >
       <Header />
       <main id="main">{children}</main>

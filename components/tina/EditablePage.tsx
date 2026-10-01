@@ -17,19 +17,21 @@ export function EditablePage<T extends Record<string, unknown>>({
   variables,
   data,
   documentPath,
+  selectForm = true,
   children
 }: {
   query: string;
   variables: { relativePath: string };
   data: T;
   documentPath: string;
+  selectForm?: boolean;
   children: ReactNode;
 }) {
   const page = useTina({
     query,
     variables,
     data,
-    experimental___selectFormByFormId: () => documentPath
+    ...(selectForm ? { experimental___selectFormByFormId: () => documentPath } : {})
   });
 
   return <TinaPageContext.Provider value={page.data}>{children}</TinaPageContext.Provider>;

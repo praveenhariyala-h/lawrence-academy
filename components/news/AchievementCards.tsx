@@ -4,23 +4,77 @@ import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { tinaMark } from "@/components/tina/EditablePage";
-import type { NewsAchievement } from "@/lib/news";
+import type { NewsAchievement, NewsAchievementPhoto } from "@/lib/news";
+
+export type NewsCardMarks = {
+  day?: string;
+  month?: string;
+  kicker?: string;
+  title?: string;
+  body?: string;
+  preview?: string;
+};
+
+export type NewsCardItem = NewsAchievement & {
+  preview?: string;
+  dateDay?: string;
+  dateMonth?: string;
+  marks?: NewsCardMarks;
+};
+
+function textOf(value: string | null | undefined) {
+  return typeof value === "string" ? value : "";
+}
+
+function photosOf(photos: NewsAchievementPhoto[] | null | undefined) {
+  if (!Array.isArray(photos)) return [];
+  return photos.filter((photo) => Boolean(photo?.src));
+}
+
+function firstParagraph(value: string) {
+  return value.split(/\n\s*\n/)[0]?.trim() ?? "";
+}
+
+function CardKicker({ item }: { item: NewsCardItem }) {
+  if (item.dateDay !== undefined || item.dateMonth !== undefined) {
+    const day = textOf(item.dateDay);
+    const month = textOf(item.dateMonth);
+    return (
+      <span className="news-achieve-kicker">
+        <span data-tina-field={item.marks?.day}>{day || (month ? "" : "Event")}</span>
+        {day && month ? " " : null}
+        {month ? <span data-tina-field={item.marks?.month}>{month}</span> : null}
+      </span>
+    );
+  }
+
+  return (
+    <span className="news-achieve-kicker" data-tina-field={item.marks?.kicker ?? tinaMark(item, "kicker")}>
+      {textOf(item.kicker)}
+    </span>
+  );
+}
 
 export default function AchievementCards({
   items,
   empty = "Achievements will appear here as they are published.",
   imageFit = "cover"
 }: {
-  items: NewsAchievement[];
+  items: NewsCardItem[];
   empty?: string;
   imageFit?: "cover" | "contain";
 }) {
+  const cards = (items ?? []).filter((item) => item && typeof item === "object");
   const [active, setActive] = useState<number | null>(null);
   const [slide, setSlide] = useState(0);
   const [mounted, setMounted] = useState(false);
   const titleId = useId();
-  const open = active !== null ? items[active] : null;
-  const photos = open?.photos.slice(0, 5) ?? [];
+  const open = active !== null ? cards[active] : null;
+  const photos = photosOf(open?.photos).slice(0, 5);
+  const openBody = textOf(open?.body) || textOf(open?.preview);
+  const openBodyField = textOf(open?.body)
+    ? (open?.marks?.body ?? tinaMark(open, "body"))
+    : open?.marks?.preview;
 
   const close = useCallback(() => {
     setActive(null);
@@ -58,19 +112,24 @@ export default function AchievementCards({
     };
   }, [active, close, go]);
 
-  if (!items.length) {
+  if (!cards.length) {
     return <p className="lede news-empty">{empty}</p>;
   }
 
   return (
     <>
       <div className="news-achieve-grid">
-        {items.map((item, index) => {
-          const photo = item.photos[0];
-          const preview = item.body.split(/\n\s*\n/)[0]?.trim() ?? "";
+        {cards.map((item, index) => {
+          const photo = photosOf(item.photos)[0];
+          const body = textOf(item.body);
+          const preview = textOf(item.preview) || firstParagraph(body);
+          const previewField = textOf(item.preview)
+            ? item.marks?.preview
+            : (item.marks?.body ?? tinaMark(item, "body"));
+          const title = textOf(item.title);
           return (
             <button
-              key={`${item.title}-${index}`}
+              key={`${title}-${index}`}
               className="news-achieve-card news-achieve-card--photo"
               type="button"
               onClick={() => {
@@ -90,12 +149,10 @@ export default function AchievementCards({
                 </span>
               ) : null}
               <span className="news-achieve-copy">
-                <span className="news-achieve-kicker" data-tina-field={tinaMark(item, "kicker")}>
-                  {item.kicker}
-                </span>
-                <strong data-tina-field={tinaMark(item, "title")}>{item.title}</strong>
+                <CardKicker item={item} />
+                <strong data-tina-field={item.marks?.title ?? tinaMark(item, "title")}>{title}</strong>
                 {preview ? (
-                  <span className="news-achieve-text" data-tina-field={tinaMark(item, "body")}>
+                  <span className="news-achieve-text" data-tina-field={previewField}>
                     {preview}
                   </span>
                 ) : null}
@@ -126,13 +183,13 @@ export default function AchievementCards({
                 <div className="news-modal-viewport">
                   {photos.map((photo, index) => (
                     <div
-                      key={photo.src}
+                      key={`${photo.src}-${index}`}
                       className={index === slide ? "news-modal-slide is-on" : "news-modal-slide"}
                       aria-hidden={index !== slide}
                     >
                       <Image
                         src={photo.src}
-                        alt={photo.alt}
+                        alt={photo.alt ?? ""}
                         fill
                         sizes="(max-width: 800px) 92vw, 720px"
                         data-tina-field={tinaMark(photo, "src")}
@@ -148,7 +205,7 @@ export default function AchievementCards({
                     <div className="news-modal-dots">
                       {photos.map((photo, index) => (
                         <button
-                          key={photo.src}
+                          key={`${photo.src}-${index}`}
                           className={index === slide ? "is-on" : undefined}
                           type="button"
                           aria-label={`Show photo ${index + 1}`}
@@ -164,17 +221,17 @@ export default function AchievementCards({
               </div>
             ) : null}
             <div className="news-modal-copy">
-              <span className="news-achieve-kicker" data-tina-field={tinaMark(open, "kicker")}>
-                {open.kicker}
-              </span>
-              <h2 id={titleId} data-tina-field={tinaMark(open, "title")}>
-                {open.title}
+              <CardKicker item={open} />
+              <h2 id={titleId} data-tina-field={open.marks?.title ?? tinaMark(open, "title")}>
+                {textOf(open.title)}
               </h2>
-              <div data-tina-field={tinaMark(open, "body")}>
-                {open.body.split(/\n\s*\n/).map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              {openBody ? (
+                <div data-tina-field={openBodyField}>
+                  {openBody.split(/\n\s*\n/).map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>,
