@@ -16,6 +16,8 @@ function photosOf(photos: NewsResult["photos"] | null | undefined) {
   return photos.filter((photo) => Boolean(photo?.src)).slice(0, 5);
 }
 
+const SLIDE_MS = 5000;
+
 function applyOf(photo: NewsAchievementPhoto | undefined) {
   const href = textOf(photo?.applyHref).trim();
   if (!href.startsWith("/") && !/^https?:\/\//i.test(href)) return null;
@@ -30,14 +32,18 @@ function applyOf(photo: NewsAchievementPhoto | undefined) {
 export default function NewsResultModal({
   item,
   onClose,
-  dismissGuardMs = 0
+  dismissGuardMs = 0,
+  autoSlide = false
 }: {
   item: NewsResult;
   onClose: () => void;
   dismissGuardMs?: number;
+  autoSlide?: boolean;
 }) {
   const router = useRouter();
   const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [timerKey, setTimerKey] = useState(0);
   const [mounted, setMounted] = useState(false);
   const blockCloseUntil = useRef(Date.now() + dismissGuardMs);
   const titleId = useId();
@@ -71,9 +77,19 @@ export default function NewsResultModal({
         if (count < 2) return 0;
         return (current + direction + count) % count;
       });
+      setTimerKey((value) => value + 1);
     },
     [photos.length]
   );
+
+  useEffect(() => {
+    if (!autoSlide || paused || photos.length < 2) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const timer = window.setInterval(() => {
+      setSlide((current) => (current + 1) % photos.length);
+    }, SLIDE_MS);
+    return () => window.clearInterval(timer);
+  }, [autoSlide, paused, photos.length, timerKey]);
 
   useEffect(() => {
     setMounted(true);
@@ -104,6 +120,8 @@ export default function NewsResultModal({
         aria-modal="true"
         aria-labelledby={titleId}
         onClick={(event) => event.stopPropagation()}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
       >
         <button className="news-modal-close" type="button" aria-label="Close" onClick={close}>
           ×
@@ -141,7 +159,10 @@ export default function NewsResultModal({
                           className={index === slide ? "is-on" : undefined}
                           type="button"
                           aria-label={`Show photo ${index + 1}`}
-                          onClick={() => setSlide(index)}
+                          onClick={() => {
+                            setSlide(index);
+                            setTimerKey((value) => value + 1);
+                          }}
                         />
                       ))}
                     </div>

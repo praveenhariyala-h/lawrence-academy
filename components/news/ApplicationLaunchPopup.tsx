@@ -6,6 +6,14 @@ import type { NewsResult } from "@/lib/news";
 
 const STORAGE_KEY = "lhs-application-launch-popup";
 
+function admissionsFirst(item: NewsResult): NewsResult {
+  const photos = Array.isArray(item.photos) ? item.photos.filter((photo) => photo?.src) : [];
+  const lead = photos.filter((photo) => photo.applyHref?.trim());
+  const rest = photos.filter((photo) => !photo.applyHref?.trim());
+  if (!lead.length) return item;
+  return { ...item, photos: [...lead, ...rest] };
+}
+
 export default function ApplicationLaunchPopup({ item }: { item: NewsResult }) {
   const [open, setOpen] = useState(false);
 
@@ -30,5 +38,5 @@ export default function ApplicationLaunchPopup({ item }: { item: NewsResult }) {
 
   if (!open) return null;
 
-  return <NewsResultModal item={item} onClose={dismiss} dismissGuardMs={600} />;
+  return <NewsResultModal item={admissionsFirst(item)} onClose={dismiss} dismissGuardMs={600} autoSlide />;
 }
