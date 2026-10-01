@@ -177,22 +177,22 @@
   "upcomingEventsViewAllLabel": "View all",
   "upcomingEvents": [
     {
-      "day": "12",
-      "month": "Jan",
-      "title": "Annual Sports Meet",
-      "text": "A celebration of spirit and teamwork."
+      "day": "14",
+      "month": "Nov",
+      "title": "Annual Day",
+      "text": "Celebrating Talent, Inspiring Dreams, Creating Memories.."
     },
     {
-      "day": "26",
-      "month": "Jan",
-      "title": "Republic Day Celebrations",
-      "text": "A proud day marked with pride."
+      "day": "23",
+      "month": "Dec",
+      "title": "Christmas Celebration",
+      "text": "A Season of Joy, Love and Togetherness.."
     },
     {
-      "day": "10",
+      "day": "6",
       "month": "Feb",
-      "title": "School Carnival",
-      "text": "Fun, creativity, community."
+      "title": "Show and Tell",
+      "text": "Where Curiosity Takes Centre Stage.."
     }
   ],
   "partnersKicker": "Working together to create richer learning experiences for our students.",
