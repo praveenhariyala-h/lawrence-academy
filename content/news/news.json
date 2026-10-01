@@ -148,6 +148,17 @@
     },
     {
       "kicker": "Student Achievements",
+      "title": "Mishitha and Lohit Medal at Regional Boxing Championship",
+      "body": "CISCE Regional Boxing Championship, Karnataka and Goa, held at De Paul International Residential School, Mysuru, on 14 September 2026.\n\nMishitha – Grade 10A\nSecured 1st Place in the Under-17 category\nSelected for the National Boxing Competition, to be held in Meerut on 28th September 2026\n\nLohit – Grade 9A\nSecured 2nd Place in the Under-17 category",
+      "photos": [
+        {
+          "src": "/images/news/achievements/boxing-regional.jpg",
+          "alt": "Mishitha and Lohit with medals at the CISCE Regional Boxing Championship in Mysuru"
+        }
+      ]
+    },
+    {
+      "kicker": "Student Achievements",
       "title": "Gold at the CISCE Regional Roller Skating Championship",
       "body": "A Lawrence student won gold and received a certificate of merit at the CISCE Regional Games and Sports 2026 roller skating championship with Flyers Roller Skating Club.",
       "photos": [
@@ -361,17 +372,6 @@
         {
           "src": "/images/news/achievements/kabaddi-regional-certificates.jpg",
           "alt": "Kabaddi players with certificates at ACTS School"
-        }
-      ]
-    },
-    {
-      "kicker": "Student Achievements",
-      "title": "Mishitha and Lohit Medal at Regional Boxing Championship",
-      "body": "CISCE Regional Boxing Championship, Karnataka and Goa, held at De Paul International Residential School, Mysuru, on 14 September 2026.\n\nMishitha – Grade 10A\nSecured 1st Place in the Under-17 category\nSelected for the National Boxing Competition, to be held in Meerut on 28th September 2026\n\nLohit – Grade 9A\nSecured 2nd Place in the Under-17 category",
-      "photos": [
-        {
-          "src": "/images/news/achievements/boxing-regional.jpg",
-          "alt": "Mishitha and Lohit with medals at the CISCE Regional Boxing Championship in Mysuru"
         }
       ]
     }
