@@ -4469,11 +4469,20 @@ article.news-achieve-card {
   inset: 0;
   opacity: 0;
   visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
 }
 
 .news-modal-slide.is-on {
   opacity: 1;
   visibility: visible;
+  transition: opacity 0.45s ease, visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-modal-slide,
+  .news-modal-slide.is-on {
+    transition: none;
+  }
 }
 
 .news-modal-slide img {
