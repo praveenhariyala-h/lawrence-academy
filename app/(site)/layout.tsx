@@ -1,15 +1,19 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ApplicationLaunchPopup from "@/components/news/ApplicationLaunchPopup";
 import { EditablePage } from "@/components/tina/EditablePage";
+import { getNewsContent, launchHighlight } from "@/lib/news";
 import { getSchool } from "@/lib/siteContent";
 import { SiteDocument } from "@/tina/__generated__/types";
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const school = getSchool();
+  const news = await getNewsContent();
+  const highlight = launchHighlight(news.results);
 
   return (
     <EditablePage
@@ -22,6 +26,7 @@ export default function SiteLayout({
       <Header />
       <main id="main">{children}</main>
       <Footer school={school} />
+      {highlight ? <ApplicationLaunchPopup item={highlight} /> : null}
     </EditablePage>
   );
 }

@@ -4480,6 +4480,13 @@ article.news-achieve-card {
   object-fit: contain;
 }
 
+.news-modal-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
 .news-modal-nav {
   display: flex;
   align-items: center;
@@ -4487,7 +4494,8 @@ article.news-achieve-card {
   gap: 0.8rem;
 }
 
-.news-modal-nav > button {
+.news-modal-nav > button,
+.news-modal-nav-controls > button {
   width: 2.1rem;
   height: 2.1rem;
   border: 0;
@@ -4705,15 +4713,55 @@ article.news-achieve-card {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--legacy-blue) 8%, transparent);
 }
 
-.news-modal-dialog--large .news-modal-nav > button {
+.news-modal-dialog--large .news-modal-nav {
+  position: relative;
+  align-items: center;
+  width: min(100%, calc(var(--result-poster-max) * 1.179));
+  min-height: 2.7rem;
+}
+
+.news-modal-dialog--large .news-modal-nav > button,
+.news-modal-dialog--large .news-modal-nav-controls > button {
   width: 2.45rem;
   height: 2.45rem;
   font-size: 1.35rem;
   box-shadow: 0 8px 18px color-mix(in srgb, var(--legacy-blue) 22%, transparent);
 }
 
-.news-modal-dialog--large .news-modal-nav > button:hover {
+.news-modal-dialog--large .news-modal-nav > button:hover,
+.news-modal-dialog--large .news-modal-nav-controls > button:hover {
   background: color-mix(in srgb, var(--legacy-blue) 82%, var(--sky-blue));
+}
+
+.news-modal-dialog--large .news-modal-apply {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  min-height: 2.7rem;
+  padding: 0.35rem 1.3rem;
+  border: 2px solid color-mix(in srgb, var(--bloom) 85%, white);
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  translate: 0 -50%;
+  box-shadow:
+    0 10px 22px color-mix(in srgb, var(--legacy-blue-deep) 28%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 28%, transparent);
+}
+
+.news-modal-dialog--large .btn.news-modal-apply:hover {
+  transform: none;
+  translate: 0 calc(-50% - 2px);
+}
+
+@media (max-width: 720px) {
+  .news-modal-dialog--large .news-modal-apply {
+    min-height: 2.35rem;
+    padding: 0.22rem 0.85rem;
+    font-size: 0.95rem;
+  }
 }
 
 .news-modal-dialog--large .news-modal-copy {
