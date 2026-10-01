@@ -66,7 +66,7 @@ export default function RecruitmentView({
       `Address: ${data.get("address") ?? ""}`,
       `Subject preferred: ${data.get("subject") ?? ""}`,
       `Position: ${data.get("position") ?? ""}`,
-      `Education: ${data.get("education") || "Not provided"}`,
+      `Education: ${data.get("education") ?? ""}`,
       `Experience: ${data.get("experience") || "Not provided"}`,
       `Profile photo: ${attachedFileName(data.get("photo"))}`,
       `Last pay slip: ${attachedFileName(data.get("payslip"))}`,
@@ -201,24 +201,30 @@ export default function RecruitmentView({
                 </select>
               </label>
               <label>
-                <span data-tina-field={tinaMark(content, "educationLabel")}>{content.educationLabel}</span>
-                <input name="education" placeholder={content.educationPlaceholder} />
+                <span>
+                  <span data-tina-field={tinaMark(content, "educationLabel")}>{content.educationLabel}</span> <RequiredMark />
+                </span>
+                <input name="education" required placeholder={content.educationPlaceholder} />
               </label>
               <label>
                 <span data-tina-field={tinaMark(content, "experienceLabel")}>{content.experienceLabel}</span>
                 <input name="experience" placeholder={content.experiencePlaceholder} />
               </label>
               <label className="recruit-file">
-                <span data-tina-field={tinaMark(content, "photoLabel")}>{content.photoLabel}</span>
-                <input name="photo" type="file" accept="image/*" />
+                <span>
+                  <span data-tina-field={tinaMark(content, "photoLabel")}>{content.photoLabel}</span> <RequiredMark />
+                </span>
+                <input name="photo" type="file" accept="image/*" required />
               </label>
               <label className="recruit-file">
                 <span data-tina-field={tinaMark(content, "payslipLabel")}>{content.payslipLabel}</span>
                 <input name="payslip" type="file" accept="image/*,.pdf" />
               </label>
               <label className="recruit-file">
-                <span data-tina-field={tinaMark(content, "resumeLabel")}>{content.resumeLabel}</span>
-                <input name="resume" type="file" accept=".pdf,.doc,.docx,image/*" />
+                <span>
+                  <span data-tina-field={tinaMark(content, "resumeLabel")}>{content.resumeLabel}</span> <RequiredMark />
+                </span>
+                <input name="resume" type="file" accept=".pdf,.doc,.docx,image/*" required />
               </label>
               <div className="recruit-actions">
                 <button className="btn btn--gold contact-submit" type="submit">

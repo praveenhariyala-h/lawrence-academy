@@ -1,27 +1,17 @@
 import type { Metadata } from "next";
-import AlumniView from "@/components/alumni/AlumniView";
-import { EditablePage } from "@/components/tina/EditablePage";
-import { getAlumniContent } from "@/lib/alumni";
-import { AlumniDocument } from "@/tina/__generated__/types";
+import PageHero from "@/components/PageHero";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const content = await getAlumniContent();
-  return {
-    title: content.metaTitle,
-    description: content.metaDescription
-  };
-}
+export const metadata: Metadata = {
+  title: "Alumni",
+  description: "This page is under development."
+};
 
-export default async function AlumniPage() {
-  const content = await getAlumniContent();
+export default function AlumniPage() {
   return (
-    <EditablePage
-      query={AlumniDocument}
-      variables={{ relativePath: "alumni.json" }}
-      data={{ alumni: content }}
-      documentPath="content/alumni/alumni.json"
-    >
-      <AlumniView content={content} />
-    </EditablePage>
+    <PageHero
+      kicker="Alumni"
+      title="Page under development"
+      lede="This page is being updated. Please check back soon."
+    />
   );
 }
