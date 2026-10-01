@@ -482,7 +482,7 @@ export function recentAchievementSlides(items: NewsAchievement[], count = 3): Re
   return items.slice(0, count).flatMap((item) => {
     const photo = item.photos?.[0];
     if (!photo?.src || !item.title) return [];
-    const text = item.body.split(/\n+/)[0]?.replace(/\s+/g, " ").trim() ?? "";
+    const text = (item.body ?? "").split(/\n+/)[0]?.replace(/\s+/g, " ").trim() ?? "";
     return [
       {
         title: item.title,

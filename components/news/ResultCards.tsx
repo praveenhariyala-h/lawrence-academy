@@ -6,8 +6,17 @@ import { createPortal } from "react-dom";
 import { tinaMark } from "@/components/tina/EditablePage";
 import type { NewsResult } from "@/lib/news";
 
-function splitStudent(title: string) {
-  const match = title.match(/^(.*?)\s*[—–-]\s*(\d+(?:\.\d+)?%)\s*$/);
+function textOf(value: string | null | undefined) {
+  return typeof value === "string" ? value : "";
+}
+
+function photosOf(photos: NewsResult["photos"] | null | undefined) {
+  if (!Array.isArray(photos)) return [];
+  return photos.filter((photo) => Boolean(photo?.src));
+}
+
+function splitStudent(title: string | null | undefined) {
+  const match = textOf(title).match(/^(.*?)\s*[—–-]\s*(\d+(?:\.\d+)?%)\s*$/);
   if (!match?.[1] || !match[2]) return null;
   return { name: match[1].trim(), score: match[2] };
 }
@@ -21,18 +30,19 @@ export default function ResultCards({
   startOpen?: boolean;
   onDismiss?: () => void;
 }) {
-  const students = items.flatMap((item) => {
+  const records = (items ?? []).filter((item) => item && typeof item === "object");
+  const students = records.flatMap((item) => {
     const parts = splitStudent(item.title);
     return parts ? [{ item, ...parts }] : [];
   });
-  const features = items.filter((item) => !splitStudent(item.title));
+  const features = records.filter((item) => !splitStudent(item.title));
   const [active, setActive] = useState<number | null>(startOpen && features.length ? 0 : null);
   const [slide, setSlide] = useState(0);
   const [mounted, setMounted] = useState(false);
   const blockCloseUntil = useRef(startOpen ? Date.now() + 600 : 0);
   const titleId = useId();
   const open = active !== null ? features[active] : null;
-  const photos = open?.photos.slice(0, 5) ?? [];
+  const photos = photosOf(open?.photos).slice(0, 5);
 
   useEffect(() => {
     if (!startOpen || features.length === 0) return undefined;
@@ -87,14 +97,14 @@ export default function ResultCards({
           style={{ "--result-cols": students.length } as CSSProperties}
         >
           {students.map(({ item, name, score }) => {
-            const photo = item.photos[0];
+            const photo = photosOf(item.photos)[0];
             return (
               <article className="news-result-student" key={item.title}>
                 {photo ? (
                   <span className="news-result-student-photo">
                     <Image
                       src={photo.src}
-                      alt={photo.alt}
+                      alt={photo.alt || ""}
                       fill
                       sizes="(max-width: 720px) 46vw, 18vw"
                       data-tina-field={tinaMark(photo, "src")}
@@ -112,8 +122,8 @@ export default function ResultCards({
       {features.length ? (
         <div className="news-result-feature-row">
           {features.map((item, index) => {
-            const photo = item.photos[0];
-            const preview = item.body.split(/\n\s*\n/)[0]?.trim() ?? "";
+            const photo = photosOf(item.photos)[0];
+            const preview = textOf(item.body).split(/\n\s*\n/)[0]?.trim() ?? "";
             return (
               <button
                 key={`${item.title}-${index}`}
@@ -179,7 +189,7 @@ export default function ResultCards({
                         >
                           <Image
                             src={photo.src}
-                            alt={photo.alt}
+                            alt={photo.alt || ""}
                             fill
                             sizes="(max-width: 860px) 92vw, 860px"
                             data-tina-field={tinaMark(photo, "src")}
@@ -218,7 +228,7 @@ export default function ResultCards({
                     {open.title}
                   </h2>
                   <div data-tina-field={tinaMark(open, "body")}>
-                    {open.body.split(/\n\s*\n/).map((paragraph, index) => (
+                    {textOf(open.body).split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>

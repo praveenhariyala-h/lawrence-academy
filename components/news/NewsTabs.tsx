@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AchievementCards from "@/components/news/AchievementCards";
 import ResultCards from "@/components/news/ResultCards";
 import { tinaMark } from "@/components/tina/EditablePage";
@@ -34,7 +34,15 @@ export default function NewsTabs({
   initialTab?: string;
 }) {
   const [tab, setTab] = useState<NewsCategory>(resolveTab(initialTab));
-  const [batchOpen, setBatchOpen] = useState(resolveTab(initialTab) === "result");
+  const [batchOpen, setBatchOpen] = useState(false);
+  const resultsList = results ?? [];
+  const achievementsList = achievements ?? [];
+  const eventsList = (events ?? []).filter((event) => event && typeof event === "object");
+
+  useEffect(() => {
+    if (window.parent !== window) return;
+    setBatchOpen(resolveTab(initialTab) === "result");
+  }, [initialTab]);
   const tabs = useMemo(
     () => [
       { id: "result" as const, label: copy.resultLabel },
@@ -43,6 +51,14 @@ export default function NewsTabs({
     ],
     [copy]
   );
+  function selectTab(id: NewsCategory) {
+    if (id !== "result") setBatchOpen(false);
+    setTab(id);
+    const url = new URL(window.location.href);
+    url.searchParams.set("tab", id);
+    window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+  }
+
   const emptyCopy: Record<NewsCategory, string> = {
     result: copy.resultEmpty,
     achievement: copy.achievementEmpty,
@@ -61,13 +77,11 @@ export default function NewsTabs({
             aria-selected={tab === item.id}
             aria-controls={`news-panel-${item.id}`}
             tabIndex={tab === item.id ? 0 : -1}
-            onClick={() => {
-              if (item.id !== "result") setBatchOpen(false);
-              setTab(item.id);
-              const url = new URL(window.location.href);
-              url.searchParams.set("tab", item.id);
-              window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+            onPointerDown={(event) => {
+              if (event.button !== 0) return;
+              selectTab(item.id);
             }}
+            onClick={() => selectTab(item.id)}
           >
             <span data-tina-field={tinaMark(copy, `${item.id}Label`)}>{item.label}</span>
           </button>
@@ -85,47 +99,56 @@ export default function NewsTabs({
             id={`news-panel-${id}`}
             aria-labelledby={`news-tab-${id}`}
           >
-            {id === "achievement" && achievements.length ? (
-              <AchievementCards items={achievements} />
+            {id === "achievement" && achievementsList.length ? (
+              <AchievementCards items={achievementsList} />
             ) : null}
 
-            {id === "result" && results.length ? (
+            {id === "result" && resultsList.length ? (
               <>
                 <h2 className="news-result-title" data-tina-field={tinaMark(copy, "resultHeading")}>
                   {copy.resultHeading}
                 </h2>
-                <ResultCards items={results} startOpen={batchOpen} onDismiss={() => setBatchOpen(false)} />
+                <ResultCards items={resultsList} startOpen={batchOpen} onDismiss={() => setBatchOpen(false)} />
               </>
             ) : null}
 
-            {id === "event" && events.length ? (
+            {id === "event" && eventsList.length ? (
               <div className="news-events">
                 <AchievementCards
-                  items={events.map((event) => ({
-                    ...event,
-                    kicker: event.day && event.month ? `${event.day} ${event.month}` : "Event",
-                    title: event.title,
-                    body: event.body || event.text,
-                    photos: event.photos
+                  items={eventsList.map((event) => ({
+                    kicker: "",
+                    title: event.title ?? "",
+                    body: event.body || event.text || "",
+                    preview: event.text || "",
+                    photos: event.photos ?? [],
+                    dateDay: event.day ?? "",
+                    dateMonth: event.month ?? "",
+                    marks: {
+                      day: tinaMark(event, "day"),
+                      month: tinaMark(event, "month"),
+                      title: tinaMark(event, "title"),
+                      body: tinaMark(event, "body"),
+                      preview: tinaMark(event, "text")
+                    }
                   }))}
                   empty={emptyCopy.event}
                 />
               </div>
             ) : null}
 
-            {id === "result" && !results.length ? (
+            {id === "result" && !resultsList.length ? (
               <p className="lede news-empty" data-tina-field={tinaMark(copy, "resultEmpty")}>
                 {emptyCopy.result}
               </p>
             ) : null}
 
-            {id === "event" && !events.length ? (
+            {id === "event" && !eventsList.length ? (
               <p className="lede news-empty" data-tina-field={tinaMark(copy, "eventEmpty")}>
                 {emptyCopy.event}
               </p>
             ) : null}
 
-            {id === "achievement" && !achievements.length ? (
+            {id === "achievement" && !achievementsList.length ? (
               <p className="lede news-empty" data-tina-field={tinaMark(copy, "achievementEmpty")}>
                 {emptyCopy.achievement}
               </p>
