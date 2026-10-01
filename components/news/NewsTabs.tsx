@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import AchievementCards from "@/components/news/AchievementCards";
 import ResultCards from "@/components/news/ResultCards";
 import { tinaMark } from "@/components/tina/EditablePage";
@@ -34,15 +34,9 @@ export default function NewsTabs({
   initialTab?: string;
 }) {
   const [tab, setTab] = useState<NewsCategory>(resolveTab(initialTab));
-  const [batchOpen, setBatchOpen] = useState(false);
   const resultsList = results ?? [];
   const achievementsList = achievements ?? [];
   const eventsList = (events ?? []).filter((event) => event && typeof event === "object");
-
-  useEffect(() => {
-    if (window.parent !== window) return;
-    setBatchOpen(resolveTab(initialTab) === "result");
-  }, [initialTab]);
   const tabs = useMemo(
     () => [
       { id: "result" as const, label: copy.resultLabel },
@@ -52,7 +46,6 @@ export default function NewsTabs({
     [copy]
   );
   function selectTab(id: NewsCategory) {
-    if (id !== "result") setBatchOpen(false);
     setTab(id);
     const url = new URL(window.location.href);
     url.searchParams.set("tab", id);
@@ -108,7 +101,7 @@ export default function NewsTabs({
                 <h2 className="news-result-title" data-tina-field={tinaMark(copy, "resultHeading")}>
                   {copy.resultHeading}
                 </h2>
-                <ResultCards items={resultsList} startOpen={batchOpen} onDismiss={() => setBatchOpen(false)} />
+                <ResultCards items={resultsList} />
               </>
             ) : null}
 

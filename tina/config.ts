@@ -38,8 +38,8 @@ function words(name: string, label: string): TinaField {
   return { type: "string", name, label, list: true };
 }
 
-function flag(name: string, label: string): TinaField {
-  return { type: "boolean", name, label };
+function flag(name: string, label: string, description?: string): TinaField {
+  return { type: "boolean", name, label, description };
 }
 
 function group(name: string, label: string, fields: TinaField[]): TinaField {
@@ -641,6 +641,32 @@ const newsCard = [
   photos("photos", "Photos")
 ];
 
+const newsResult = [
+  text("kicker", "Kicker"),
+  text("title", "Title"),
+  area("body", "Text"),
+  flag(
+    "launch",
+    "Open when the site loads",
+    "Turn this on for one result. That result opens in the popup the first time someone visits the site."
+  ),
+  list(
+    "photos",
+    "Photos",
+    [
+      image("src", "Image"),
+      text("alt", "Alt text"),
+      text(
+        "applyLabel",
+        "Apply button label",
+        "Shown beside the photo slider arrows. Leave blank to use Apply when a link is set."
+      ),
+      text("applyHref", "Apply button link", "For example /admissions. Leave blank to hide the button.")
+    ],
+    "alt"
+  )
+];
+
 const news = page({
   name: "news",
   label: "News",
@@ -665,7 +691,13 @@ const news = page({
       text("achievementEmpty", "Empty achievements message"),
       text("eventEmpty", "Empty events message")
     ]),
-    list("results", "Results", newsCard),
+    list(
+      "results",
+      "Results",
+      newsResult,
+      "title",
+      "The result marked to open when the site loads is the launch popup. A photo with an apply link shows that button beside the slider arrows."
+    ),
     list(
       "achievements",
       "Achievements",

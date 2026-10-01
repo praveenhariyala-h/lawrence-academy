@@ -22,7 +22,9 @@ export type NewsTabsCopy = {
   eventEmpty: string;
 };
 
-export type NewsResult = NewsAchievement;
+export type NewsResult = NewsAchievement & {
+  launch?: boolean;
+};
 
 export type NewsEvent = {
   day: string;
@@ -36,6 +38,8 @@ export type NewsEvent = {
 export type NewsAchievementPhoto = {
   src: string;
   alt: string;
+  applyLabel?: string;
+  applyHref?: string;
 };
 
 export type NewsAchievement = {
@@ -96,9 +100,17 @@ export const defaultNews: NewsContent = {
       kicker: "ICSE 2025-26",
       title: "Batch of 2025-26 Results",
       body: "Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.\n\nDistinctions (85% and above): 85 students.\n58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.",
+      launch: true,
       photos: [
         resultShot("batch-2025-26.jpg", "ICSE Batch of 2025-26 results poster for Lawrence High School"),
-        resultShot("admissions-2027-28.jpg", "Lawrence High School admissions open for 2027-28, with ICSE 2026 toppers")
+        {
+          ...resultShot(
+            "admissions-2027-28.jpg",
+            "Lawrence High School admissions open for 2027-28, with ICSE 2026 toppers"
+          ),
+          applyLabel: "Apply",
+          applyHref: "/admissions"
+        }
       ]
     },
     {
@@ -464,6 +476,17 @@ export const defaultNews: NewsContent = {
     }
   ]
 };
+
+const studentResultTitle = /^(.*?)\s*[—–-]\s*(\d+(?:\.\d+)?%)\s*$/;
+
+export function launchHighlight(results: NewsResult[] | null | undefined): NewsResult | null {
+  const records = (results ?? []).filter((item) => item && typeof item === "object" && item.title);
+  return (
+    records.find((item) => item.launch) ??
+    records.find((item) => !studentResultTitle.test(item.title)) ??
+    null
+  );
+}
 
 export async function getNewsContent(): Promise<NewsContent> {
   return readContent("content/news/news.json", defaultNews);
