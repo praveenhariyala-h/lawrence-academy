@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { NewsResult } from "@/lib/news";
 
 function splitStudent(title: string) {
@@ -11,23 +12,41 @@ function splitStudent(title: string) {
   return { name: match[1].trim(), score: match[2] };
 }
 
-export default function ResultCards({ items }: { items: NewsResult[] }) {
+export default function ResultCards({
+  items,
+  startOpen = false,
+  onDismiss
+}: {
+  items: NewsResult[];
+  startOpen?: boolean;
+  onDismiss?: () => void;
+}) {
   const students = items.flatMap((item) => {
     const parts = splitStudent(item.title);
     return parts ? [{ item, ...parts }] : [];
   });
   const features = items.filter((item) => !splitStudent(item.title));
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState<number | null>(startOpen && features.length ? 0 : null);
   const [slide, setSlide] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const blockCloseUntil = useRef(startOpen ? Date.now() + 600 : 0);
   const titleId = useId();
   const open = active !== null ? features[active] : null;
   const photos = open?.photos.slice(0, 5) ?? [];
 
+  useEffect(() => {
+    if (!startOpen || features.length === 0) return undefined;
+    blockCloseUntil.current = Date.now() + 600;
+    setActive(0);
+    return undefined;
+  }, [startOpen, features.length]);
+
   const close = useCallback(() => {
+    if (Date.now() < blockCloseUntil.current) return;
     setActive(null);
     setSlide(0);
-  }, []);
+    onDismiss?.();
+  }, [onDismiss]);
 
   const go = useCallback(
     (direction: number) => {
@@ -73,10 +92,16 @@ export default function ResultCards({ items }: { items: NewsResult[] }) {
               <article className="news-result-student" key={item.title}>
                 {photo ? (
                   <span className="news-result-student-photo">
-                    <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 720px) 46vw, 18vw" />
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 720px) 46vw, 18vw"
+                      data-tina-field={tinaMark(photo, "src")}
+                    />
                   </span>
                 ) : null}
-                <strong>{name}</strong>
+                <strong data-tina-field={tinaMark(item, "title")}>{name}</strong>
                 <span className="news-result-student-score">{score}</span>
               </article>
             );
@@ -101,13 +126,25 @@ export default function ResultCards({ items }: { items: NewsResult[] }) {
               >
                 {photo ? (
                   <span className="news-achieve-photo news-achieve-photo--contain">
-                    <Image src={photo.src} alt="" fill sizes="(max-width: 720px) 92vw, 520px" />
+                    <Image
+                      src={photo.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 720px) 92vw, 520px"
+                      data-tina-field={tinaMark(photo, "src")}
+                    />
                   </span>
                 ) : null}
                 <span className="news-achieve-copy">
-                  <span className="news-achieve-kicker">{item.kicker}</span>
-                  <strong>{item.title}</strong>
-                  {preview ? <span className="news-achieve-text">{preview}</span> : null}
+                  <span className="news-achieve-kicker" data-tina-field={tinaMark(item, "kicker")}>
+                    {item.kicker}
+                  </span>
+                  <strong data-tina-field={tinaMark(item, "title")}>{item.title}</strong>
+                  {preview ? (
+                    <span className="news-achieve-text" data-tina-field={tinaMark(item, "body")}>
+                      {preview}
+                    </span>
+                  ) : null}
                 </span>
                 <span className="news-achieve-arrow" aria-hidden="true">
                   ↗
@@ -144,7 +181,8 @@ export default function ResultCards({ items }: { items: NewsResult[] }) {
                             src={photo.src}
                             alt={photo.alt}
                             fill
-                            sizes="(max-width: 1100px) 96vw, 1100px"
+                            sizes="(max-width: 860px) 92vw, 860px"
+                            data-tina-field={tinaMark(photo, "src")}
                           />
                         </div>
                       ))}
@@ -173,11 +211,17 @@ export default function ResultCards({ items }: { items: NewsResult[] }) {
                   </div>
                 ) : null}
                 <div className="news-modal-copy">
-                  <span className="news-achieve-kicker">{open.kicker}</span>
-                  <h2 id={titleId}>{open.title}</h2>
-                  {open.body.split(/\n\s*\n/).map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
+                  <span className="news-achieve-kicker" data-tina-field={tinaMark(open, "kicker")}>
+                    {open.kicker}
+                  </span>
+                  <h2 id={titleId} data-tina-field={tinaMark(open, "title")}>
+                    {open.title}
+                  </h2>
+                  <div data-tina-field={tinaMark(open, "body")}>
+                    {open.body.split(/\n\s*\n/).map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>,

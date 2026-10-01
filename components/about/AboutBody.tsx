@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import PageBanner from "@/components/PageBanner";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { AboutContent } from "@/lib/about";
 import AboutReveal from "./AboutReveal";
 import FacilitySlider from "./FacilitySlider";
@@ -13,8 +13,12 @@ function delay(index: number): CSSProperties {
   return { "--d": `${index * 70}ms` } as CSSProperties;
 }
 
-function SectionTitle({ children }: { children: string }) {
-  return <h2 className="about-title">{children}</h2>;
+function SectionTitle({ children, field }: { children: string; field?: string }) {
+  return (
+    <h2 className="about-title" data-tina-field={field}>
+      {children}
+    </h2>
+  );
 }
 
 function Portrait({
@@ -23,7 +27,8 @@ function Portrait({
   position,
   initials,
   sizes,
-  className = ""
+  className = "",
+  field
 }: {
   src: string | null;
   alt: string;
@@ -31,6 +36,7 @@ function Portrait({
   initials?: string;
   sizes: string;
   className?: string;
+  field?: string;
 }) {
   return (
     <div className={`about-portrait ${className}`.trim()}>
@@ -41,6 +47,7 @@ function Portrait({
           fill
           sizes={sizes}
           style={{ objectFit: "cover", objectPosition: position }}
+          data-tina-field={field}
         />
       ) : (
         <span className="about-portrait-initials" aria-hidden="true">
@@ -73,6 +80,10 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
         title={aboutHero.title}
         showTitle
         className="page-banner-title"
+        fields={{
+          image: tinaMark(aboutHero, "image"),
+          title: tinaMark(aboutHero, "title")
+        }}
       />
 
       <section className="about-stats-band" aria-label="School at a glance">
@@ -82,11 +93,17 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
               <span className="about-stat-icon" aria-hidden="true">
                 <StatIcon name={stat.icon} />
               </span>
-              <p className="about-stat-value">
+              <p className="about-stat-value" data-tina-field={tinaMark(stat, "value")}>
                 {stat.value}
-                {stat.unit ? <span className="about-stat-unit">{stat.unit}</span> : null}
+                {stat.unit ? (
+                  <span className="about-stat-unit" data-tina-field={tinaMark(stat, "unit")}>
+                    {stat.unit}
+                  </span>
+                ) : null}
               </p>
-              <p className="about-stat-label">{stat.label}</p>
+              <p className="about-stat-label" data-tina-field={tinaMark(stat, "label")}>
+                {stat.label}
+              </p>
             </article>
           ))}
         </div>
@@ -95,9 +112,11 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band">
         <div className="wrap about-journey">
           <div className="about-journey-copy about-reveal">
-            <SectionTitle>{aboutJourney.title}</SectionTitle>
-            {aboutJourney.body.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+            <SectionTitle field={tinaMark(aboutJourney, "title")}>{aboutJourney.title}</SectionTitle>
+            {aboutJourney.body.map((paragraph, index) => (
+              <p key={paragraph.slice(0, 24)} data-tina-field={tinaMark(aboutJourney, "body", index)}>
+                {paragraph}
+              </p>
             ))}
           </div>
           <div className="about-campus about-reveal" style={delay(1)}>
@@ -113,8 +132,8 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                 <VisionIcon />
               </span>
               <div>
-                <h3>{aboutJourney.vision.title}</h3>
-                <p>{aboutJourney.vision.text}</p>
+                <h3 data-tina-field={tinaMark(aboutJourney.vision, "title")}>{aboutJourney.vision.title}</h3>
+                <p data-tina-field={tinaMark(aboutJourney.vision, "text")}>{aboutJourney.vision.text}</p>
               </div>
             </article>
             <article className="about-promise">
@@ -122,8 +141,8 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                 <MissionIcon />
               </span>
               <div>
-                <h3>{aboutJourney.mission.title}</h3>
-                <p>{aboutJourney.mission.text}</p>
+                <h3 data-tina-field={tinaMark(aboutJourney.mission, "title")}>{aboutJourney.mission.title}</h3>
+                <p data-tina-field={tinaMark(aboutJourney.mission, "text")}>{aboutJourney.mission.text}</p>
               </div>
             </article>
           </div>
@@ -138,11 +157,12 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
               alt={aboutPhilosophy.imageAlt}
               fill
               sizes="(max-width: 900px) 100vw, 42vw"
+              data-tina-field={tinaMark(aboutPhilosophy, "image")}
             />
           </div>
           <div className="about-philosophy-copy about-reveal" style={delay(1)}>
-            <SectionTitle>{aboutPhilosophy.title}</SectionTitle>
-            <p>{aboutPhilosophy.body}</p>
+            <SectionTitle field={tinaMark(aboutPhilosophy, "title")}>{aboutPhilosophy.title}</SectionTitle>
+            <p data-tina-field={tinaMark(aboutPhilosophy, "body")}>{aboutPhilosophy.body}</p>
           </div>
         </div>
       </section>
@@ -150,8 +170,10 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band">
         <div className="wrap">
           <header className="about-head about-reveal">
-            <SectionTitle>{aboutMessages.title}</SectionTitle>
-            <p className="about-kicker">{aboutMessages.kicker}</p>
+            <SectionTitle field={tinaMark(aboutMessages, "title")}>{aboutMessages.title}</SectionTitle>
+            <p className="about-kicker" data-tina-field={tinaMark(aboutMessages, "kicker")}>
+              {aboutMessages.kicker}
+            </p>
           </header>
           <div className="about-messages">
             {aboutMessages.people.map((person, index) => (
@@ -163,10 +185,13 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                   initials={person.initials}
                   sizes="(max-width: 900px) 70vw, 260px"
                   className="about-portrait--lg"
+                  field={tinaMark(person, "photo")}
                 />
-                <h3>{person.name}</h3>
-                <p className="about-role">{person.role}</p>
-                <p>{person.message}</p>
+                <h3 data-tina-field={tinaMark(person, "name")}>{person.name}</h3>
+                <p className="about-role" data-tina-field={tinaMark(person, "role")}>
+                  {person.role}
+                </p>
+                <p data-tina-field={tinaMark(person, "message")}>{person.message}</p>
               </article>
             ))}
           </div>
@@ -176,8 +201,10 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band">
         <div className="wrap">
           <header className="about-head about-reveal">
-            <SectionTitle>{leadershipTeam.title}</SectionTitle>
-            <p className="about-kicker">{leadershipTeam.kicker}</p>
+            <SectionTitle field={tinaMark(leadershipTeam, "title")}>{leadershipTeam.title}</SectionTitle>
+            <p className="about-kicker" data-tina-field={tinaMark(leadershipTeam, "kicker")}>
+              {leadershipTeam.kicker}
+            </p>
           </header>
           <div className="about-lead-layout">
             <div className="about-lead-people">
@@ -189,14 +216,17 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                     position={person.position}
                     sizes="(max-width: 640px) 70vw, 18vw"
                     className="about-portrait--square"
+                    field={tinaMark(person, "photo")}
                   />
-                  <h3>{person.name}</h3>
-                  <p className="about-role">{person.role}</p>
+                  <h3 data-tina-field={tinaMark(person, "name")}>{person.name}</h3>
+                  <p className="about-role" data-tina-field={tinaMark(person, "role")}>
+                    {person.role}
+                  </p>
                 </article>
               ))}
             </div>
             <blockquote className="about-lead-quote about-reveal" style={delay(3)}>
-              {leadershipTeam.quote}
+              <span data-tina-field={tinaMark(leadershipTeam, "quote")}>{leadershipTeam.quote}</span>
             </blockquote>
           </div>
         </div>
@@ -205,8 +235,10 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band about-band--soft">
         <div className="wrap">
           <header className="about-head about-reveal">
-            <SectionTitle>{aboutTeams.title}</SectionTitle>
-            <p className="about-kicker">{aboutTeams.kicker}</p>
+            <SectionTitle field={tinaMark(aboutTeams, "title")}>{aboutTeams.title}</SectionTitle>
+            <p className="about-kicker" data-tina-field={tinaMark(aboutTeams, "kicker")}>
+              {aboutTeams.kicker}
+            </p>
           </header>
           <div className="about-reveal">
             <TeamsCarousel items={aboutTeams.groups} />
@@ -217,7 +249,7 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
       <section className="about-band about-values-band">
         <div className="wrap">
           <header className="about-head about-reveal">
-            <SectionTitle>{aboutValues.title}</SectionTitle>
+            <SectionTitle field={tinaMark(aboutValues, "title")}>{aboutValues.title}</SectionTitle>
           </header>
           <div className="about-values">
             {aboutValues.items.map((value, index) => (
@@ -225,14 +257,14 @@ export default function AboutBody({ content: initial }: { content: AboutContent 
                 <span className="about-icon-wrap" aria-hidden="true">
                   <ValueIcon name={value.key} />
                 </span>
-                <h3>{value.title}</h3>
-                <p>{value.text}</p>
+                <h3 data-tina-field={tinaMark(value, "title")}>{value.title}</h3>
+                <p data-tina-field={tinaMark(value, "text")}>{value.text}</p>
               </article>
             ))}
           </div>
           <div className="about-motto about-reveal">
             <OliveBranch />
-            <p>{aboutMotto}</p>
+            <p data-tina-field={tinaMark(content, "motto")}>{aboutMotto}</p>
             <OliveBranch flip />
           </div>
         </div>

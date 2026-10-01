@@ -1,0 +1,80 @@
+
+    fragment NewsParts on News {
+  __typename
+  metaTitle
+  metaDescription
+  hero {
+    __typename
+    kicker
+    title
+    lede
+    image
+    imageAlt
+    fit
+  }
+  tabs {
+    __typename
+    resultLabel
+    achievementLabel
+    eventLabel
+    resultHeading
+    resultEmpty
+    achievementEmpty
+    eventEmpty
+  }
+  results {
+    __typename
+    kicker
+    title
+    body
+    photos {
+      __typename
+      src
+      alt
+    }
+  }
+  achievements {
+    __typename
+    kicker
+    title
+    body
+    photos {
+      __typename
+      src
+      alt
+    }
+  }
+  events {
+    __typename
+    day
+    month
+    title
+    text
+    body
+    photos {
+      __typename
+      src
+      alt
+    }
+  }
+}
+    
+
+    query news($relativePath: String!) {
+  news(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...NewsParts
+  }
+}
+    

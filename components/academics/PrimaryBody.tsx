@@ -6,7 +6,7 @@ import AboutReveal from "@/components/about/AboutReveal";
 import PhotoCarousel from "@/components/about/PhotoCarousel";
 import PrimaryIcon from "@/components/academics/PrimaryIcon";
 import PageBanner from "@/components/PageBanner";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { PrimaryContent } from "@/lib/primary";
 
 function delay(index: number): CSSProperties {
@@ -26,6 +26,12 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
         title={hero.title}
         grades={hero.grades}
         className="page-banner-title"
+        fields={{
+          image: tinaMark(hero, "image"),
+          kicker: tinaMark(hero, "kicker"),
+          title: tinaMark(hero, "title"),
+          grades: tinaMark(hero, "grades")
+        }}
       />
 
       <section className="about-band">
@@ -37,21 +43,26 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
                 alt={approach.imageAlt}
                 fill
                 sizes="(max-width: 900px) 100vw, 46vw"
+                data-tina-field={tinaMark(approach, "image")}
               />
             </div>
           </div>
           <div className="pr-approach-copy about-reveal" style={delay(1)}>
-            <p className="about-kicker">{approach.kicker}</p>
-            <h2 className="kg-title">{approach.title}</h2>
-            <p>{approach.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(approach, "kicker")}>
+              {approach.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(approach, "title")}>
+              {approach.title}
+            </h2>
+            <p data-tina-field={tinaMark(approach, "body")}>{approach.body}</p>
             <div className="pr-approach-values">
               {approach.values.map((value) => (
                 <article className="pr-value-card" key={value.title}>
                   <span className="kg-icon kg-icon--sm" aria-hidden="true">
                     <PrimaryIcon name={value.icon} />
                   </span>
-                  <h3>{value.title}</h3>
-                  <p>{value.text}</p>
+                  <h3 data-tina-field={tinaMark(value, "title")}>{value.title}</h3>
+                  <p data-tina-field={tinaMark(value, "text")}>{value.text}</p>
                 </article>
               ))}
             </div>
@@ -62,16 +73,20 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
       <section className="about-band about-band--soft">
         <div className="wrap pr-curriculum-layout">
           <div className="pr-curriculum-copy about-reveal">
-            <p className="about-kicker">{curriculum.kicker}</p>
-            <h2 className="kg-title">{curriculum.title}</h2>
-            <p>{curriculum.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(curriculum, "kicker")}>
+              {curriculum.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(curriculum, "title")}>
+              {curriculum.title}
+            </h2>
+            <p data-tina-field={tinaMark(curriculum, "body")}>{curriculum.body}</p>
           </div>
           <div className="pr-curriculum-panel about-reveal" style={delay(1)}>
             <div className="pr-subject-grid">
               {curriculum.subjects.map((subject) => (
                 <article className="pr-subject-card" key={subject.title}>
-                  <h3>{subject.title}</h3>
-                  <p>{subject.text}</p>
+                  <h3 data-tina-field={tinaMark(subject, "title")}>{subject.title}</h3>
+                  <p data-tina-field={tinaMark(subject, "text")}>{subject.text}</p>
                 </article>
               ))}
             </div>
@@ -83,11 +98,12 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
                   width={240}
                   height={140}
                   sizes="140px"
+                  data-tina-field={tinaMark(curriculum.karadi, "logo")}
                 />
               </div>
               <div>
-                <h3>{curriculum.karadi.title}</h3>
-                <p>{curriculum.karadi.body}</p>
+                <h3 data-tina-field={tinaMark(curriculum.karadi, "title")}>{curriculum.karadi.title}</h3>
+                <p data-tina-field={tinaMark(curriculum.karadi, "body")}>{curriculum.karadi.body}</p>
               </div>
             </article>
           </div>
@@ -97,9 +113,13 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
       <section className="about-band">
         <div className="wrap">
           <header className="kg-head about-reveal">
-            <p className="about-kicker">{beyond.kicker}</p>
-            <h2 className="kg-title">{beyond.title}</h2>
-            <p>{beyond.body}</p>
+            <p className="about-kicker" data-tina-field={tinaMark(beyond, "kicker")}>
+              {beyond.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(beyond, "title")}>
+              {beyond.title}
+            </h2>
+            <p data-tina-field={tinaMark(beyond, "body")}>{beyond.body}</p>
           </header>
           <div className="pr-beyond-grid">
             {beyond.items.map((item, index) => (
@@ -108,8 +128,8 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
                   <PrimaryIcon name={item.icon} />
                 </span>
                 <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                  <h3 data-tina-field={tinaMark(item, "title")}>{item.title}</h3>
+                  <p data-tina-field={tinaMark(item, "text")}>{item.text}</p>
                 </div>
               </article>
             ))}
@@ -120,8 +140,12 @@ export default function PrimaryBody({ content: initial }: { content: PrimaryCont
       <section className="about-band about-band--soft">
         <div className="wrap">
           <header className="kg-head about-reveal">
-            <p className="about-kicker">{moments.kicker}</p>
-            <h2 className="kg-title">{moments.title}</h2>
+            <p className="about-kicker" data-tina-field={tinaMark(moments, "kicker")}>
+              {moments.kicker}
+            </p>
+            <h2 className="kg-title" data-tina-field={tinaMark(moments, "title")}>
+              {moments.title}
+            </h2>
           </header>
           <div className="about-reveal">
             <PhotoCarousel photos={moments.photos} perView={4} />

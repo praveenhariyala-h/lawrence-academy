@@ -96,7 +96,10 @@ export const defaultNews: NewsContent = {
       kicker: "ICSE 2025-26",
       title: "Batch of 2025-26 Results",
       body: "Lawrence High School ICSE congratulates the Batch of 2025-26 on a 100% result.\n\nDistinctions (85% and above): 85 students.\n58 students scored above 90, 27 students scored 85–89%, 15 students scored 80–84%, and 29 students scored 60–80%.",
-      photos: [resultShot("batch-2025-26.jpg", "ICSE Batch of 2025-26 results poster for Lawrence High School")]
+      photos: [
+        resultShot("batch-2025-26.jpg", "ICSE Batch of 2025-26 results poster for Lawrence High School"),
+        resultShot("admissions-2027-28.jpg", "Lawrence High School admissions open for 2027-28, with ICSE 2026 toppers")
+      ]
     },
     {
       kicker: "ICSE 2025-26",

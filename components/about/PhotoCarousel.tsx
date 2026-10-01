@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { SpacePhoto } from "@/lib/campus";
 
 const INTERVAL = 4000;
@@ -112,6 +113,7 @@ export default function PhotoCarousel({
                     alt={photo.alt}
                     fill
                     sizes="(max-width: 640px) 46vw, (max-width: 900px) 30vw, 22vw"
+                    data-tina-field={tinaMark(photo, "src")}
                   />
                 </div>
               </article>

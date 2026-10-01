@@ -171,6 +171,12 @@ export default function ContactView({
           lede={content.lede}
           fit="cover"
           className="page-banner-title"
+          fields={{
+            image: tinaMark(content, "heroImage"),
+            title: tinaMark(content, "title"),
+            grades: tinaMark(content, "subtitle"),
+            lede: tinaMark(content, "lede")
+          }}
         />
       </AboutReveal>
 
@@ -183,7 +189,7 @@ export default function ContactView({
                 <TouchIcon type="pin" />
               </span>
               <div>
-                <strong>{content.addressLabel}</strong>
+                <strong data-tina-field={tinaMark(content, "addressLabel")}>{content.addressLabel}</strong>
                 <p>
                   <AddressLines address={address} />
                 </p>
@@ -194,7 +200,7 @@ export default function ContactView({
                 <TouchIcon type="phone" />
               </span>
               <div>
-                <strong>{content.phoneLabel}</strong>
+                <strong data-tina-field={tinaMark(content, "phoneLabel")}>{content.phoneLabel}</strong>
                 <p>
                   <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
                 </p>
@@ -205,7 +211,7 @@ export default function ContactView({
                 <TouchIcon type="mail" />
               </span>
               <div>
-                <strong>{content.emailLabel}</strong>
+                <strong data-tina-field={tinaMark(content, "emailLabel")}>{content.emailLabel}</strong>
                 <p>
                   <a href={`mailto:${email}`}>{email}</a>
                 </p>
@@ -220,8 +226,8 @@ export default function ContactView({
                 <div className="contact-hours">
                   {hours.map((row) => (
                     <p key={row.days}>
-                      <span>{row.days}</span>
-                      <span>{row.time}</span>
+                      <span data-tina-field={tinaMark(row, "days")}>{row.days}</span>
+                      <span data-tina-field={tinaMark(row, "time")}>{row.time}</span>
                     </p>
                   ))}
                 </div>
@@ -269,11 +275,19 @@ export default function ContactView({
             <span className="contact-recruit-rule" aria-hidden="true" />
             <p data-tina-field={tinaMark(content, "recruitBody")}>{content.recruitBody}</p>
             {recruitInternal ? (
-              <Link className="btn btn--gold contact-recruit-btn" href={recruitHref}>
+              <Link
+                className="btn btn--gold contact-recruit-btn"
+                href={recruitHref}
+                data-tina-field={tinaMark(content, "recruitLabel")}
+              >
                 {content.recruitLabel} <span aria-hidden="true">→</span>
               </Link>
             ) : (
-              <a className="btn btn--gold contact-recruit-btn" href={recruitHref}>
+              <a
+                className="btn btn--gold contact-recruit-btn"
+                href={recruitHref}
+                data-tina-field={tinaMark(content, "recruitLabel")}
+              >
                 {content.recruitLabel} <span aria-hidden="true">→</span>
               </a>
             )}

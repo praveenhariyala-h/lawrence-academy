@@ -3,7 +3,7 @@
 import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import NewsTabs from "@/components/news/NewsTabs";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { NewsContent } from "@/lib/news";
 
 export default function NewsBody({
@@ -26,6 +26,12 @@ export default function NewsBody({
         lede={hero.lede}
         fit={hero.fit}
         className="page-banner-title"
+        fields={{
+          image: tinaMark(hero, "image"),
+          kicker: tinaMark(hero, "kicker"),
+          title: tinaMark(hero, "title"),
+          lede: tinaMark(hero, "lede")
+        }}
       />
 
       <section className="band band--white news-band">

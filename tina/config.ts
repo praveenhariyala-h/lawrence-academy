@@ -548,6 +548,7 @@ const highSchool = page({
         list("groups", "Groups", [
           text("title", "Title"),
           text("subtitle", "Subtitle"),
+          text("note", "Note"),
           choice("tone", "Colour", ["peach", "blue", "gold"]),
           list("subjects", "Subjects", [...subjectTitle, text("detail", "Detail")])
         ])
@@ -789,7 +790,22 @@ const alumni = page({
         area("quote", "Quote")
       ], "name")
     ]),
+    group("testimonials", "Testimonials", [
+      text("title", "Heading"),
+      area("intro", "Introduction"),
+      text("youtubeHref", "YouTube channel"),
+      text("youtubeLabel", "YouTube button"),
+      text("instagramHref", "Instagram profile"),
+      text("instagramLabel", "Instagram button"),
+      list("items", "Videos", [
+        text("title", "Title"),
+        text("videoId", "YouTube video ID or URL")
+      ], "title")
+    ]),
     group("form", "Form", [
+      text("ctaTitle", "Engagement banner title", emphasis),
+      area("ctaBody", "Engagement banner text"),
+      text("ctaLabel", "Engagement form button"),
       text("heading", "Heading"),
       area("intro", "Introduction"),
       text("successMessage", "Success message"),

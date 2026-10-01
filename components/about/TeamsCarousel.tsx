@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { tinaMark } from "@/components/tina/EditablePage";
 import type { AboutTeamGroup } from "@/lib/about";
 
 const INTERVAL = 3500;
@@ -107,9 +108,10 @@ export default function TeamsCarousel({ items }: { items: AboutTeamGroup[] }) {
                     fill
                     sizes="(max-width: 640px) 90vw, (max-width: 900px) 46vw, 32vw"
                     style={{ objectFit: "contain" }}
+                    data-tina-field={tinaMark(item, "photo")}
                   />
                 </div>
-                <figcaption>{item.name}</figcaption>
+                <figcaption data-tina-field={tinaMark(item, "name")}>{item.name}</figcaption>
               </figure>
             </article>
           ))}

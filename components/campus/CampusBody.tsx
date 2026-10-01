@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import FacilityRow from "@/components/about/FacilityRow";
 import PageBanner from "@/components/PageBanner";
-import { useEditable } from "@/components/tina/EditablePage";
+import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { CampusContent } from "@/lib/campus";
 
 function delay(index: number): CSSProperties {
@@ -16,7 +16,19 @@ export default function CampusBody({ content: initial }: { content: CampusConten
   const { hero: campusHero, spaces: campusSpaces } = content;
   return (
     <AboutReveal>
-      <PageBanner src={campusHero.image} alt={campusHero.imageAlt} title={campusHero.title} lede={campusHero.lede} showTitle className="page-banner-title" />
+      <PageBanner
+        src={campusHero.image}
+        alt={campusHero.imageAlt}
+        title={campusHero.title}
+        lede={campusHero.lede}
+        showTitle
+        className="page-banner-title"
+        fields={{
+          image: tinaMark(campusHero, "image"),
+          title: tinaMark(campusHero, "title"),
+          lede: tinaMark(campusHero, "lede")
+        }}
+      />
 
       {campusSpaces.map((space, index) => (
         <section
@@ -34,6 +46,7 @@ export default function CampusBody({ content: initial }: { content: CampusConten
               gallery={space.gallery}
               features={space.features}
               delay={delay(index % 2)}
+              source={space}
             />
           </div>
         </section>
