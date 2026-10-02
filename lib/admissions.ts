@@ -93,6 +93,7 @@ export type AdmissionsContent = {
   visitNote: string;
   visitLinkLabel: string;
   submitLabel: string;
+  enquiryEmail: string;
 };
 
 export const defaultAdmissions: AdmissionsContent = {
@@ -119,7 +120,8 @@ export const defaultAdmissions: AdmissionsContent = {
   helplineTitle: "Admission helpline",
   visitNote: "Prefer to visit first? See the map on the",
   visitLinkLabel: "contact page",
-  submitLabel: "Submit Enquiry"
+  submitLabel: "Submit Enquiry",
+  enquiryEmail: "lawrence.admn@gmail.com"
 };
 
 export async function getAdmissionsContent(): Promise<AdmissionsContent> {

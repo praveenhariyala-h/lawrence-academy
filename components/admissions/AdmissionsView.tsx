@@ -195,7 +195,7 @@ export default function AdmissionsView(props: AdmissionsTinaProps) {
             titleField={mark(content, "applyTitle")}
             ledeField={mark(content, "applyBody")}
             submitField={mark(content, "submitLabel")}
-            email={props.email}
+            email={text(content, "enquiryEmail")}
             whatsapp={props.whatsapp}
           />
         </div>

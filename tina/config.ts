@@ -731,6 +731,7 @@ const admissions = page({
     text("visitNote", "Visit note"),
     text("visitLinkLabel", "Visit link label"),
     text("submitLabel", "Form button label"),
+    text("enquiryEmail", "Enquiry email", "Address that receives admission form submissions."),
     text("processKicker", "Process kicker"),
     text("processTitle", "Process heading"),
     list("steps", "Steps", [
