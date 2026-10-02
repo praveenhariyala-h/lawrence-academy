@@ -300,18 +300,6 @@ export const defaultNews: NewsContent = {
         eventShot("role-play-2.png", "A student in an astronaut costume for the Role Play competition"),
         eventShot("role-play-3.png", "A student dressed as a teacher for the Role Play competition")
       ]
-    },
-    {
-      day: "5",
-      month: "Sep",
-      title: "Teachers' Day",
-      text: "Students thank the teachers who guide them from the first classroom to the laboratory.",
-      body: "Teachers' Day is the school's chance to thank the people who guide every child. The thanks belong in many rooms, not only on a stage.\n\nIn the early years, a teacher sits at the table and turns play into learning. With older children, a music lesson becomes a shared discovery. In the laboratory, a teacher stands with students as they test an idea for themselves.\n\nThe day is a reminder of that everyday work, and of the teachers who help Lawrence students grow.",
-      photos: [
-        eventShot("teachers-day-1.png", "A kindergarten teacher exploring with students at Lawrence High School"),
-        eventShot("teachers-day-2.png", "A teacher making music with children in class"),
-        eventShot("teachers-day-3.png", "A teacher guiding high school students in the science laboratory")
-      ]
     }
   ],
   achievements: [
