@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, type CSSProperties } from "react";
 import NewsResultModal from "@/components/news/NewsResultModal";
-import { tinaMark } from "@/components/tina/EditablePage";
+import { tinaEditing, tinaMark } from "@/components/tina/EditablePage";
 import type { NewsResult } from "@/lib/news";
 
 function textOf(value: string | null | undefined) {
@@ -71,7 +71,10 @@ export default function ResultCards({ items }: { items: NewsResult[] }) {
                 key={`${item.title}-${index}`}
                 className="news-achieve-card news-achieve-card--photo news-result-feature-card"
                 type="button"
-                onClick={() => setActive(index)}
+                onClick={() => {
+                  if (tinaEditing()) return;
+                  setActive(index);
+                }}
               >
                 {photo ? (
                   <span className="news-achieve-photo news-achieve-photo--contain">

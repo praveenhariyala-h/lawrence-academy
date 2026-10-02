@@ -44,6 +44,10 @@ export function useEditable<T>(collection: string, fallback: T): T {
   return fallback;
 }
 
+export function tinaEditing() {
+  return document.body.classList.contains("__tina-quick-editing-enabled");
+}
+
 export function tinaMark(object: object | null | undefined, property: string, index?: number) {
   if (!object) return undefined;
   const value = tinaField(object as EditableRecord, property, index);

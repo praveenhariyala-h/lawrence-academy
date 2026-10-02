@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
-import { tinaMark } from "@/components/tina/EditablePage";
+import { tinaEditing, tinaMark } from "@/components/tina/EditablePage";
 import type { NewsAchievement, NewsAchievementPhoto } from "@/lib/news";
 
 export type NewsCardMarks = {
@@ -133,6 +133,7 @@ export default function AchievementCards({
               className="news-achieve-card news-achieve-card--photo"
               type="button"
               onClick={() => {
+                if (tinaEditing()) return;
                 setSlide(0);
                 setActive(index);
               }}
