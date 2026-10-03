@@ -1,18 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
-import AchievementsCarousel from "@/components/home/AchievementsCarousel";
+import AchievementsCarousel, { type AchievementSlide } from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
 import { tinaMark } from "@/components/tina/EditablePage";
-import type { HomeContent } from "@/lib/home";
-import type { RecentAchievementSlide } from "@/lib/news";
+import type { HomeAchievement, HomeContent } from "@/lib/home";
 
-export default function HomeBelowFold({
-  home,
-  achievements
-}: {
-  home: HomeContent;
-  achievements: RecentAchievementSlide[];
-}) {
+function achievementSlides(items: HomeAchievement[] | null | undefined): AchievementSlide[] {
+  return (items ?? []).flatMap((item) => {
+    if (!item?.image || !item.title) return [];
+    return [
+      {
+        title: item.title,
+        text: item.text ?? "",
+        date: item.date ?? "",
+        image: item.image,
+        alt: item.alt || item.title,
+        href: item.href || "/news?tab=achievement",
+        marks: {
+          image: tinaMark(item, "image"),
+          date: tinaMark(item, "date"),
+          title: tinaMark(item, "title"),
+          text: tinaMark(item, "text")
+        }
+      }
+    ];
+  });
+}
+
+export default function HomeBelowFold({ home }: { home: HomeContent }) {
   const beyond = home.beyondClassroom;
   const campus = home.campusSpotlight;
 
@@ -52,7 +67,7 @@ export default function HomeBelowFold({
                 {home.achievementsViewAllLabel}
               </Link>
             </header>
-            <AchievementsCarousel items={achievements} />
+            <AchievementsCarousel items={achievementSlides(home.recentAchievements)} />
           </article>
 
           <article className="home-panel home-panel--compact">
