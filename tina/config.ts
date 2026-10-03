@@ -202,12 +202,22 @@ const home = page({
       text("ctaHref", "Button link"),
       list("items", "Tiles", [text("title", "Title"), image("image", "Image"), text("alt", "Alt text")])
     ]),
-    text(
-      "achievementsTitle",
-      "Achievements heading",
-      "The slides come from the first three items under News → Achievements."
-    ),
+    text("achievementsTitle", "Achievements heading"),
     text("achievementsViewAllLabel", "Achievements link label"),
+    list(
+      "recentAchievements",
+      "Recent achievements",
+      [
+        text("date", "Date line"),
+        text("title", "Title"),
+        area("text", "Text"),
+        image("image", "Image"),
+        text("alt", "Image alt text"),
+        text("href", "Link", "Where this slide opens. For example /news?tab=achievement.")
+      ],
+      "title",
+      "Shown only on the homepage. News page achievements are edited under News."
+    ),
     group("campusSpotlight", "Campus spotlight", [
       text("title", "Title"),
       area("body", "Text"),
@@ -218,12 +228,18 @@ const home = page({
     ]),
     text("upcomingEventsTitle", "Events heading"),
     text("upcomingEventsViewAllLabel", "Events link label"),
-    list("upcomingEvents", "Upcoming events", [
-      text("day", "Day"),
-      text("month", "Month"),
-      text("title", "Title"),
-      area("text", "Text")
-    ]),
+    list(
+      "upcomingEvents",
+      "Upcoming events",
+      [
+        text("day", "Day"),
+        text("month", "Month"),
+        text("title", "Title"),
+        area("text", "Text")
+      ],
+      "title",
+      "Shown only on the homepage. News page events are edited under News."
+    ),
     text("partnersKicker", "Partners introduction"),
     text("partnersTitle", "Partners heading"),
     list(
@@ -703,16 +719,22 @@ const news = page({
       "Achievements",
       newsCard,
       "title",
-      "The first three items, in this order, are the home page Recent Achievements slider."
+      "Shown only on the News page. Homepage achievement slides are edited under Home."
     ),
-    list("events", "Events", [
-      text("day", "Day"),
-      text("month", "Month"),
-      text("title", "Title"),
-      area("text", "Summary"),
-      area("body", "Text"),
-      photos("photos", "Photos")
-    ])
+    list(
+      "events",
+      "Events",
+      [
+        text("day", "Day"),
+        text("month", "Month"),
+        text("title", "Title"),
+        area("text", "Summary"),
+        area("body", "Text"),
+        photos("photos", "Photos")
+      ],
+      "title",
+      "Shown only on the News page. Homepage upcoming events are edited under Home."
+    )
   ]
 });
 

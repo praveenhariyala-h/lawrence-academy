@@ -11,6 +11,12 @@ export type AchievementSlide = {
   image: string;
   alt: string;
   href: string;
+  marks?: {
+    image?: string;
+    date?: string;
+    title?: string;
+    text?: string;
+  };
 };
 
 const INTERVAL = 4500;
@@ -81,7 +87,7 @@ export default function AchievementsCarousel({
       <div className="achievement-carousel-viewport">
         {items.map((item, slideIndex) => (
           <Link
-            key={item.image}
+            key={`${item.title}-${slideIndex}`}
             className={
               slideIndex === index
                 ? "home-achievement achievement-slide is-active"
@@ -98,12 +104,17 @@ export default function AchievementsCarousel({
                 fill
                 sizes="(max-width: 900px) 92vw, 42vw"
                 className="home-achievement-img"
+                data-tina-field={item.marks?.image}
               />
             </div>
             <div>
-              {item.date ? <span className="home-achievement-date">{item.date}</span> : null}
-              <h3>{item.title}</h3>
-              {item.text ? <p>{item.text}</p> : null}
+              {item.date ? (
+                <span className="home-achievement-date" data-tina-field={item.marks?.date}>
+                  {item.date}
+                </span>
+              ) : null}
+              <h3 data-tina-field={item.marks?.title}>{item.title}</h3>
+              {item.text ? <p data-tina-field={item.marks?.text}>{item.text}</p> : null}
             </div>
           </Link>
         ))}
@@ -113,7 +124,7 @@ export default function AchievementsCarousel({
         <div className="achievement-carousel-nav">
           {items.map((slide, slideIndex) => (
             <button
-              key={slide.image}
+              key={`${slide.title}-${slideIndex}`}
               className={slideIndex === index ? "dot is-on" : "dot"}
               type="button"
               aria-label={`Show ${slide.title}`}

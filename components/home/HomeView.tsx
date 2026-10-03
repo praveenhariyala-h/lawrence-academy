@@ -7,15 +7,8 @@ import HomeBelowFold from "@/components/home/HomeBelowFold";
 import PathwayStrip from "@/components/home/PathwayStrip";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 import type { HomeContent } from "@/lib/home";
-import type { RecentAchievementSlide } from "@/lib/news";
 
-export default function HomeView({
-  content: initial,
-  achievements
-}: {
-  content: HomeContent;
-  achievements: RecentAchievementSlide[];
-}) {
+export default function HomeView({ content: initial }: { content: HomeContent }) {
   const home = useEditable("home", initial);
 
   return (
@@ -62,7 +55,7 @@ export default function HomeView({
         kickerField={tinaMark(home, "curriculumKicker")}
       />
 
-      <HomeBelowFold home={home} achievements={achievements} />
+      <HomeBelowFold home={home} />
     </>
   );
 }
