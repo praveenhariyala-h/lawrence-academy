@@ -1,0 +1,21 @@
+{
+  "day": "",
+  "month": "",
+  "title": "Dad and Me",
+  "text": "Fathers joined their children in class for a morning of drawing, building and photographs.",
+  "body": "Dad and Me brought fathers into the classroom to spend the morning with their children. They sat together at the tables, drawing, writing and building with colourful blocks.\n\nA photo frame decorated with “Best Dad” and “My Hero” became a favourite stop. Fathers and children posed together, proud and happy to be side by side.\n\nIt was a warm morning that let every child show their father what school feels like, and let every father see the joy of learning up close.",
+  "photos": [
+    {
+      "src": "/images/news/events/dad-and-me-1.png",
+      "alt": "Fathers drawing and building with their children during Dad and Me"
+    },
+    {
+      "src": "/images/news/events/dad-and-me-2.png",
+      "alt": "A father and child posing in the Best Dad photo frame"
+    },
+    {
+      "src": "/images/news/events/dad-and-me-3.png",
+      "alt": "A father holding his child in the My Hero photo frame"
+    }
+  ]
+}

@@ -3,33 +3,42 @@ import Link from "next/link";
 import AchievementsCarousel, { type AchievementSlide } from "@/components/home/AchievementsCarousel";
 import PartnersGrid from "@/components/home/PartnersGrid";
 import { tinaMark } from "@/components/tina/EditablePage";
-import type { HomeAchievement, HomeContent } from "@/lib/home";
+import type { HomeContent } from "@/lib/home";
+import type { NewsAchievement, NewsEvent } from "@/lib/news";
 
-function achievementSlides(items: HomeAchievement[] | null | undefined): AchievementSlide[] {
-  return (items ?? []).flatMap((item) => {
-    if (!item?.image || !item.title) return [];
+function achievementSlides(items: NewsAchievement[] | null | undefined): AchievementSlide[] {
+  return (items ?? []).slice(0, 3).flatMap((item) => {
+    const photo = item?.photos?.find((entry) => entry?.src);
+    if (!photo || !item.title) return [];
     return [
       {
         title: item.title,
-        text: item.text ?? "",
-        date: item.date ?? "",
-        image: item.image,
-        alt: item.alt || item.title,
-        href: item.href || "/news?tab=achievement",
-        marks: {
-          image: tinaMark(item, "image"),
-          date: tinaMark(item, "date"),
-          title: tinaMark(item, "title"),
-          text: tinaMark(item, "text")
-        }
+        text: item.body ?? "",
+        date: item.kicker ?? "",
+        image: photo.src,
+        alt: photo.alt || item.title,
+        href: "/news?tab=achievement"
       }
     ];
   });
 }
 
-export default function HomeBelowFold({ home }: { home: HomeContent }) {
+function upcomingEvents(items: NewsEvent[] | null | undefined) {
+  return (items ?? []).filter((event) => event?.day?.trim() && event?.month?.trim());
+}
+
+export default function HomeBelowFold({
+  home,
+  achievements,
+  events
+}: {
+  home: HomeContent;
+  achievements: NewsAchievement[];
+  events: NewsEvent[];
+}) {
   const beyond = home.beyondClassroom;
   const campus = home.campusSpotlight;
+  const datedEvents = upcomingEvents(events);
 
   return (
     <>
@@ -67,7 +76,7 @@ export default function HomeBelowFold({ home }: { home: HomeContent }) {
                 {home.achievementsViewAllLabel}
               </Link>
             </header>
-            <AchievementsCarousel items={achievementSlides(home.recentAchievements)} />
+            <AchievementsCarousel items={achievementSlides(achievements)} />
           </article>
 
           <article className="home-panel home-panel--compact">
@@ -99,15 +108,15 @@ export default function HomeBelowFold({ home }: { home: HomeContent }) {
               </Link>
             </header>
             <ul className="home-events">
-              {home.upcomingEvents.map((event) => (
+              {datedEvents.map((event) => (
                 <li key={`${event.day}-${event.title}`}>
                   <span className="home-event-date">
-                    <b data-tina-field={tinaMark(event, "day")}>{event.day}</b>
-                    <span data-tina-field={tinaMark(event, "month")}>{event.month}</span>
+                    <b>{event.day}</b>
+                    <span>{event.month}</span>
                   </span>
                   <div>
-                    <strong data-tina-field={tinaMark(event, "title")}>{event.title}</strong>
-                    <p data-tina-field={tinaMark(event, "text")}>{event.text}</p>
+                    <strong>{event.title}</strong>
+                    <p>{event.text}</p>
                   </div>
                 </li>
               ))}

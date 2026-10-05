@@ -4,17 +4,21 @@ import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import NewsTabs from "@/components/news/NewsTabs";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
-import type { NewsContent } from "@/lib/news";
+import type { NewsAchievement, NewsContent, NewsEvent } from "@/lib/news";
 
 export default function NewsBody({
   content: initial,
+  achievements,
+  events,
   initialTab
 }: {
   content: NewsContent;
+  achievements: NewsAchievement[];
+  events: NewsEvent[];
   initialTab?: string;
 }) {
   const content = useEditable("news", initial);
-  const { hero, events } = content;
+  const { hero } = content;
 
   return (
     <AboutReveal>
@@ -39,7 +43,7 @@ export default function NewsBody({
           <NewsTabs
             events={events}
             results={content.results}
-            achievements={content.achievements}
+            achievements={achievements}
             copy={content.tabs}
             initialTab={initialTab}
           />

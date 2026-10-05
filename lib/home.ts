@@ -1,7 +1,6 @@
 import {
   beyondClassroom as defaultBeyondClassroom,
-  campusSpotlight as defaultCampusSpotlight,
-  upcomingEvents as defaultUpcomingEvents
+  campusSpotlight as defaultCampusSpotlight
 } from "@/lib/homeSections";
 import { readContent } from "@/lib/readContent";
 
@@ -47,22 +46,6 @@ export type HomeCampusSpotlight = {
   alt: string;
 };
 
-export type HomeEvent = {
-  day: string;
-  month: string;
-  title: string;
-  text: string;
-};
-
-export type HomeAchievement = {
-  date: string;
-  title: string;
-  text: string;
-  image: string;
-  alt: string;
-  href: string;
-};
-
 export type HomeCurriculum = {
   title: string;
   grades: string;
@@ -95,11 +78,9 @@ export type HomeContent = {
   beyondClassroom: HomeBeyond;
   achievementsTitle: string;
   achievementsViewAllLabel: string;
-  recentAchievements: HomeAchievement[];
   campusSpotlight: HomeCampusSpotlight;
   upcomingEventsTitle: string;
   upcomingEventsViewAllLabel: string;
-  upcomingEvents: HomeEvent[];
   partnersKicker: string;
   partnersTitle: string;
   partners: HomePartner[];
@@ -254,36 +235,9 @@ export const defaultHome: HomeContent = {
   beyondClassroom: defaultBeyondClassroom,
   achievementsTitle: "Recent Achievements",
   achievementsViewAllLabel: "View all",
-  recentAchievements: [
-    {
-      date: "School Achievements",
-      title: "Mrs. Pushpa Subbaiah Receives the Dronacharya Award for Teachers 2026",
-      text: "Mrs. Pushpa Subbaiah, Managing Trustee of Lawrence High School, received the Dronacharya Award for Teachers 2026 from BMS Educational Trust on 18 September 2026 at BMS College of Engineering, Bull Temple Road, Bengaluru. The award recognises three decades of contribution to education and academic leadership.",
-      image: "/images/news/achievements/dronacharya-pushpa-subbaiah.jpg",
-      alt: "Dronacharya Award 2026 presented to Mrs. Pushpa Subbaiah",
-      href: "/news?tab=achievement"
-    },
-    {
-      date: "Student Achievements",
-      title: "Medal at the Handball Girls Tournament 2026",
-      text: "A Lawrence student received a medal and certificate at the Handball Girls Tournament 2026, hosted by St. Jude's School, Mohaddipur, at Syed Modi Railway Stadium, Gorakhpur, from 17 to 19 September 2026.",
-      image: "/images/news/achievements/handball-gorakhpur.jpg",
-      alt: "A Lawrence student with her medal and certificate at the Handball Girls Tournament 2026",
-      href: "/news?tab=achievement"
-    },
-    {
-      date: "Student Achievements",
-      title: "Certificates at the Frank Anthony Memorial Debate",
-      text: "Lawrence students received certificates at the Frank Anthony Memorial All-India Inter School Debate Competition 2026, in the preliminary stage for Grade X and below, on 24 July 2026.",
-      image: "/images/news/achievements/debate-frank-anthony.jpg",
-      alt: "Lawrence students with certificates at the Frank Anthony Memorial Debate Competition",
-      href: "/news?tab=achievement"
-    }
-  ],
   campusSpotlight: defaultCampusSpotlight,
   upcomingEventsTitle: "Upcoming Events",
   upcomingEventsViewAllLabel: "View all",
-  upcomingEvents: defaultUpcomingEvents,
   partnersKicker: "Working together to create richer learning experiences for our students.",
   partnersTitle: "Our Partners & Collaborators",
   partners: [

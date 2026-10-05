@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import NewsBody from "@/components/news/NewsBody";
 import { EditablePage } from "@/components/tina/EditablePage";
+import { getAchievements } from "@/lib/achievements";
+import { getEvents } from "@/lib/events";
 import { getNewsContent } from "@/lib/news";
 import { NewsDocument } from "@/tina/__generated__/types";
 
@@ -17,7 +19,12 @@ export default async function NewsPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
-  const [{ tab }, content] = await Promise.all([searchParams, getNewsContent()]);
+  const [{ tab }, content, achievements, events] = await Promise.all([
+    searchParams,
+    getNewsContent(),
+    getAchievements(),
+    getEvents()
+  ]);
 
   return (
     <EditablePage
@@ -26,7 +33,7 @@ export default async function NewsPage({
       data={{ news: content }}
       documentPath="content/news/news.json"
     >
-      <NewsBody content={content} initialTab={tab} />
+      <NewsBody content={content} achievements={achievements} events={events} initialTab={tab} />
     </EditablePage>
   );
 }
