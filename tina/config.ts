@@ -204,20 +204,6 @@ const home = page({
     ]),
     text("achievementsTitle", "Achievements heading"),
     text("achievementsViewAllLabel", "Achievements link label"),
-    list(
-      "recentAchievements",
-      "Recent achievements",
-      [
-        text("date", "Date line"),
-        text("title", "Title"),
-        area("text", "Text"),
-        image("image", "Image"),
-        text("alt", "Image alt text"),
-        text("href", "Link", "Where this slide opens. For example /news?tab=achievement.")
-      ],
-      "title",
-      "Shown only on the homepage. News page achievements are edited under News."
-    ),
     group("campusSpotlight", "Campus spotlight", [
       text("title", "Title"),
       area("body", "Text"),
@@ -228,18 +214,6 @@ const home = page({
     ]),
     text("upcomingEventsTitle", "Events heading"),
     text("upcomingEventsViewAllLabel", "Events link label"),
-    list(
-      "upcomingEvents",
-      "Upcoming events",
-      [
-        text("day", "Day"),
-        text("month", "Month"),
-        text("title", "Title"),
-        area("text", "Text")
-      ],
-      "title",
-      "Shown only on the homepage. News page events are edited under News."
-    ),
     text("partnersKicker", "Partners introduction"),
     text("partnersTitle", "Partners heading"),
     list(
@@ -713,30 +687,50 @@ const news = page({
       newsResult,
       "title",
       "The result marked to open when the site loads is the launch popup. A photo with an apply link shows that button beside the slider arrows."
-    ),
-    list(
-      "achievements",
-      "Achievements",
-      newsCard,
-      "title",
-      "Shown only on the News page. Homepage achievement slides are edited under Home."
-    ),
-    list(
-      "events",
-      "Events",
-      [
-        text("day", "Day"),
-        text("month", "Month"),
-        text("title", "Title"),
-        area("text", "Summary"),
-        area("body", "Text"),
-        photos("photos", "Photos")
-      ],
-      "title",
-      "Shown only on the News page. Homepage upcoming events are edited under Home."
     )
   ]
 });
+
+const achievement: Collection = {
+  name: "achievement",
+  label: "Achievements",
+  path: "content/achievements",
+  format: "json",
+  ui: {
+    filename: {
+      slugify: (values) =>
+        values?.title
+          ?.toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "") || "achievement"
+    }
+  },
+  fields: newsCard
+};
+
+const event: Collection = {
+  name: "event",
+  label: "Events",
+  path: "content/events",
+  format: "json",
+  ui: {
+    filename: {
+      slugify: (values) =>
+        values?.title
+          ?.toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "") || "event"
+    }
+  },
+  fields: [
+    text("day", "Day"),
+    text("month", "Month"),
+    text("title", "Title"),
+    area("text", "Summary"),
+    area("body", "Text"),
+    photos("photos", "Photos")
+  ]
+};
 
 const admissions = page({
   name: "admissions",
@@ -975,6 +969,8 @@ export default defineConfig({
       highSchool,
       beyondBooks,
       news,
+      achievement,
+      event,
       alumni,
       admissions,
       contact,

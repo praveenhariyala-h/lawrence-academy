@@ -1,0 +1,21 @@
+{
+  "day": "",
+  "month": "",
+  "title": "Fancy Dress",
+  "text": "Students dressed as fruits, heroes, a firefighter and a rocket for the competition.",
+  "body": "The Fancy Dress Competition filled the classroom with colour and character. Children arrived as fruits, princesses, soldiers, an astronaut and even a dinosaur, and lined up to show who they had become.\n\nOne student came as a firefighter, ready to save lives, with a bright engine painted beside him. Another stepped in as an Indian rocket, complete with the tricolour and boosters.\n\nEach child spoke for their character, and the morning became a parade of imagination.",
+  "photos": [
+    {
+      "src": "/images/news/events/fancy-dress-1.png",
+      "alt": "Students in costume for the Fancy Dress Competition"
+    },
+    {
+      "src": "/images/news/events/fancy-dress-2.png",
+      "alt": "A student dressed as a firefighter at the Fancy Dress Competition"
+    },
+    {
+      "src": "/images/news/events/fancy-dress-3.png",
+      "alt": "A student wearing an Indian rocket costume at the Fancy Dress Competition"
+    }
+  ]
+}

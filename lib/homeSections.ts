@@ -36,24 +36,3 @@ export const campusSpotlight = {
   alt: "Lawrence High School campus, HSR Layout"
 };
 
-export const upcomingEvents = [
-  {
-    day: "12",
-    month: "Jan",
-    title: "Annual Sports Meet",
-    text: "A celebration of spirit and teamwork."
-  },
-  {
-    day: "26",
-    month: "Jan",
-    title: "Republic Day Celebrations",
-    text: "A proud day marked with pride."
-  },
-  {
-    day: "10",
-    month: "Feb",
-    title: "School Carnival",
-    text: "Fun, creativity, community."
-  }
-];
-

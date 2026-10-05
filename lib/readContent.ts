@@ -11,3 +11,24 @@ export function readContent<T extends object>(relativePath: string, fallback: T)
     return fallback;
   }
 }
+
+export function readCollection<T extends object>(relativeDir: string): T[] {
+  try {
+    const folder = path.join(process.cwd(), relativeDir);
+    return fs
+      .readdirSync(folder)
+      .filter((name) => name.endsWith(".json"))
+      .sort()
+      .flatMap((name) => {
+        try {
+          const parsed: unknown = JSON.parse(fs.readFileSync(path.join(folder, name), "utf8"));
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return [];
+          return [parsed as T];
+        } catch {
+          return [];
+        }
+      });
+  } catch {
+    return [];
+  }
+}

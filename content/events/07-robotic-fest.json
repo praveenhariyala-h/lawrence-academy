@@ -1,0 +1,21 @@
+{
+  "day": "",
+  "month": "",
+  "title": "Robotic Fest",
+  "text": "Students demonstrated robots and explained their projects to visitors.",
+  "body": "Robotic Fest turned the hall into a showcase of student ideas. Tables were lined with models, laptops and small robots, and every team was ready to explain how their project worked.\n\nVisitors watched a robot car run across the floor and stopped at displays such as health-care robots. Students talked through their designs, from the parts on the table to the posters behind them.\n\nIt was a lively morning of building, testing and sharing, and a chance for the school to see what young inventors can do.",
+  "photos": [
+    {
+      "src": "/images/news/events/robotic-fest-1.png",
+      "alt": "Students demonstrating a small robot car at Robotic Fest"
+    },
+    {
+      "src": "/images/news/events/robotic-fest-2.png",
+      "alt": "Students presenting a health-care robot project"
+    },
+    {
+      "src": "/images/news/events/robotic-fest-3.png",
+      "alt": "Students explaining their model to visitors at Robotic Fest"
+    }
+  ]
+}
