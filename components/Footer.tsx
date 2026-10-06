@@ -19,7 +19,7 @@ const admissionLinks = [
   { href: "/admissions#process", label: "Admission Process" },
   { href: "/admissions#fees", label: "Fee Structure" },
   { href: "/admissions#apply", label: "Apply Now" },
-  { href: "/contact", label: "FAQs" }
+  { href: "/contact#faq", label: "FAQs" }
 ];
 
 function SocialIcon({ label }: { label: string }) {

@@ -116,6 +116,14 @@ function PeopleIcon() {
   );
 }
 
+function FaqChevron() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function LeafMark() {
   return (
     <svg className="contact-leaf" viewBox="0 0 170 210" aria-hidden="true" fill="currentColor">
@@ -151,6 +159,7 @@ export default function ContactView({
 }) {
   const content = useEditable("contact", initial);
   const hours = (content.hours ?? []).filter((row) => row?.days && row?.time);
+  const faqs = (content.faqs ?? []).filter((item) => item?.question && item?.answer);
   const motto = (content.motto ?? []).filter(Boolean);
   const orderedSocials = [
     ...socialOrder.flatMap((label) => socials.filter((item) => item.label === label)),
@@ -294,6 +303,29 @@ export default function ContactView({
           </div>
         </div>
       </section>
+
+      {faqs.length > 0 ? (
+        <section className="contact-faq section-anchor" id="faq" aria-labelledby="contact-faq-heading">
+          <div className="wrap">
+            <h2 id="contact-faq-heading" data-tina-field={tinaMark(content, "faqHeading")}>
+              {content.faqHeading}
+            </h2>
+            <div className="contact-faq-list">
+              {faqs.map((item, index) => (
+                <details className="contact-faq-item" key={`${item.question}-${index}`} name="contact-faq">
+                  <summary>
+                    <span data-tina-field={tinaMark(item, "question")}>{item.question}</span>
+                    <span className="contact-faq-chevron">
+                      <FaqChevron />
+                    </span>
+                  </summary>
+                  <p data-tina-field={tinaMark(item, "answer")}>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="contact-find">
         <div className="wrap contact-find-grid">

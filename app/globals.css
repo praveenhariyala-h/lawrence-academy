@@ -2483,13 +2483,15 @@ body.nav-locked {
 
 .contact-touch h2,
 .contact-map-col h2,
-.contact-social-col h2 {
+.contact-social-col h2,
+.contact-faq h2 {
   display: inline-block;
 }
 
 .contact-touch h2::after,
 .contact-map-col h2::after,
-.contact-social-col h2::after {
+.contact-social-col h2::after,
+.contact-faq h2::after {
   content: "";
   display: block;
   width: 42px;
@@ -2693,6 +2695,102 @@ body.nav-locked {
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
   line-height: 1.45;
+}
+
+.contact-faq {
+  padding: 1.7rem 0 0.35rem;
+}
+
+.contact-faq h2 {
+  margin: 0;
+  color: var(--legacy-blue);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 1.75rem);
+  font-weight: 600;
+}
+
+.contact-faq-list {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
+.contact-faq-item {
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--legacy-blue) 5%, transparent);
+}
+
+.contact-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.05rem;
+  color: var(--legacy-blue);
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+
+.contact-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.contact-faq-item summary::marker {
+  content: "";
+}
+
+.contact-faq-item summary > span:first-child {
+  flex: 1;
+}
+
+.contact-faq-item summary:hover {
+  background: color-mix(in srgb, var(--bloom) 12%, var(--white));
+}
+
+.contact-faq-item summary:focus-visible {
+  outline: 3px solid var(--bloom);
+  outline-offset: -3px;
+  border-radius: 14px;
+}
+
+.contact-faq-chevron {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--contact-gold);
+  background: color-mix(in srgb, var(--bloom) 42%, var(--white));
+  transition: transform 0.2s ease;
+}
+
+.contact-faq-item[open] .contact-faq-chevron {
+  transform: rotate(180deg);
+}
+
+.contact-faq-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+.contact-faq-item p {
+  margin: 0;
+  padding: 0 3.5rem 1.05rem 1.05rem;
+  color: color-mix(in srgb, var(--legacy-blue) 62%, var(--silver));
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-faq-chevron {
+    transition: none;
+  }
 }
 
 .contact-find {
