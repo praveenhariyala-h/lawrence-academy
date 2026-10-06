@@ -808,7 +808,9 @@ const contact = page({
     text("recruitHref", "Recruitment link"),
     text("mapTitle", "Map heading"),
     text("connectTitle", "Social heading"),
-    words("motto", "Motto lines")
+    words("motto", "Motto lines"),
+    text("faqHeading", "FAQ heading"),
+    list("faqs", "FAQs", [text("question", "Question"), area("answer", "Answer")], "question")
   ]
 });
 
