@@ -25,7 +25,6 @@ export default async function AdmissionsPage() {
       data={{ admissions: content }}
       phones={school.phones}
       email={school.emails[0] ?? ""}
-      whatsapp={school.whatsapp}
     />
   );
 }

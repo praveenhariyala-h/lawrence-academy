@@ -30,8 +30,3 @@ export function sendToMailAndWhatsApp(input: {
 
   return { mail, whatsapp };
 }
-
-export function attachedFileName(value: FormDataEntryValue | null) {
-  if (value instanceof File && value.size > 0 && value.name) return value.name;
-  return "Not attached";
-}

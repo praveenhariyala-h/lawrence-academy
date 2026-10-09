@@ -933,6 +933,7 @@ const recruitment = page({
     text("resumeLabel", "Resume label"),
     text("submitLabel", "Submit label"),
     text("resetLabel", "Reset label"),
+    text("applicationEmail", "Application email", "Address that receives staff recruitment form submissions."),
     text("successMessage", "Success message")
   ]
 });

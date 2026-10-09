@@ -21,7 +21,6 @@ export type AdmissionsTinaProps = {
   data: { admissions: AdmissionsContent };
   phones: string[];
   email: string;
-  whatsapp: string;
 };
 
 function text(record: EditableRecord | null, key: string) {
@@ -195,8 +194,6 @@ export default function AdmissionsView(props: AdmissionsTinaProps) {
             titleField={mark(content, "applyTitle")}
             ledeField={mark(content, "applyBody")}
             submitField={mark(content, "submitLabel")}
-            email={text(content, "enquiryEmail")}
-            whatsapp={props.whatsapp}
           />
         </div>
       </section>

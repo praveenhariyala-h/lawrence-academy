@@ -4,7 +4,6 @@ import { useMemo, useRef, useState, type FormEvent } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import type { RecruitmentContent } from "@/lib/recruitment";
-import { attachedFileName, sendToMailAndWhatsApp, type EnquiryDelivery } from "@/lib/sendEnquiry";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 
 function RequiredMark() {
@@ -20,18 +19,11 @@ function validDate(day: number, month: number, year: number) {
   return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
 }
 
-export default function RecruitmentView({
-  content: initial,
-  email,
-  whatsapp
-}: {
-  content: RecruitmentContent;
-  email: string;
-  whatsapp: string;
-}) {
+export default function RecruitmentView({ content: initial }: { content: RecruitmentContent }) {
   const content = useEditable("recruitment", initial);
   const [sent, setSent] = useState(false);
-  const [delivery, setDelivery] = useState<EnquiryDelivery | null>(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const clearing = useRef(false);
   const thisYear = new Date().getFullYear();
   const days = useMemo(() => Array.from({ length: 31 }, (_, index) => String(index + 1).padStart(2, "0")), []);
@@ -42,7 +34,7 @@ export default function RecruitmentView({
   );
   const positions = (content.positions ?? []).filter(Boolean);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const day = form.elements.namedItem("dobDay") as HTMLSelectElement;
@@ -55,37 +47,27 @@ export default function RecruitmentView({
       day.reportValidity();
       return;
     }
-    const data = new FormData(form);
-    const body = [
-      "Staff recruitment application for Lawrence High School",
-      "",
-      `Name: ${data.get("name") ?? ""}`,
-      `Date of birth: ${day.value}/${month.value}/${year.value}`,
-      `Email: ${data.get("email") ?? ""}`,
-      `Phone: ${data.get("phone") ?? ""}`,
-      `Address: ${data.get("address") ?? ""}`,
-      `Subject preferred: ${data.get("subject") ?? ""}`,
-      `Position: ${data.get("position") ?? ""}`,
-      `Education: ${data.get("education") ?? ""}`,
-      `Experience: ${data.get("experience") || "Not provided"}`,
-      `Profile photo: ${attachedFileName(data.get("photo"))}`,
-      `Last pay slip: ${attachedFileName(data.get("payslip"))}`,
-      `Updated resume: ${attachedFileName(data.get("resume"))}`,
-      "",
-      "Please attach the listed files in WhatsApp before sending."
-    ].join("\n");
-    setDelivery(
-      sendToMailAndWhatsApp({
-        email,
-        whatsapp,
-        subject: "Staff recruitment application",
-        body
-      })
-    );
-    setSent(true);
-    clearing.current = true;
-    form.reset();
-    clearing.current = false;
+    setSending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/staff-recruitment", {
+        method: "POST",
+        body: new FormData(form)
+      });
+      const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (!response.ok || !result?.ok) {
+        setError(result?.error || "We could not send your application. Please try again, or call the school office.");
+        return;
+      }
+      setSent(true);
+      clearing.current = true;
+      form.reset();
+      clearing.current = false;
+    } catch {
+      setError("We could not send your application. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -119,20 +101,18 @@ export default function RecruitmentView({
               onReset={() => {
                 if (clearing.current) return;
                 setSent(false);
-                setDelivery(null);
+                setError("");
               }}
               noValidate
             >
               <div className="form-success recruit-span" role="status">
                 <p data-tina-field={tinaMark(content, "successMessage")}>{content.successMessage}</p>
-                {delivery ? (
-                  <p className="form-delivery">
-                    <a href={delivery.mail}>Open email</a>
-                    <a href={delivery.whatsapp} target="_blank" rel="noreferrer">
-                      Open WhatsApp
-                    </a>
-                  </p>
-                ) : null}
+              </div>
+              <div className="recruit-honey" aria-hidden="true">
+                <label>
+                  Leave blank
+                  <input name="hp" tabIndex={-1} autoComplete="off" />
+                </label>
               </div>
               <label>
                 <span>
@@ -226,9 +206,18 @@ export default function RecruitmentView({
                 </span>
                 <input name="resume" type="file" accept=".pdf,.doc,.docx,image/*" required />
               </label>
+              {error ? (
+                <p className="recruit-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <div className="recruit-actions">
-                <button className="btn btn--gold contact-submit" type="submit">
-                  <span data-tina-field={tinaMark(content, "submitLabel")}>{content.submitLabel}</span>
+                <button className="btn btn--gold contact-submit" type="submit" disabled={sending} aria-busy={sending}>
+                  {sending ? (
+                    "Sending..."
+                  ) : (
+                    <span data-tina-field={tinaMark(content, "submitLabel")}>{content.submitLabel}</span>
+                  )}
                 </button>
                 <button className="btn recruit-reset" type="reset">
                   <span data-tina-field={tinaMark(content, "resetLabel")}>{content.resetLabel}</span>
