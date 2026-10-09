@@ -2872,10 +2872,6 @@ body.nav-locked {
   background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 46%, #d6249f 72%, #285aeb 100%);
 }
 
-.contact-social--linkedin {
-  background: #0a66c2;
-}
-
 .contact-social--youtube {
   background: #ff0033;
 }

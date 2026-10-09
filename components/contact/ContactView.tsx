@@ -9,7 +9,7 @@ import type { ContactContent } from "@/lib/contact";
 
 type Social = { label: string; href: string };
 
-const socialOrder = ["Facebook", "Instagram", "LinkedIn", "YouTube"];
+const socialOrder = ["Facebook", "Instagram", "YouTube"];
 
 function AddressLines({ address }: { address: string }) {
   const parts = address.split(/,\s*(?=HSR)/);
@@ -98,11 +98,7 @@ function SocialGlyph({ label }: { label: string }) {
       </svg>
     );
   }
-  return (
-    <svg {...common}>
-      <path fill="currentColor" d="M6.7 9.4v8.1H4.2V9.4h2.5ZM5.4 4.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM19.8 17.5h-2.5v-3.9c0-1.2-.4-2-1.5-2-.8 0-1.3.6-1.5 1.1-.1.2-.1.5-.1.7v4.1H11.7s0-6.7 0-7.4h2.5v1c.4-.6 1.1-1.4 2.6-1.4 1.9 0 3 1.2 3 3.9v3.9Z" />
-    </svg>
-  );
+  return null;
 }
 
 function PeopleIcon() {
