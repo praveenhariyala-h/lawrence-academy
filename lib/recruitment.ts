@@ -31,6 +31,7 @@ export type RecruitmentContent = {
   resumeLabel: string;
   submitLabel: string;
   resetLabel: string;
+  applicationEmail: string;
   successMessage: string;
 };
 
@@ -66,7 +67,8 @@ export const defaultRecruitment: RecruitmentContent = {
   resumeLabel: "Updated Resume",
   submitLabel: "Submit",
   resetLabel: "Reset",
-  successMessage: "Your application is ready. Email and WhatsApp should open so you can send it to the school. Attach your photo, pay slip, and resume in WhatsApp before you send."
+  applicationEmail: "lawrencestaffrecruitment@gmail.com",
+  successMessage: "Thank you. Your application has been sent to our recruitment team, and they will be in touch shortly."
 };
 
 export async function getRecruitmentContent(): Promise<RecruitmentContent> {

@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useCallback, useState, type FormEvent, type ReactNode } from "react";
-import { sendToMailAndWhatsApp, type EnquiryDelivery } from "@/lib/sendEnquiry";
 
 const grades = [
   "Nursery",
@@ -59,9 +58,7 @@ function AdmissionEnquiryForm({
   submitLabel,
   titleField,
   ledeField,
-  submitField,
-  email,
-  whatsapp
+  submitField
 }: {
   title: string;
   lede: string;
@@ -69,50 +66,40 @@ function AdmissionEnquiryForm({
   titleField?: string;
   ledeField?: string;
   submitField?: string;
-  email: string;
-  whatsapp: string;
 }) {
   const [sent, setSent] = useState(false);
-  const [delivery, setDelivery] = useState<EnquiryDelivery | null>(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const onSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      if (!form.reportValidity()) return;
-      const data = new FormData(form);
-      const body = [
-        "Admission enquiry from the Lawrence High School website",
-        "",
-        `Child's full name: ${data.get("childName") ?? ""}`,
-        `Date of birth: ${data.get("dob") ?? ""}`,
-        `Current grade: ${data.get("currentGrade") ?? ""}`,
-        `Grade applying for: ${data.get("grade") ?? ""}`,
-        `Current school: ${data.get("currentSchool") ?? ""}`,
-        `Parent / guardian: ${data.get("parentName") ?? ""}`,
-        `Relationship: ${data.get("relationship") ?? ""}`,
-        `Mobile: ${data.get("phone") ?? ""}`,
-        `Email: ${data.get("email") ?? ""}`,
-        `Academic year: ${data.get("year") ?? ""}`,
-        `Heard about us: ${data.get("source") ?? ""}`,
-        "",
-        String(data.get("message") ?? "")
-      ].join("\n");
-      if (email && whatsapp) {
-        setDelivery(
-          sendToMailAndWhatsApp({
-            email,
-            whatsapp,
-            subject: "Admission enquiry",
-            body
-          })
-        );
+  const onSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const payload: Record<string, string> = {};
+    new FormData(form).forEach((value, key) => {
+      if (typeof value === "string") payload[key] = value;
+    });
+    setSending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/admission-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (!response.ok || !result?.ok) {
+        setError(result?.error || "We could not send your enquiry. Please try again, or call the admissions helpline.");
+        return;
       }
       setSent(true);
       form.reset();
-    },
-    [email, whatsapp]
-  );
+    } catch {
+      setError("We could not send your enquiry. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
+  }, []);
 
   return (
     <form className={sent ? "enquiry-card is-sent" : "enquiry-card"} onSubmit={onSubmit} noValidate>
@@ -122,15 +109,14 @@ function AdmissionEnquiryForm({
       </header>
 
       <div className="form-success" role="status">
-        <p>Thank you. Our Admissions Team will be in touch shortly.</p>
-        {delivery ? (
-          <p className="form-delivery">
-            <a href={delivery.mail}>Open email</a>
-            <a href={delivery.whatsapp} target="_blank" rel="noreferrer">
-              Open WhatsApp
-            </a>
-          </p>
-        ) : null}
+        <p>Thank you. Your enquiry has been sent to our Admissions Team, and they will be in touch shortly.</p>
+      </div>
+
+      <div className="enquiry-honey" aria-hidden="true">
+        <label>
+          Leave blank
+          <input name="hp" tabIndex={-1} autoComplete="off" />
+        </label>
       </div>
 
       <section className="enquiry-block">
@@ -213,8 +199,13 @@ function AdmissionEnquiryForm({
         </div>
       </section>
 
-      <button className="enquiry-submit" type="submit" data-tina-field={submitField}>
-        {submitLabel} <span aria-hidden="true">→</span>
+      {error ? (
+        <p className="enquiry-error" role="alert">
+          {error}
+        </p>
+      ) : null}
+      <button className="enquiry-submit" type="submit" data-tina-field={submitField} disabled={sending} aria-busy={sending}>
+        {sending ? "Sending..." : submitLabel} <span aria-hidden="true">→</span>
       </button>
       <p className="enquiry-secure">
         <svg viewBox="0 0 24 24" aria-hidden="true">

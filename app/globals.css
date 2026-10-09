@@ -1948,6 +1948,7 @@ body.nav-locked {
 }
 
 .enquiry-card {
+  position: relative;
   max-width: 860px;
   margin: 0 auto;
   padding: 1.7rem 1.65rem 1.25rem;
@@ -2092,6 +2093,26 @@ body.nav-locked {
 
 .enquiry-submit:hover {
   background: var(--bloom-deep);
+}
+
+.enquiry-submit:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
+.enquiry-error {
+  margin: 1rem 0 0;
+  color: #8d1d1d;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.enquiry-honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .enquiry-secure {
@@ -2970,9 +2991,31 @@ body.nav-locked {
 }
 
 .recruit-form {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem 1.1rem;
+}
+
+.recruit-honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.recruit-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #8d1d1d;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.recruit-actions button:disabled {
+  cursor: progress;
+  opacity: 0.72;
 }
 
 .recruit-form label,

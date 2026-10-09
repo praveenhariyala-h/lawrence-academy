@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import RecruitmentView from "@/components/recruitment/RecruitmentView";
 import { EditablePage } from "@/components/tina/EditablePage";
 import { getRecruitmentContent } from "@/lib/recruitment";
-import { getSchool } from "@/lib/siteContent";
 import { RecruitmentDocument } from "@/tina/__generated__/types";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -15,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RecruitmentPage() {
   const content = await getRecruitmentContent();
-  const school = getSchool();
   return (
     <EditablePage
       query={RecruitmentDocument}
@@ -23,11 +21,7 @@ export default async function RecruitmentPage() {
       data={{ recruitment: content }}
       documentPath="content/recruitment/recruitment.json"
     >
-      <RecruitmentView
-        content={content}
-        email="lawrencestaffrecruitment@gmail.com"
-        whatsapp={school.whatsapp}
-      />
+      <RecruitmentView content={content} />
     </EditablePage>
   );
 }
