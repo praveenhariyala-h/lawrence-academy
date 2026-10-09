@@ -142,7 +142,7 @@ const site: Collection = {
       "socials",
       "Social links",
       [
-        choice("label", "Network", ["Facebook", "Instagram", "YouTube", "LinkedIn"]),
+        choice("label", "Network", ["Facebook", "Instagram", "YouTube"]),
         text("href", "URL")
       ],
       "label"

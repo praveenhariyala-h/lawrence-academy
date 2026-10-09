@@ -51,11 +51,7 @@ function SocialIcon({ label }: { label: string }) {
       </svg>
     );
   }
-  return (
-    <svg {...common}>
-      <path fill="currentColor" d="M6.5 9.5v8h-3v-8h3Zm-1.5-5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM20 17.5h-3v-4.2c0-1.4-.5-2.3-1.7-2.3-1 0-1.5.7-1.7 1.3-.1.2-.1.5-.1.8v4.4h-3s.1-7.1 0-8h3v1.1c.4-.6 1.1-1.5 2.8-1.5 2 0 3.5 1.3 3.5 4.2v4.2Z" />
-    </svg>
-  );
+  return null;
 }
 
 function ContactIcon({ type }: { type: "pin" | "phone" | "mail" }) {
