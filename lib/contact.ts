@@ -37,6 +37,7 @@ export type ContactContent = {
   messageLabel: string;
   messagePlaceholder: string;
   submitLabel: string;
+  messageEmail: string;
   successMessage: string;
   recruitTitle: string;
   recruitBody: string;
@@ -81,7 +82,8 @@ export const defaultContact: ContactContent = {
   messageLabel: "Message",
   messagePlaceholder: "Type your message here...",
   submitLabel: "Submit",
-  successMessage: "Your message is ready. Email and WhatsApp should open so you can send it to the school.",
+  messageEmail: "lawrence.school.icse@gmail.com",
+  successMessage: "Thank you. Your message has been sent, and we will be in touch shortly.",
   recruitTitle: "Be part of our\n*Lawrence Family*",
   recruitBody:
     "Join our dedicated team of educators and staff committed to nurturing young minds and building future leaders.",

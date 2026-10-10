@@ -801,6 +801,7 @@ const contact = page({
     text("messageLabel", "Message label"),
     text("messagePlaceholder", "Message placeholder"),
     text("submitLabel", "Submit label"),
+    text("messageEmail", "Message email", "Address that receives contact form submissions."),
     text("successMessage", "Success message"),
     text("recruitTitle", "Recruitment heading", emphasis),
     area("recruitBody", "Recruitment text"),

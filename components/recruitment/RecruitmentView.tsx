@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useRef, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import type { RecruitmentContent } from "@/lib/recruitment";
-import { sendFormToInbox } from "@/lib/sendEnquiry";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 
 function RequiredMark() {
@@ -28,7 +27,6 @@ function validDate(day: number, month: number, year: number) {
 export default function RecruitmentView({ content: initial }: { content: RecruitmentContent }) {
   const content = useEditable("recruitment", initial);
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
   const clearing = useRef(false);
   const thisYear = new Date().getFullYear();
@@ -39,68 +37,54 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
     [thisYear]
   );
   const positions = (content.positions ?? []).filter(Boolean);
+  const inbox = content.applicationEmail?.trim() || "lawrencestaffrecruitment@gmail.com";
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  useEffect(() => {
+    const sentFlag = new URLSearchParams(window.location.search).get("sent");
+    if (sentFlag === "1") setSent(true);
+  }, []);
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
     const day = form.elements.namedItem("dobDay") as HTMLSelectElement;
     const month = form.elements.namedItem("dobMonth") as HTMLSelectElement;
     const year = form.elements.namedItem("dobYear") as HTMLSelectElement;
     day.setCustomValidity("");
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity()) {
+      event.preventDefault();
+      return;
+    }
     if (!validDate(Number(day.value), Number(month.value), Number(year.value))) {
+      event.preventDefault();
       day.setCustomValidity("Enter a valid date of birth.");
       day.reportValidity();
       return;
     }
-    const data = new FormData(form);
-    const photo = data.get("photo");
-    const payslip = data.get("payslip");
-    const resume = data.get("resume");
-    const files = [photo, payslip, resume].filter((file): file is File => file instanceof File && file.size > 0);
+    const files = ["profile_photo", "payslip", "resume"].flatMap((name) => {
+      const value = form.elements.namedItem(name);
+      return value instanceof HTMLInputElement && value.files?.[0] ? [value.files[0]] : [];
+    });
     if (files.some((file) => file.size > 8 * 1024 * 1024) || files.reduce((total, file) => total + file.size, 0) > 10 * 1024 * 1024) {
+      event.preventDefault();
       setError("Attachments must be 10 MB or smaller in total. Please use smaller files and try again.");
       return;
     }
-    const value = (key: string) => String(data.get(key) ?? "");
-    setSending(true);
-    setError("");
-    const result = await sendFormToInbox({
-      email: content.applicationEmail?.trim() || "lawrencestaffrecruitment@gmail.com",
-      subject: `Staff recruitment — ${value("name")}`,
-      replyTo: value("email"),
-      name: value("name"),
-      honey: value("hp"),
-      fields: [
-        ["Name", value("name")],
-        ["Date of birth", `${day.value}/${month.value}/${year.value}`],
-        ["Email", value("email")],
-        ["Phone", value("phone")],
-        ["Address", value("address")],
-        ["Subject preferred", value("subject")],
-        ["Position", value("position")],
-        ["Education", value("education")],
-        ["Experience", value("experience") || "Not provided"]
-      ],
-      files: [
-        ...(photo instanceof File && photo.size > 0 ? [{ label: "Profile photo", file: photo }] : []),
-        ...(payslip instanceof File && payslip.size > 0 ? [{ label: "Last pay slip", file: payslip }] : []),
-        ...(resume instanceof File && resume.size > 0 ? [{ label: "Updated resume", file: resume }] : [])
-      ]
-    });
-    setSending(false);
-    if (!result.ok) {
-      setError(
-        result.offline
-          ? "We could not send your application. Please check your connection and try again."
-          : "We could not send your application. Please try again, or call the school office."
-      );
-      return;
-    }
-    setSent(true);
-    clearing.current = true;
-    form.reset();
-    clearing.current = false;
+    const applicant = (form.elements.namedItem("Name") as HTMLInputElement).value;
+    const applicantEmail = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const honey = (form.elements.namedItem("hp") as HTMLInputElement).value.trim();
+    (form.elements.namedItem("_subject") as HTMLInputElement).value = `Staff recruitment — ${applicant}`;
+    (form.elements.namedItem("_replyto") as HTMLInputElement).value = applicantEmail;
+    (form.elements.namedItem("_next") as HTMLInputElement).value = `${window.location.origin}/recruitment?sent=1`;
+    (form.elements.namedItem("Date_of_birth") as HTMLInputElement).value = `${day.value}/${month.value}/${year.value}`;
+    const honeyField = form.elements.namedItem("_honey") as HTMLInputElement;
+    honeyField.disabled = !honey;
+    honeyField.value = honey;
+    day.disabled = true;
+    month.disabled = true;
+    year.disabled = true;
+    (form.elements.namedItem("hp") as HTMLInputElement).disabled = true;
+    form.enctype = "multipart/form-data";
+    form.encoding = "multipart/form-data";
   }
 
   return (
@@ -130,6 +114,9 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
             </h2>
             <form
               className={sent ? "recruit-form is-sent" : "recruit-form"}
+              action={`https://formsubmit.co/${encodeURIComponent(inbox)}`}
+              method="POST"
+              encType="multipart/form-data"
               onSubmit={onSubmit}
               onReset={() => {
                 if (clearing.current) return;
@@ -138,6 +125,12 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
               }}
               noValidate
             >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" defaultValue="" />
+              <input type="hidden" name="_replyto" defaultValue="" />
+              <input type="hidden" name="_next" defaultValue="" />
+              <input type="hidden" name="Date_of_birth" defaultValue="" />
+              <input type="hidden" name="_honey" defaultValue="" />
               <div className="form-success recruit-span" role="status">
                 <p data-tina-field={tinaMark(content, "successMessage")}>{content.successMessage}</p>
               </div>
@@ -151,7 +144,7 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
                 <span>
                   <span data-tina-field={tinaMark(content, "nameLabel")}>{content.nameLabel}</span> <RequiredMark />
                 </span>
-                <input name="name" required autoComplete="name" placeholder={content.namePlaceholder} />
+                <input name="Name" required autoComplete="name" placeholder={content.namePlaceholder} />
               </label>
               <div className="recruit-dob-field">
                 <span>
@@ -188,25 +181,25 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
                 <span>
                   <span data-tina-field={tinaMark(content, "phoneLabel")}>{content.phoneLabel}</span> <RequiredMark />
                 </span>
-                <input name="phone" type="tel" required autoComplete="tel" placeholder={content.phonePlaceholder} />
+                <input name="Phone" type="tel" required autoComplete="tel" placeholder={content.phonePlaceholder} />
               </label>
               <label>
                 <span>
                   <span data-tina-field={tinaMark(content, "addressLabel")}>{content.addressLabel}</span> <RequiredMark />
                 </span>
-                <input name="address" required autoComplete="street-address" placeholder={content.addressPlaceholder} />
+                <input name="Address" required autoComplete="street-address" placeholder={content.addressPlaceholder} />
               </label>
               <label>
                 <span>
                   <span data-tina-field={tinaMark(content, "subjectLabel")}>{content.subjectLabel}</span> <RequiredMark />
                 </span>
-                <input name="subject" required placeholder={content.subjectPlaceholder} />
+                <input name="Subject preferred" required placeholder={content.subjectPlaceholder} />
               </label>
               <label>
                 <span>
                   <span data-tina-field={tinaMark(content, "positionLabel")}>{content.positionLabel}</span> <RequiredMark />
                 </span>
-                <select name="position" required defaultValue="">
+                <select name="Position" required defaultValue="">
                   <option value="">{content.positionPlaceholder}</option>
                   {positions.map((position) => (
                     <option key={position}>{position}</option>
@@ -217,17 +210,17 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
                 <span>
                   <span data-tina-field={tinaMark(content, "educationLabel")}>{content.educationLabel}</span> <RequiredMark />
                 </span>
-                <input name="education" required placeholder={content.educationPlaceholder} />
+                <input name="Education" required placeholder={content.educationPlaceholder} />
               </label>
               <label>
                 <span data-tina-field={tinaMark(content, "experienceLabel")}>{content.experienceLabel}</span>
-                <input name="experience" placeholder={content.experiencePlaceholder} />
+                <input name="Experience" placeholder={content.experiencePlaceholder} />
               </label>
               <label className="recruit-file">
                 <span>
                   <span data-tina-field={tinaMark(content, "photoLabel")}>{content.photoLabel}</span> <RequiredMark />
                 </span>
-                <input name="photo" type="file" accept={imageAccept} required />
+                <input name="profile_photo" type="file" accept={imageAccept} required />
               </label>
               <label className="recruit-file">
                 <span data-tina-field={tinaMark(content, "payslipLabel")}>{content.payslipLabel}</span>
@@ -245,12 +238,8 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
                 </p>
               ) : null}
               <div className="recruit-actions">
-                <button className="btn btn--gold contact-submit" type="submit" disabled={sending} aria-busy={sending}>
-                  {sending ? (
-                    "Sending..."
-                  ) : (
-                    <span data-tina-field={tinaMark(content, "submitLabel")}>{content.submitLabel}</span>
-                  )}
+                <button className="btn btn--gold contact-submit" type="submit">
+                  <span data-tina-field={tinaMark(content, "submitLabel")}>{content.submitLabel}</span>
                 </button>
                 <button className="btn recruit-reset" type="reset">
                   <span data-tina-field={tinaMark(content, "resetLabel")}>{content.resetLabel}</span>

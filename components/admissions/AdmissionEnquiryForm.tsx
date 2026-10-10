@@ -1,7 +1,6 @@
 "use client";
 
-import { memo, useCallback, useState, type FormEvent, type ReactNode } from "react";
-import { sendFormToInbox } from "@/lib/sendEnquiry";
+import { memo, useEffect, useState, type FormEvent, type ReactNode } from "react";
 
 const grades = [
   "Nursery",
@@ -71,53 +70,47 @@ function AdmissionEnquiryForm({
   email: string;
 }) {
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState("");
+  const inbox = email.trim() || "lawrence.admn@gmail.com";
 
-  const onSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("sent") === "1") setSent(true);
+  }, []);
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const value = (key: string) => String(data.get(key) ?? "");
-    setSending(true);
-    setError("");
-    const result = await sendFormToInbox({
-      email: email.trim() || "lawrence.admn@gmail.com",
-      subject: `Admission enquiry — ${value("childName")}`,
-      replyTo: value("email"),
-      name: value("parentName"),
-      honey: value("hp"),
-      fields: [
-        ["Child's full name", value("childName")],
-        ["Date of birth", value("dob") || "Not provided"],
-        ["Current grade", value("currentGrade") || "Not provided"],
-        ["Grade applying for", value("grade")],
-        ["Current school", value("currentSchool") || "Not provided"],
-        ["Parent / guardian", value("parentName")],
-        ["Relationship", value("relationship")],
-        ["Mobile", value("phone")],
-        ["Email", value("email")],
-        ["Academic year", value("year")],
-        ["Heard about us", value("source") || "Not provided"],
-        ["Message", value("message") || "Not provided"]
-      ]
-    });
-    setSending(false);
-    if (!result.ok) {
-      setError(
-        result.offline
-          ? "We could not send your enquiry. Please check your connection and try again."
-          : "We could not send your enquiry. Please try again, or call the admissions helpline."
-      );
+    if (!form.reportValidity()) {
+      event.preventDefault();
       return;
     }
-    setSent(true);
-    form.reset();
-  }, [email]);
+    const child = (form.elements.namedItem("Child name") as HTMLInputElement).value;
+    const parentEmail = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const honey = (form.elements.namedItem("hp") as HTMLInputElement).value.trim();
+    (form.elements.namedItem("_subject") as HTMLInputElement).value = `Admission enquiry — ${child}`;
+    (form.elements.namedItem("_replyto") as HTMLInputElement).value = parentEmail;
+    const next = new URL("/admissions", window.location.origin);
+    next.searchParams.set("sent", "1");
+    (form.elements.namedItem("_next") as HTMLInputElement).value = next.toString();
+    const honeyField = form.elements.namedItem("_honey") as HTMLInputElement;
+    honeyField.disabled = !honey;
+    honeyField.value = honey;
+    (form.elements.namedItem("hp") as HTMLInputElement).disabled = true;
+    form.method = "post";
+    form.action = `https://formsubmit.co/${encodeURIComponent(inbox)}`;
+  }
 
   return (
-    <form className={sent ? "enquiry-card is-sent" : "enquiry-card"} onSubmit={onSubmit} noValidate>
+    <form
+      className={sent ? "enquiry-card is-sent" : "enquiry-card"}
+      action={`https://formsubmit.co/${encodeURIComponent(inbox)}`}
+      method="POST"
+      onSubmit={onSubmit}
+      noValidate
+    >
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_subject" defaultValue="" />
+      <input type="hidden" name="_replyto" defaultValue="" />
+      <input type="hidden" name="_next" defaultValue="" />
+      <input type="hidden" name="_honey" defaultValue="" />
       <header className="enquiry-head">
         <h2 data-tina-field={titleField}>{title}</h2>
         <p data-tina-field={ledeField}>{lede}</p>
@@ -138,15 +131,15 @@ function AdmissionEnquiryForm({
         <h3>Child Details</h3>
         <div className="enquiry-grid">
           <Field label="Child's Full Name" required>
-            <input name="childName" required autoComplete="name" placeholder="Enter your child's name" />
+            <input name="Child name" required autoComplete="name" placeholder="Enter your child's name" />
           </Field>
           <Field label="Date of Birth">
             <span className="enquiry-date">
-              <input name="dob" type="date" />
+              <input name="Date of birth" type="date" />
             </span>
           </Field>
           <Field label="Current Grade / Class">
-            <select name="currentGrade" defaultValue="">
+            <select name="Current grade" defaultValue="">
               <option value="">Select current grade</option>
               {grades.map((grade) => (
                 <option key={grade}>{grade}</option>
@@ -154,7 +147,7 @@ function AdmissionEnquiryForm({
             </select>
           </Field>
           <Field label="Grade Applying For" required>
-            <select name="grade" required defaultValue="">
+            <select name="Grade applying for" required defaultValue="">
               <option value="">Select grade</option>
               {grades.map((grade) => (
                 <option key={grade}>{grade}</option>
@@ -162,7 +155,7 @@ function AdmissionEnquiryForm({
             </select>
           </Field>
           <Field label="Current School">
-            <input name="currentSchool" autoComplete="organization" placeholder="Enter current school name" />
+            <input name="Current school" autoComplete="organization" placeholder="Enter current school name" />
           </Field>
         </div>
       </section>
@@ -171,10 +164,10 @@ function AdmissionEnquiryForm({
         <h3>Parent / Guardian Details</h3>
         <div className="enquiry-grid">
           <Field label="Parent / Guardian Name" required>
-            <input name="parentName" required autoComplete="name" placeholder="Enter parent / guardian name" />
+            <input name="Parent name" required autoComplete="name" placeholder="Enter parent / guardian name" />
           </Field>
           <Field label="Relationship" required>
-            <select name="relationship" required defaultValue="">
+            <select name="Relationship" required defaultValue="">
               <option value="">Select relationship</option>
               {relationships.map((item) => (
                 <option key={item}>{item}</option>
@@ -182,7 +175,7 @@ function AdmissionEnquiryForm({
             </select>
           </Field>
           <Field label="Mobile Number" required>
-            <input name="phone" type="tel" required autoComplete="tel" placeholder="Enter mobile number" />
+            <input name="Phone" type="tel" required autoComplete="tel" placeholder="Enter mobile number" />
           </Field>
           <Field label="Email Address" required>
             <input name="email" type="email" required autoComplete="email" placeholder="Enter email address" />
@@ -194,14 +187,14 @@ function AdmissionEnquiryForm({
         <h3>Enquiry Details</h3>
         <div className="enquiry-grid">
           <Field label="Academic Year" required>
-            <select name="year" required defaultValue="2027 – 28">
+            <select name="Academic year" required defaultValue="2027 – 28">
               {years.map((year) => (
                 <option key={year}>{year}</option>
               ))}
             </select>
           </Field>
           <Field label="How did you hear about us?">
-            <select name="source" defaultValue="">
+            <select name="Heard about us" defaultValue="">
               <option value="">Select option</option>
               {sources.map((source) => (
                 <option key={source}>{source}</option>
@@ -209,18 +202,13 @@ function AdmissionEnquiryForm({
             </select>
           </Field>
           <Field label="Your Query / Message" wide>
-            <textarea name="message" placeholder="Tell us how we can help you..." />
+            <textarea name="Message" placeholder="Tell us how we can help you..." />
           </Field>
         </div>
       </section>
 
-      {error ? (
-        <p className="enquiry-error" role="alert">
-          {error}
-        </p>
-      ) : null}
-      <button className="enquiry-submit" type="submit" data-tina-field={submitField} disabled={sending} aria-busy={sending}>
-        {sending ? "Sending..." : submitLabel} <span aria-hidden="true">→</span>
+      <button className="enquiry-submit" type="submit" data-tina-field={submitField}>
+        {submitLabel} <span aria-hidden="true">→</span>
       </button>
       <p className="enquiry-secure">
         <svg viewBox="0 0 24 24" aria-hidden="true">
