@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useCallback, useState, type FormEvent, type ReactNode } from "react";
+import { sendFormToInbox } from "@/lib/sendEnquiry";
 
 const grades = [
   "Nursery",
@@ -58,7 +59,8 @@ function AdmissionEnquiryForm({
   submitLabel,
   titleField,
   ledeField,
-  submitField
+  submitField,
+  email
 }: {
   title: string;
   lede: string;
@@ -66,6 +68,7 @@ function AdmissionEnquiryForm({
   titleField?: string;
   ledeField?: string;
   submitField?: string;
+  email: string;
 }) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -75,31 +78,43 @@ function AdmissionEnquiryForm({
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
-    const payload: Record<string, string> = {};
-    new FormData(form).forEach((value, key) => {
-      if (typeof value === "string") payload[key] = value;
-    });
+    const data = new FormData(form);
+    const value = (key: string) => String(data.get(key) ?? "");
     setSending(true);
     setError("");
-    try {
-      const response = await fetch("/api/admission-enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload)
-      });
-      const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
-      if (!response.ok || !result?.ok) {
-        setError(result?.error || "We could not send your enquiry. Please try again, or call the admissions helpline.");
-        return;
-      }
-      setSent(true);
-      form.reset();
-    } catch {
-      setError("We could not send your enquiry. Please check your connection and try again.");
-    } finally {
-      setSending(false);
+    const result = await sendFormToInbox({
+      email: email.trim() || "lawrence.admn@gmail.com",
+      subject: `Admission enquiry — ${value("childName")}`,
+      replyTo: value("email"),
+      name: value("parentName"),
+      honey: value("hp"),
+      fields: [
+        ["Child's full name", value("childName")],
+        ["Date of birth", value("dob") || "Not provided"],
+        ["Current grade", value("currentGrade") || "Not provided"],
+        ["Grade applying for", value("grade")],
+        ["Current school", value("currentSchool") || "Not provided"],
+        ["Parent / guardian", value("parentName")],
+        ["Relationship", value("relationship")],
+        ["Mobile", value("phone")],
+        ["Email", value("email")],
+        ["Academic year", value("year")],
+        ["Heard about us", value("source") || "Not provided"],
+        ["Message", value("message") || "Not provided"]
+      ]
+    });
+    setSending(false);
+    if (!result.ok) {
+      setError(
+        result.offline
+          ? "We could not send your enquiry. Please check your connection and try again."
+          : "We could not send your enquiry. Please try again, or call the admissions helpline."
+      );
+      return;
     }
-  }, []);
+    setSent(true);
+    form.reset();
+  }, [email]);
 
   return (
     <form className={sent ? "enquiry-card is-sent" : "enquiry-card"} onSubmit={onSubmit} noValidate>

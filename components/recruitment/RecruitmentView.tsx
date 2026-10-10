@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, type FormEvent } from "react";
 import AboutReveal from "@/components/about/AboutReveal";
 import PageBanner from "@/components/PageBanner";
 import type { RecruitmentContent } from "@/lib/recruitment";
+import { sendFormToInbox } from "@/lib/sendEnquiry";
 import { tinaMark, useEditable } from "@/components/tina/EditablePage";
 
 function RequiredMark() {
@@ -47,27 +48,54 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
       day.reportValidity();
       return;
     }
+    const data = new FormData(form);
+    const photo = data.get("photo");
+    const payslip = data.get("payslip");
+    const resume = data.get("resume");
+    const files = [photo, payslip, resume].filter((file): file is File => file instanceof File && file.size > 0);
+    if (files.some((file) => file.size > 8 * 1024 * 1024) || files.reduce((total, file) => total + file.size, 0) > 10 * 1024 * 1024) {
+      setError("Attachments must be 10 MB or smaller in total. Please use smaller files and try again.");
+      return;
+    }
+    const value = (key: string) => String(data.get(key) ?? "");
     setSending(true);
     setError("");
-    try {
-      const response = await fetch("/api/staff-recruitment", {
-        method: "POST",
-        body: new FormData(form)
-      });
-      const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
-      if (!response.ok || !result?.ok) {
-        setError(result?.error || "We could not send your application. Please try again, or call the school office.");
-        return;
-      }
-      setSent(true);
-      clearing.current = true;
-      form.reset();
-      clearing.current = false;
-    } catch {
-      setError("We could not send your application. Please check your connection and try again.");
-    } finally {
-      setSending(false);
+    const result = await sendFormToInbox({
+      email: content.applicationEmail?.trim() || "lawrencestaffrecruitment@gmail.com",
+      subject: `Staff recruitment — ${value("name")}`,
+      replyTo: value("email"),
+      name: value("name"),
+      honey: value("hp"),
+      fields: [
+        ["Name", value("name")],
+        ["Date of birth", `${day.value}/${month.value}/${year.value}`],
+        ["Email", value("email")],
+        ["Phone", value("phone")],
+        ["Address", value("address")],
+        ["Subject preferred", value("subject")],
+        ["Position", value("position")],
+        ["Education", value("education")],
+        ["Experience", value("experience") || "Not provided"]
+      ],
+      files: [
+        ...(photo instanceof File && photo.size > 0 ? [{ label: "Profile photo", file: photo }] : []),
+        ...(payslip instanceof File && payslip.size > 0 ? [{ label: "Last pay slip", file: payslip }] : []),
+        ...(resume instanceof File && resume.size > 0 ? [{ label: "Updated resume", file: resume }] : [])
+      ]
+    });
+    setSending(false);
+    if (!result.ok) {
+      setError(
+        result.offline
+          ? "We could not send your application. Please check your connection and try again."
+          : "We could not send your application. Please try again, or call the school office."
+      );
+      return;
     }
+    setSent(true);
+    clearing.current = true;
+    form.reset();
+    clearing.current = false;
   }
 
   return (

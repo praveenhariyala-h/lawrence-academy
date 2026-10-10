@@ -30,3 +30,46 @@ export function sendToMailAndWhatsApp(input: {
 
   return { mail, whatsapp };
 }
+
+export type FormInboxResult = { ok: true } | { ok: false; offline?: boolean };
+
+export async function sendFormToInbox(input: {
+  email: string;
+  subject: string;
+  replyTo: string;
+  name: string;
+  fields: Array<[string, string]>;
+  files?: Array<{ label: string; file: File }>;
+  honey?: string;
+}): Promise<FormInboxResult> {
+  if (input.honey?.trim()) return { ok: true };
+
+  const body = new FormData();
+  body.set("_subject", input.subject);
+  body.set("_template", "table");
+  body.set("_captcha", "false");
+  body.set("_replyto", input.replyTo);
+  body.set("name", input.name);
+  body.set("email", input.replyTo);
+  body.set("message", input.fields.map(([label, value]) => `${label}: ${value}`).join("\n"));
+  for (const [label, value] of input.fields) body.set(label, value);
+  for (const item of input.files ?? []) {
+    if (item.file.size > 0) body.set(item.label, item.file, item.file.name);
+  }
+
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(input.email.trim())}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body
+    });
+    const result = (await response.json().catch(() => null)) as { success?: boolean | string; message?: string } | null;
+    const message = result?.message ?? "";
+    const accepted =
+      result?.success === true || result?.success === "true" || /activation|confirm your form/i.test(message);
+    if (!response.ok || !accepted) return { ok: false };
+    return { ok: true };
+  } catch {
+    return { ok: false, offline: true };
+  }
+}
