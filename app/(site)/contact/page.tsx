@@ -30,7 +30,6 @@ export default async function ContactPage() {
         address={school.address}
         phone={school.phones[0] ?? ""}
         email={school.emails[0] ?? ""}
-        whatsapp={school.whatsapp}
         mapUrl={school.mapUrl}
         socials={school.socials}
       />

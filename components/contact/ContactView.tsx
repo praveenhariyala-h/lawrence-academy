@@ -140,7 +140,6 @@ export default function ContactView({
   address,
   phone,
   email,
-  whatsapp,
   mapUrl,
   socials
 }: {
@@ -149,7 +148,6 @@ export default function ContactView({
   address: string;
   phone: string;
   email: string;
-  whatsapp: string;
   mapUrl: string;
   socials: Social[];
 }) {
@@ -259,8 +257,7 @@ export default function ContactView({
                 successMessage: content.successMessage
               }}
               submitField={tinaMark(content, "submitLabel")}
-              toEmail={email}
-              toWhatsapp={whatsapp}
+              toEmail={content.messageEmail?.trim() || email}
             />
           </div>
         </div>
