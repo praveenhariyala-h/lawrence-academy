@@ -15,6 +15,11 @@ function RequiredMark() {
   );
 }
 
+const imageAccept =
+  "image/*,.png,.jpg,.jpeg,.jpe,.webp,.gif,.bmp,.heic,.heif,.tif,.tiff,.avif,.svg,image/png,image/jpeg,image/webp,image/gif,image/bmp,image/heic,image/heif,image/tiff,image/avif,image/svg+xml";
+const documentAccept =
+  "image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
 function validDate(day: number, month: number, year: number) {
   const date = new Date(year, month - 1, day);
   return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
@@ -222,17 +227,17 @@ export default function RecruitmentView({ content: initial }: { content: Recruit
                 <span>
                   <span data-tina-field={tinaMark(content, "photoLabel")}>{content.photoLabel}</span> <RequiredMark />
                 </span>
-                <input name="photo" type="file" accept="image/*" required />
+                <input name="photo" type="file" accept={imageAccept} required />
               </label>
               <label className="recruit-file">
                 <span data-tina-field={tinaMark(content, "payslipLabel")}>{content.payslipLabel}</span>
-                <input name="payslip" type="file" accept="image/*,.pdf" />
+                <input name="payslip" type="file" accept={documentAccept} />
               </label>
               <label className="recruit-file">
                 <span>
                   <span data-tina-field={tinaMark(content, "resumeLabel")}>{content.resumeLabel}</span> <RequiredMark />
                 </span>
-                <input name="resume" type="file" accept=".pdf,.doc,.docx,image/*" required />
+                <input name="resume" type="file" accept={documentAccept} required />
               </label>
               {error ? (
                 <p className="recruit-error" role="alert">
